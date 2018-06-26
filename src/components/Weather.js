@@ -14,9 +14,9 @@ class Weather extends React.Component {
     this.getWeather = this.getWeather.bind(this);
   }
 
-  updateInputValue(evt) {
+  updateInputValue(e) {
     this.setState({
-      city: evt.target.value
+      city: e.target.value
     });
   }
 
@@ -64,7 +64,7 @@ class Weather extends React.Component {
       <div className={style.container + ' ' + style.bodyText}>
         <div className={style.weatherForm}>
           <form action='/' method='GET'>
-            <input ref='city' value={this.state.inputValue} onChange={evt => this.updateInputValue(evt)} type='text' placeholder='Search city' />
+            <input ref='city' value={this.state.inputValue} onChange={e => this.updateInputValue(e)} type='text' placeholder='Search city' />
             <input onClick={this.getWeather} type='submit' value='Search' /> 
           </form>
         </div>

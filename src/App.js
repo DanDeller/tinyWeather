@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import Main from './Main';
+import Footer from './components/Footer';
 import style from './styles/style.less';
 
 class App extends React.Component {
@@ -9,6 +10,7 @@ class App extends React.Component {
       <div className={style.wrap}>
         <Header/>
         <Main/>
+        <Footer/>
       </div>
     );
   }
