@@ -22,12 +22,13 @@ class Weather extends React.Component {
 
   getWeather(e) {
     e.preventDefault();
-    
+
     if (!this.state.city.length) {
-      alert('Enter a city');
+      alert('Enter a city.');
     } else {
       let city = this.state.city,
-          box  = this.refs.city.value;
+          box  = this.refs.city,
+          boxCity = box.value;
 
       fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=6d5233c17d482d1c20dabfc48d8b3112', {
         headers: {
@@ -37,18 +38,26 @@ class Weather extends React.Component {
         return results.json();
       }).then((data) => {
         this.state.details.push({
-          name: data.name
+          name: data.name,
+          weather: data.weather[0].main
         });
+
         this.setState({
-          box: city
+          boxCity: city
         });
+
+        box.value = '';
+        this.state.city = '';
       });
     }
   }
 
   render() {
-    const test = this.state.details.map((item, i) => (
-      <div className={style.weatherItem} key={i}>{item.name}</div>
+    const city = this.state.details.map((item, i) => (
+      <div className={style.weatherItem} key={i}>
+        <p>{item.name}</p>
+        <p>{item.weather}</p>
+      </div>
     ));
 
     return (
@@ -59,7 +68,7 @@ class Weather extends React.Component {
             <input onClick={this.getWeather} type='submit' value='Search' /> 
           </form>
         </div>
-        <div className={style.weatherItems}>{test}</div>
+        <div className={style.weatherItems}>{city}</div>
       </div>
     );
   }

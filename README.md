@@ -1,2 +1,2 @@
 # Rv.16
-Just playing around...
+Just a quick weather app demo.

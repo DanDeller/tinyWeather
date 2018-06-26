@@ -3,6 +3,10 @@
 @heading: 'Roboto', sans-serif;
 @body: 'Encode Sans Condensed', sans-serif;;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -19,6 +23,10 @@ p {
 .container {
   margin: 0 auto;
   max-width: 1024px;
+}
+
+.bodyText {
+  font-family: @body;
 }
 
 .header {
@@ -42,19 +50,37 @@ p {
   }
 }
 
-.bodyText {
-  font-family: @body;
-}
-
 .weatherForm {
   width: 100%;
+  input {
+    border: 1px solid #4c4c4c;
+    font-size: 14px;
+    outline: none;
+    padding: 10px 10px;
+  }
+  input[type=submit] {
+    background: none;
+    cursor: pointer;
+    margin: 0 0 0 10px;
+  }
 }
 
 .weatherItems {
-  border: 1px solid #ccc;
+  border: 1px solid #4c4c4c;
   margin: 25px 0 0 0;
   min-height: 100px;
   padding: 15px;
   width: 100%;
+  .weatherItem {
+    border-bottom: 1px solid #ccc;
+    margin: 0 0 15px 0;
+    padding: 0 0 5px 0;
+    p {
+      display: inline;
+      margin: 0 25px 0 0;
+    }
+  }
 }
+
+
 
