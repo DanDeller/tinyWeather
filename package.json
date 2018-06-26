@@ -4,7 +4,7 @@
   "description": "",
   "main": "router.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open",
+    "start": "webpack-dev-server --mode development --hot --inline --content-base=dist --history-api-fallback --open",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

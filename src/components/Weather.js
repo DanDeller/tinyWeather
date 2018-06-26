@@ -22,7 +22,7 @@ class Weather extends React.Component {
 
   getWeather(e) {
     e.preventDefault();
-
+    
     if (!this.state.city.length) {
       alert('Enter a city');
     } else {
