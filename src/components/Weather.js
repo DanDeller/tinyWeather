@@ -30,8 +30,6 @@ class Weather extends React.Component {
       let city = this.state.city,
           box  = this.refs;
 
-      // console.log(box);
-
       fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=6d5233c17d482d1c20dabfc48d8b3112', {
         headers: {
           Accept: 'application/json',
@@ -47,10 +45,6 @@ class Weather extends React.Component {
         this.setState({
           city: city
         });
-
-        // box.value = '';
-        // this.state.city = '';
-        // console.log(data);
       });
     }
   }
