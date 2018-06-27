@@ -2,7 +2,7 @@ import React from 'react';
 import style from '../styles/style.less';
 
 class Weather extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -48,6 +48,7 @@ class Weather extends React.Component {
 
         box.value = '';
         this.state.city = '';
+        console.log(data);
       });
     }
   }
