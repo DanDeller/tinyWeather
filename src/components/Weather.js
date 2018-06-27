@@ -8,10 +8,12 @@ class Weather extends React.Component {
 
     this.state = {
       city: '',
-      details: []
+      details: [],
+      myRefs: ''
     };
 
     this.updateInputValue = this.updateInputValue.bind(this);
+    this.getRefsFromChild = this.getRefsFromChild.bind(this);
     this.getWeather = this.getWeather.bind(this);
   }
 
@@ -28,7 +30,7 @@ class Weather extends React.Component {
       alert('Enter a city.');
     } else {
       let city = this.state.city,
-          box  = this.refs;
+          box  = this.state.myRefs.city;
 
       fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=6d5233c17d482d1c20dabfc48d8b3112', {
         headers: {
@@ -41,12 +43,22 @@ class Weather extends React.Component {
           name: data.name,
           weather: data.weather[0].main
         });
-
         this.setState({
           city: city
         });
+
+        box.value = '';
+        this.state.city = '';
+        
       });
     }
+  }
+
+  getRefsFromChild(childRefs) {
+    this.setState({
+      myRefs: childRefs
+    });
+    // console.log('here! -> ' + this.state.myRefs);
   }
 
   render() {
@@ -55,6 +67,7 @@ class Weather extends React.Component {
         <WeatherForm
           updateInputValue={this.updateInputValue}
           getWeather={this.getWeather}
+          passRefUpward={this.getRefsFromChild}
         />
         <WeatherList
           details={this.state.details}
@@ -66,11 +79,15 @@ class Weather extends React.Component {
 
 
 class WeatherForm extends React.Component {
+  componentDidMount() {
+    this.props.passRefUpward(this.refs);
+  }
+
   render() {
     return (
       <div className={style.weatherForm}>
         <form action='/' method='GET'>
-          <input ref={(city) => {this.city = city}} onChange={this.props.updateInputValue} type='text' placeholder='Search city' />
+          <input ref={'city'} onChange={this.props.updateInputValue} type='text' placeholder='Search city' />
           <input onClick={e => this.props.getWeather(e)} type='submit' value='Search' /> 
         </form>
       </div>
