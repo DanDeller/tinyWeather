@@ -49,7 +49,7 @@ class Weather extends React.Component {
 
         box.value = '';
         this.state.city = '';
-        
+
       });
     }
   }
@@ -58,7 +58,6 @@ class Weather extends React.Component {
     this.setState({
       myRefs: childRefs
     });
-    // console.log('here! -> ' + this.state.myRefs);
   }
 
   render() {
