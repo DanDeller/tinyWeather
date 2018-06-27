@@ -1,5 +1,6 @@
 import React from 'react';
 import style from '../styles/style.less';
+import ReactDOM from 'react-dom'
 
 class Weather extends React.Component {
   constructor(props) {
@@ -27,8 +28,9 @@ class Weather extends React.Component {
       alert('Enter a city.');
     } else {
       let city = this.state.city,
-          box  = this.refs.city,
-          boxCity = box.value;
+          box  = this.refs;
+
+      // console.log(box);
 
       fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=6d5233c17d482d1c20dabfc48d8b3112', {
         headers: {
@@ -43,18 +45,49 @@ class Weather extends React.Component {
         });
 
         this.setState({
-          boxCity: city
+          city: city
         });
 
-        box.value = '';
-        this.state.city = '';
-        console.log(data);
+        // box.value = '';
+        // this.state.city = '';
+        // console.log(data);
       });
     }
   }
 
   render() {
-    const city = this.state.details.map((item, i) => (
+    return (
+      <div className={style.container + ' ' + style.bodyText}>
+        <WeatherForm
+          updateInputValue={this.updateInputValue}
+          getWeather={this.getWeather}
+        />
+        <WeatherList
+          details={this.state.details}
+        />
+      </div>
+    );
+  }
+}
+
+
+class WeatherForm extends React.Component {
+  render() {
+    return (
+      <div className={style.weatherForm}>
+        <form action='/' method='GET'>
+          <input ref={(city) => {this.city = city}} onChange={this.props.updateInputValue} type='text' placeholder='Search city' />
+          <input onClick={e => this.props.getWeather(e)} type='submit' value='Search' /> 
+        </form>
+      </div>
+    );
+  }
+}
+
+
+class WeatherList extends React.Component {
+  render() {
+    const city = this.props.details.map((item, i) => (
       <div className={style.weatherItem} key={i}>
         <p>{item.name}</p>
         <p>{item.weather}</p>
@@ -62,17 +95,12 @@ class Weather extends React.Component {
     ));
 
     return (
-      <div className={style.container + ' ' + style.bodyText}>
-        <div className={style.weatherForm}>
-          <form action='/' method='GET'>
-            <input ref='city' value={this.state.inputValue} onChange={e => this.updateInputValue(e)} type='text' placeholder='Search city' />
-            <input onClick={this.getWeather} type='submit' value='Search' /> 
-          </form>
-        </div>
-        <div className={style.weatherItems}>{city}</div>
+      <div className={style.weatherItems}>
+        {city}
       </div>
     );
   }
 }
+
 
 export default Weather;
