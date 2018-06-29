@@ -7,9 +7,9 @@ class Weather extends React.Component {
     super(props);
 
     this.state = {
-      city: '',
       details: [],
-      myRefs: ''
+      myRefs: '',
+      city: ''
     };
 
     this.updateInputValue = this.updateInputValue.bind(this);
@@ -32,7 +32,7 @@ class Weather extends React.Component {
       let city = this.state.city,
           box  = this.state.myRefs.city;
 
-      fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=6d5233c17d482d1c20dabfc48d8b3112', {
+      fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial', {
         headers: {
           Accept: 'application/json',
         },
@@ -41,7 +41,8 @@ class Weather extends React.Component {
       }).then((data) => {
         this.state.details.push({
           name: data.name,
-          weather: data.weather[0].main
+          weather: data.weather[0].main,
+          temp: parseInt(data.main.temp)
         });
         this.setState({
           city: city
@@ -49,7 +50,6 @@ class Weather extends React.Component {
 
         box.value = '';
         this.state.city = '';
-
       });
     }
   }
@@ -101,6 +101,7 @@ class WeatherList extends React.Component {
       <div className={style.weatherItem} key={i}>
         <p>{item.name}</p>
         <p>{item.weather}</p>
+        <p>{item.temp}</p>
       </div>
     ));
 

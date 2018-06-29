@@ -82,8 +82,13 @@ p {
   width: 100%;
   .weatherItem {
     border-bottom: 1px solid #ccc;
-    margin: 0 0 15px 0;
-    padding: 0 0 5px 0;
+    margin: 0 0 10px 0;
+    padding: 0 0 10px 0;
+    &:last-of-type {
+      border-bottom: none;
+      margin: 0;
+      padding: 0;
+    }
     p {
       display: inline;
       margin: 0 25px 0 0;
