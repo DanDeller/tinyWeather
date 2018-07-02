@@ -9,11 +9,13 @@ class Weather extends React.Component {
     this.state = {
       details: [],
       myRefs: '',
-      city: ''
+      city: '',
+      isOpen: true
     };
 
     this.updateInputValue = this.updateInputValue.bind(this);
     this.getRefsFromChild = this.getRefsFromChild.bind(this);
+    this.resetSearch = this.resetSearch.bind(this);
     this.getWeather = this.getWeather.bind(this);
   }
 
@@ -23,10 +25,17 @@ class Weather extends React.Component {
     });
   }
 
+  resetSearch() {
+    console.log('hit');
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
   getWeather(e) {
     e.preventDefault();
 
-    if (!this.state.city.length) {
+    if (!this.state.city) {
       alert('Enter a city.');
     } else {
       let city = this.state.city,
@@ -45,7 +54,8 @@ class Weather extends React.Component {
           temp: parseInt(data.main.temp)
         });
         this.setState({
-          city: city
+          city: city,
+          isOpen: false
         });
 
         box.value = '';
@@ -63,14 +73,23 @@ class Weather extends React.Component {
   render() {
     return (
       <div className={style.container + ' ' + style.bodyText}>
-        <WeatherForm
-          updateInputValue={this.updateInputValue}
-          getWeather={this.getWeather}
-          passRefUpward={this.getRefsFromChild}
-        />
-        <WeatherList
-          details={this.state.details}
-        />
+        <div className={style.weatherMain}>
+          <div className={style.weatherLeft}>
+            <WeatherForm
+              updateInputValue={this.updateInputValue}
+              getWeather={this.getWeather}
+              passRefUpward={this.getRefsFromChild}
+              resetSearch={this.resetSearch}
+              isOpen={this.state.isOpen}
+            />
+            <WeatherList
+              details={this.state.details}
+            />
+          </div>
+          <div className={style.weatherRight}>
+            <Sidebar />
+          </div>
+        </div>
       </div>
     );
   }
@@ -83,14 +102,34 @@ class WeatherForm extends React.Component {
   }
 
   render() {
-    return (
-      <div className={style.weatherForm}>
-        <form action='/' method='GET'>
-          <input ref={'city'} onChange={this.props.updateInputValue} type='text' placeholder='Search city' />
-          <input onClick={e => this.props.getWeather(e)} type='submit' value='Search' /> 
-        </form>
-      </div>
-    );
+    if (this.props.isOpen) {
+      return (
+        <div className={style.weatherForm}>
+          <form action='/' method='GET'>
+            <input 
+              ref={'city'} 
+              onChange={this.props.updateInputValue} 
+              type='text' 
+              placeholder='Search city' 
+            />
+            <input 
+              onClick={e => this.props.getWeather(e)} 
+              type='submit' 
+              value='Search' 
+            /> 
+          </form>
+        </div>
+      )
+    } else {
+      return (
+        <div className={style.resetButton}>
+          <p>Seach another city?</p>
+          <button 
+            onClick={this.props.resetSearch}>Search
+          </button>
+        </div>
+      );
+    }
   }
 }
 
@@ -110,6 +149,26 @@ class WeatherList extends React.Component {
         {city}
       </div>
     );
+  }
+}
+
+
+class Sidebar extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state ={
+      recentCities: ''
+    }
+  }
+  render() {
+    return (
+      <div className={style.sideBar}>
+        <h3>Sidebar</h3>
+        <p>Recent Cities:</p>
+        {/* Recently searched cities will go here */}
+      </div>
+    )
   }
 }
 
