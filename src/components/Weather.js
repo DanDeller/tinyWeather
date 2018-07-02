@@ -26,7 +26,6 @@ class Weather extends React.Component {
   }
 
   resetSearch() {
-    console.log('hit');
     this.setState({
       isOpen: !this.state.isOpen
     });
@@ -36,7 +35,7 @@ class Weather extends React.Component {
     e.preventDefault();
 
     if (!this.state.city) {
-      alert('Enter a city.');
+      alert('Enter a city first.');
     } else {
       let city = this.state.city,
           box  = this.state.myRefs.city;
