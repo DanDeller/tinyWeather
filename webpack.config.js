@@ -8,12 +8,11 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
-      },
-      {
+      }, {
         test: /\.html$/,
         use: [
           {
-            loader: 'html-loader'
+            loader: 'html-loader?attrs[]=video:src'
           }
         ]
       }, {
@@ -32,6 +31,13 @@ module.exports = {
           },
           {
             loader: "less-loader"
+          }
+        ]
+      }, {
+        test: /\.mp4$/,
+        use: [
+          {
+            loader: 'url?limit=10000&mimetype=video/mp4'
           }
         ]
       }

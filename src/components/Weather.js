@@ -1,6 +1,6 @@
 import React from 'react';
 import style from '../styles/style.less';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
 
 class Weather extends React.Component {
   constructor(props) {
@@ -28,8 +28,8 @@ class Weather extends React.Component {
 
   resetSearch() {
     this.setState({
-      isOpen: !this.state.isOpen,
-      details: []
+      details: [],
+      isOpen: !this.state.isOpen
     });
   }
 
@@ -64,6 +64,8 @@ class Weather extends React.Component {
 
         box.value = '';
         this.state.city = '';
+
+        console.log(data);
       });
     }
   }
@@ -76,26 +78,35 @@ class Weather extends React.Component {
 
   render() {
     return (
-      <div className={style.container + ' ' + style.bodyText}>
-        <div className={style.weatherMain}>
-          <div className={style.weatherLeft}>
-            <WeatherForm
-              updateInputValue={this.updateInputValue}
-              getWeather={this.getWeather}
-              passRefUpward={this.getRefsFromChild}
-              resetSearch={this.resetSearch}
-              isOpen={this.state.isOpen}
-            />
-            <WeatherList
-              details={this.state.details}
-            />
+      <div>
+        <video className={style.video} loop autoPlay muted>
+          <source src="http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
+          </source>
+          Your browser does not support the video tag.
+        </video>
+
+        <div className={style.container + ' ' + style.bodyText}>
+          <div className={style.weatherMain}>
+            <div className={style.weatherLeft}>
+              <WeatherForm
+                updateInputValue={this.updateInputValue}
+                getWeather={this.getWeather}
+                passRefUpward={this.getRefsFromChild}
+                resetSearch={this.resetSearch}
+                isOpen={this.state.isOpen}
+              />
+              <WeatherList
+                details={this.state.details}
+                city={this.state.city}
+              />
+            </div>
+            <div className={style.weatherRight}>
+              <Sidebar
+                recentCities={this.state.recentCities}
+              />
+            </div>
+            <div className={style.clear}></div> 
           </div>
-          <div className={style.weatherRight}>
-            <Sidebar
-              recentCities={this.state.recentCities}
-            />
-          </div>
-          <div className={style.clear}></div> 
         </div>
       </div>
     );
@@ -145,7 +156,7 @@ class WeatherList extends React.Component {
   render() {
     const city = this.props.details.map((item, i) => (
       <div className={style.weatherItem} key={i}>
-        <p>{item.name}</p>
+        <h3>{item.name}</h3>
         <p>{item.weather}</p>
         <p>{item.temp}</p>
       </div>
