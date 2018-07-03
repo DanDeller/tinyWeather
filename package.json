@@ -22,8 +22,8 @@
     "react-route": "^1.0.3",
     "react-router-dom": "^4.3.1",
     "react-switch": "^3.0.4",
-    "style-loader": "^0.21.0",
-    "video.js": "^7.0.3"
+    "redux": "^4.0.0",
+    "style-loader": "^0.21.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
