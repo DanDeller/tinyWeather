@@ -10,7 +10,8 @@ class Weather extends React.Component {
       details: [],
       myRefs: '',
       city: '',
-      isOpen: true
+      isOpen: true,
+      recentCities: []
     };
 
     this.updateInputValue = this.updateInputValue.bind(this);
@@ -57,6 +58,9 @@ class Weather extends React.Component {
           isOpen: false
         });
 
+        this.state.recentCities.push(city);
+        console.log(this.state.recentCities);
+
         box.value = '';
         this.state.city = '';
       });
@@ -86,7 +90,9 @@ class Weather extends React.Component {
             />
           </div>
           <div className={style.weatherRight}>
-            <Sidebar />
+            <Sidebar
+              recentCities={this.state.recentCities}
+            />
           </div>
         </div>
       </div>
@@ -153,19 +159,18 @@ class WeatherList extends React.Component {
 
 
 class Sidebar extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state ={
-      recentCities: ''
-    }
-  }
   render() {
+
+    const getRecentCities = this.props.recentCities.map((city, i) => (
+      <li key={i}>{city}</li>
+    ));
+
     return (
       <div className={style.sideBar}>
-        <h3>Sidebar</h3>
-        <p>Recent Cities:</p>
-        {/* Recently searched cities will go here */}
+        <h3>Recent Cities:</h3>
+        <ul>
+          {getRecentCities}
+        </ul>
       </div>
     )
   }
