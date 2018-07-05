@@ -2,6 +2,13 @@ import React from 'react';
 import style from '../styles/style.less';
 import ReactDOM from 'react-dom';
 
+// import all needed video clips
+import Rain from '../../videos/rain.mp4';
+import Clear from '../../videos/sunny.mp4';
+import Clouds from '../../videos/cloudy.mp4';
+import ThunderLightning from '../../videos/thunder-lightning.mp4';
+import Haze from '../../videos/haze.mp4';
+
 class Weather extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +18,7 @@ class Weather extends React.Component {
       isOpen: true,
       details: [],
       myRefs: '',
+      video: '',
       city: ''
     };
 
@@ -49,23 +57,35 @@ class Weather extends React.Component {
       }).then(results => {
         return results.json();
       }).then((data) => {
+
         this.state.details.push({
           name: data.name,
           weather: data.weather[0].main,
           temp: parseInt(data.main.temp)
         });
 
+        const weather = this.state.details[0].weather.toLowerCase();
+
+        if (weather === 'clouds') {
+          this.state.video = {Clouds};
+        } else if (weather === 'clear') {
+          this.state.video = {Clear}
+        } else if (weather === 'rain') {
+          this.state.video = {Rain}
+        } else if (weather === 'haze') {
+          this.state.video = {Haze}
+        }
+
         this.state.recentCities.push(city);
 
         this.setState({
           city: city,
-          isOpen: false
+          isOpen: false,
+          video: Object.values(this.state.video)[0]
         });
 
         box.value = '';
         this.state.city = '';
-
-        console.log(data);
       });
     }
   }
@@ -79,8 +99,8 @@ class Weather extends React.Component {
   render() {
     return (
       <div>
-        <video className={style.video} loop autoPlay muted>
-          <source src="http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
+        <video key={this.state.video} className={style.video} loop autoPlay muted>
+          <source src={this.state.video} type="video/mp4">
           </source>
           Your browser does not support the video tag.
         </video>
