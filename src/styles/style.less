@@ -12,6 +12,7 @@
 }
 
 body {
+  background: #f2f2f2;
   margin: 0;
   padding: 0;
 }
@@ -44,6 +45,7 @@ p {
 
 .header {
   border-bottom: 1px solid #ccc;
+  margin: 0 0 20px 0;
   padding: 15px 0;
   nav ul {
     margin: 0;
@@ -61,13 +63,20 @@ p {
   }
 }
 
-.weatherMain {
+.hold {
+  position: relative;
+  z-index: 9;
   background-color: rgba(0,0,0, .7);
   color: #fff;
-  margin: 25px 0 0 0;
+  // min-height: 500px;
   padding: 15px;
+}
+
+.weatherMain {
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
   position: relative;
-  width: 100%;
   z-index: 9;
   .weatherLeft,
   .weatherRight {
@@ -94,14 +103,13 @@ p {
     background: none;
     color: #fff;
     cursor: pointer;
-    margin: 0 0 0 10px;
+    margin: 0 0 0 15px;
   }
 }
 
 .weatherItems {
-  border: 1px solid #4c4c4c;
-  margin: 25px 0 0 0;
-  min-height: 100px;
+  border: 1px solid #f2f2f2;
+  margin: 15px 0 0 0;
   padding: 15px;
   width: 100%;
   .weatherItem {
@@ -159,14 +167,15 @@ p {
 
 .video {
   height: 100%;
-  position: fixed;
+  position: absolute;
   width: 100% !important;
   height: auto !important;
-  top: 50px;
+  top: 0;
   left: 0;
 }
 
 .footer {
+  display: none;
   background: #191b1d;
   bottom: 0;
   color: #fff;

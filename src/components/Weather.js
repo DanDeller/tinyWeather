@@ -74,6 +74,8 @@ class Weather extends React.Component {
           this.state.video = {Rain}
         } else if (weather === 'haze') {
           this.state.video = {Haze}
+        } else if (weather === 'thunderstorm') {
+          this.state.video = {ThunderLightning}
         }
 
         this.state.recentCities.push(city);
@@ -98,15 +100,15 @@ class Weather extends React.Component {
 
   render() {
     return (
-      <div>
-        <video key={this.state.video} className={style.video} loop autoPlay muted>
-          <source src={this.state.video} type="video/mp4">
-          </source>
-          Your browser does not support the video tag.
-        </video>
+      <div className={style.container}>
+        <div className={style.weatherMain + ' ' + style.bodyText}>
+          <video key={this.state.video} className={style.video} loop autoPlay muted>
+            <source src={this.state.video} type="video/mp4">
+            </source>
+            Your browser does not support the video tag.
+          </video>
 
-        <div className={style.container + ' ' + style.bodyText}>
-          <div className={style.weatherMain}>
+          <div className={style.hold}>
             <div className={style.weatherLeft}>
               <WeatherForm
                 updateInputValue={this.updateInputValue}
@@ -125,7 +127,7 @@ class Weather extends React.Component {
                 recentCities={this.state.recentCities}
               />
             </div>
-            <div className={style.clear}></div> 
+            <div className={style.clear}></div>
           </div>
         </div>
       </div>
