@@ -1,2 +1,2 @@
-# Rv.16
+# tinyWeather
 Just a quick weather app demo.
