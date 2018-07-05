@@ -11,5 +11,5 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.listen(3000, () => {
-  console.log('Listening on post 3000.');
+  console.log('App running on port 8080.');
 });
