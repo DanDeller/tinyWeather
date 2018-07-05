@@ -1,2 +1,2 @@
 # tinyWeather
-Just a quick weather app demo.
+A quick little weather app.
