@@ -72,7 +72,7 @@ class Weather extends React.Component {
           this.state.video = {Clear}
         } else if (weather === 'rain') {
           this.state.video = {Rain}
-        } else if (weather === 'haze') {
+        } else if (weather === 'haze' || 'mist') {
           this.state.video = {Haze}
         } else if (weather === 'thunderstorm') {
           this.state.video = {ThunderLightning}
@@ -120,6 +120,7 @@ class Weather extends React.Component {
               <WeatherList
                 details={this.state.details}
                 city={this.state.city}
+                isOpen={this.state.isOpen}
               />
             </div>
             <div className={style.weatherRight}>
@@ -178,14 +179,16 @@ class WeatherList extends React.Component {
   render() {
     const city = this.props.details.map((item, i) => (
       <div className={style.weatherItem} key={i}>
-        <h3>{item.name}</h3>
-        <p>{item.weather}</p>
-        <p>{item.temp}</p>
+        <h3>City: {item.name}</h3>
+        <p>Current weather: {item.weather}</p>
+        <p>Current temperature: {item.temp}</p>
       </div>
     ));
 
+    const classes = !this.props.isOpen ? 'active' : 'unactive';
+
     return (
-      <div className={style.weatherItems}>
+      <div className={style.weatherItems + ' ' + classes}>
         {city}
       </div>
     );
