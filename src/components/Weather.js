@@ -185,7 +185,7 @@ class WeatherList extends React.Component {
       </div>
     ));
 
-    const classes = !this.props.isOpen ? 'active' : 'unactive';
+   const classes = !this.props.isOpen ? style.active : '';
 
     return (
       <div className={style.weatherItems + ' ' + classes}>
