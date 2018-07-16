@@ -28,27 +28,27 @@ class Weather extends React.Component {
     this.getWeather = this.getWeather.bind(this);
   }
 
-  updateInputValue(e) {
+  updateInputValue = (e) => {
     this.setState({
       city: e.target.value
     });
   }
 
-  resetSearch() {
+  resetSearch = () => {
     this.setState({
       details: [],
       isOpen: !this.state.isOpen
     });
   }
 
-  getWeather(e) {
+  getWeather = (e) => {
     e.preventDefault();
 
     if (!this.state.city) {
       alert('Enter a city first.');
     } else {
       let city = this.state.city,
-          box  = this.state.myRefs.city;
+          box  = this.state.myRefs.city.value;
 
       fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial', {
         headers: {
@@ -83,16 +83,16 @@ class Weather extends React.Component {
         this.setState({
           city: city,
           isOpen: false,
-          video: Object.values(this.state.video)[0]
+          video: Object.values(this.state.video)[0],
+          box: ''
         });
 
-        box.value = '';
         this.state.city = '';
       });
     }
   }
 
-  getRefsFromChild(childRefs) {
+  getRefsFromChild = (childRefs) => {
     this.setState({
       myRefs: childRefs
     });
