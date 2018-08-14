@@ -2,7 +2,7 @@
   "name": "react-test",
   "version": "1.0.0",
   "description": "",
-  "main": "router.js",
+  "main": "server.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --hot --inline --content-base=dist --history-api-fallback --open",
     "build": "webpack --mode production",
