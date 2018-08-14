@@ -8,7 +8,7 @@
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Dan Deller",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
