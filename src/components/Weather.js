@@ -37,7 +37,8 @@ class Weather extends React.Component {
   resetSearch = () => {
     this.setState({
       details: [],
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
+      video: []
     });
   }
 
