@@ -5,16 +5,16 @@ import style from '../styles/style.less';
 class Header extends React.Component {
   render() {
     return (
-      <div className={style.header}>
+      <header className={style.header}>
         <div className={style.container}>
           <nav>
             <ul>
               <li><Link to='/'>Home</Link></li>
-              <li><Link to='/weather'>Weather</Link></li>
+              <li><Link to='/weather'>Weather Lookup</Link></li>
             </ul>
           </nav>
         </div>
-      </div>   
+      </header>   
     );
   }
 }

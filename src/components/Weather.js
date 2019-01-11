@@ -15,8 +15,8 @@ class Weather extends React.Component {
 
     this.state = {
       recentCities: [],
-      isOpen: true,
       details: [],
+      isOpen: true,
       myRefs: '',
       video: '',
       city: ''
@@ -36,8 +36,8 @@ class Weather extends React.Component {
 
   resetSearch = () => {
     this.setState({
-      details: [],
       isOpen: !this.state.isOpen,
+      details: [],
       video: []
     });
   }
@@ -101,7 +101,7 @@ class Weather extends React.Component {
 
   render() {
     return (
-      <div className={style.container}>
+      <section className={style.container}>
         <div className={style.weatherMain + ' ' + style.bodyText}>
           <video key={this.state.video} className={style.video} loop autoPlay muted>
             <source src={this.state.video} type="video/mp4">
@@ -132,7 +132,7 @@ class Weather extends React.Component {
             <div className={style.clear}></div>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }
@@ -204,12 +204,12 @@ class Sidebar extends React.Component {
     ));
 
     return (
-      <div className={style.sideBar}>
+      <aside className={style.sideBar}>
         <h3>Recent Cities:</h3>
         <ul>
           {getRecentCities}
         </ul>
-      </div>
+      </aside>
     )
   }
 }

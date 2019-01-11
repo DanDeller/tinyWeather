@@ -4,9 +4,10 @@ import style from '../styles/style.less';
 class Home extends React.Component {
   render() {
     return (
-      <div className={style.container + ' ' + style.bodyText}>
-        <p>Home content here</p>  
-      </div>
+      <section className={style.container + ' ' + style.bodyText}>
+        <h1 className={style.heading}>Welcome to tinyWeather. A simple weather app.</h1>
+        <p>tinyWeather is built with reactJS, styled with LESS (or SASS), is bundled with webpack, leverages babel to utilize es6 and runs on nodeJS.</p>  
+      </section>
     );
   }
 }

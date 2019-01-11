@@ -16,6 +16,7 @@
     "classnames": "^2.2.6",
     "express": "^4.16.3",
     "less-loader": "^4.1.0",
+    "mime": "^2.4.0",
     "path": "^0.12.7",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
@@ -23,7 +24,8 @@
     "react-router-dom": "^4.3.1",
     "react-switch": "^3.0.4",
     "redux": "^4.0.0",
-    "style-loader": "^0.21.0"
+    "style-loader": "^0.21.0",
+    "url-loader": "^1.1.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
