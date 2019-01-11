@@ -178,6 +178,7 @@ class WeatherForm extends React.Component {
 
 class WeatherList extends React.Component {
   render() {
+    const classes = !this.props.isOpen ? style.active : '';
     const city = this.props.details.map((item, i) => (
       <div className={style.weatherItem} key={i}>
         <h3>City: {item.name}</h3>
@@ -185,8 +186,6 @@ class WeatherList extends React.Component {
         <p>Current temperature: {item.temp}</p>
       </div>
     ));
-
-   const classes = !this.props.isOpen ? style.active : '';
 
     return (
       <div className={style.weatherItems + ' ' + classes}>
