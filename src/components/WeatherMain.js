@@ -1,6 +1,9 @@
 import React from 'react';
 import style from '../styles/style.less';
 import ReactDOM from 'react-dom';
+import WeatherForm from './WeatherForm';
+import WeatherList from './WeatherList';
+import Sidebar from './Sidebar';
 
 // import all needed video clips
 import Rain from '../../videos/rain.mp4';
@@ -9,7 +12,7 @@ import Clouds from '../../videos/cloudy.mp4';
 import ThunderLightning from '../../videos/thunder-lightning.mp4';
 import Haze from '../../videos/haze.mp4';
 
-class Weather extends React.Component {
+class WeatherMain extends React.Component {
   constructor(props) {
     super(props);
 
@@ -138,80 +141,4 @@ class Weather extends React.Component {
 }
 
 
-class WeatherForm extends React.Component {
-  componentDidMount() {
-    this.props.passRefUpward(this.refs);
-  }
-
-  render() {
-    if (this.props.isOpen) {
-      return (
-        <div className={style.weatherForm}>
-          <form action='/' method='GET'>
-            <input 
-              ref={'city'} 
-              onChange={this.props.updateInputValue} 
-              type='text' 
-              placeholder='Search city' 
-            />
-            <input 
-              onClick={e => this.props.getWeather(e)} 
-              type='submit' 
-              value='Search' 
-            /> 
-          </form>
-        </div>
-      )
-    } else {
-      return (
-        <div className={style.resetButton}>
-          <p>Seach another city?</p>
-          <button 
-            onClick={this.props.resetSearch}>Search
-          </button>
-        </div>
-      );
-    }
-  }
-}
-
-
-class WeatherList extends React.Component {
-  render() {
-    const classes = !this.props.isOpen ? style.active : '';
-    const city = this.props.details.map((item, i) => (
-      <div className={style.weatherItem} key={i}>
-        <h3>City: {item.name}</h3>
-        <p>Current weather: {item.weather}</p>
-        <p>Current temperature: {item.temp}</p>
-      </div>
-    ));
-
-    return (
-      <div className={style.weatherItems + ' ' + classes}>
-        {city}
-      </div>
-    );
-  }
-}
-
-
-class Sidebar extends React.Component {
-  render() {
-    const getRecentCities = this.props.recentCities.map((city, i) => (
-      <li key={i}>{city}</li>
-    ));
-
-    return (
-      <aside className={style.sideBar}>
-        <h3>Recent Cities:</h3>
-        <ul>
-          {getRecentCities}
-        </ul>
-      </aside>
-    )
-  }
-}
-
-
-export default Weather;
+export default WeatherMain;
