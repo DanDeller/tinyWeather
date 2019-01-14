@@ -8,6 +8,7 @@ import Clear from '../../videos/sunny.mp4';
 import Clouds from '../../videos/cloudy.mp4';
 import ThunderLightning from '../../videos/thunder-lightning.mp4';
 import Haze from '../../videos/haze.mp4';
+import Snow from '../../videos/snow.mp4';
 
 class Weather extends React.Component {
   constructor(props) {
@@ -35,7 +36,6 @@ class Weather extends React.Component {
   }
 
   resetSearch = () => {
-    console.log(this.state.myRefs.current);
     this.setState({
       isOpen: !this.state.isOpen,
       details: [],
@@ -68,16 +68,24 @@ class Weather extends React.Component {
 
         const weather = this.state.details[0].weather.toLowerCase();
 
-        if (weather === 'clouds') {
-          this.state.video = {Clouds};
-        } else if (weather === 'clear') {
-          this.state.video = {Clear}
-        } else if (weather === 'rain') {
-          this.state.video = {Rain}
-        } else if (weather === 'haze' || 'mist') {
-          this.state.video = {Haze}
-        } else if (weather === 'thunderstorm') {
-          this.state.video = {ThunderLightning}
+        switch(weather) {
+          case 'clouds':
+            this.state.video = {Clouds};
+            break;
+          case 'clear':
+            this.state.video = {Clear};
+            break;
+          case 'rain':
+            this.state.video = {Rain};
+            break;
+          case 'haze' || 'mist':
+            this.state.video = {Haze};
+            break;
+          case 'thunderstorm':
+            this.state.video = {ThunderLightning};
+            break;
+          case 'snow':
+            this.state.video = {Snow};
         }
 
         this.state.recentCities.push(city);
@@ -117,6 +125,7 @@ class Weather extends React.Component {
                 passRefUpward={this.getRefsFromChild}
                 resetSearch={this.resetSearch}
                 isOpen={this.state.isOpen}
+                city={this.state.city}
 
               />
               <WeatherList
@@ -147,37 +156,68 @@ class WeatherForm extends React.Component {
 
   componentDidMount() {
     this.props.passRefUpward(this.city);
+    this.city.current.focus();
+  }
+
+  componentDidUpdate() {
+    this.city.current.focus();
   }
 
   render() {
-    if (this.props.isOpen) {
-      return (
-        <div className={style.weatherForm}>
+    return (
+      <div> 
+        <div className={style.weatherForm + ' ' + (this.props.isOpen ? style.show : style.hide)}>
           <form action='/' method='GET'>
-            <input 
-              ref={this.city} 
-              onChange={this.props.updateInputValue} 
-              type='text' 
-              placeholder='Search city' 
+            <input
+              ref={this.city}
+              onChange={this.props.updateInputValue}
+              type='text'
+              placeholder='Search city'
             />
-            <input 
-              onClick={e => this.props.getWeather(e)} 
-              type='submit' 
-              value='Search' 
-            /> 
+            <input
+              onClick={e => this.props.getWeather(e)}
+              type='submit'
+              value='Search'
+            />
           </form>
         </div>
-      )
-    } else {
-      return (
-        <div className={style.resetButton}>
+        <div className={style.resetButton + ' ' + (this.props.isOpen ? style.hide : style.show)}>
           <p>Seach another city?</p>
-          <button 
+          <button
             onClick={this.props.resetSearch}>Search
           </button>
         </div>
-      );
-    }
+      </div>
+    )
+
+    // if (this.props.isOpen) {
+    //   return (
+    //     <div className={style.weatherForm}>
+    //       <form action='/' method='GET'>
+    //         <input 
+    //           ref={this.city} 
+    //           onChange={this.props.updateInputValue} 
+    //           type='text' 
+    //           placeholder='Search city' 
+    //         />
+    //         <input 
+    //           onClick={e => this.props.getWeather(e)} 
+    //           type='submit' 
+    //           value='Search' 
+    //         /> 
+    //       </form>
+    //     </div>
+    //   )
+    // } else {
+    //   return (
+    //     <div className={style.resetButton}>
+    //       <p>Seach another city?</p>
+    //       <button 
+    //         onClick={this.props.resetSearch}>Search
+    //       </button>
+    //     </div>
+    //   );
+    // }
   }
 }
 
