@@ -16,3 +16,7 @@ A quick little weather app.
 <ul>
   <li>npm run build</li>
 </ul>
+
+<h2>Test the app</h2>
+<p>tinyWeather can be tested with jest</p>
+<p>To run any tests run npm test</p>
