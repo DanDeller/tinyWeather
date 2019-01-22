@@ -188,36 +188,7 @@ class WeatherForm extends React.Component {
           </button>
         </div>
       </div>
-    )
-
-    // if (this.props.isOpen) {
-    //   return (
-    //     <div className={style.weatherForm}>
-    //       <form action='/' method='GET'>
-    //         <input 
-    //           ref={this.city} 
-    //           onChange={this.props.updateInputValue} 
-    //           type='text' 
-    //           placeholder='Search city' 
-    //         />
-    //         <input 
-    //           onClick={e => this.props.getWeather(e)} 
-    //           type='submit' 
-    //           value='Search' 
-    //         /> 
-    //       </form>
-    //     </div>
-    //   )
-    // } else {
-    //   return (
-    //     <div className={style.resetButton}>
-    //       <p>Seach another city?</p>
-    //       <button 
-    //         onClick={this.props.resetSearch}>Search
-    //       </button>
-    //     </div>
-    //   );
-    // }
+    );
   }
 }
 
@@ -255,7 +226,7 @@ class Sidebar extends React.Component {
           {getRecentCities}
         </ul>
       </aside>
-    )
+    );
   }
 }
 
