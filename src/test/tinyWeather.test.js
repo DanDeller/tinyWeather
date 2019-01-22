@@ -1,16 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { configure } from 'enzyme';
 import { StaticRouter } from 'react-router';
-import { mount, shallow } from 'enzyme';
+import { configure, mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import App from '../App';
-
 import WeatherMain from '../components/WeatherMain';
 
 configure({ adapter: new Adapter() });
 
-describe('All tests', () => {
+describe('Initial tests', () => {
   it('renders without crashing', () => {
     const context = {},
           div     = document.createElement('div');
