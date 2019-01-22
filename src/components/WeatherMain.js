@@ -36,6 +36,8 @@ class Weather extends React.Component {
   }
 
   resetSearch = () => {
+    this.state.myRefs.current.value = '';
+
     this.setState({
       isOpen: !this.state.isOpen,
       details: [],
@@ -159,7 +161,7 @@ class WeatherForm extends React.Component {
     this.city.current.focus();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate() { 
     this.city.current.focus();
   }
 
