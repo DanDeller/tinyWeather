@@ -78,7 +78,7 @@ class WeatherMain extends React.Component {
           case 'clear':
             this.state.video = {Clear};
             break;
-          case 'rain':
+          case 'rain' || 'drizzle':
             this.state.video = {Rain};
             break;
           case 'haze' || 'mist':

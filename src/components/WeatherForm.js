@@ -27,6 +27,7 @@ class WeatherForm extends React.Component {
               onChange={this.props.updateInputValue}
               type='text'
               placeholder='Search city'
+              className={style.searchMain}
             />
             <input
               onClick={e => this.props.getWeather(e)}

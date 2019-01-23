@@ -11,10 +11,6 @@
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-}
-
 body {
   background: #f2f2f2;
   margin: 0;
@@ -45,10 +41,6 @@ p {
 
 .bodyText {
   font-family: @body;
-}
-
-.main {
-  height: 100%;
 }
 
 .show {
@@ -92,7 +84,7 @@ p {
   }
   .weatherLeft {
     background: rgba(142, 142, 142, .5);
-    box-shadow: 0px 0px 3px 0px #4c4c4c;
+    box-shadow: 0 0 3px 0 #4c4c4c;
     overflow: hidden;
     padding: 15px;
     position: relative;
@@ -105,6 +97,9 @@ p {
     }
     .weatherAbove {
       position: relative;
+      .active {
+        opacity: 1;
+      }
     }
   }
   .weatherRight {
@@ -122,12 +117,16 @@ p {
   }
   input[type=text] {
     width: 60%;
+    box-shadow: 0 0 1px 0 #7c7c7c;
   }
   input[type=submit] {
     background: none;
     color: #fff;
     cursor: pointer;
     margin: 0 0 0 15px;
+    &:hover {
+      box-shadow: 0 0 1px 0 #7c7c7c;
+    }
   }
 }
 
@@ -148,10 +147,6 @@ p {
   }
 }
 
-.active {
-  opacity: 1;
-}
-
 .resetButton {
   margin: 0;
   p {
@@ -166,7 +161,7 @@ p {
     font-size: 14px;
     margin: 0 0 15px 0;
     outline: none;
-    padding: 10px 10px;
+    padding: 10px;
   }
 }
 
@@ -174,7 +169,6 @@ p {
   margin: 0;
   padding: 0 10px;
   h3 {
-    // color: #fff;
     color: #000;
     margin: 0 0 15px 0;
   }
@@ -187,10 +181,6 @@ p {
       text-transform: capitalize;
     }
   }
-}
-
-.heading {
-  font-size: 20px;
 }
 
 .footer {
@@ -213,6 +203,3 @@ p {
     width: 6%;
   }
 }
-
-
-
