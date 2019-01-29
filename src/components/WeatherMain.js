@@ -49,9 +49,6 @@ class WeatherMain extends React.Component {
   getWeather = (e) => {
     e.preventDefault();
 
-    console.log(this.state.myRefs.current.getBoundingClientRect());
-    // console.log(this.state.myRefs.current.clientHeight);
-
     if (!this.state.city) {
       alert('Enter a city first.');
     } else {
