@@ -52,6 +52,8 @@ class WeatherMain extends React.Component {
   closeModal = (e) => {
     e.preventDefault();
 
+    this.state.myRefs.current.value = '';
+
     this.setState({
       visible: false,
       flag: false
@@ -141,8 +143,8 @@ class WeatherMain extends React.Component {
           effect="fadeInUp"
         >
           <div className={style.modal}>
-            <h1>{(this.state.flag) ? 'We cannot find that city.' : 'Please enter a city first.'}</h1>
-            <a href="#" onClick={this.closeModal}>Close</a>
+            <h1>{(this.state.flag) ? 'We can\'t seem to find that city.' : 'Please enter a city first.'}</h1>
+            <a href="#" onClick={this.closeModal}>{(this.state.flag) ? 'Search again?' : 'Close'}</a>
           </div>
         </Modal>
         <div className={style.weatherMain + ' ' + style.bodyText}>
