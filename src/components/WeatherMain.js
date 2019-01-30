@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import WeatherForm from './WeatherForm';
 import WeatherList from './WeatherList';
 import Sidebar from './Sidebar';
+// import Popup from './Popup';
+import Modal from 'react-awesome-modal';
 import Rain from '../../videos/rain.mp4';
 import Clear from '../../videos/sunny.mp4';
 import Clouds from '../../videos/cloudy.mp4';
@@ -18,6 +20,7 @@ class WeatherMain extends React.Component {
     this.state = {
       recentCities: [],
       details: [],
+      visible: false,
       isOpen: true,
       myRefs: '',
       video: '',
@@ -46,11 +49,21 @@ class WeatherMain extends React.Component {
     });
   }
 
+  closeModal = (e) => {
+    e.preventDefault();
+
+    this.setState({
+      visible: false
+    });
+  }
+
   getWeather = (e) => {
     e.preventDefault();
 
     if (!this.state.city) {
-      alert('Enter a city first.');
+      this.setState({
+        visible: true
+      });
     } else {
       let city = this.state.city,
           box  = this.state.myRefs.current.value;
@@ -114,6 +127,19 @@ class WeatherMain extends React.Component {
   render() {
     return (
       <section className={style.container}>
+
+        <Modal
+          visible={this.state.visible}
+          width="400"
+          height="300"
+          effect="fadeInUp"
+        >
+          <div className={style.modal}>
+            <h1>Please enter a city first.</h1>
+            <a href="" onClick={this.closeModal}>Close</a>
+          </div>
+        </Modal>
+
         <div className={style.weatherMain + ' ' + style.bodyText}>
           <div className={style.hold}>
             <div className={style.weatherLeft}>

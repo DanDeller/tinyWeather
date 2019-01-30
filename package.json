@@ -27,6 +27,7 @@
     "mime": "^2.4.0",
     "path": "^0.12.7",
     "react": "^16.4.1",
+    "react-awesome-modal": "^2.0.5",
     "react-dom": "^16.4.1",
     "react-route": "^1.0.3",
     "react-router-dom": "^4.3.1",
