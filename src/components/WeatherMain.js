@@ -37,7 +37,7 @@ class WeatherMain extends React.Component {
     this.setState({
       city: e.target.value
     });
-  }
+  } // end updateInputValue()
 
   resetSearch = () => {
     this.state.myRefs.current.value = '';
@@ -47,7 +47,7 @@ class WeatherMain extends React.Component {
       details: [],
       video: []
     });
-  }
+  } // end resetSearch()
 
   closeModal = (e) => {
     e.preventDefault();
@@ -56,7 +56,7 @@ class WeatherMain extends React.Component {
       visible: false,
       flag: false
     });
-  }
+  } // end closeModal()
 
   getWeather = (e) => {
     e.preventDefault();
@@ -120,16 +120,16 @@ class WeatherMain extends React.Component {
           });
 
           this.state.city = '';
-        } // end inner if/else
+        } // end if/else (data.cod === '404')
       }); // end fetch()
-    } // end outter if/else
+    } // end if/else (!this.state.city)
   } // end getWeather()
 
   getRefsFromChild = (childRefs) => {
     this.setState({
       myRefs: childRefs
     });
-  }
+  } // end getRefsFromChild()
 
   render() {
     return (
