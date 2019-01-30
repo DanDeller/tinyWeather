@@ -131,11 +131,13 @@ p, h1 {
   }
   input[type=submit] {
     background: none;
+    box-shadow: 0 0 1px 0 #7c7c7c;
     color: #fff;
     cursor: pointer;
     margin: 0 0 0 15px;
+    text-shadow: 1px 1px 1px #7c7c7c;
     &:hover {
-      box-shadow: 0 0 1px 0 #7c7c7c;
+      box-shadow: 0 0 1px 0 #4c4c4c;
     }
   }
 }
@@ -208,7 +210,12 @@ p, h1 {
     margin: 0 0 15px;
   }
   a {
+    color: #4c4c4c;
     font-family: @body;
+    transition: color .3s linear 0s;
+    &:hover {
+      color: #727272;
+    }
   }
 }
 

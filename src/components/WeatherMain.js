@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import WeatherForm from './WeatherForm';
 import WeatherList from './WeatherList';
 import Sidebar from './Sidebar';
-// import Popup from './Popup';
 import Modal from 'react-awesome-modal';
 import Rain from '../../videos/rain.mp4';
 import Clear from '../../videos/sunny.mp4';
@@ -127,7 +126,7 @@ class WeatherMain extends React.Component {
   render() {
     return (
       <section className={style.container}>
-
+        {/*//asdfasdf*/}
         <Modal
           visible={this.state.visible}
           width="400"
@@ -139,7 +138,6 @@ class WeatherMain extends React.Component {
             <a href="" onClick={this.closeModal}>Close</a>
           </div>
         </Modal>
-
         <div className={style.weatherMain + ' ' + style.bodyText}>
           <div className={style.hold}>
             <div className={style.weatherLeft}>
