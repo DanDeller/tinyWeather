@@ -126,7 +126,6 @@ class WeatherMain extends React.Component {
   render() {
     return (
       <section className={style.container}>
-        {/*//asdfasdf*/}
         <Modal
           visible={this.state.visible}
           width="400"
