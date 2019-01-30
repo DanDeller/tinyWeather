@@ -23,6 +23,7 @@ class WeatherMain extends React.Component {
       isOpen: true,
       myRefs: '',
       video: '',
+      flag: false,
       city: ''
     };
 
@@ -52,7 +53,8 @@ class WeatherMain extends React.Component {
     e.preventDefault();
 
     this.setState({
-      visible: false
+      visible: false,
+      flag: false
     });
   }
 
@@ -64,8 +66,8 @@ class WeatherMain extends React.Component {
         visible: true
       });
     } else {
-      let city = this.state.city,
-          box  = this.state.myRefs.current.value;
+      const city = this.state.city,
+            box  = this.state.myRefs.current.value;
 
       fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial', {
         headers: {
@@ -74,48 +76,54 @@ class WeatherMain extends React.Component {
       }).then(results => {
         return results.json();
       }).then((data) => {
+        if (data.cod === '404') {
+          this.setState({
+            visible: true,
+            flag: true
+          });
+        } else {
+          this.state.details.push({
+            name: data.name,
+            weather: data.weather[0].main,
+            temp: parseInt(data.main.temp)
+          });
 
-        this.state.details.push({
-          name: data.name,
-          weather: data.weather[0].main,
-          temp: parseInt(data.main.temp)
-        });
+          const weather = this.state.details[0].weather.toLowerCase();
 
-        const weather = this.state.details[0].weather.toLowerCase();
+          switch(weather) {
+            case 'clouds':
+              this.state.video = {Clouds};
+              break;
+            case 'clear':
+              this.state.video = {Clear};
+              break;
+            case 'rain' || 'drizzle':
+              this.state.video = {Rain};
+              break;
+            case 'haze' || 'mist':
+              this.state.video = {Haze};
+              break;
+            case 'thunderstorm':
+              this.state.video = {ThunderLightning};
+              break;
+            case 'snow':
+              this.state.video = {Snow};
+          }
 
-        switch(weather) {
-          case 'clouds':
-            this.state.video = {Clouds};
-            break;
-          case 'clear':
-            this.state.video = {Clear};
-            break;
-          case 'rain' || 'drizzle':
-            this.state.video = {Rain};
-            break;
-          case 'haze' || 'mist':
-            this.state.video = {Haze};
-            break;
-          case 'thunderstorm':
-            this.state.video = {ThunderLightning};
-            break;
-          case 'snow':
-            this.state.video = {Snow};
-        }
+          this.state.recentCities.push(city);
 
-        this.state.recentCities.push(city);
+          this.setState({
+            city: city,
+            isOpen: false,
+            video: Object.values(this.state.video)[0],
+            box: ''
+          });
 
-        this.setState({
-          city: city,
-          isOpen: false,
-          video: Object.values(this.state.video)[0],
-          box: ''
-        });
-
-        this.state.city = '';
-      });
-    }
-  }
+          this.state.city = '';
+        } // end inner if/else
+      }); // end fetch()
+    } // end outter if/else
+  } // end getWeather()
 
   getRefsFromChild = (childRefs) => {
     this.setState({
@@ -133,8 +141,8 @@ class WeatherMain extends React.Component {
           effect="fadeInUp"
         >
           <div className={style.modal}>
-            <h1>Please enter a city first.</h1>
-            <a href="" onClick={this.closeModal}>Close</a>
+            <h1>{(this.state.flag) ? 'We cannot find that city.' : 'Please enter a city first.'}</h1>
+            <a href="#" onClick={this.closeModal}>Close</a>
           </div>
         </Modal>
         <div className={style.weatherMain + ' ' + style.bodyText}>
