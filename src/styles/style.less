@@ -25,8 +25,9 @@ ul {
   list-style-type: none;
 }
 
-p, h1 {
+p, h1, ul {
   margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -52,9 +53,7 @@ p, h1 {
   border-bottom: 1px solid #ccc;
   margin: 0 0 20px 0;
   padding: 15px 0;
-  nav ul {
-    margin: 0;
-    padding: 0;
+  nav {
     li {
       display: inline;
       font-family: @heading;
@@ -185,6 +184,7 @@ p, h1 {
     padding: 0;
     li {
       color: #4c4c4c;
+      cursor: default;
       margin: 0 0 10px 0;
       text-transform: capitalize;
     }
