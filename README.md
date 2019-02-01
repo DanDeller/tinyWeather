@@ -20,5 +20,5 @@ A quick little weather app.
 <h2>Test the app</h2>
 <p>tinyWeather can be tested with jest</p>
 <ul>
-  <li>Run any tests: npm test</li>
+  <li>npm test</li>
 </ul>
