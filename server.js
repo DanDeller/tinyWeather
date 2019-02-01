@@ -17,7 +17,4 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './src/index.html'));
 });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-
 app.listen(3000, () => console.log('App running on port 8080.');
