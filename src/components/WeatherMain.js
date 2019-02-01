@@ -52,6 +52,8 @@ class WeatherMain extends React.Component {
   closeModal = (e) => {
     e.preventDefault();
 
+    this.state.myRefs.current.value = '';
+
     this.setState({
       visible: false,
       flag: false
