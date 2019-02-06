@@ -65,7 +65,8 @@ class WeatherMain extends React.Component {
 
     if (!this.state.city) {
       this.setState({
-        visible: true
+        visible: true,
+        flag: false
       });
     } else {
       const city = this.state.city,
@@ -78,12 +79,6 @@ class WeatherMain extends React.Component {
       }).then(results => {
         return results.json();
       }).then((data) => {
-        if (data.cod === '404') {
-          this.setState({
-            visible: true,
-            flag: true
-          });
-        } else {
           this.state.details.push({
             name: data.name,
             weather: data.weather[0].main,
@@ -122,7 +117,6 @@ class WeatherMain extends React.Component {
           });
 
           this.state.city = '';
-        } // end if/else (data.cod === '404')
       }); // end fetch()
     } // end if/else (!this.state.city)
   } // end getWeather()
