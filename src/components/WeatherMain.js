@@ -23,10 +23,9 @@ class WeatherMain extends React.Component {
       isOpen: true,
       myRefs: '',
       video: '',
-      flag: false,
       city: ''
     };
-
+    
     this.updateInputValue = this.updateInputValue.bind(this);
     this.getRefsFromChild = this.getRefsFromChild.bind(this);
     this.resetSearch = this.resetSearch.bind(this);
@@ -55,8 +54,7 @@ class WeatherMain extends React.Component {
     this.state.myRefs.current.value = '';
 
     this.setState({
-      visible: false,
-      flag: false
+      visible: false
     });
   } // end closeModal()
 
@@ -65,8 +63,7 @@ class WeatherMain extends React.Component {
 
     if (!this.state.city) {
       this.setState({
-        visible: true,
-        flag: false
+        visible: true
       });
     } else {
       const city = this.state.city,
@@ -77,8 +74,16 @@ class WeatherMain extends React.Component {
           Accept: 'application/json',
         },
       }).then(results => {
-        return results.json();
+        if (results.status === 404) {
+          this.setState({
+            visible: true
+          });
+          return;
+        } else {
+          return results.json();
+        }
       }).then((data) => {
+        if (data) {
           this.state.details.push({
             name: data.name,
             weather: data.weather[0].main,
@@ -117,6 +122,7 @@ class WeatherMain extends React.Component {
           });
 
           this.state.city = '';
+        }
       }); // end fetch()
     } // end if/else (!this.state.city)
   } // end getWeather()
@@ -137,8 +143,8 @@ class WeatherMain extends React.Component {
           effect="fadeInUp"
         >
           <div className={style.modal}>
-            <h1>{(this.state.flag) ? 'We can\'t seem to find that city.' : 'Please enter a city first.'}</h1>
-            <a href="#" onClick={this.closeModal}>{(this.state.flag) ? 'Search again?' : 'Close'}</a>
+            <h1>We either can't find that city or you forgot enter a city first.</h1>
+            <a href="#" onClick={this.closeModal}>Search Again?</a>
           </div>
         </Modal>
         <div className={style.weatherMain + ' ' + style.bodyText}>

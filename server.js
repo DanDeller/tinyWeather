@@ -15,4 +15,5 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, './src/index.html'));
 
-app.listen(3000, () => console.log('App running on port 8080.');
+// tinyWeather uses webpack-dev-server
+// app.listen(8080, () => console.log('App running on port 8080.');
