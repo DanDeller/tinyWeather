@@ -40,8 +40,6 @@ class FiveDayForecast extends React.Component {
       this.setState({
         days: newData
       });
-
-      console.log(this.state.days);
     });
   }
 
