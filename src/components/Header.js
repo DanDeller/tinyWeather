@@ -11,6 +11,7 @@ class Header extends React.Component {
             <ul>
               <li><Link to='/'>Home</Link></li>
               <li><Link to='/weather'>Weather Lookup</Link></li>
+              <li><Link to='/fiveDayForecast'>Five Day Lookup</Link></li>
             </ul>
           </nav>
         </div>

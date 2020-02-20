@@ -1,7 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Home from './components/Home'
+import Home from './components/Home';
 import WeatherMain from './components/WeatherMain';
+import FiveDayForecast from './components/FiveDayForecast';
 import style from './styles/style.less';
 
 class Main extends React.Component {
@@ -11,6 +12,7 @@ class Main extends React.Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/weather' component={WeatherMain} />
+          <Route path='/fiveDayForecast' component={FiveDayForecast} />
         </Switch>
       </main>
     );

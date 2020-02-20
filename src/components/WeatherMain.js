@@ -25,7 +25,7 @@ class WeatherMain extends React.Component {
       video: '',
       city: ''
     };
-    
+
     this.updateInputValue = this.updateInputValue.bind(this);
     this.getRefsFromChild = this.getRefsFromChild.bind(this);
     this.resetSearch = this.resetSearch.bind(this);
@@ -163,7 +163,6 @@ class WeatherMain extends React.Component {
                   resetSearch={this.resetSearch}
                   isOpen={this.state.isOpen}
                   city={this.state.city}
-
                 />
                 <WeatherList
                   details={this.state.details}
