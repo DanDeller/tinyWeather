@@ -1,5 +1,7 @@
 import React from 'react';
 import style from '../styles/style.less';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 class FiveDayForecast extends React.Component {
   constructor(props) {
@@ -44,19 +46,24 @@ class FiveDayForecast extends React.Component {
   }
 
   componentDidMount = () => {
-    setTimeout(() => {
-      this.getForecast();
-    }, 500);
+    this.getForecast();
   }
 
   render() {
-    const days = this.state.days.map((day) => {
-      console.log(day);
-    })
+    const days = this.state.days.map((day, i) => (
+      <div className={style.day} key={i}>
+        <p>
+          <Moment format="dddd">
+            {day.dt_txt.split(' ')[0]}
+          </Moment>
+        </p>
+      </div>
+    ))
 
     return (
       <section className={style.container}>
-        <div className={style.fiveDay + ' ' + style.bodyText}>
+        <div className={style.dayHold + ' ' + style.bodyText}>
+          {days}
         </div>
       </section>
     );
