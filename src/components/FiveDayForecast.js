@@ -56,7 +56,10 @@ class FiveDayForecast extends React.Component {
           <Moment format="dddd">
             {day.dt_txt.split(' ')[0]}
           </Moment>
+          <span>{day.dt_txt.split(' ')[0]}</span>  
         </p>
+        <p>{day.main.temp.toFixed(0)}</p>
+        <p>{day.weather[0].description.charAt(0).toUpperCase() + day.weather[0].description.slice(1)}</p>
       </div>
     ))
 
