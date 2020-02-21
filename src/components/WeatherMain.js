@@ -72,7 +72,7 @@ class WeatherMain extends React.Component {
       fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial', {
         headers: {
           Accept: 'application/json',
-        },
+        }
       }).then(results => {
         if (results.status === 404) {
           this.setState({
@@ -82,7 +82,7 @@ class WeatherMain extends React.Component {
         } else {
           return results.json();
         }
-      }).then((data) => {
+      }).then(data => {
         if (data) {
           this.state.details.push({
             name: data.name,

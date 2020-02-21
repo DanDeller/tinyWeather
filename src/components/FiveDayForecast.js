@@ -2,6 +2,7 @@ import React from 'react';
 import style from '../styles/style.less';
 import Moment from 'react-moment';
 import 'moment-timezone';
+import GoogleMapReact from 'google-map-react';
 
 class FiveDayForecast extends React.Component {
   constructor(props) {
@@ -11,6 +12,19 @@ class FiveDayForecast extends React.Component {
       fiveDayCity: 'pittsburgh', // set temp city for testing 
       days: []
     };
+  }
+
+  getCity = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(successFunction);
+    } 
+
+    function successFunction(position) {
+      var lat = position.coords.latitude;
+      var long = position.coords.longitude;
+
+      console.log(`${lat} ${long}`);
+    }
   }
 
   getForecast = () => {
@@ -23,7 +37,12 @@ class FiveDayForecast extends React.Component {
     }).then((data) => {
       const newData = [],
             set     = data;
-            
+      
+      /*
+      * NOTE: Openweathermap returns 40 objects. Each day is broken up into 3 hour chunks.
+      * Map over the response and remove duplicate items and just use the first
+      * entry starting at 00:00:00
+      */
       set.list.map((o) => {
         const dup = newData.find((f) => {
           const splitO = o.dt_txt.split(' ')[0],
@@ -47,6 +66,7 @@ class FiveDayForecast extends React.Component {
 
   componentDidMount = () => {
     this.getForecast();
+    // this.getCity();
   }
 
   render() {
@@ -59,7 +79,8 @@ class FiveDayForecast extends React.Component {
           <span>{day.dt_txt.split(' ')[0]}</span>  
         </p>
         <p>{day.main.temp.toFixed(0)}</p>
-        <p>{day.weather[0].description.charAt(0).toUpperCase() + day.weather[0].description.slice(1)}</p>
+        <p>{day.weather[0].description[0].toUpperCase() + day.weather[0].description.substring(1)}</p>
+        {/*<p>{day.weather[0].description.charAt(0).toUpperCase() + day.weather[0].description.slice(1)}</p>*/}
       </div>
     ))
 
