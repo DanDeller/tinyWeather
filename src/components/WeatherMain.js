@@ -16,8 +16,8 @@ import { connect } from 'react-redux';
 import { searchCity } from '../actions';
 
 const mapDispatchToProps = dispatch => ({
-   //...other methods,
    dispatch
+   // other methods
 });
 
 class WeatherMain extends React.Component {
@@ -127,8 +127,7 @@ class WeatherMain extends React.Component {
           this.setState({
             city: city,
             isOpen: false,
-            video: Object.values(this.state.video)[0],
-            box: ''
+            video: Object.values(this.state.video)[0]
           });
 
           this.state.city = '';

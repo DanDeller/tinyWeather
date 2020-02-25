@@ -1,6 +1,7 @@
 import React from 'react';
 import style from '../styles/style.less';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 
 class WeatherList extends React.Component {
   render() {
