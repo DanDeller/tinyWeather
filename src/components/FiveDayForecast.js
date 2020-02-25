@@ -28,11 +28,11 @@ class FiveDayForecast extends React.Component {
   }
 
   getForecast = () => {
-    fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + this.state.fiveDayCity + '&appid=6d5233c17d482d1c20dabfc48d8b3112&units=imperial', {
+    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${this.state.fiveDayCity}&appid=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`, {
       headers: {
         Accept: 'application/json',
       },
-    }).then(results => {
+    }).then((results) => {
       return results.json();
     }).then((data) => {
       const newData = [],
@@ -80,7 +80,6 @@ class FiveDayForecast extends React.Component {
         </p>
         <p>{day.main.temp.toFixed(0)}</p>
         <p>{day.weather[0].description[0].toUpperCase() + day.weather[0].description.substring(1)}</p>
-        {/*<p>{day.weather[0].description.charAt(0).toUpperCase() + day.weather[0].description.slice(1)}</p>*/}
       </div>
     ))
 

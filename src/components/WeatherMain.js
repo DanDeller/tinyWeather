@@ -12,6 +12,9 @@ import ThunderLightning from '../../videos/thunder-lightning.mp4';
 import Haze from '../../videos/haze.mp4';
 import Snow from '../../videos/snow.mp4';
 
+import { connect } from 'react-redux'
+import { searchCity } from '../actions'
+
 class WeatherMain extends React.Component {
   constructor(props) {
     super(props);
@@ -69,11 +72,11 @@ class WeatherMain extends React.Component {
       const city = this.state.city,
             box  = this.state.myRefs.current.value;
 
-      fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial', {
+      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`, {
         headers: {
           Accept: 'application/json',
         }
-      }).then(results => {
+      }).then((results) => {
         if (results.status === 404) {
           this.setState({
             visible: true
@@ -82,7 +85,7 @@ class WeatherMain extends React.Component {
         } else {
           return results.json();
         }
-      }).then(data => {
+      }).then((data) => {
         if (data) {
           this.state.details.push({
             name: data.name,
@@ -143,7 +146,7 @@ class WeatherMain extends React.Component {
           effect="fadeInUp"
         >
           <div className={style.modal}>
-            <h1>We either can't find that city or you forgot enter a city first.</h1>
+            <h1>We either can't find that city or you forgot to enter a city first.</h1>
             <a href="#" onClick={this.closeModal}>Search Again?</a>
           </div>
         </Modal>
@@ -184,4 +187,4 @@ class WeatherMain extends React.Component {
   }
 }
 
-export default WeatherMain;
+export default WeatherMain; connect()(WeatherMain);
