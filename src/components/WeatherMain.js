@@ -12,8 +12,13 @@ import ThunderLightning from '../../videos/thunder-lightning.mp4';
 import Haze from '../../videos/haze.mp4';
 import Snow from '../../videos/snow.mp4';
 
-import { connect } from 'react-redux'
-import { searchCity } from '../actions'
+import { connect } from 'react-redux';
+import { searchCity } from '../actions';
+
+const mapDispatchToProps = dispatch => ({
+   //...other methods,
+   dispatch
+});
 
 class WeatherMain extends React.Component {
   constructor(props) {
@@ -117,6 +122,8 @@ class WeatherMain extends React.Component {
 
           this.state.recentCities.push(city);
 
+          this.props.dispatch(searchCity(this.state.city));
+
           this.setState({
             city: city,
             isOpen: false,
@@ -187,4 +194,11 @@ class WeatherMain extends React.Component {
   }
 }
 
-export default WeatherMain; connect()(WeatherMain);
+//export default WeatherMain; connect()(WeatherMain);
+
+export default connect(null, mapDispatchToProps)(WeatherMain);
+
+
+
+
+
