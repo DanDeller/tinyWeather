@@ -193,11 +193,4 @@ class WeatherMain extends React.Component {
   }
 }
 
-//export default WeatherMain; connect()(WeatherMain);
-
 export default connect(null, mapDispatchToProps)(WeatherMain);
-
-
-
-
-
