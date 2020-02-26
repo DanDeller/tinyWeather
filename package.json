@@ -38,6 +38,7 @@
     "react-route": "^1.0.3",
     "react-router-dom": "^4.3.1",
     "react-switch": "^3.0.4",
+    "redux-logger": "^3.0.6",
     "style-loader": "^0.21.0",
     "url-loader": "^1.1.2"
   },
