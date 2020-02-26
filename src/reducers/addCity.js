@@ -5,7 +5,7 @@ const searchCity = (state = [], action) => {
         ...state,
         {
           id: action.id,
-          text: action.text
+          city: action.city
         }
       ]
     default:

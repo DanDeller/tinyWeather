@@ -1,7 +1,7 @@
 let cityId = 0;
 
-export const searchCity = text => ({
+export const searchCity = city => ({
   type: 'SEARCH_CITY',
   id: cityId++,
-  text
+  city
 });
