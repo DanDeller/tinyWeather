@@ -1,4 +1,4 @@
-const todos = (state = [], action) => {
+const searchCity = (state = [], action) => {
   switch (action.type) {
     case 'SEARCH_CITY':
       return [
@@ -13,4 +13,4 @@ const todos = (state = [], action) => {
   }
 };
 
-export default todos;
+export default searchCity;

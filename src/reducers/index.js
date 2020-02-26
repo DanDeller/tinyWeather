@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import todos from './addCity';
+import searchCity from './addCity';
 
 export default combineReducers({
-  todos
+  searchCity
 });
