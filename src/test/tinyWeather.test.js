@@ -6,7 +6,13 @@ import Adapter from 'enzyme-adapter-react-16';
 import App from '../App';
 import WeatherMain from '../components/WeatherMain';
 
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './reducers';
+
 configure({adapter: new Adapter()});
+
+const store = createStore(rootReducer);
 
 describe('Initial tests', () => {
   it('renders without crashing', () => {
@@ -14,9 +20,11 @@ describe('Initial tests', () => {
           div     = document.createElement('div');
 
     ReactDOM.render(
-      <StaticRouter location='' context={context}>
-        <App />
-      </StaticRouter>,
+      <Provider store={store}>
+        <StaticRouter location='' context={context}>
+          <App />
+        </StaticRouter>
+      </Provider>,
     div);
   });
 
