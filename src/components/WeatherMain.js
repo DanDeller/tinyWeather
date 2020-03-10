@@ -16,10 +16,6 @@ import { connect } from 'react-redux';
 import { setCity } from '../actions';
 import { searchCity } from '../actions';
 
-const mapStateToProps = state => {
-  return { city: state.currentWeather.setCity }
-}
-
 class WeatherMain extends React.Component {
   constructor(props) {
     super(props);
@@ -201,4 +197,19 @@ class WeatherMain extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(WeatherMain);
+const mapStateToProps = state => {
+  return {
+    city: state.currentWeather.setCity
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WeatherMain);
