@@ -25,8 +25,7 @@ class WeatherMain extends React.Component {
       visible: false,
       isOpen: true,
       myRefs: '',
-      video: '',
-      city: ''
+      video: ''
     };
 
     this.updateInputValue = this.updateInputValue.bind(this);
@@ -66,17 +65,12 @@ class WeatherMain extends React.Component {
   getWeather = (e) => {
     e.preventDefault();
 
-    // use for now but will change to use props
-    // to get store items
-    const {currentWeather} = store.getState();
-    console.log(store.getState());
-
-    if (!currentWeather.setCity) {
+    if (!this.props.city) {
       this.setState({
         visible: true
       });
     } else {
-      const city = currentWeather.setCity;
+      const city = this.props.city
 
       fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`, {
         headers: {
@@ -121,17 +115,14 @@ class WeatherMain extends React.Component {
               this.state.video = {Snow};
           }
 
-          this.state.recentCities.push(currentWeather.setCity);
+          this.state.recentCities.push(this.props.city);
 
           this.props.dispatch(recentCity(city));
 
           this.setState({
-            city: city,
             isOpen: false,
             video: Object.values(this.state.video)[0]
           });
-
-          this.state.city = '';
         }
       }); // end fetch()
     } // end if/else (!this.state.city)
@@ -146,6 +137,9 @@ class WeatherMain extends React.Component {
   render() {
     return (
       <section className={style.container}>
+        {/*connecting to store through props*/}
+        {/*<h1>test: {this.props.city}</h1>*/}
+
         <Modal
           visible={this.state.visible}
           width="400"
@@ -166,26 +160,24 @@ class WeatherMain extends React.Component {
                 Your browser does not support the video tag.
               </video>
               <div className={style.weatherAbove}>
-                {/*connecting to store through props*/}
-                {/*<h1>test: {this.props.city}</h1>*/}
                 <WeatherForm
                   updateInputValue={this.updateInputValue}
                   getWeather={this.getWeather}
                   passRefUpward={this.getRefsFromChild}
                   resetSearch={this.resetSearch}
                   isOpen={this.state.isOpen}
-                  city={this.state.city}
+                  city={this.props.city}
                 />
                 <WeatherList
                   details={this.state.details}
-                  city={this.state.city}
+                  city={this.props.city}
                   isOpen={this.state.isOpen}
                 />
               </div>
             </div>
             <div className={style.weatherRight}>
               <Sidebar
-                recentCities={this.state.recentCities}
+                recentCities={this.props.recentCities}
               />
             </div>
             <div className={style.clear}></div>
@@ -198,7 +190,8 @@ class WeatherMain extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    city: state.currentWeather.setCity
+    city: state.currentWeather.setCity,
+    recentCities: state.currentWeather.recentCities
   }
 }
 
