@@ -13,10 +13,11 @@ import Haze from '../../videos/haze.mp4';
 import Snow from '../../videos/snow.mp4';
 
 import { connect } from 'react-redux';
+import { setCity } from '../actions';
 import { searchCity } from '../actions';
 
 const mapDispatchToProps = dispatch => ({
-   dispatch
+   dispatch,
    // other methods
 });
 
@@ -41,6 +42,8 @@ class WeatherMain extends React.Component {
   }
 
   updateInputValue = (e) => {
+    this.props.dispatch(setCity(e.target.value));
+
     this.setState({
       city: e.target.value
     });
@@ -68,6 +71,8 @@ class WeatherMain extends React.Component {
 
   getWeather = (e) => {
     e.preventDefault();
+
+    console.log(store.getState());
 
     if (!this.state.city) {
       this.setState({
@@ -122,7 +127,7 @@ class WeatherMain extends React.Component {
 
           this.state.recentCities.push(city);
 
-          this.props.dispatch(searchCity(this.state.city));
+          this.props.dispatch(searchCity(city));
 
           this.setState({
             city: city,

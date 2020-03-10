@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import searchCity from './addCity';
+import currentWeather from './CurrentWeather';
 
 export default combineReducers({
-  searchCity
+  currentWeather
 });
