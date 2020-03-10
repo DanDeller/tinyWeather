@@ -72,15 +72,14 @@ class WeatherMain extends React.Component {
   getWeather = (e) => {
     e.preventDefault();
 
-    console.log(store.getState());
+    const {currentWeather} = store.getState();
 
     if (!this.state.city) {
       this.setState({
         visible: true
       });
     } else {
-      const city = this.state.city,
-            box  = this.state.myRefs.current.value;
+      const city = currentWeather.setCity;
 
       fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`, {
         headers: {

@@ -1,11 +1,11 @@
 import { createStore } from 'redux';
 import reducer from '../reducers';
 
+const store = createStore(reducer);
+
 const initialState = {
   setCity: '',
   searchCity: ''
 };
-
-const store = createStore(reducer);
 
 export default store;

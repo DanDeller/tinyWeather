@@ -7,12 +7,8 @@ import rootReducer from './reducers';
 import logger from 'redux-logger';
 import App from './app';
 import store from './store/index';
-window.store = store;
 
-// const store = createStore(
-// 	rootReducer,
-// 	applyMiddleware(logger)
-// );
+window.store = store;
 
 render((
 	<Provider store={store}>
