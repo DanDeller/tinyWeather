@@ -5,8 +5,8 @@ export const setCity = city => ({
   city
 });
 
-export const searchCity = search_city => ({
-  type: 'SEARCH_CITY',
+export const recentCity = recent_city => ({
+  type: 'RECENT_CITY',
   id: searchCityId++,
-  search_city
+  recent_city
 });

@@ -1,7 +1,7 @@
 const initCity = {
   setCity: '',
   searchCity: '',
-  recentCites: []
+  recentCities: []
 }
 
 const currentWeather = (state = initCity, action) => {
@@ -10,6 +10,11 @@ const currentWeather = (state = initCity, action) => {
       return {
         ...state,
         setCity: action.city
+      }
+    case 'RECENT_CITY':
+      return {
+        ...state,
+        recentCities: [...state.recentCities, action.recent_city]
       }
     default:
       return state

@@ -13,8 +13,7 @@ import Haze from '../../videos/haze.mp4';
 import Snow from '../../videos/snow.mp4';
 
 import { connect } from 'react-redux';
-import { setCity } from '../actions';
-import { searchCity } from '../actions';
+import { setCity, recentCity } from '../actions';
 
 class WeatherMain extends React.Component {
   constructor(props) {
@@ -72,7 +71,7 @@ class WeatherMain extends React.Component {
     const {currentWeather} = store.getState();
     console.log(store.getState());
 
-    if (!this.state.city) {
+    if (!currentWeather.setCity) {
       this.setState({
         visible: true
       });
@@ -122,9 +121,9 @@ class WeatherMain extends React.Component {
               this.state.video = {Snow};
           }
 
-          this.state.recentCities.push(city);
+          this.state.recentCities.push(currentWeather.setCity);
 
-          this.props.dispatch(searchCity(city));
+          this.props.dispatch(recentCity(city));
 
           this.setState({
             city: city,
