@@ -1,6 +1,7 @@
 const initCity = {
   setCity: '',
-  searchCity: ''
+  searchCity: '',
+  recentCites: []
 }
 
 const currentWeather = (state = initCity, action) => {

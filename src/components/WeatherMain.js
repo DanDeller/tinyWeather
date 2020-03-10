@@ -16,10 +16,9 @@ import { connect } from 'react-redux';
 import { setCity } from '../actions';
 import { searchCity } from '../actions';
 
-const mapDispatchToProps = dispatch => ({
-   dispatch,
-   // other methods
-});
+const mapStateToProps = state => {
+  return { city: state.currentWeather.setCity }
+}
 
 class WeatherMain extends React.Component {
   constructor(props) {
@@ -72,7 +71,10 @@ class WeatherMain extends React.Component {
   getWeather = (e) => {
     e.preventDefault();
 
+    // use for now but will change to use props
+    // to get store items
     const {currentWeather} = store.getState();
+    console.log(store.getState());
 
     if (!this.state.city) {
       this.setState({
@@ -169,6 +171,8 @@ class WeatherMain extends React.Component {
                 Your browser does not support the video tag.
               </video>
               <div className={style.weatherAbove}>
+                {/*connecting to store through props*/}
+                {/*<h1>test: {this.props.city}</h1>*/}
                 <WeatherForm
                   updateInputValue={this.updateInputValue}
                   getWeather={this.getWeather}
@@ -197,4 +201,4 @@ class WeatherMain extends React.Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(WeatherMain);
+export default connect(mapStateToProps)(WeatherMain);

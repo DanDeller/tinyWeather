@@ -5,7 +5,8 @@ const store = createStore(reducer);
 
 const initialState = {
   setCity: '',
-  searchCity: ''
+  searchCity: '',
+  recentCites: []
 };
 
 export default store;
