@@ -115,8 +115,6 @@ class WeatherMain extends React.Component {
               this.state.video = {Snow};
           }
 
-          this.state.recentCities.push(this.props.city);
-
           this.props.dispatch(recentCity(city));
 
           this.setState({
