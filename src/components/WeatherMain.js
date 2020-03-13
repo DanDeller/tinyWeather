@@ -20,7 +20,6 @@ class WeatherMain extends React.Component {
     super(props);
 
     this.state = {
-      recentCities: [],
       details: [],
       visible: false,
       isOpen: true,
