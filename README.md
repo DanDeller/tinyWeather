@@ -8,8 +8,8 @@ A quick little weather app.
 <h2>How to use:</h2>
 <ul>
   <li>Clone repo</li>
-  <li>Install packages: npm i</li>
-  <li>Start up: npm start</li>
+  <li>Install packages: <pre>npm i</pre></li>
+  <li>Start up: <pre>npm start</pre></li>
 </ul>
 
 <h2>Run the build</h2>
@@ -19,6 +19,4 @@ npm run build
 
 <h2>Test the app</h2>
 <p>tinyWeather can be tested with jest</p>
-<ul>
-  <li>npm test</li>
-</ul>
+<pre>npm test</pre>
