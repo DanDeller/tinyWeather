@@ -13,7 +13,7 @@ A quick little weather app.
 </ul>
 
 <h2>Run the build</h2>
-```npm run build```
+`npm run build`
 
 <h2>Test the app</h2>
 <p>tinyWeather can be tested with jest</p>
