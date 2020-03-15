@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom';
 
 class Sidebar extends React.Component {
   render() {
-    const getRecentCities = this.props.recentCities.map((city, i) => (
-      <li key={i}>{city}</li>
-    ));    
+    const getRecentCities = this.props.recentCities.map((city) => (
+      <li key={city.id}>{city.recentCity}</li>
+    ));  
 
     return (
       <aside className={style.sideBar}>

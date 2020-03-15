@@ -12,14 +12,13 @@ import ThunderLightning from '../../videos/thunder-lightning.mp4';
 import Haze from '../../videos/haze.mp4';
 import Snow from '../../videos/snow.mp4';
 import { connect } from 'react-redux';
-import { setCity, recentCity, setDetails, isOpen } from '../actions';
+import { setCity, recentCity, setDetails, isOpen, visible } from '../actions';
 
 class WeatherMain extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      visible: false,
       myRefs: '',
       video: ''
     };
@@ -53,18 +52,14 @@ class WeatherMain extends React.Component {
 
     this.state.myRefs.current.value = '';
 
-    this.setState({
-      visible: false
-    });
+    this.props.dispatch(visible(false));
   } // end closeModal()
 
   getWeather = (e) => {
     e.preventDefault();
 
     if (!this.props.city) {
-      this.setState({
-        visible: true
-      });
+       this.props.dispatch(visible(true));
     } else {
       const city = this.props.city
 
@@ -74,9 +69,7 @@ class WeatherMain extends React.Component {
         }
       }).then((results) => {
         if (results.status === 404) {
-          this.setState({
-            visible: true
-          });
+          this.props.dispatch(visible(true));
           return;
         } else {
           return results.json();
@@ -135,7 +128,7 @@ class WeatherMain extends React.Component {
     return (
       <section className={style.container}>
         <Modal
-          visible={this.state.visible}
+          visible={this.props.visible}
           width="400"
           height="300"
           effect="fadeInUp"
@@ -186,7 +179,8 @@ const mapStateToProps = state => {
     city: state.currentWeather.setCity,
     recentCities: state.currentWeather.recentCities,
     cityDetails: state.currentWeather.cityDetails,
-    isOpen: state.currentWeather.isOpen
+    isOpen: state.currentWeather.isOpen,
+    visible: state.currentWeather.visible
   }
 }
 

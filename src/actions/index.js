@@ -1,4 +1,4 @@
-let searchCityId = 0;
+let recentCityId = 0;
 
 export const setCity = city => ({
   type: 'SET_CITY',
@@ -12,10 +12,16 @@ export const setDetails = cityDetails => ({
 
 export const recentCity = recent_city => ({
   type: 'RECENT_CITY',
+  id: recentCityId++,
   recent_city
 });
 
 export const isOpen = isOpen => ({
   type: 'IS_OPEN',
   isOpen
+});
+
+export const visible = visible => ({
+  type: 'VISIBLE',
+  visible
 });

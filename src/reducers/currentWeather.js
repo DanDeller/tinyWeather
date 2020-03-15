@@ -1,6 +1,7 @@
 const initCity = {
   setCity: '',
   isOpen: true,
+  visible: false,
   cityDetails: [],
   recentCities: []
 }
@@ -17,6 +18,11 @@ const currentWeather = (state = initCity, action) => {
         ...state,
         isOpen: action.isOpen
       }
+    case 'VISIBLE':
+      return {
+        ...state,
+        visible: action.visible
+      }
     case 'SET_DETAILS':
       return {
         ...state,
@@ -25,7 +31,13 @@ const currentWeather = (state = initCity, action) => {
     case 'RECENT_CITY':
       return {
         ...state,
-        recentCities: [...state.recentCities, action.recent_city]
+        recentCities: [
+          ...state.recentCities, 
+          {
+            id: action.id,
+            recentCity: action.recent_city
+          }
+         ]
       }
     default:
       return state

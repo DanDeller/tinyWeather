@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 class WeatherList extends React.Component {
   render() {
     const classes = !this.props.isOpen ? style.active : '';
-    console.log(classes);
     const city = this.props.cityDetails.map((item, i) => (
       <div className={style.weatherItem} key={i}>
         <h3>City: {item.name}</h3>
