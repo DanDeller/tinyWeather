@@ -13,9 +13,9 @@ A quick little weather app.
 </ul>
 
 <h2>Run the build</h2>
-```
+<pre>
 npm run build
-```
+</pre>
 
 <h2>Test the app</h2>
 <p>tinyWeather can be tested with jest</p>
