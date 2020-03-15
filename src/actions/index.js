@@ -14,3 +14,8 @@ export const recentCity = recent_city => ({
   type: 'RECENT_CITY',
   recent_city
 });
+
+export const isOpen = isOpen => ({
+  type: 'IS_OPEN',
+  isOpen
+});

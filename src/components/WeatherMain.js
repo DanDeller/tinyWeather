@@ -12,7 +12,7 @@ import ThunderLightning from '../../videos/thunder-lightning.mp4';
 import Haze from '../../videos/haze.mp4';
 import Snow from '../../videos/snow.mp4';
 import { connect } from 'react-redux';
-import { setCity, recentCity, setDetails } from '../actions';
+import { setCity, recentCity, setDetails, isOpen } from '../actions';
 
 class WeatherMain extends React.Component {
   constructor(props) {
@@ -20,7 +20,6 @@ class WeatherMain extends React.Component {
 
     this.state = {
       visible: false,
-      isOpen: true,
       myRefs: '',
       video: ''
     };
@@ -42,9 +41,9 @@ class WeatherMain extends React.Component {
   resetSearch = () => {
     this.state.myRefs.current.value = '';
 
+    this.props.dispatch(isOpen(true));
+
     this.setState({
-      isOpen: !this.state.isOpen,
-      details: [],
       video: []
     });
   } // end resetSearch()
@@ -116,9 +115,9 @@ class WeatherMain extends React.Component {
 
           this.props.dispatch(recentCity(city));
           this.props.dispatch(setDetails(details));
+          this.props.dispatch(isOpen(false));
 
           this.setState({
-            isOpen: false,
             video: Object.values(this.state.video)[0]
           });
         }
@@ -135,9 +134,6 @@ class WeatherMain extends React.Component {
   render() {
     return (
       <section className={style.container}>
-        {/*connecting to store through props*/}
-        {/*<h1>test: {this.props.city}</h1>*/}
-
         <Modal
           visible={this.state.visible}
           width="400"
@@ -163,12 +159,12 @@ class WeatherMain extends React.Component {
                   getWeather={this.getWeather}
                   passRefUpward={this.getRefsFromChild}
                   resetSearch={this.resetSearch}
-                  isOpen={this.state.isOpen}
+                  isOpen={this.props.isOpen}
                   city={this.props.city}
                 />
                 <WeatherList
                   cityDetails={this.props.cityDetails}
-                  isOpen={this.state.isOpen}
+                  isOpen={this.props.isOpen}
                 />
               </div>
             </div>
@@ -189,7 +185,8 @@ const mapStateToProps = state => {
   return {
     city: state.currentWeather.setCity,
     recentCities: state.currentWeather.recentCities,
-    cityDetails: state.currentWeather.cityDetails
+    cityDetails: state.currentWeather.cityDetails,
+    isOpen: state.currentWeather.isOpen
   }
 }
 
