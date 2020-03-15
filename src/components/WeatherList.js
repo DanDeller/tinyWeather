@@ -15,7 +15,7 @@ class WeatherList extends React.Component {
     ));
 
     return (
-      <div className={style.weatherItems + ' ' + classes + ' wtf'}>
+      <div className={style.weatherItems + ' ' + classes}>
         {city}
       </div>
     );
