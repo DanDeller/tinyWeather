@@ -4,8 +4,9 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
 const WeatherList = (newCity) => {
+  console.log(newCity);
   const classes = !newCity.isOpen ? style.active : '';
-  const city = newCity.details.map((item, i) => (
+  const city = newCity.cityDetails.map((item, i) => (
     <div className={style.weatherItem} key={i}>
       <h3>City: {item.name}</h3>
       <p>Current weather: {item.weather}</p>

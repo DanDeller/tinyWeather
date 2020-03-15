@@ -11,16 +11,14 @@ import Clouds from '../../videos/cloudy.mp4';
 import ThunderLightning from '../../videos/thunder-lightning.mp4';
 import Haze from '../../videos/haze.mp4';
 import Snow from '../../videos/snow.mp4';
-
 import { connect } from 'react-redux';
-import { setCity, recentCity } from '../actions';
+import { setCity, recentCity, setDetails } from '../actions';
 
 class WeatherMain extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      details: [],
       visible: false,
       isOpen: true,
       myRefs: '',
@@ -86,13 +84,13 @@ class WeatherMain extends React.Component {
         }
       }).then((data) => {
         if (data) {
-          this.state.details.push({
+          const details = {
             name: data.name,
             weather: data.weather[0].main,
             temp: parseInt(data.main.temp)
-          });
+          };
 
-          const weather = this.state.details[0].weather.toLowerCase();
+          const weather = details.weather.toLowerCase();
 
           switch(weather) {
             case 'clouds':
@@ -117,6 +115,7 @@ class WeatherMain extends React.Component {
           }
 
           this.props.dispatch(recentCity(city));
+          this.props.dispatch(setDetails(details));
 
           this.setState({
             isOpen: false,
@@ -168,8 +167,7 @@ class WeatherMain extends React.Component {
                   city={this.props.city}
                 />
                 <WeatherList
-                  details={this.state.details}
-                  city={this.props.city}
+                  cityDetails={this.props.cityDetails}
                   isOpen={this.state.isOpen}
                 />
               </div>
@@ -190,7 +188,8 @@ class WeatherMain extends React.Component {
 const mapStateToProps = state => {
   return {
     city: state.currentWeather.setCity,
-    recentCities: state.currentWeather.recentCities
+    recentCities: state.currentWeather.recentCities,
+    cityDetails: state.currentWeather.cityDetails
   }
 }
 
