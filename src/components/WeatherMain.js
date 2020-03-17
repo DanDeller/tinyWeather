@@ -49,7 +49,7 @@ class WeatherMain extends React.Component {
     if (!this.props.city) {
        this.props.dispatch(visible(true));
     } else {
-      const city = this.props.city
+      const city = this.props.city;
 
       fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`, {
         headers: {
