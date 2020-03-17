@@ -70,7 +70,7 @@ class WeatherMain extends React.Component {
             temp: parseInt(data.main.temp)
           };
           const weather = details.weather.toLowerCase();
-          let video   = '';
+          let video = '';
 
           switch(weather) {
             case 'clouds':
