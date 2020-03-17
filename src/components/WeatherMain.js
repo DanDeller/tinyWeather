@@ -66,13 +66,12 @@ class WeatherMain extends React.Component {
         if (data) {
           const details = {
             name: data.name,
-            weather: data.weather[0].main,
+            weather: data.weather[0].main.toLowerCase(),
             temp: parseInt(data.main.temp)
           };
-          const weather = details.weather.toLowerCase();
           let video = '';
 
-          switch(weather) {
+          switch(details.weather) {
             case 'clouds':
               video = {Clouds};
               break;
