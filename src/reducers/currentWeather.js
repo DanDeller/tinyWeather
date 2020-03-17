@@ -1,5 +1,6 @@
 const initCity = {
   setCity: '',
+  setVideo: '',
   isOpen: true,
   visible: false,
   cityDetails: [],
@@ -8,6 +9,11 @@ const initCity = {
 
 const currentWeather = (state = initCity, action) => {
   switch (action.type) {
+    case 'SET_VIDEO':
+      return {
+        ...state,
+        setVideo: action.video
+      }
     case 'SET_CITY':
       return {
         ...state,

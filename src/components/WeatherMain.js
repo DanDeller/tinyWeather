@@ -11,7 +11,7 @@ import ThunderLightning from '../../videos/thunder-lightning.mp4';
 import Haze from '../../videos/haze.mp4';
 import Snow from '../../videos/snow.mp4';
 import { connect } from 'react-redux';
-import { setCity, recentCity, setDetails, isOpen, visible } from '../actions';
+import { setCity, recentCity, setDetails, setVideo, isOpen, visible } from '../actions';
 
 class WeatherMain extends React.Component {
   constructor(props) {
@@ -34,19 +34,13 @@ class WeatherMain extends React.Component {
 
   resetSearch = () => {
     this.state.myRefs.current.value = '';
-
     this.props.dispatch(isOpen(true));
-
-    this.setState({
-      video: []
-    });
+    this.props.dispatch(setVideo(''));
   } // end resetSearch()
 
   closeModal = (e) => {
     e.preventDefault();
-
     this.state.myRefs.current.value = '';
-
     this.props.dispatch(visible(false));
   } // end closeModal()
 
@@ -76,38 +70,35 @@ class WeatherMain extends React.Component {
             weather: data.weather[0].main,
             temp: parseInt(data.main.temp)
           };
-
           const weather = details.weather.toLowerCase();
+          let video   = '';
 
           switch(weather) {
             case 'clouds':
-              this.state.video = {Clouds};
+              video = {Clouds};
               break;
             case 'clear':
-              this.state.video = {Clear};
+              video = {Clear};
               break;
             case 'drizzle':
             case 'rain':
-              this.state.video = {Rain};
+              video = {Rain};
               break;
             case 'haze': 
             case 'mist':
-              this.state.video = {Haze};
+              video = {Haze};
               break;
             case 'thunderstorm':
-              this.state.video = {ThunderLightning};
+              video = {ThunderLightning};
               break;
             case 'snow':
-              this.state.video = {Snow};
+              video = {Snow};
           }
 
           this.props.dispatch(recentCity(city));
           this.props.dispatch(setDetails(details));
           this.props.dispatch(isOpen(false));
-
-          this.setState({
-            video: Object.values(this.state.video)[0]
-          });
+          this.props.dispatch(setVideo(Object.values(video)[0]));
         }
       }); // end fetch()
     } // end if/else (!this.props.city)
@@ -136,8 +127,8 @@ class WeatherMain extends React.Component {
         <div className={style.weatherMain + ' ' + style.bodyText}>
           <div className={style.hold}>
             <div className={style.weatherLeft}>
-              <video key={this.state.video} className={style.video} loop autoPlay muted>
-                <source src={this.state.video} type="video/mp4">
+              <video key={this.props.setVideo} className={style.video} loop autoPlay muted>
+                <source src={this.props.setVideo} type="video/mp4">
                 </source>
                 Your browser does not support the video tag.
               </video>
@@ -172,6 +163,7 @@ class WeatherMain extends React.Component {
 const mapStateToProps = state => {
   return {
     city: state.currentWeather.setCity,
+    setVideo: state.currentWeather.setVideo,
     recentCities: state.currentWeather.recentCities,
     cityDetails: state.currentWeather.cityDetails,
     isOpen: state.currentWeather.isOpen,

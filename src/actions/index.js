@@ -25,3 +25,8 @@ export const visible = visible => ({
   type: 'VISIBLE',
   visible
 });
+
+export const setVideo = video => ({
+  type: 'SET_VIDEO',
+  video
+});
