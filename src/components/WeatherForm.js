@@ -1,6 +1,5 @@
 import React from 'react';
 import style from '../styles/style.less';
-import ReactDOM from 'react-dom';
 
 class WeatherForm extends React.Component {
   constructor(props) {

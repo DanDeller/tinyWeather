@@ -1,6 +1,5 @@
 import React from 'react';
 import style from '../styles/style.less';
-import ReactDOM from 'react-dom';
 import WeatherForm from './WeatherForm';
 import WeatherList from './WeatherList';
 import Sidebar from './Sidebar';
@@ -31,10 +30,6 @@ class WeatherMain extends React.Component {
 
   updateInputValue = (e) => {
     this.props.dispatch(setCity(e.target.value));
-
-    this.setState({
-      city: e.target.value
-    });
   } // end updateInputValue()
 
   resetSearch = () => {
@@ -115,7 +110,7 @@ class WeatherMain extends React.Component {
           });
         }
       }); // end fetch()
-    } // end if/else (!this.state.city)
+    } // end if/else (!this.props.city)
   } // end getWeather()
 
   getRefsFromChild = (childRefs) => {

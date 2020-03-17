@@ -1,6 +1,5 @@
 import React from 'react';
 import style from '../styles/style.less';
-import ReactDOM from 'react-dom';
 
 class Sidebar extends React.Component {
   render() {
