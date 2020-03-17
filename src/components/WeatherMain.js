@@ -18,8 +18,7 @@ class WeatherMain extends React.Component {
     super(props);
 
     this.state = {
-      myRefs: '',
-      video: ''
+      myRefs: ''
     };
 
     this.updateInputValue = this.updateInputValue.bind(this);
