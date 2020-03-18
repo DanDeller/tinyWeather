@@ -40,6 +40,7 @@ class WeatherMain extends React.Component {
     e.preventDefault();
     this.state.myRefs.current.value = '';
     this.props.dispatch(visible(false));
+    this.props.dispatch(setCity(''));
   } // end closeModal()
 
   getWeather = (e) => {
