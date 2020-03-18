@@ -3,13 +3,14 @@ import style from '../styles/style.less';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import GoogleMapReact from 'google-map-react';
+import { connect } from 'react-redux';
 
 class FiveDayForecast extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      fiveDayCity: 'pittsburgh', // set temp city for testing 
+      forgotCity: true,
       days: []
     };
   }
@@ -28,7 +29,11 @@ class FiveDayForecast extends React.Component {
   }
 
   getForecast = () => {
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${this.state.fiveDayCity}&appid=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`, {
+    const city = this.props.city || '';
+
+    console.log(city);
+
+    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`, {
       headers: {
         Accept: 'application/json',
       },
@@ -43,24 +48,32 @@ class FiveDayForecast extends React.Component {
       * Map over the response and remove duplicate items and just use the first
       * entry starting at 00:00:00
       */
-      set.list.map((o) => {
-        const dup = newData.find((f) => {
-          const splitO = o.dt_txt.split(' ')[0],
-                splitF = f.dt_txt.split(' ')[0];
-          
-          return splitO === splitF;
-        });
-        
-        if (!dup) {
-          newData.push(o)
-        };
-        
-        return newData.splice(5);
-      });
 
-      this.setState({
-        days: newData
-      });
+      if (set.list) {
+        set.list.map((o) => {
+          const dup = newData.find((f) => {
+            const splitO = o.dt_txt.split(' ')[0],
+                  splitF = f.dt_txt.split(' ')[0];
+            
+            return splitO === splitF;
+          });
+          
+          if (!dup) {
+            newData.push(o)
+          };
+          
+          return newData.splice(5);
+        });
+
+        this.setState({
+          days: newData,
+          forgotCity: false
+        });
+      } else {
+        this.setState({
+          forgotCity: true
+        });
+      }
     });
   }
 
@@ -70,6 +83,7 @@ class FiveDayForecast extends React.Component {
   }
 
   render() {
+    const forgotCity = this.state.forgotCity ? style.show : '';
     const days = this.state.days.map((day, i) => (
       <div className={style.day} key={i}>
         <p>
@@ -87,8 +101,9 @@ class FiveDayForecast extends React.Component {
       <section className={style.container}>
         <div className={style.weatherMain + ' ' + style.bodyText}>
           <h1 className={style.pageHeader}>Forecast for the next five days</h1>
-            <div className={style.dayHold}>
-              {days}
+          <div className={style.dayHold}>
+            <h2 className={style.hide + ' ' + style.forgotCity + ' ' + forgotCity}>Go lookup a city first!</h2>
+            {days}
           </div>
         </div>
       </section>
@@ -96,4 +111,10 @@ class FiveDayForecast extends React.Component {
   }
 }
 
-export default FiveDayForecast;
+const mapStateToProps = state => {
+  return {
+    city: state.currentWeather.setCity
+  }
+}
+
+export default connect(mapStateToProps)(FiveDayForecast);
