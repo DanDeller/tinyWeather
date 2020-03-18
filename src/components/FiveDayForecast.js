@@ -12,62 +12,50 @@ class FiveDayForecast extends React.Component {
     this.state = {days: []};
   }
 
-  getCity = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(successFunction);
-    } 
-
-    function successFunction(position) {
-      var lat = position.coords.latitude;
-      var long = position.coords.longitude;
-
-      console.log(`${lat} ${long}`);
-    }
-  }
-
   getForecast = () => {
-    const city = this.props.city || '';
+    const city = this.props.city;
 
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`, {
-      headers: {
-        Accept: 'application/json',
-      },
-    }).then((results) => {
-      return results.json();
-    }).then((data) => {
-      const newData = [],
-            set     = data;
-      
-      /*
-      * NOTE: Openweathermap returns 40 objects. Each day is broken up into 3 hour chunks.
-      * Map over the response and remove duplicate items and just use the first
-      * entry starting at 00:00:00
-      */
+    if (this.props.city.length) {
+      fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`, {
+        headers: {
+          Accept: 'application/json',
+        },
+      }).then((results) => {
+        return results.json();
+      }).then((data) => {
+        const newData = [],
+              set     = data;
+        
+        /*
+        * NOTE: Openweathermap returns 40 objects. Each day is broken up into 3 hour chunks.
+        * Map over the response and remove duplicate items and just use the first
+        * entry starting at 00:00:00
+        */
 
-      if (set.list) {
-        set.list.map((o) => {
-          const dup = newData.find((f) => {
-            const splitO = o.dt_txt.split(' ')[0],
-                  splitF = f.dt_txt.split(' ')[0];
+        if (set.list) {
+          set.list.map((o) => {
+            const dup = newData.find((f) => {
+              const splitO = o.dt_txt.split(' ')[0],
+                    splitF = f.dt_txt.split(' ')[0];
+              
+              return splitO === splitF;
+            });
             
-            return splitO === splitF;
+            if (!dup) {
+              newData.push(o)
+            };
+            
+            return newData.splice(5);
           });
-          
-          if (!dup) {
-            newData.push(o)
-          };
-          
-          return newData.splice(5);
-        });
 
-        this.setState({days: newData});
-      }
-    });
+          this.setState({days: newData});
+        }
+      });
+    }
   }
 
   componentDidMount = () => {
     this.getForecast();
-    // this.getCity();
   }
 
   render() {
