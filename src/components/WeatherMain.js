@@ -116,11 +116,12 @@ class WeatherMain extends React.Component {
           effect="fadeInUp"
         >
           <div className={style.modal}>
-            <h1>We either can't find that city or you forgot to enter a city first.</h1>
+            <h2>We either can't find that city or you forgot to enter a city first.</h2>
             <a href="#" onClick={this.closeModal}>Search Again?</a>
           </div>
         </Modal>
         <div className={style.weatherMain + ' ' + style.bodyText}>
+          <h1 className={style.pageHeader}>Search a city to see the local weather</h1>
           <div className={style.hold}>
             <div className={style.weatherLeft}>
               <video key={this.props.setVideo} className={style.video} loop autoPlay muted>
