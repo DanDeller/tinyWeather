@@ -31,7 +31,6 @@ class FiveDayForecast extends React.Component {
         * Map over the response and remove duplicate items and just use the first
         * entry starting at 00:00:00
         */
-
         if (set.list) {
           set.list.map((o) => {
             const dup = newData.find((f) => {
