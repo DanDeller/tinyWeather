@@ -60,10 +60,7 @@ class FiveDayForecast extends React.Component {
           return newData.splice(5);
         });
 
-        this.setState({
-          days: newData,
-          forgotCity: false
-        });
+        this.setState({days: newData});
       }
     });
   }
