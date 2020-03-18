@@ -17,9 +17,7 @@ class WeatherMain extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      myRefs: ''
-    };
+    this.state = {myRefs: ''};
 
     this.updateInputValue = this.updateInputValue.bind(this);
     this.getRefsFromChild = this.getRefsFromChild.bind(this);
@@ -64,12 +62,12 @@ class WeatherMain extends React.Component {
         }
       }).then((data) => {
         if (data) {
+          let video = '';
           const details = {
             name: data.name,
             weather: data.weather[0].main.toLowerCase(),
             temp: parseInt(data.main.temp)
           };
-          let video = '';
 
           switch(details.weather) {
             case 'clouds':
