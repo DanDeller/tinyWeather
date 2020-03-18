@@ -9,10 +9,7 @@ class FiveDayForecast extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      forgotCity: true,
-      days: []
-    };
+    this.state = {days: []};
   }
 
   getCity = () => {
@@ -30,8 +27,6 @@ class FiveDayForecast extends React.Component {
 
   getForecast = () => {
     const city = this.props.city || '';
-
-    console.log(city);
 
     fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`, {
       headers: {
@@ -69,10 +64,6 @@ class FiveDayForecast extends React.Component {
           days: newData,
           forgotCity: false
         });
-      } else {
-        this.setState({
-          forgotCity: true
-        });
       }
     });
   }
@@ -83,7 +74,7 @@ class FiveDayForecast extends React.Component {
   }
 
   render() {
-    const forgotCity = this.state.forgotCity ? style.show : '';
+    const forgotCity = !this.props.city.length ? style.show : '';
     const days = this.state.days.map((day, i) => (
       <div className={style.day} key={i}>
         <p>
