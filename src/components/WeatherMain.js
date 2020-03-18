@@ -12,6 +12,7 @@ import Haze from '../../videos/haze.mp4';
 import Snow from '../../videos/snow.mp4';
 import { connect } from 'react-redux';
 import { setCity, recentCity, setDetails, setVideo, isOpen, visible } from '../actions';
+import uuid from 'react-uuid';
 
 class WeatherMain extends React.Component {
   constructor(props) {
@@ -93,7 +94,7 @@ class WeatherMain extends React.Component {
               video = {Snow};
           }
 
-          this.props.dispatch(recentCity(city));
+          this.props.dispatch(recentCity(city, uuid()));
           this.props.dispatch(setDetails(details));
           this.props.dispatch(isOpen(false));
           this.props.dispatch(setVideo(Object.values(video)[0]));
