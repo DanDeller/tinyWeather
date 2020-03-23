@@ -28,3 +28,8 @@ export const setVideo = video => ({
   type: 'SET_VIDEO',
   video
 });
+
+export const prevCity = prevCity => ({
+  type: 'PREV_CITY',
+  prevCity
+});

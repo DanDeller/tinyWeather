@@ -124,12 +124,11 @@ class WeatherMain extends React.Component {
           </div>
         </Modal>
         <div className={style.weatherMain + ' ' + style.bodyText}>
-          <h1 className={style.pageHeader}>Search a city to see the local weather</h1>
+          <h2 className={style.pageHeader}>Search a city to check the weather</h2>
           <div className={style.hold}>
             <div className={style.weatherLeft}>
               <video key={this.props.setVideo} className={style.video} loop autoPlay muted>
-                <source src={this.props.setVideo} type="video/mp4">
-                </source>
+                <source src={this.props.setVideo} type="video/mp4"></source>
                 Your browser does not support the video tag.
               </video>
               <div className={style.weatherAbove}>

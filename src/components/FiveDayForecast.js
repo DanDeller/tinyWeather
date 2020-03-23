@@ -75,9 +75,9 @@ class FiveDayForecast extends React.Component {
     return (
       <section className={style.container}>
         <div className={style.weatherMain + ' ' + style.bodyText}>
-          <h1 className={style.pageHeader}>Forecast for the next five days</h1>
+          <h2 className={style.pageHeader}>Forecast for the next five days</h2>
           <div className={style.dayHold}>
-            <h2 className={style.hide + ' ' + style.forgotCity + ' ' + forgotCity}>Go lookup a city first!</h2>
+            <h3 className={style.hide + ' ' + style.forgotCity + ' ' + forgotCity}>Go lookup a city first!</h3>
             {days}
           </div>
         </div>
