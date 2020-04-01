@@ -1,13 +1,12 @@
-const webpack = require('webpack'),
-			webpackMiddleware = require('webpack-dev-middleware'),
-			webpackHotMiddleware = require('webpack-hot-middleware'),
-			bodyParser = require('body-parser'),
-      express    = require('express'),
-      path       = require('path'),
-      app        = express();
-
-const isDeveloping = process.env.NODE_ENV !== 'production';
-const config = require('./webpack.config.js');
+const webpack              = require('webpack'),
+      webpackHotMiddleware = require('webpack-hot-middleware'),
+			webpackMiddleware    = require('webpack-dev-middleware'),
+      isDeveloping         = process.env.NODE_ENV !== 'production'
+			bodyParser           = require('body-parser'),
+      express              = require('express'),
+      config               = require('./webpack.config.js')
+      path                 = require('path'),
+      app                  = express();
 
 if (isDeveloping) {
   const compiler = webpack(config);
@@ -47,7 +46,4 @@ app.use((req, res, next) => {
   next();
 });
 
-//app.get('/', (req, res) => res.sendFile(path.join(__dirname, './src/index.html')));
-
-// tinyWeather uses webpack-dev-server
 app.listen(3000, () => console.log('App running on port 3000.'));
