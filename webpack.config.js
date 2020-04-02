@@ -5,7 +5,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin'),
 module.exports = {
   mode: 'development',
   entry: [
-  'webpack-hot-middleware/client?reload=true',
+    'webpack-hot-middleware/client?reload=true',
     path.join(__dirname, 'src/index.js'),
     path.join(__dirname, 'src/styles/style.less')
   ],
