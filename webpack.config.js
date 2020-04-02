@@ -1,5 +1,28 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin'),
+      webpack = require('webpack'),
+      path = require('path');
+
 module.exports = {
+  mode: 'development',
+  entry: [
+    'webpack-hot-middleware/client?reload=true',
+    path.join(__dirname, 'src/index.js'),
+    path.join(__dirname, 'src/styles/style.less')
+  ],
+  output: {
+    path: path.join(__dirname, '/src/'),
+    filename: '[name].js'
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: './src/index.html',
+      filename: './index.html'
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development')
+    }),
+  ],
   module: {
     rules: [
       {
@@ -43,11 +66,5 @@ module.exports = {
         }]
       }
     ]
-  },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: './src/index.html',
-      filename: './index.html'
-    })
-  ]
+  }
 };

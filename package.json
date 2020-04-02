@@ -10,7 +10,7 @@
     }
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --hot --inline --content-base=dist --history-api-fallback --open",
+    "start": "webpack-dev-server --mode development --hot --inline --content-base=dist --history-api-fallback --open --port 3000",
     "build": "webpack --mode production",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -40,8 +40,11 @@
     "react-switch": "^3.0.4",
     "react-uuid": "^1.0.2",
     "redux-logger": "^3.0.6",
+    "rethinkdb": "^2.4.2",
     "style-loader": "^0.21.0",
-    "url-loader": "^1.1.2"
+    "url-loader": "^1.1.2",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-hot-middleware": "^2.25.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
