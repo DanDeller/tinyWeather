@@ -5,17 +5,19 @@
 # tinyWeather
 A quick little weather app.
 
-<h2>How to use:</h2>
+<h2>What you'll need:</h2>
 <ul>
-  <li>Clone repo</li>
-  <li>Install packages: npm i</li>
-  <li>Start up: npm start</li>
+  <li>Docker - https://docs.docker.com/docker-for-mac/install/ (Mac user)</li>
+  <li>RethinkDB - https://rethinkdb.com/docs/install/</li>
 </ul>
 
-<h2>Run the build</h2>
-<pre>
-npm run build
-</pre>
+<h2>How to use:</h2>
+<ul>
+  <li>Make sure Docker and RethinkDB are installed</li>
+  <li>Clone the repo</li>
+  <li>Build the app - docker-compose build</li>
+  <li>Start the app - docker-compose up</li>
+</ul>
 
 <h2>Test the app</h2>
 <p>tinyWeather can be tested with jest</p>
