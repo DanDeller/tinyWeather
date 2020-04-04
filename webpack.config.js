@@ -7,7 +7,7 @@ module.exports = {
   entry: [
     'webpack-hot-middleware/client?reload=true',
     path.join(__dirname, 'src/index.js'),
-    path.join(__dirname, 'src/styles/style.less')
+    path.join(__dirname, 'src/assets/styles/style.less')
   ],
   output: {
     path: path.join(__dirname, '/src/'),
