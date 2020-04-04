@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../styles/style.less';
+import style from '../assets/styles/style.less';
 
 class WeatherList extends React.Component {
   render() {

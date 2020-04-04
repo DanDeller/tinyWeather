@@ -1,18 +1,25 @@
 import React from 'react';
-import style from '../styles/style.less';
+import style from '../assets/styles/style.less';
 import WeatherForm from './WeatherForm';
 import WeatherList from './WeatherList';
 import Sidebar from './Sidebar';
 import Modal from 'react-awesome-modal';
-import Rain from '../../src/videos/rain.mp4';
-import Clear from '../../src/videos/sunny.mp4';
-import Clouds from '../../src/videos/cloudy.mp4';
-import ThunderLightning from '../../src/videos/thunder-lightning.mp4';
-import Haze from '../../src/videos/haze.mp4';
-import Snow from '../../src/videos/snow.mp4';
+import Rain from '../assets/videos/rain.mp4';
+import Clear from '../assets/videos/sunny.mp4';
+import Clouds from '../assets/videos/cloudy.mp4';
+import ThunderLightning from '../assets/videos/thunder-lightning.mp4';
+import Haze from '../assets/videos/haze.mp4';
+import Snow from '../assets/videos/snow.mp4';
 import { connect } from 'react-redux';
-import { setCity, recentCity, setDetails, setVideo, isOpen, visible } from '../actions';
 import uuid from 'react-uuid';
+import { 
+  setCity, 
+  recentCity, 
+  setDetails, 
+  setVideo, 
+  isOpen, 
+  visible 
+} from '../redux/actions';
 
 class WeatherMain extends React.Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import style from '../styles/style.less';
+import style from '../assets/styles/style.less';
 
 class Header extends React.Component {
   render() {

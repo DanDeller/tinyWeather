@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
 import WeatherMain from './components/WeatherMain';
 import FiveDayForecast from './components/FiveDayForecast';
-import style from './styles/style.less';
+import style from './assets/styles/style.less';
 
 class Main extends React.Component {
   render() {
