@@ -31,6 +31,20 @@ class WeatherMain extends React.Component {
     this.getRefsFromChild = this.getRefsFromChild.bind(this);
     this.resetSearch = this.resetSearch.bind(this);
     this.getWeather = this.getWeather.bind(this);
+  } 
+
+  componentDidMount() {
+    fetch('/currentWeather', {
+      headers: {
+        Accept: 'application/json',
+      }
+    }).then((res) => {
+      return res.json();
+    }).then((data) => {
+      console.log(data);
+    }).catch((err) => {
+      console.log(err);
+    })
   }
 
   updateInputValue = (e) => {

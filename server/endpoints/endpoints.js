@@ -1,8 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const currentWeather = require('../models/currentWeather');
+const currentWeather = require('../models/currentWeather'),
+			express        = require('express'),
+			router         = express.Router();
 
-router.get('/currentWeathereather', (req, res) => {
+router.get('/currentWeather', (req, res) => {
 	currentWeather.list((error, response) => {
 		if (error) return res.end();
 		return res.send(response);

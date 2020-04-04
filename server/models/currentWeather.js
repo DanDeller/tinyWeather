@@ -1,21 +1,32 @@
-const r = require('rethinkdb');
-const config = require('../../../server.config.js');
+const config = require('../../server.config.js'),
+      r      = require('rethinkdb');
 
-const connect = () => r.connect({
-  db: 'tinyWeather',
-  host: 'rethinkdb',
-  port: 8080
-}, function(err, conn) {
-  console.log(err);
-  console.log(conn);
-});
-
-export const insert = () => connect(conn).table('currentWeather').insert({
-  id: 1,
-  title: "Lorem ipsum",
-  content: "Dolor sit amet"
-}).run(conn).then((res) => {
-  console.log(res);
-}).catch((err) => {
-  console.log(err)
-});
+module.exports = {
+  connect: function(cb) {
+    r.connect({
+      db: config.db.name,
+      host: config.db.host,
+      port: config.db.port
+    }).then((conn) => {
+      return cb(null, conn);
+    }).error((err) => {
+      return cb(err);
+    })
+  },
+  list: function(cb) {
+    this.connect((err, conn) => {
+      if (err) return cb(err);
+      r.db(config.db.name).table('currentWeather')
+      .run(conn)
+      .then((res) => {
+        return res.toArray();
+      })
+      .then((data) => {
+        return cb(null, data);
+      })
+      .error((err) => {
+        return cb(err);
+      });
+    })
+  }
+}
