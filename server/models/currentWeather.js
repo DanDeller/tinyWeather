@@ -1,4 +1,5 @@
-import r from 'rethinkdb';
+const r = require('rethinkdb');
+const config = require('../../../server.config.js');
 
 const connect = () => r.connect({
   db: 'tinyWeather',
@@ -9,12 +10,12 @@ const connect = () => r.connect({
   console.log(conn);
 });
 
-export const insert = () => connect().table("posts").insert({
+export const insert = () => connect(conn).table('currentWeather').insert({
   id: 1,
   title: "Lorem ipsum",
   content: "Dolor sit amet"
 }).run(conn).then((res) => {
-	console.log(res);
+  console.log(res);
 }).catch((err) => {
-	console.log(err)
+  console.log(err)
 });
