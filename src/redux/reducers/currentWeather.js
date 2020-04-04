@@ -1,3 +1,5 @@
+import {FETCH_WEATHER} from '../actions';
+
 const initCity = {
   setCity: '',
   setVideo: '',

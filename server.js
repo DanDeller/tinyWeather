@@ -1,12 +1,15 @@
 const webpack              = require('webpack'),
       webpackHotMiddleware = require('webpack-hot-middleware'),
 			webpackMiddleware    = require('webpack-dev-middleware'),
-      isDeveloping         = process.env.NODE_ENV !== 'production'
+      isDeveloping         = process.env.NODE_ENV !== 'production',
 			bodyParser           = require('body-parser'),
+      requireDir           = require('require-dir'),
+      endpoints            = requireDir('./server/endpoints'),
       express              = require('express'),
-      config               = require('./webpack.config.js')
+      config               = require('./webpack.config.js'),
       path                 = require('path'),
-      app                  = express();
+      app                  = express(),
+      _                    = require('lodash');
 
 if (isDeveloping) {
   const compiler = webpack(config);
@@ -35,15 +38,11 @@ if (isDeveloping) {
   });
 }
 
-app.set('port', 3000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use((req, res, next) => {
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.setHeader('Pragma', 'no-cache');
-  res.setHeader('Expires', '0');
-  next();
+
+_.each(endpoints, (name) => {
+  app.use(name);
 });
 
 app.listen(3000, () => console.log('App running on port 3000.'));

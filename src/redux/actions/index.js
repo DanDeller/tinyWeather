@@ -1,3 +1,11 @@
+export const FETCH_WEATHER = 'FETCH_WEATHER';
+
+function fetchWeather() {
+  return {
+    type: FETCH_WEATHER
+  }
+}
+
 export const setCity = city => ({
   type: 'SET_CITY',
   city
