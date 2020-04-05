@@ -1,10 +1,16 @@
-export const FETCH_WEATHER = 'FETCH_WEATHER';
+export const fetchProductsPending = () => ({
+  type: 'FETCH_PRODUCTS_PENDING'
+})
 
-function fetchWeather() {
-  return {
-    type: FETCH_WEATHER
-  }
-}
+export const fetchProductsSuccess = (products) => ({
+  type: 'FETCH_PRODUCTS_SUCCESS',
+  products: products
+})
+
+export const fetchProductsError = (error) => ({
+  type: 'FETCH_PRODUCTS_ERROR',
+  error: error
+})
 
 export const setCity = city => ({
   type: 'SET_CITY',

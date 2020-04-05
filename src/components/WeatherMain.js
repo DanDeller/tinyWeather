@@ -10,8 +10,10 @@ import Clouds from '../assets/videos/cloudy.mp4';
 import ThunderLightning from '../assets/videos/thunder-lightning.mp4';
 import Haze from '../assets/videos/haze.mp4';
 import Snow from '../assets/videos/snow.mp4';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import uuid from 'react-uuid';
+import fetchProductsAction from '../redux/actions/fetchProducts';
 import { 
   setCity, 
   recentCity, 
@@ -34,17 +36,8 @@ class WeatherMain extends React.Component {
   } 
 
   componentDidMount() {
-    fetch('/currentWeather', {
-      headers: {
-        Accept: 'application/json',
-      }
-    }).then((res) => {
-      return res.json();
-    }).then((data) => {
-      console.log(data);
-    }).catch((err) => {
-      console.log(err);
-    })
+    const {fetchProducts} = this.props;
+    // fetchProducts();
   }
 
   updateInputValue = (e) => {
@@ -187,7 +180,10 @@ const mapStateToProps = state => {
     recentCities: state.currentWeather.recentCities,
     cityDetails: state.currentWeather.cityDetails,
     isOpen: state.currentWeather.isOpen,
-    visible: state.currentWeather.visible
+    visible: state.currentWeather.visible,
+    error: state.currentWeather.error,
+    products: state.currentWeather.products,
+    pending: state.currentWeather.pending
   }
 }
 
@@ -196,6 +192,13 @@ const mapDispatchToProps = dispatch => {
     dispatch
   }
 }
+
+// const mapDispatchToProps = dispatch => bindActionCreators(
+//   {
+//     fetchProducts: fetchProductsAction
+//   },
+//   dispatch
+// )
 
 export default connect(
   mapStateToProps,

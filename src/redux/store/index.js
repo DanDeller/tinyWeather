@@ -3,6 +3,6 @@ import thunk from 'redux-thunk';
 import reducer from '../reducers';
 
 const middlewares = [thunk];
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 export default store;
