@@ -10,8 +10,10 @@ import Clouds from '../assets/videos/cloudy.mp4';
 import ThunderLightning from '../assets/videos/thunder-lightning.mp4';
 import Haze from '../assets/videos/haze.mp4';
 import Snow from '../assets/videos/snow.mp4';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import uuid from 'react-uuid';
+import fetchProductsAction from '../redux/actions/fetchProducts';
 import { 
   setCity, 
   recentCity, 
@@ -33,18 +35,10 @@ class WeatherMain extends React.Component {
     this.getWeather = this.getWeather.bind(this);
   } 
 
+  // testing react-thunk sample
+  // - pulls in data from /currentWeather
   componentDidMount() {
-    fetch('/currentWeather', {
-      headers: {
-        Accept: 'application/json',
-      }
-    }).then((res) => {
-      return res.json();
-    }).then((data) => {
-      console.log(data);
-    }).catch((err) => {
-      console.log(err);
-    })
+    this.props.dispatch(fetchProductsAction());
   }
 
   updateInputValue = (e) => {
@@ -187,7 +181,10 @@ const mapStateToProps = state => {
     recentCities: state.currentWeather.recentCities,
     cityDetails: state.currentWeather.cityDetails,
     isOpen: state.currentWeather.isOpen,
-    visible: state.currentWeather.visible
+    visible: state.currentWeather.visible,
+    error: state.currentWeather.error,
+    products: state.currentWeather.products,
+    pending: state.currentWeather.pending
   }
 }
 

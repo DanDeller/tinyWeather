@@ -1,12 +1,14 @@
-import {FETCH_WEATHER} from '../actions';
-
 const initCity = {
   setCity: '',
   setVideo: '',
   isOpen: true,
   visible: false,
   cityDetails: [],
-  recentCities: []
+  recentCities: [],
+  //-------------------
+  pending: false,
+  products: [],
+  error: null
 }
 
 const currentWeather = (state = initCity, action) => {
@@ -45,7 +47,24 @@ const currentWeather = (state = initCity, action) => {
             id: action.id,
             recentCity: action.recent_city
           }
-         ]
+        ]
+      }
+    case 'FETCH_PRODUCTS_PENDING':
+      return {
+        ...state,
+        pending: true
+      }
+    case 'FETCH_PRODUCTS_SUCCESS':
+      return {
+        ...state,
+        pending: false,
+        products: action.products
+      }
+    case 'FETCH_PRODUCTS_ERROR':
+      return {
+        ...state,
+        pending: false,
+        error: action.error
       }
     default:
       return state
