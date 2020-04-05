@@ -35,9 +35,10 @@ class WeatherMain extends React.Component {
     this.getWeather = this.getWeather.bind(this);
   } 
 
+  // testing react-thunk sample
+  // - pulls in data from /currentWeather
   componentDidMount() {
-    const {fetchProducts} = this.props;
-    // fetchProducts();
+    this.props.dispatch(fetchProductsAction());
   }
 
   updateInputValue = (e) => {
@@ -192,13 +193,6 @@ const mapDispatchToProps = dispatch => {
     dispatch
   }
 }
-
-// const mapDispatchToProps = dispatch => bindActionCreators(
-//   {
-//     fetchProducts: fetchProductsAction
-//   },
-//   dispatch
-// )
 
 export default connect(
   mapStateToProps,

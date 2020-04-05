@@ -1,17 +1,4 @@
-export const fetchProductsPending = () => ({
-  type: 'FETCH_PRODUCTS_PENDING'
-})
-
-export const fetchProductsSuccess = (products) => ({
-  type: 'FETCH_PRODUCTS_SUCCESS',
-  products: products
-})
-
-export const fetchProductsError = (error) => ({
-  type: 'FETCH_PRODUCTS_ERROR',
-  error: error
-})
-
+// currentWeather actions
 export const setCity = city => ({
   type: 'SET_CITY',
   city
@@ -43,7 +30,24 @@ export const setVideo = video => ({
   video
 });
 
+// fiveDayForecast actions
 export const prevCity = prevCity => ({
   type: 'PREV_CITY',
   prevCity
+});
+
+// React Thunk action related items
+// - imported into fetchProducts.js
+export const fetchProductsPending = () => ({
+  type: 'FETCH_PRODUCTS_PENDING'
+});
+
+export const fetchProductsSuccess = (products) => ({
+  type: 'FETCH_PRODUCTS_SUCCESS',
+  products: products
+});
+
+export const fetchProductsError = (error) => ({
+  type: 'FETCH_PRODUCTS_ERROR',
+  error: error
 });
