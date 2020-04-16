@@ -2,7 +2,6 @@ import React from 'react';
 import style from '../assets/styles/style.less';
 import Moment from 'react-moment';
 import 'moment-timezone';
-import GoogleMapReact from 'google-map-react';
 import { connect } from 'react-redux';
 
 class FiveDayForecast extends React.Component {
@@ -41,8 +40,8 @@ class FiveDayForecast extends React.Component {
             });
             
             if (!dup) {
-              newData.push(o)
-            };
+              newData.push(o);
+            }
             
             return newData.splice(5);
           });

@@ -1,3 +1,5 @@
+require('@babel/register');
+
 const webpack              = require('webpack'),
       webpackHotMiddleware = require('webpack-hot-middleware'),
 			webpackMiddleware    = require('webpack-dev-middleware'),

@@ -10,7 +10,6 @@ import Clouds from '../assets/videos/cloudy.mp4';
 import ThunderLightning from '../assets/videos/thunder-lightning.mp4';
 import Haze from '../assets/videos/haze.mp4';
 import Snow from '../assets/videos/snow.mp4';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import uuid from 'react-uuid';
 import fetchProductsAction from '../redux/actions/fetchProducts';
@@ -134,7 +133,7 @@ class WeatherMain extends React.Component {
           effect="fadeInUp"
         >
           <div className={style.modal}>
-            <h2>We either can't find that city or you forgot to enter a city first.</h2>
+            <h2>We either cannot find that city or you forgot to enter a city first.</h2>
             <a href="#" onClick={this.closeModal}>Search Again?</a>
           </div>
         </Modal>
