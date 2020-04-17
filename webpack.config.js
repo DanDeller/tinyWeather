@@ -1,8 +1,12 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin'),
-      webpack = require('webpack'),
-      path = require('path');
+import HtmlWebPackPlugin from 'html-webpack-plugin';
+import webpack from 'webpack';
+import path from 'path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-module.exports = {
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+export default {
   mode: 'development',
   entry: [
     'webpack-hot-middleware/client?reload=true',

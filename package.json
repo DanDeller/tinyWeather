@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "type": "module",
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/fileMock.js",
@@ -10,7 +11,7 @@
     }
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --hot --inline --content-base=dist --history-api-fallback --open --port 3000",
+    "start": "webpack-dev-server --exec babel-node --mode development --hot --inline --content-base=dist --history-api-fallback --open --port 3000",
     "build": "webpack --mode production",
     "pretest": "eslint --ignore-path .gitignore .",
     "test": "jest",
@@ -52,16 +53,18 @@
     "require-dir": "^1.2.0",
     "rethinkdb": "^2.4.2",
     "style-loader": "^0.21.0",
+    "url": "^0.11.0",
     "url-loader": "^1.1.2",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-jest": "^23.4.2",
+    "babel-loader": "^8.0.0",
     "css-loader": "^0.28.11",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
