@@ -325,26 +325,22 @@ p, h1, ul {
   transition: opacity 3000ms ease-in;
 }
 
-
-
-
 .todoList {
-    li {
-        color: green;
-        
-        &.false {
-            color: red;
-        }
+  li {
+    color: green;
+    &.false {
+      color: red;
     }
+  }
 }
 
 .todoList-item-enter {
-    transform: translateY(15px);
-    opacity: 0;
-    transition: all 350ms ease-out;
+  transform: translateY(15px);
+  opacity: 0;
+  transition: all 350ms ease-out;
 }
 
 .todoList-item-enter-active {
-    transform: translateY(0);
-    opacity: 1;
+  transform: translateY(0);
+  opacity: 1;
 }
