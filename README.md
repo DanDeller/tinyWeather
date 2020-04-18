@@ -19,8 +19,10 @@ A quick little weather app.
   <li>Start the app - docker-compose up</li>
 </ul>
 
+<h2>Run ESLint</h2>
+<pre>npm test</pre>
+
 <h2>Test the app</h2>
-<p>tinyWeather can be tested with jest</p>
 <pre>npm test</pre>
 
 <h2>Useful Docker commands</h2>
