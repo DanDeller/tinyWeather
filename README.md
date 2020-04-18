@@ -36,11 +36,11 @@ A quick little weather app.
 <p>Delete containers that are still running:</p>
 <pre>docker stop $(docker ps -a -q) docker rm $(docker ps -a -q)</pre>
 
-<p>Delete images</p>
+<p>Delete images:</p>
 <pre>docker rmi 'image-id'</pre>
 
-<p>Delete all images</p>
+<p>Delete all images:</p>
 <pre>docker rmi $(docker images -q)</pre>
 
-<p>Delete all images</p>
+<p>Delete all images:</p>
 <pre>docker rmi -f $(docker images -q)</pre>
