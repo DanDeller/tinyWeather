@@ -3,6 +3,7 @@ import style from '../assets/styles/style.less';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class FiveDayForecast extends React.Component {
   constructor(props) {
@@ -90,5 +91,9 @@ const mapStateToProps = state => {
     city: state.currentWeather.setCity
   }
 }
+
+FiveDayForecast.propTypes = {
+  city: PropTypes.any
+};
 
 export default connect(mapStateToProps)(FiveDayForecast);

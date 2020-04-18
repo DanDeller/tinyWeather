@@ -1,5 +1,6 @@
 import React from 'react';
 import style from '../assets/styles/style.less';
+import PropTypes from 'prop-types';
 
 class WeatherList extends React.Component {
   render() {
@@ -19,5 +20,10 @@ class WeatherList extends React.Component {
     );
   }
 }
+
+WeatherList.propTypes = {
+  'cityDetails': PropTypes.any,
+  'isOpen': PropTypes.any  
+};
 
 export default WeatherList;

@@ -1,7 +1,7 @@
-const config = require('../../server.config.js'),
-      r      = require('rethinkdb');
+import config from '../../server.config.js';
+import r from 'rethinkdb';
 
-module.exports = {
+export default {
   connect: function(cb) {
     r.connect({
       db: config.db.name,

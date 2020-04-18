@@ -13,6 +13,7 @@ import Snow from '../assets/videos/snow.mp4';
 import { connect } from 'react-redux';
 import uuid from 'react-uuid';
 import fetchProductsAction from '../redux/actions/fetchProducts';
+import PropTypes from 'prop-types';
 import { 
   setCity, 
   recentCity, 
@@ -192,6 +193,16 @@ const mapDispatchToProps = dispatch => {
     dispatch
   }
 }
+
+WeatherMain.propTypes = {
+  'recentCities': PropTypes.any,
+  'cityDetails': PropTypes.any,
+  'setVideo': PropTypes.any,
+  'dispatch': PropTypes.any,
+  'visible': PropTypes.any,
+  'isOpen': PropTypes.any,
+  'city': PropTypes.any
+};
 
 export default connect(
   mapStateToProps,

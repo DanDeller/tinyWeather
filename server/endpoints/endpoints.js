@@ -1,12 +1,13 @@
-const currentWeather = require('../models/currentWeather'),
-			express        = require('express'),
-			router         = express.Router();
+import currentWeather from '../models/currentWeather.js';
+import express from 'express';
 
-export default router.get('/currentWeather', (req, res) => {
+const router = express.Router();
+
+router.get('/currentWeather', (req, res) => {
 	currentWeather.list((error, response) => {
 		if (error) return res.end();
 		return res.send(response);
 	});
 });
 
-// export default router;
+export default router;

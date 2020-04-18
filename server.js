@@ -7,14 +7,13 @@ import config from './webpack.config.js';
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import lodash from 'lodash';
-
-// import endpoints from './server/endpoints.js';
+// import lodash from 'lodash';
+import endpoints from './server/endpoints/endpoints.js';
 
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const isDeveloping = process.env.NODE_ENV !== 'production';
-const { each } = lodash;
+// const { each } = lodash;
 
 if (isDeveloping) {
   const compiler = webpack(config);
@@ -46,7 +45,16 @@ if (isDeveloping) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-// _.each(endpoints, (name) => {
+// this works
+// app.get('/currentWeather', (req, res) => {
+//   res.send('dafuq?');
+// });
+
+// this does not work
+app.use('/currentWeather', endpoints);
+
+// this is the old working code
+// each(endpoints, (name) => {
 //   app.use(name);
 // });
 

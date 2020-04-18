@@ -1,5 +1,6 @@
 import React from 'react';
 import style from '../assets/styles/style.less';
+import PropTypes from 'prop-types';
 
 class Sidebar extends React.Component {
   render() {
@@ -17,5 +18,9 @@ class Sidebar extends React.Component {
     );
   }
 }
+
+Sidebar.propTypes = {
+  recentCities: PropTypes.any
+};
 
 export default Sidebar;

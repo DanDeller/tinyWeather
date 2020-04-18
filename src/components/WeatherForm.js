@@ -1,5 +1,6 @@
 import React from 'react';
 import style from '../assets/styles/style.less';
+import PropTypes from 'prop-types';
 
 class WeatherForm extends React.Component {
   constructor(props) {
@@ -46,5 +47,13 @@ class WeatherForm extends React.Component {
     );
   }
 }
+
+WeatherForm.propTypes = {
+  updateInputValue: PropTypes.any,
+  passRefUpward: PropTypes.any,
+  resetSearch: PropTypes.any,
+  getWeather: PropTypes.any,
+  isOpen: PropTypes.any
+};
 
 export default WeatherForm;
