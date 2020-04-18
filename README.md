@@ -11,7 +11,7 @@ A quick little weather app.
   <li>RethinkDB - https://rethinkdb.com/docs/install/</li>
 </ul>
 
-> NOTE: ...
+> NOTE: If you just want a quick demo of the app but don't already have Docker or RethinkDB installed, no problem. Clone the repo. Once cloned, go ahead and cd into the project. From here run git reset --hard b33ebcdc567488a197ea5575fa7c05b87b1c1337. This will give you a copy of the app using commonJS with require(s). After this run yarn/npm i and then simply start that app with npm start.
 
 <h2>How to use:</h2>
 <ul>
