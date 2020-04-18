@@ -22,3 +22,25 @@ A quick little weather app.
 <h2>Test the app</h2>
 <p>tinyWeather can be tested with jest</p>
 <pre>npm test</pre>
+
+<h2>Useful Docker commands</h2>
+<p><Check all containers:</p>
+<pre>docker ps -a</pre>
+
+<p>Check all images:</p>
+<pre>docker images</pre>
+
+<p>Delete containers that are not running:</p>
+<pre>docker rm $(docker ps -a -q)</pre>
+
+<p>Delete containers that are still running:</p>
+<pre>docker stop $(docker ps -a -q) docker rm $(docker ps -a -q)</pre>
+
+<p>Delete images</p>
+<pre>docker rmi 'image-id'</pre>
+
+<p>Delete all images</p>
+<pre>docker rmi $(docker images -q)</pre>
+
+<p>Delete all images</p>
+<pre>docker rmi -f $(docker images -q)</pre>
