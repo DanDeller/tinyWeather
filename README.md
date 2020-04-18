@@ -15,8 +15,7 @@ A quick little weather app.
 <ul>
   <li>Make sure Docker and RethinkDB are installed</li>
   <li>Clone the repo</li>
-  <li>Build the app - docker-compose build</li>
-  <li>Start the app - docker-compose up</li>
+  <li>Build and start the app - docker-compose up --build</li>
 </ul>
 
 <h2>Run ESLint</h2>
