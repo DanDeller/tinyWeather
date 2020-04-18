@@ -26,7 +26,7 @@ A quick little weather app.
 <pre>npm test</pre>
 
 <h2>Useful Docker commands</h2>
-<p><Check all containers:</p>
+<p>Check all containers:</p>
 <pre>docker ps -a</pre>
 
 <p>Check all images:</p>
