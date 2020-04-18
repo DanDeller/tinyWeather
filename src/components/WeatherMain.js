@@ -195,13 +195,13 @@ const mapDispatchToProps = dispatch => {
 }
 
 WeatherMain.propTypes = {
-  'recentCities': PropTypes.any,
-  'cityDetails': PropTypes.any,
-  'setVideo': PropTypes.any,
-  'dispatch': PropTypes.any,
-  'visible': PropTypes.any,
-  'isOpen': PropTypes.any,
-  'city': PropTypes.any
+  'recentCities': PropTypes.array,
+  'cityDetails': PropTypes.array,
+  'setVideo': PropTypes.string,
+  'dispatch': PropTypes.func,
+  'visible': PropTypes.bool,
+  'isOpen': PropTypes.bool,
+  'city': PropTypes.string
 };
 
 export default connect(

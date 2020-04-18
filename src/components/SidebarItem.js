@@ -1,7 +1,5 @@
 import React from 'react';
-import style from '../assets/styles/style.less';
 import PropTypes from 'prop-types';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 class SidebarItem extends React.Component {
   constructor() {
@@ -20,5 +18,9 @@ class SidebarItem extends React.Component {
     );
   }
 }
+
+SidebarItem.propTypes = {
+  city: PropTypes.object
+};
 
 export default SidebarItem;

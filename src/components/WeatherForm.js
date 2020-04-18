@@ -49,11 +49,11 @@ class WeatherForm extends React.Component {
 }
 
 WeatherForm.propTypes = {
-  updateInputValue: PropTypes.any,
-  passRefUpward: PropTypes.any,
-  resetSearch: PropTypes.any,
-  getWeather: PropTypes.any,
-  isOpen: PropTypes.any
+  updateInputValue: PropTypes.func,
+  passRefUpward: PropTypes.func,
+  resetSearch: PropTypes.func,
+  getWeather: PropTypes.func,
+  isOpen: PropTypes.bool
 };
 
 export default WeatherForm;

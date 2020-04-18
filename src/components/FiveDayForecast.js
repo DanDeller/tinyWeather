@@ -4,8 +4,6 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import ReactCSSTransitionGroup from 'react-transition-group';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 class FiveDayForecast extends React.Component {
   constructor(props) {
@@ -62,18 +60,16 @@ class FiveDayForecast extends React.Component {
   render() {
     const forgotCity = !this.props.city.length ? style.show : '';
     const days = this.state.days.map((day, i) => (
-      <CSSTransition key={i} timeout={500} classNames="move">
-        <div className={style.day} key={i}>
-          <p>
-            <Moment format="dddd">
-              {day.dt_txt.split(' ')[0]}
-            </Moment>
-            <span>{day.dt_txt.split(' ')[0]}</span>  
-          </p>
-          <p>{day.main.temp.toFixed(0)}</p>
-          <p>{day.weather[0].description[0].toUpperCase() + day.weather[0].description.substring(1)}</p>
-        </div>
-      </CSSTransition>
+      <div className={style.day} key={i}>
+        <p>
+          <Moment format="dddd">
+            {day.dt_txt.split(' ')[0]}
+          </Moment>
+          <span>{day.dt_txt.split(' ')[0]}</span>  
+        </p>
+        <p>{day.main.temp.toFixed(0)}</p>
+        <p>{day.weather[0].description[0].toUpperCase() + day.weather[0].description.substring(1)}</p>
+      </div>
     ))
 
     return (
@@ -82,9 +78,7 @@ class FiveDayForecast extends React.Component {
           <h2 className={style.pageHeader}>Forecast for the next five days</h2>
           <div className={style.dayHold}>
             <h3 className={style.hide + ' ' + style.forgotCity + ' ' + forgotCity}>Go lookup a city first!</h3>
-            <TransitionGroup className="items-section__list">
-              {days}
-            </TransitionGroup>
+            {days}
           </div>
         </div>
       </section>
@@ -99,7 +93,7 @@ const mapStateToProps = state => {
 }
 
 FiveDayForecast.propTypes = {
-  city: PropTypes.any
+  city: PropTypes.string
 };
 
 export default connect(mapStateToProps)(FiveDayForecast);

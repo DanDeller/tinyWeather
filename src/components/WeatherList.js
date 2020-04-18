@@ -22,8 +22,8 @@ class WeatherList extends React.Component {
 }
 
 WeatherList.propTypes = {
-  'cityDetails': PropTypes.any,
-  'isOpen': PropTypes.any  
+  'cityDetails': PropTypes.array,
+  'isOpen': PropTypes.bool 
 };
 
 export default WeatherList;

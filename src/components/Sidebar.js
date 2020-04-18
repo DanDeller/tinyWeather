@@ -8,7 +8,7 @@ class Sidebar extends React.Component {
   render() {
     const getRecentCities = this.props.recentCities.map((city, i) => (
       <SidebarItem key={i} city={city} />
-    ));  
+    ));
 
     return (
       <aside className={style.sideBar}>
@@ -22,7 +22,7 @@ class Sidebar extends React.Component {
 }
 
 Sidebar.propTypes = {
-  recentCities: PropTypes.any
+  recentCities: PropTypes.array
 };
 
 export default Sidebar;
