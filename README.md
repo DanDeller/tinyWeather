@@ -11,6 +11,8 @@ A quick little weather app.
   <li>RethinkDB - https://rethinkdb.com/docs/install/</li>
 </ul>
 
+> NOTE: ...
+
 <h2>How to use:</h2>
 <ul>
   <li>Make sure Docker and RethinkDB are installed</li>
