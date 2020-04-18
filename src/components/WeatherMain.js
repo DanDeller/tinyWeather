@@ -37,9 +37,9 @@ class WeatherMain extends React.Component {
 
   // testing react-thunk sample
   // - pulls in data from /currentWeather
-  componentDidMount() {
-    this.props.dispatch(fetchProductsAction());
-  }
+  // componentDidMount() {
+  //   this.props.dispatch(fetchProductsAction());
+  // }
 
   updateInputValue = (e) => {
     this.props.dispatch(setCity(e.target.value));

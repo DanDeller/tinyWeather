@@ -42,11 +42,20 @@ export default {
             loader: 'html-loader?attrs[]=video:src'
           }
         ]
-      }, {
+      }, 
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+      {
         test: /\.less$/,
         use: [
           {
-            loader: "style-loader"
+             loader: 'style-loader' 
           },
           {
             loader: "css-loader",
@@ -56,14 +65,16 @@ export default {
               localIdentName: "[name]__[local]___[hash:base64:5]"
             }
           },
-          {
-            loader: "less-loader"
+          { 
+            loader: 'less-loader' 
           }
         ]
-      }, {
+      }, 
+      {
         test: /\.mp4$/,
         use: 'file-loader?name=videos/[name].[ext]',
-      }, {
+      }, 
+      {
         test: /\.(ttf|eot|svg|gif|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: [{
           loader: 'file-loader'

@@ -184,9 +184,13 @@ p, h1, ul {
 .sideBar {
   margin: 0;
   padding: 0 10px;
+  color: #fff;
   h3 {
     color: #000;
     margin: 0 0 15px 0;
+  }
+  div {
+    color: #4c4c4c;
   }
   ul {
     margin: 0;
@@ -278,4 +282,69 @@ p, h1, ul {
     margin: 0 15px;
     width: 6%;
   }
+}
+
+
+.move-enter {
+  opacity: 0.01;
+  transform: translate(-400px, 0)
+}
+
+.move-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition: all 5000ms ease-in;
+}
+
+.move-exit {
+  opacity: 1;
+  transform: translate(0, 0)
+}
+
+.move-exit-active {
+  opacity: 0.01;
+  transform: translate(400px, 0);
+  transition: all 5000ms ease-in;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 5000ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 3000ms ease-in;
+}
+
+
+
+
+.todoList {
+    li {
+        color: green;
+        
+        &.false {
+            color: red;
+        }
+    }
+}
+
+.todoList-item-enter {
+    transform: translateY(15px);
+    opacity: 0;
+    transition: all 350ms ease-out;
+}
+
+.todoList-item-enter-active {
+    transform: translateY(0);
+    opacity: 1;
 }
