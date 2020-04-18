@@ -20,7 +20,7 @@ A quick little weather app.
 </ul>
 
 <h2>Run ESLint</h2>
-<pre>npm test</pre>
+<pre>npm run pretest</pre>
 
 <h2>Test the app</h2>
 <pre>npm test</pre>
