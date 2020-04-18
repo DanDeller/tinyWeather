@@ -14,6 +14,7 @@
     "SharedArrayBuffer": "readonly"
   },
   "parserOptions": {
+    "version": "latest",
     "ecmaFeatures": {
       "jsx": true
     },
@@ -23,6 +24,23 @@
   "plugins": [
     "react"
   ],
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",      
+      "version": "latest",
+      "flowVersion": "0.53"
+    },
+    "propWrapperFunctions": [
+      "forbidExtraProps",
+      {"property": "freeze", "object": "Object"},
+      {"property": "myFavoriteWrapper"}
+    ],
+    "linkComponents": [
+      "Hyperlink",
+      {"name": "Link", "linkAttribute": "to"}
+    ]
+  },
   "rules": {
     "no-mixed-spaces-and-tabs": 0,
     "react/no-direct-mutation-state": 1
