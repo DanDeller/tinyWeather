@@ -46,5 +46,5 @@ A quick little weather app.
 <p>Delete all images:</p>
 <pre>docker rmi $(docker images -q)</pre>
 
-<p>Delete all images:</p>
+<p>Force delete images:</p>
 <pre>docker rmi -f $(docker images -q)</pre>
