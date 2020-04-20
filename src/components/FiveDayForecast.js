@@ -25,25 +25,15 @@ class FiveDayForecast extends React.Component {
       }).then((data) => {
         const newData = [],
               set     = data;
-        
-        /*
-        * NOTE: Openweathermap returns 40 objects. Each day is broken up into 3 hour chunks.
-        * Map over the response and remove duplicate items and just use the first
-        * entry starting at 00:00:00
-        */
+
         if (set.list) {
           set.list.map((o) => {
-            const dup = newData.find((f) => {
-              const splitO = o.dt_txt.split(' ')[0],
-                    splitF = f.dt_txt.split(' ')[0];
-              
-              return splitO === splitF;
-            });
+            const date = o.dt_txt.split(' ')[1];
             
-            if (!dup) {
+            if (date === '15:00:00') {
               newData.push(o);
             }
-            
+
             return newData.splice(5);
           });
 

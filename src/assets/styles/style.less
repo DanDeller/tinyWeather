@@ -285,62 +285,56 @@ p, h1, ul {
 }
 
 
-.move-enter {
-  opacity: 0.01;
-  transform: translate(-400px, 0)
-}
 
-.move-enter-active {
-  opacity: 1;
-  transform: translate(0, 0);
-  transition: all 5000ms ease-in;
-}
 
-.move-exit {
-  opacity: 1;
-  transform: translate(0, 0)
-}
 
-.move-exit-active {
-  opacity: 0.01;
-  transform: translate(400px, 0);
-  transition: all 5000ms ease-in;
-}
 
-.example-enter {
-  opacity: 0.01;
-}
 
-.example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 5000ms ease-in;
+.animation-container {
+  display: inline-block;
 }
-
-.example-leave {
-  opacity: 1;
-}
-
-.example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 3000ms ease-in;
-}
-
-.todoList {
-  li {
-    color: green;
-    &.false {
-      color: red;
-    }
+.item {
+  background-color: #ccc;
+  width: 400px;
+  text-align: center;
+  padding: 10px 5px;
+  margin-top: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  
+  &:hover {
+    cursor: pointer;
   }
 }
-
-.todoList-item-enter {
-  transform: translateY(15px);
-  opacity: 0;
-  transition: all 350ms ease-out;
+.example-enter {
+    opacity: 0;
+    transform:   translate(-250px,0);
+    transform: translate3d(-250px,0,0);
 }
-
-.todoList-item-enter-active {
-  transform: translateY(0);
+.example-enter.example-enter-active {
   opacity: 1;
+  transition: opacity 1s ease;
+  transform:   translate(0,0);
+  transform: translate3d(0,0,0);
+  transition-property: transform, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
 }
+.example-leave {
+  opacity: 1;
+  transform:   translate(0,0,0);
+  transform: translate3d(0,0,0);
+  transition-property: transform, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+}
+.example-leave.example-leave-active {
+  opacity: 0;
+  transform:   translate(250px,0);
+  transform: translate3d(250px,0,0);
+}
+
+
+
+
+
