@@ -1,12 +1,8 @@
-import HtmlWebPackPlugin from 'html-webpack-plugin';
-import webpack from 'webpack';
-import path from 'path';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+const HtmlWebPackPlugin = require('html-webpack-plugin'),
+      webpack = require('webpack'),
+      path = require('path');
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-export default {
+module.exports = {
   mode: 'development',
   entry: [
     'webpack-hot-middleware/client?reload=true',
@@ -42,20 +38,11 @@ export default {
             loader: 'html-loader?attrs[]=video:src'
           }
         ]
-      }, 
-      {
-        test: /\.s[ac]ss$/i,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
-      },
-      {
+      }, {
         test: /\.less$/,
         use: [
           {
-             loader: 'style-loader' 
+            loader: "style-loader"
           },
           {
             loader: "css-loader",
@@ -65,16 +52,14 @@ export default {
               localIdentName: "[name]__[local]___[hash:base64:5]"
             }
           },
-          { 
-            loader: 'less-loader' 
+          {
+            loader: "less-loader"
           }
         ]
-      }, 
-      {
+      }, {
         test: /\.mp4$/,
         use: 'file-loader?name=videos/[name].[ext]',
-      }, 
-      {
+      }, {
         test: /\.(ttf|eot|svg|gif|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: [{
           loader: 'file-loader'

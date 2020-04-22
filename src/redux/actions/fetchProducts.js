@@ -4,7 +4,7 @@ import {
   fetchProductsError
 } from '../actions';
 
-function fetchProducts() {
+const fetchProducts = () => {
   return dispatch => {
     dispatch(fetchProductsPending());
     fetch('/currentWeather')

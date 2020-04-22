@@ -1,7 +1,6 @@
 import React from 'react';
 import style from '../assets/styles/style.less';
 import PropTypes from 'prop-types';
-import { Transition } from 'react-transition-group';
 import SidebarItem from './SidebarItem.js';
 
 class Sidebar extends React.Component {

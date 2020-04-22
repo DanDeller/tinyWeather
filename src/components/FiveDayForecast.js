@@ -30,6 +30,10 @@ class FiveDayForecast extends React.Component {
           set.list.map((o) => {
             const date = o.dt_txt.split(' ')[1];
             
+            /*
+            * Days are returned in 3 hour increments
+            * Grab objects that match '15:00:00' 
+            */
             if (date === '15:00:00') {
               newData.push(o);
             }

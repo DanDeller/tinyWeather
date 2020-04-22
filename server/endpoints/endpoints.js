@@ -1,7 +1,6 @@
-import currentWeather from '../models/currentWeather.js';
-import express from 'express';
-
-const router = express.Router();
+const currentWeather = require('../models/currentWeather'),
+			express        = require('express'),
+			router         = express.Router();
 
 router.get('/currentWeather', (req, res) => {
 	currentWeather.list((error, response) => {
@@ -10,4 +9,4 @@ router.get('/currentWeather', (req, res) => {
 	});
 });
 
-export default router;
+module.exports = router;
