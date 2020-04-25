@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-class SidebarItem extends React.Component {
-  constructor() {
-    super();
-    this.state = {completed: false};
+const SidebarItem = (props) => {
+  const [recentCity, toggleCity] = useState({
+    completed: false
+  });
+
+  const toggle = () => {
+    toggleCity({
+      completed: !recentCity.completed
+    })
   }
 
-  toggle() {
-    this.setState({completed: !this.state.completed });
-  }
+  const city = props.city;
 
-  render() {
-    const city = this.props.city;
-    return (
-      <li className={this.state.completed ? 1 : 0} onClick={this.toggle.bind(this)}>{city.recentCity}</li>
-    );
-  }
+  return (
+    <li className={recentCity.completed ? 1 : 0} onClick={() => toggle()}>{city.recentCity}</li>
+  );
 }
 
 SidebarItem.propTypes = {
