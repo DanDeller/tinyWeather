@@ -4,10 +4,10 @@ const config = require('../server.config.js'),
 
 exports.setDatabaseAndTables = () => {
 	async.waterfall([
-    connect = (callback) => {
+    function connec(callback) {
       r.connect(config.db, callback);
     },
-    createDatabase = (connection, callback) => {
+    function createDatabase(connection, callback) {
       r.dbList().contains(config.db.name).do((containsDb) => {
         return r.branch(
           containsDb,
@@ -18,7 +18,7 @@ exports.setDatabaseAndTables = () => {
         callback(err, connection);
       });
     },
-    createTable = (connection, callback) => {
+    function createTable(connection, callback) {
       r.db('tinyWeather').tableList().contains('currentWeather').do((containsTable) => {
         return r.branch(
           containsTable,
@@ -29,7 +29,7 @@ exports.setDatabaseAndTables = () => {
         callback(err, connection);
       });
     },
-    createIndex = (connection, callback) => {
+    function createIndex(connection, callback) {
       r.db('tinyWeather').table('currentWeather').indexList().contains('createdAt').do((hasIndex) => {
         return r.branch(
           hasIndex,
@@ -40,12 +40,12 @@ exports.setDatabaseAndTables = () => {
         callback(err, connection);
       });
     },
-    waitForIndex = (connection, callback) => {
-      r.db('tinyWeather').table('currentWeather').indexWait('createdAt').run(connection, (err, result) => {
+    function waitForIndex(connection, callback) {
+      r.db('tinyWeather').table('currentWeather').indexWait('createdAt').run(connection, (err) => {
         callback(err, connection);
       });
     }
-  ], (err, connection) => {
+  ], (err) => {
     if(err) {
       console.error(err);
       process.exit(1);
