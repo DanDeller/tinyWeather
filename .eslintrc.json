@@ -42,7 +42,7 @@
     ]
   },
   "rules": {
-    "no-mixed-spaces-and-tabs": 0,
-    "react/no-direct-mutation-state": 1
+    "no-mixed-spaces-and-tabs": 0
+    // "react/no-direct-mutation-state": 1
   }
 }

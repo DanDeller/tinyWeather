@@ -46,7 +46,8 @@ class WeatherMain extends React.Component {
   } // end updateInputValue()
 
   resetSearch = () => {
-    this.state.myRefs.current.value = '';
+    const refs = {...this.state.myRefs};
+    refs.current.value = '';
     this.props.dispatch(isOpen(true));
     this.props.dispatch(setVideo(''));
     this.props.dispatch(setCity(''));
@@ -54,7 +55,8 @@ class WeatherMain extends React.Component {
 
   closeModal = (e) => {
     e.preventDefault();
-    this.state.myRefs.current.value = '';
+    const refs = {...this.state.myRefs};
+    refs.current.value = '';
     this.props.dispatch(visible(false));
     this.props.dispatch(setCity(''));
   } // end closeModal()

@@ -12,7 +12,7 @@ const Sidebar = (props) => {
     <aside className={style.sideBar}>
       <h3>Recently Searched Cities:</h3>
       <ul>
-      {getRecentCities}
+        {getRecentCities}
       </ul>
     </aside>
   );
