@@ -6,10 +6,13 @@ const webpack              = require('webpack'),
       requireDir           = require('require-dir'),
       endpoints            = requireDir('./server/endpoints'),
       express              = require('express'),
+      dbData               = require('./server/db.js'),
       config               = require('./webpack.config.js'),
       path                 = require('path'),
       app                  = express(),
       _                    = require('lodash');
+
+dbData.setDatabaseAndTables();
 
 if (isDeveloping) {
   const compiler = webpack(config);
