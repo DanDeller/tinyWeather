@@ -1,5 +1,5 @@
-  const config = require('../../server.config.js'),
-        r      = require('rethinkdb');
+const config = require('../../server.config.js'),
+      r      = require('rethinkdb');
 
 module.exports = {
   connect: function(cb) {
