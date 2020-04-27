@@ -4,6 +4,7 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import WeatherIcons from './WeatherIcons';
 
 class FiveDayForecast extends React.Component {
   constructor(props) {
@@ -75,10 +76,7 @@ class FiveDayForecast extends React.Component {
             {days}
           </div>
         </div>
-        <img className={style.weatherIcon + ' ' + style.rain} src={require('../assets/img/rainy.png')} />
-        <img className={style.weatherIcon + ' ' + style.sun} src={require('../assets/img/sunny.png')} />
-        <img className={style.weatherIcon + ' ' + style.snow} src={require('../assets/img/snow.png')} />
-        <img className={style.weatherIcon + ' ' + style.thunder} src={require('../assets/img/thunder.png')} />
+        <WeatherIcons animate={false} />
       </section>
     );
   }
