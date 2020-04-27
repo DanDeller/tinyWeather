@@ -30,24 +30,34 @@ export const setVideo = video => ({
   video
 });
 
-// fiveDayForecast actions
-export const prevCity = prevCity => ({
-  type: 'PREV_CITY',
-  prevCity
+// fetchRecentCities.js 
+// - imported into fetchRecentCities.js
+export const fetchRecentCitiesPending = () => ({
+  type: 'FETCH_RECENTCITIES_PENDING'
 });
 
-// React Thunk action related items
-// - imported into fetchProducts.js
-export const fetchProductsPending = () => ({
-  type: 'FETCH_PRODUCTS_PENDING'
-});
-
-export const fetchProductsSuccess = (products) => ({
-  type: 'FETCH_PRODUCTS_SUCCESS',
+export const fetchRecentCitiesSuccess = (products) => ({
+  type: 'FETCH_RECENTCITIES_SUCCESS',
   products: products
 });
 
-export const fetchProductsError = (error) => ({
-  type: 'FETCH_PRODUCTS_ERROR',
+export const fetchRecentCitiesError = (error) => ({
+  type: 'FETCH_RECENTCITIES_ERROR',
+  error: error
+});
+
+// postRecentCities.js 
+// - imported into postRecentCities.js
+export const postRecentCitiesPending = () => ({
+  type: 'POST_RECENTCITIES_PENDING'
+});
+
+export const postRecentCitiesSuccess = (products) => ({
+  type: 'POST_RECENTCITIES_SUCCESS',
+  products: products
+});
+
+export const postRecentCitiesError = (error) => ({
+  type: 'POST_RECENTCITIES_ERROR',
   error: error
 });

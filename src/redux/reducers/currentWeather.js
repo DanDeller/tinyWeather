@@ -5,10 +5,9 @@ const initCity = {
   visible: false,
   cityDetails: [],
   recentCities: [],
-  //-------------------
-  pending: false,
-  products: [],
-  error: null
+  fetchPending: false,
+  fetchRecentCities: [],
+  fetchError: null
 }
 
 const currentWeather = (state = initCity, action) => {
@@ -49,22 +48,22 @@ const currentWeather = (state = initCity, action) => {
           }
         ]
       }
-    case 'FETCH_PRODUCTS_PENDING':
+    case 'FETCH_RECENTCITIES_PENDING':
       return {
         ...state,
-        pending: true
+        fetchPending: true
       }
-    case 'FETCH_PRODUCTS_SUCCESS':
+    case 'FETCH_RECENTCITIES_SUCCESS':
       return {
         ...state,
-        pending: false,
-        products: action.products
+        fetchPending: false,
+        fetchRecentCities: action.products
       }
-    case 'FETCH_PRODUCTS_ERROR':
+    case 'FETCH_RECENTCITIES_ERROR':
       return {
         ...state,
-        pending: false,
-        error: action.error
+        fetchPending: false,
+        fetchPrror: action.error
       }
     default:
       return state

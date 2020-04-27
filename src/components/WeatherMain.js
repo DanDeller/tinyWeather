@@ -12,7 +12,7 @@ import Haze from '../assets/videos/haze.mp4';
 import Snow from '../assets/videos/snow.mp4';
 import { connect } from 'react-redux';
 import uuid from 'react-uuid';
-import fetchProductsAction from '../redux/actions/fetchProducts';
+import fetchProductsAction from '../redux/actions/fetchRecentCities';
 import PropTypes from 'prop-types';
 import { 
   setCity, 
@@ -171,6 +171,10 @@ class WeatherMain extends React.Component {
             <div className={style.clear}></div>
           </div>
         </div>
+        <img className={style.weatherIcon + ' ' + style.rain} src={require('../assets/img/rainy.png')} />
+        <img className={style.weatherIcon + ' ' + style.sun} src={require('../assets/img/sunny.png')} />
+        <img className={style.weatherIcon + ' ' + style.snow} src={require('../assets/img/snow.png')} />
+        <img className={style.weatherIcon + ' ' + style.thunder} src={require('../assets/img/thunder.png')} />
       </section>
     );
   }
@@ -184,9 +188,9 @@ const mapStateToProps = state => {
     cityDetails: state.currentWeather.cityDetails,
     isOpen: state.currentWeather.isOpen,
     visible: state.currentWeather.visible,
-    error: state.currentWeather.error,
-    products: state.currentWeather.products,
-    pending: state.currentWeather.pending
+    fetchError: state.currentWeather.error,
+    fetchRecentCities: state.currentWeather.products,
+    fetchPending: state.currentWeather.pending
   }
 }
 

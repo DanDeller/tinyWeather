@@ -75,6 +75,10 @@ class FiveDayForecast extends React.Component {
             {days}
           </div>
         </div>
+        <img className={style.weatherIcon + ' ' + style.rain} src={require('../assets/img/rainy.png')} />
+        <img className={style.weatherIcon + ' ' + style.sun} src={require('../assets/img/sunny.png')} />
+        <img className={style.weatherIcon + ' ' + style.snow} src={require('../assets/img/snow.png')} />
+        <img className={style.weatherIcon + ' ' + style.thunder} src={require('../assets/img/thunder.png')} />
       </section>
     );
   }

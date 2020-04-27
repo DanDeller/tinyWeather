@@ -28,5 +28,24 @@ module.exports = {
         return cb(err);
       });
     })
-  }
+  },
+  post: function(request, callback) {
+		const city = request.body;
+		this.connect((err, connection) => {
+      console.log(city);
+			if (err) return callback(err);
+      r.db(config.db.name).table('currentWeather')
+			.insert({
+				id: 'id',
+				city: 'city'
+			})
+			.run(connection)
+			.then((response) => {
+				return callback(null, response);
+			})
+			.error((error) => {
+				return callback(error);
+			});
+		});
+	}
 }

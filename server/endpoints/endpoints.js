@@ -9,4 +9,11 @@ router.get('/currentWeather', (req, res) => {
 	});
 });
 
+router.post('/currentWeather', (req, res) => {
+	currentWeather.post((error, response) => {
+		if (error) return res.end();
+		return res.send(response);
+	});
+});
+
 module.exports = router;

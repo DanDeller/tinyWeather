@@ -1,6 +1,8 @@
 /* FONTS */
 @import (css) url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 @import (css) url('https://fonts.googleapis.com/css?family=Encode+Sans+Condensed');
+@import (css) url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
 @heading: 'Roboto', sans-serif;
 @body: 'Encode Sans Condensed', sans-serif;
 
@@ -16,7 +18,7 @@ html, body {
 }
 
 body {
-  background: #f2f2f2;
+  background: #F45050;
   font-family: arial;
   margin: 0;
   padding: 0;
@@ -50,22 +52,40 @@ p, h1, ul {
 }
 
 .pageHeader {
+  color: #f2f2f2;
+  font-family: 'Bangers', cursive;
+  font-size: 32px;
+  letter-spacing: 2px;
   margin: 0 0 15px 0;
+  text-shadow: 0 1px 1px #7A2929;
+}
+
+.tagline {
+  color: #f2f2f2;
+  font-size: 18px;
+  text-shadow: 0 1px 1px #7A2929;
 }
 
 .header {
-  background: #fff;
+  background: #C44444;
   border-bottom: 1px solid #ccc;
   padding: 15px 0;
   nav {
+    display: flex;
+    justify-content: flex-start;
     li {
       display: inline;
       font-family: @heading;
       font-weight: 700;
       margin: 0 25px 0 0;
       a {
-        color: #242424;
+        color: #f2f2f2;
         text-decoration: none;
+        text-shadow: 0 1px 1px #7A2929;
+        transition: color .3s linear 0s;
+        &:hover {
+          color: #F16565;
+        }
       }
     }
   }
@@ -89,12 +109,12 @@ p, h1, ul {
     position: relative;
   }
   .weatherLeft {
-    background: rgba(142, 142, 142, .5);
+    background: rgba(0, 0, 0, .4);
     box-shadow: 0 0 3px 0 #4c4c4c;
     overflow: hidden;
     padding: 15px;
     position: relative;
-    width: 70%;
+    width: 75%;
     .video {
       position: absolute;
       width: 100%;
@@ -110,7 +130,7 @@ p, h1, ul {
     }
   }
   .weatherRight {
-    width: 30%;
+    width: 25%;
   }
 }
 
@@ -170,7 +190,7 @@ p, h1, ul {
   button {
     background: none;
     border: 1px solid #fff;
-    box-shadow: 0px 0px 1px 1px #4c4c4c;
+    box-shadow: 0 0 1px 1px #4c4c4c;
     color: #fff;
     cursor: pointer;
     font-size: 14px;
@@ -182,21 +202,18 @@ p, h1, ul {
 }
 
 .sideBar {
+  color: #f2f2f2;
   margin: 0;
   padding: 0 10px;
-  color: #fff;
+  text-align: right;
+  text-shadow: 0 1px 1px #7A2929;
   h3 {
-    color: #000;
     margin: 0 0 15px 0;
-  }
-  div {
-    color: #4c4c4c;
   }
   ul {
     margin: 0;
     padding: 0;
     li {
-      color: #4c4c4c;
       cursor: default;
       margin: 0 0 10px 0;
       text-transform: capitalize;
@@ -230,8 +247,7 @@ p, h1, ul {
 }
 
 .dayHold {
-  background: #B6B6B6;
-  box-shadow: 0 0 3px 0 #ccc;
+  background: rgba(0,0,0,.4);
   display: grid;
   grid-template-rows: repeat(2, auto);
   grid-template-columns: repeat(5, 20%);
@@ -264,7 +280,7 @@ p, h1, ul {
 }
 
 .footer {
-  background: #191b1d;
+  background: #290E0E;
   bottom: 0;
   color: #fff;
   font-family: @body;
@@ -284,12 +300,118 @@ p, h1, ul {
   }
 }
 
+.rain {
+  left: 40%;
+  top: 25%;
+}
 
+.sun {
+  left: 75%;
+  top: 40%;
+}
 
+.snow {
+  left: 10%;
+  top: 5%;
+}
 
+.thunder {
+  left: 20%;
+  top: 65%;
+}
 
+//----------------------------------------
+// WEATHER ICON - animation styles
+//----------------------------------------
+.weatherIcon {
+  opacity: .1;
+  position: absolute;
+  width: 280px;
+}
 
+.animateRain {
+  animation: moveRight 10s linear 1s infinite;
+  left: 40%;
+  top: 25%;
+}
+@keyframes moveRight {
+  0% { 
+    left: 40%;
+    top: 25%; 
+  }
+  50% {
+    left: 45%;
+    top: 20%;
+  }
+  0% {
+    left: 40%;
+    top: 25%;
+  }
+}
 
+.animateSun {
+  animation: moveLeft 10s linear 1.5s infinite;
+  left: 75%;
+  top: 40%;
+}
+@keyframes moveLeft {
+  0% { 
+    left: 75%;
+    top: 40%; 
+  }
+  50% {
+    left: 70%;
+    top: 45%;
+  }
+  0% {
+    left: 75%;
+    top: 40%;
+  }
+}
+
+.animateSnow {
+  animation: moveDown 10s linear 2s infinite;
+  left: 10%;
+  top: 5%;
+}
+@keyframes moveDown {
+  0% { 
+    left: 10%;
+    top: 5%; 
+  }
+  50% {
+    left: 15%;
+    top: 10%;
+  }
+  0% {
+    left: 10%;
+    top: 5%;
+  }
+}
+
+.animateThunder {
+  animation: moveUp 10s linear 2.5s infinite;
+  left: 20%;
+  top: 65%;
+}
+@keyframes moveUp {
+  0% { 
+    left: 20%;
+    top: 65%; 
+  }
+  50% {
+    left: 25%;
+    top: 70%;
+  }
+  0% {
+    left: 20%;
+    top: 65%;
+  }
+}
+
+//----------------------------------------
+// animation styles for components
+//----------------------------------------
 .animation-container {
   display: inline-block;
 }
@@ -301,7 +423,6 @@ p, h1, ul {
   margin-top: 10px;
   border-radius: 8px;
   font-weight: 600;
-  
   &:hover {
     cursor: pointer;
   }
