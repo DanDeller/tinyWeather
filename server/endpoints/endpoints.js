@@ -10,7 +10,7 @@ router.get('/currentWeather', (req, res) => {
 });
 
 router.post('/currentWeather', (req, res) => {
-	currentWeather.post((error, response) => {
+	currentWeather.post(req, (error, response) => {
 		if (error) return res.end();
 		return res.send(response);
 	});

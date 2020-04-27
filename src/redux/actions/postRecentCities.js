@@ -1,35 +1,26 @@
 import {
   postRecentCitiesPending, 
-  postRecentCitiesSuccess, 
+  // postRecentCitiesSuccess, 
   postRecentCitiesError
 } from '.';
 
-const postRecentCities = () => {
+const postRecentCities = (city, id) => {
   return dispatch => {
+    const data = {
+      id: id,
+      city: city
+    };
     dispatch(postRecentCitiesPending());
     fetch('/currentWeather', {
       method: 'POST',
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
       headers: {
-        'Content-Type': 'application/json'
-      },
-      redirect: 'follow',
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then((res) => {
-      if (res.error) {
-        throw(res.error);
-      }
-      dispatch(postRecentCitiesSuccess(res));
-      return res;
-    })
-    .catch(error => {
-      dispatch(postRecentCitiesError(error));
-    })
+				'Accept': 'application/json',
+	      'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
+    }).then(function() {
+			console.log(data);
+		});
   }
 }
 

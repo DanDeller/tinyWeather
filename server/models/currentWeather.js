@@ -29,22 +29,21 @@ module.exports = {
       });
     })
   },
-  post: function(request, callback) {
-		const city = request.body;
+  post: function(request, cb) {
+    const city = request.body;
 		this.connect((err, connection) => {
-      console.log(city);
-			if (err) return callback(err);
+			if (err) return cb(err);
       r.db(config.db.name).table('currentWeather')
 			.insert({
-				id: 'id',
-				city: 'city'
+				id: city.id,
+				city: city.city
 			})
 			.run(connection)
 			.then((response) => {
-				return callback(null, response);
+				return cb(null, response);
 			})
 			.error((error) => {
-				return callback(error);
+				return cb(error);
 			});
 		});
 	}

@@ -86,7 +86,7 @@ p, h1, ul {
         text-shadow: 0 1px 1px #7A2929;
         transition: color .3s linear 0s;
         &:hover {
-          color: #F16565;
+          color: #C79E9E;
         }
       }
     }
@@ -106,6 +106,7 @@ p, h1, ul {
   }
   .weatherLeft {
     background: rgba(0, 0, 0, .4);
+    box-shadow: 0px 0px 10px -4px #000;
     overflow: hidden;
     padding: 15px;
     position: relative;
@@ -203,6 +204,7 @@ p, h1, ul {
   text-align: right;
   text-shadow: 0 1px 1px #7A2929;
   h3 {
+    font-size: 22px;
     margin: 0 0 15px 0;
   }
   ul {
@@ -242,7 +244,8 @@ p, h1, ul {
 }
 
 .dayHold {
-  background: rgba(0,0,0,.4);
+  background: rgba(0, 0, 0, .4);
+  box-shadow: 0px 0px 10px -4px #000;
   display: grid;
   grid-template-rows: repeat(2, auto);
   grid-template-columns: repeat(5, 20%);
@@ -325,7 +328,7 @@ p, h1, ul {
 }
 
 .animateRain {
-  animation: moveRight 10s linear 1.5s infinite;
+  animation: moveRight 7s linear 1.5s infinite;
   left: 40%;
   top: 25%;
 }
@@ -345,7 +348,7 @@ p, h1, ul {
 }
 
 .animateSun {
-  animation: moveLeft 10s linear 2s infinite;
+  animation: moveLeft 7s linear 2s infinite;
   left: 75%;
   top: 40%;
 }
@@ -365,7 +368,7 @@ p, h1, ul {
 }
 
 .animateSnow {
-  animation: moveDown 10s linear 2.5s infinite;
+  animation: moveDown 7s linear 2.5s infinite;
   left: 10%;
   top: 5%;
 }
@@ -385,7 +388,7 @@ p, h1, ul {
 }
 
 .animateThunder {
-  animation: moveUp 10s linear 3s infinite;
+  animation: moveUp 7s linear 3s infinite;
   left: 20%;
   top: 65%;
 }

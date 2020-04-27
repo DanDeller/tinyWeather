@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import uuid from 'react-uuid';
 import WeatherIcons from './WeatherIcons';
 import fetchProductsAction from '../redux/actions/fetchRecentCities';
+import postProductsAction from '../redux/actions/postRecentCities';
 import PropTypes from 'prop-types';
 import { 
   setCity, 
@@ -111,6 +112,8 @@ class WeatherMain extends React.Component {
             case 'snow':
               video = {Snow};
           }
+
+          this.props.dispatch(postProductsAction(city, uuid()));
 
           this.props.dispatch(recentCity(city, uuid()));
           this.props.dispatch(setDetails(details));
