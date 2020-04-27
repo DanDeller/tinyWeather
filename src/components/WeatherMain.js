@@ -142,7 +142,7 @@ class WeatherMain extends React.Component {
           </div>
         </Modal>
         <div className={style.weatherMain + ' ' + style.bodyText}>
-          <h2 className={style.pageHeader}>Search a city to check the weather</h2>
+          <h1 className={style.pageHeader}>Search a city to check the weather</h1>
           <div className={style.hold}>
             <div className={style.weatherLeft}>
               <video key={this.props.setVideo} className={style.video} loop autoPlay muted>
