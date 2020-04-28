@@ -13,7 +13,6 @@ const SidebarItem = (props) => {
   }
 
   const city = props.city;
-
   return (
     <li className={recentCity.completed ? 'active' : 'unactive'} onClick={() => toggle()}>{city.recentCity}</li>
   );

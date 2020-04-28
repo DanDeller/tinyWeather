@@ -1,8 +1,4 @@
-import {
-  postRecentCitiesPending, 
-  // postRecentCitiesSuccess, 
-  postRecentCitiesError
-} from '.';
+import { recentCity } from '.';
 
 const postRecentCities = (city, id) => {
   return dispatch => {
@@ -10,7 +6,6 @@ const postRecentCities = (city, id) => {
       id: id,
       city: city
     };
-    dispatch(postRecentCitiesPending());
     fetch('/currentWeather', {
       method: 'POST',
       headers: {
@@ -19,7 +14,7 @@ const postRecentCities = (city, id) => {
 			},
 			body: JSON.stringify(data)
     }).then(function() {
-			console.log(data);
+      dispatch(recentCity(city, id));
 		});
   }
 }

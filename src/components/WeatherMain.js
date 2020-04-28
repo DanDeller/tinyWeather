@@ -115,7 +115,7 @@ class WeatherMain extends React.Component {
           
           this.props.dispatch(postProductsAction(city, uuid()));
 
-          this.props.dispatch(recentCity(city, uuid()));
+          // this.props.dispatch(recentCity(city, uuid()));
           this.props.dispatch(setDetails(details));
           this.props.dispatch(isOpen(false));
           this.props.dispatch(setVideo(Object.values(video)[0]));

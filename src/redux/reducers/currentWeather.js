@@ -48,22 +48,11 @@ const currentWeather = (state = initCity, action) => {
           }
         ]
       }
-    case 'FETCH_RECENTCITIES_PENDING':
-      return {
-        ...state,
-        fetchPending: true
-      }
     case 'FETCH_RECENTCITIES_SUCCESS':
       return {
         ...state,
         fetchPending: false,
         fetchRecentCities: action.products
-      }
-    case 'FETCH_RECENTCITIES_ERROR':
-      return {
-        ...state,
-        fetchPending: false,
-        fetchPrror: action.error
       }
     default:
       return state
