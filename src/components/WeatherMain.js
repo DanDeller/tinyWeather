@@ -112,7 +112,7 @@ class WeatherMain extends React.Component {
             case 'snow':
               video = {Snow};
           }
-
+          
           this.props.dispatch(postProductsAction(city, uuid()));
 
           this.props.dispatch(recentCity(city, uuid()));
@@ -144,7 +144,7 @@ class WeatherMain extends React.Component {
             <a href="#" onClick={this.closeModal}>Search Again?</a>
           </div>
         </Modal>
-        <div className={style.weatherMain + ' ' + style.bodyText}>
+        <div className={`${style.weatherMain} ${style.bodyText}`}>
           <h1 className={style.pageHeader}>Search a city to check the weather</h1>
           <div className={style.hold}>
             <div className={style.weatherLeft}>
@@ -172,7 +172,6 @@ class WeatherMain extends React.Component {
                 recentCities={this.props.recentCities}
               />
             </div>
-            <div className={style.clear}></div>
           </div>
         </div>
         <WeatherIcons animate={false} />

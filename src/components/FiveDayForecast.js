@@ -63,16 +63,16 @@ class FiveDayForecast extends React.Component {
           <span>{day.dt_txt.split(' ')[0]}</span>  
         </p>
         <p>{day.main.temp.toFixed(0)}</p>
-        <p>{day.weather[0].description[0].toUpperCase() + day.weather[0].description.substring(1)}</p>
+        <p>{`${day.weather[0].description[0].toUpperCase()} ${day.weather[0].description.substring(1)}`}</p>
       </div>
     ))
 
     return (
       <section className={style.container}>
-        <div className={style.weatherMain + ' ' + style.bodyText}>
+        <div className={`${style.weatherMain} ${style.bodyText}`}>
           <h1 className={style.pageHeader}>Forecast for the next five days</h1>
           <div className={style.dayHold}>
-            <h3 className={style.hide + ' ' + style.forgotCity + ' ' + forgotCity}>Go lookup a city first!</h3>
+            <h3 className={`${style.hide} ${style.forgotCity} ${forgotCity}`}>Go lookup a city first!</h3>
             {days}
           </div>
         </div>

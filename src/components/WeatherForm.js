@@ -20,7 +20,7 @@ class WeatherForm extends React.Component {
   render() {
     return (
       <div> 
-        <div className={style.weatherForm + ' ' + (this.props.isOpen ? style.show : style.hide)}>
+        <div className={`${style.weatherForm} ${(this.props.isOpen ? style.show : style.hide)}`}>
           <form action='/' method='GET'>
             <input
               ref={this.city}
@@ -37,7 +37,7 @@ class WeatherForm extends React.Component {
             />
           </form>
         </div>
-        <div className={style.resetButton + ' ' + (this.props.isOpen ? style.hide : style.show)}>
+        <div className={`${style.resetButton} ${(this.props.isOpen ? style.hide : style.show)}`}>
           <p>Seach another city?</p>
           <button
             onClick={this.props.resetSearch}>Search

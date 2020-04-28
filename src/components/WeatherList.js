@@ -13,7 +13,7 @@ const WeatherList = (props) => {
   ));
 
   return (
-    <div className={style.weatherItems + ' ' + classes}>
+    <div className={`${style.weatherItems} ${classes}`}>
       {city}
     </div>
   );
