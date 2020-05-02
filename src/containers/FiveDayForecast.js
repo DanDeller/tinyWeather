@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import WeatherIcons from './WeatherIcons';
+import WeatherIcons from '../components/WeatherIcons';
 
 class FiveDayForecast extends React.Component {
   constructor(props) {
@@ -63,7 +63,7 @@ class FiveDayForecast extends React.Component {
           <span>{day.dt_txt.split(' ')[0]}</span>  
         </p>
         <p>{day.main.temp.toFixed(0)}</p>
-        <p>{`${day.weather[0].description[0].toUpperCase()} ${day.weather[0].description.substring(1)}`}</p>
+        <p>{`${day.weather[0].description[0].toUpperCase()}${day.weather[0].description.substring(1)}`}</p>
       </div>
     ))
 

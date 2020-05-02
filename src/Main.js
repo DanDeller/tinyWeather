@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
-import WeatherMain from './components/WeatherMain';
-import FiveDayForecast from './components/FiveDayForecast';
+import WeatherMain from './containers/WeatherMain';
+import FiveDayForecast from './containers/FiveDayForecast';
 import style from './assets/styles/style.less';
 
 class Main extends React.Component {
