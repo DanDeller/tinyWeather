@@ -1,5 +1,6 @@
 import React from 'react';
 import style from '../assets/styles/style.less';
+import PropTypes from 'prop-types';
 
 const WeatherIcons = (props) => {
   const prop = props.animate;
@@ -12,5 +13,9 @@ const WeatherIcons = (props) => {
     </div> 
   )
 }
+
+WeatherIcons.propTypes = {
+  animate: PropTypes.bool
+};
 
 export default WeatherIcons;

@@ -16,9 +16,9 @@ const fetchRecentCities = () => {
       dispatch(fetchRecentCitiesSuccess(res));
       return res;
     })
-    .catch(error => {
-      // dispatch(fetchRecentCitiesError(error));
-    })
+    // .catch(error => {
+    //   dispatch(fetchRecentCitiesError(error));
+    // })
   }
 }
 
