@@ -10,6 +10,7 @@ import WeatherIcons from '../components/WeatherIcons';
 import fetchProductsAction from '../redux/actions/fetchRecentCities';
 import postProductsAction from '../redux/actions/postRecentCities';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import { setCity, setDetails, setVideo, isOpen, visible } from '../redux/actions';
 import { Rain, Clear, Clouds, ThunderLightning, Haze, Snow } from '../assets/videos/vid-exports';
 
@@ -59,24 +60,14 @@ class WeatherMain extends React.Component {
     } else {
       const city = this.props.city;
 
-      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`, {
-        headers: {
-          Accept: 'application/json',
-        }
-      }).then((results) => {
-        if (results.status === 404) {
-          this.props.dispatch(visible(true));
-          return;
-        } else {
-          return results.json();
-        }
-      }).then((data) => {
-        if (data) {
+      axios.get(`/weather?q=${city}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
+      .then(res => {
+        if (res) {
           let video = '';
           const details = {
-            name: data.name,
-            weather: data.weather[0].main.toLowerCase(),
-            temp: parseInt(data.main.temp)
+            name: res.data.name,
+            weather: res.data.weather[0].main.toLowerCase(),
+            temp: parseInt(res.data.main.temp)
           };
 
           switch(details.weather) {
@@ -106,7 +97,10 @@ class WeatherMain extends React.Component {
           this.props.dispatch(isOpen(false));
           this.props.dispatch(setVideo(Object.values(video)[0]));
         }
-      }); // end fetch()
+      })
+      .catch(error => {
+        console.log(error);
+      });
     } // end if/else (!this.props.city)
   } // end getWeather()
 
