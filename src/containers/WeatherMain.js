@@ -98,9 +98,7 @@ class WeatherMain extends React.Component {
           this.props.dispatch(setVideo(Object.values(video)[0]));
         }
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(() => this.props.dispatch(visible(true)));
     } // end if/else (!this.props.city)
   } // end getWeather()
 

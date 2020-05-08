@@ -5,11 +5,11 @@ import 'moment-timezone';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import WeatherIcons from '../components/WeatherIcons';
+import axios from 'axios';
 
 class FiveDayForecast extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {days: []};
   }
 
@@ -17,34 +17,27 @@ class FiveDayForecast extends React.Component {
     const city = this.props.city;
 
     if (this.props.city.length) {
-      fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`, {
-        headers: {
-          Accept: 'application/json',
-        },
-      }).then((results) => {
-        return results.json();
-      }).then((data) => {
-        const newData = [],
-              set     = data;
+      axios.get(`/forecast?q=${city}&appid=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
+      .then(res => {
+        if (res) {
+          const newData = [],
+                set     = res.data;
 
-        if (set.list) {
-          set.list.map((o) => {
-            const date = o.dt_txt.split(' ')[1];
-            
-            /*
-            * Days are returned in 3 hour increments
-            * Grab objects that match '15:00:00' 
-            */
-            if (date === '15:00:00') {
-              newData.push(o);
-            }
+          if (set.list) {
+            set.list.map((o) => {
+              const date = o.dt_txt.split(' ')[1];
+              
+              if (date === '15:00:00') {
+                newData.push(o);
+              }
 
-            return newData.splice(5);
-          });
+              return newData.splice(5);
+            });
 
-          this.setState({days: newData});
+            this.setState({days: newData});
+          }
         }
-      });
+      })
     }
   }
 
