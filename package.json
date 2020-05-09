@@ -12,7 +12,7 @@
   "scripts": {
     "start": "webpack-dev-server --exec babel-node --mode development --hot --inline --content-base=dist --history-api-fallback --open --port 3000",
     "build": "webpack --mode production",
-    "pretest": "eslint --ignore-path .gitignore .",
+    "lint": "eslint --ignore-path .gitignore .",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors"
@@ -54,7 +54,7 @@
     "@babel/node": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.0.0",
-    "babel-jest": "^23.4.2",
+    "babel-jest": "^26.0.1",
     "babel-loader": "^8.0.0",
     "css-loader": "^0.28.11",
     "enzyme": "^3.8.0",
@@ -64,7 +64,7 @@
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "jest": "^23.6.0",
+    "jest": "^26.0.1",
     "less": "^3.11.1",
     "less-loader": "^4.1.0",
     "prop-types": "^15.7.2",
