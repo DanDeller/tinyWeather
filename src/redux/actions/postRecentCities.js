@@ -1,4 +1,4 @@
-import { recentCity } from '.';
+import fetchRecentCities from './fetchRecentCities';
 
 const postRecentCities = (city, id) => {
   return dispatch => {
@@ -13,9 +13,13 @@ const postRecentCities = (city, id) => {
 	      'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(data)
-    }).then(function() {
-      dispatch(recentCity(city, id));
-		});
+    })
+    .then(() => {
+      dispatch(fetchRecentCities());
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   }
 }
 

@@ -1,4 +1,12 @@
-// currentWeather actions
+/* 
+ * MAIN ACTIONS INDEX FILE
+ * - WeatherMain.js
+ *  - setCity, setDetails, recentCity, isOpen, visible, setVideo
+ * 
+ *  - async actions
+ *   - fetchRecentCitiesError
+ */
+
 export const setCity = city => ({
   type: 'SET_CITY',
   city
@@ -30,34 +38,19 @@ export const setVideo = video => ({
   video
 });
 
-// fetchRecentCities.js 
-// - imported into fetchRecentCities.js
-export const fetchRecentCitiesPending = () => ({
-  type: 'FETCH_RECENTCITIES_PENDING'
-});
-
-export const fetchRecentCitiesSuccess = (products) => ({
-  type: 'FETCH_RECENTCITIES_SUCCESS',
-  products: products
-});
-
+// imported into fetchRecentCities.js
 export const fetchRecentCitiesError = (error) => ({
   type: 'FETCH_RECENTCITIES_ERROR',
   error: error
 });
 
-// postRecentCities.js 
-// - imported into postRecentCities.js
-export const postRecentCitiesPending = () => ({
-  type: 'POST_RECENTCITIES_PENDING'
-});
+// imported into postRecentCities.js
+// export const postRecentCitiesSuccess = (city) => ({
+//   type: 'POST_RECENTCITIES_SUCCESS',
+//   products: city
+// });
 
-export const postRecentCitiesSuccess = (products) => ({
-  type: 'POST_RECENTCITIES_SUCCESS',
-  products: products
-});
-
-export const postRecentCitiesError = (error) => ({
-  type: 'POST_RECENTCITIES_ERROR',
-  error: error
-});
+// export const postRecentCitiesError = (error) => ({
+//   type: 'POST_RECENTCITIES_ERROR',
+//   error: error
+// });

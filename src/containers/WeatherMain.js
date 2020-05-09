@@ -7,8 +7,8 @@ import Modal from 'react-awesome-modal';
 import { connect } from 'react-redux';
 import uuid from 'react-uuid';
 import WeatherIcons from '../components/WeatherIcons';
-import fetchProductsAction from '../redux/actions/fetchRecentCities';
-import postProductsAction from '../redux/actions/postRecentCities';
+import fetchRecentCities from '../redux/actions/fetchRecentCities';
+import postRecentCity from '../redux/actions/postRecentCities';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { setCity, setDetails, setVideo, isOpen, visible } from '../redux/actions';
@@ -26,11 +26,9 @@ class WeatherMain extends React.Component {
     this.getWeather = this.getWeather.bind(this);
   } 
 
-  // testing react-thunk sample
-  // - pulls in data from /currentWeather
   componentDidMount() {
-    this.props.dispatch(fetchProductsAction());
-  }
+    this.props.dispatch(fetchRecentCities());
+  } // end componentDidMount()
 
   updateInputValue = (e) => {
     this.props.dispatch(setCity(e.target.value));
@@ -92,7 +90,7 @@ class WeatherMain extends React.Component {
               video = {Snow};
           }
           
-          this.props.dispatch(postProductsAction(city, uuid()));
+          this.props.dispatch(postRecentCity(city, uuid()));
           this.props.dispatch(setDetails(details));
           this.props.dispatch(isOpen(false));
           this.props.dispatch(setVideo(Object.values(video)[0]));
@@ -166,10 +164,7 @@ const mapStateToProps = state => {
     recentCities: state.currentWeather.recentCities,
     cityDetails: state.currentWeather.cityDetails,
     isOpen: state.currentWeather.isOpen,
-    visible: state.currentWeather.visible,
-    fetchError: state.currentWeather.error,
-    fetchRecentCities: state.currentWeather.products,
-    fetchPending: state.currentWeather.pending
+    visible: state.currentWeather.visible
   }
 }
 

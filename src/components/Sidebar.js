@@ -5,7 +5,7 @@ import SidebarItem from './SidebarItem.js';
 
 const Sidebar = (props) => {
   const getRecentCities = props.recentCities.map((city, i) => (
-    <SidebarItem key={i} city={city} />
+    <SidebarItem key={i} recentCity={city} />
   ));
 
   return (

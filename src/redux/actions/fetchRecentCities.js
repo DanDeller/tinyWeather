@@ -1,24 +1,18 @@
-import {
-  fetchRecentCitiesSuccess,
-  // fetchRecentCitiesPending,
-  // fetchRecentCitiesError
-} from '.';
+import { fetchRecentCitiesError, recentCity } from '.';
 
 const fetchRecentCities = () => {
   return dispatch => {
-    // dispatch(fetchRecentCitiesPending());
     fetch('/currentWeather')
     .then(res => res.json())
     .then((res) => {
       if (res.error) {
         throw(res.error);
       }
-      dispatch(fetchRecentCitiesSuccess(res));
-      return res;
+      dispatch(recentCity(res));
     })
-    // .catch(error => {
-    //   dispatch(fetchRecentCitiesError(error));
-    // })
+    .catch(error => {
+      dispatch(fetchRecentCitiesError(error));
+    })
   }
 }
 

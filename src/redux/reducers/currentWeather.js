@@ -40,19 +40,13 @@ const currentWeather = (state = initCity, action) => {
     case 'RECENT_CITY':
       return {
         ...state,
-        recentCities: [
-          ...state.recentCities, 
-          {
-            id: action.id,
-            recentCity: action.recent_city
-          }
-        ]
+        recentCities: action.recent_city
       }
-    case 'FETCH_RECENTCITIES_SUCCESS':
+    case 'FETCH_RECENTCITIES':
       return {
         ...state,
         fetchPending: false,
-        fetchRecentCities: action.products
+        fetchRecentCities: action.city
       }
     default:
       return state
