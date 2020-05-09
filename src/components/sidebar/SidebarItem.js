@@ -16,14 +16,30 @@ const SidebarItem = (props) => {
   }
   
   return (
-    <li
+    <li  
+      style={{
+        display: 'flex',
+        justifyContent: 'flex-end'
+      }}
+      onClick={() => toggle()}>
+      <p
+      className={`${style.sidebarItem} ${recentCity.completed ? 'sidebarActive' : 'sidebarUnactive'}`}
       style={{
         transform: !recentCity.completed ? 'translateY(0)' : 'translateX(-5vh)',
         opacity: !recentCity.completed ? '1' : '.4'
-      }}
-      className={`${style.sidebarItem} ${recentCity.completed ? 'sidebarActive' : 'sidebarUnactive'}`} 
-      onClick={() => toggle()}>
-      {city.city}
+      }}>{city.city}</p>
+      <button
+        style={{
+          background: 'none',
+          border: '1px solid #fff',
+          borderRadius: '2px',
+          boxShadow: '0px 0px 10px -4px #7A2929',
+          color: '#fff',
+          cursor: 'pointer',
+          textShadow: '0 1px 1px #7A2929',
+          display: recentCity.completed ? 'flex' : 'none'
+        }}  
+      >Remove</button>  
     </li>
   );
 }
