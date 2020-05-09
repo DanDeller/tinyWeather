@@ -17,18 +17,20 @@ const SidebarItem = (props) => {
   
   return (
     <li
-    className={style.sidebarItem}
+      className={style.sidebarItem}
       onClick={() => toggle()}>
       <p
-      style={{
-        transform: !recentCity.completed ? 'translateY(0)' : 'translateX(-5vh)',
-        opacity: !recentCity.completed ? '1' : '.4'
-      }}>{city.city}</p>
+        style={{
+          transform: !recentCity.completed ? 'translateY(0)' : 'translateX(-5vh)',
+          opacity: !recentCity.completed ? '1' : '.4'
+        }}>
+        {city.city}
+      </p>
       <button
         style={{
           display: recentCity.completed ? 'flex' : 'none'
-        }}  
-      >Remove</button>  
+        }}>Remove
+      </button>  
     </li>
   );
 }
