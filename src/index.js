@@ -27,10 +27,12 @@ axios.interceptors.response.use(response => {
 	return Promise.reject(error);
 });
 
-render((
-	<Provider store={store}>
-	  <HashRouter>
-	    <App/>
-	  </HashRouter>
-	</Provider>
-), document.getElementById('app'));
+setTimeout(() => {
+	render((
+		<Provider store={store}>
+			<HashRouter>
+				<App/>
+			</HashRouter>
+		</Provider>
+	), document.getElementById('app'));
+}, 0);

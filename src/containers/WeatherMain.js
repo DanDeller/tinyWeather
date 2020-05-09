@@ -1,12 +1,12 @@
 import React from 'react';
 import style from '../assets/styles/style.less';
 import WeatherForm from './WeatherForm';
-import WeatherList from '../components/WeatherList';
-import Sidebar from '../components/Sidebar';
+import WeatherList from '../components/weather/WeatherList';
+import Sidebar from '../components/sidebar/Sidebar';
 import Modal from 'react-awesome-modal';
 import { connect } from 'react-redux';
 import uuid from 'react-uuid';
-import WeatherIcons from '../components/WeatherIcons';
+import WeatherIcons from '../components/weather/WeatherIcons';
 import fetchRecentCities from '../redux/actions/fetchRecentCities';
 import postRecentCity from '../redux/actions/postRecentCities';
 import PropTypes from 'prop-types';

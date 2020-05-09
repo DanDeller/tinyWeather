@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import WeatherIcons from '../components/WeatherIcons';
+import WeatherIcons from '../components/weather/WeatherIcons';
 import axios from 'axios';
 
 class FiveDayForecast extends React.Component {

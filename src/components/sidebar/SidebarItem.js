@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from '../assets/styles/style.less';
+import style from '../../assets/styles/style.less';
 import PropTypes from 'prop-types';
 
 const SidebarItem = (props) => {

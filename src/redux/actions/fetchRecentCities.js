@@ -1,4 +1,4 @@
-import { fetchRecentCitiesError, recentCity } from '.';
+import { recentCity } from '.';
 
 const fetchRecentCities = () => {
   return dispatch => {
