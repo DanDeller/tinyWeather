@@ -2,9 +2,6 @@
  * MAIN ACTIONS INDEX FILE
  * - WeatherMain.js
  *  - setCity, setDetails, recentCity, isOpen, visible, setVideo
- * 
- *  - async actions
- *   - fetchRecentCitiesError
  */
 
 export const setCity = city => ({
@@ -37,20 +34,3 @@ export const setVideo = video => ({
   type: 'SET_VIDEO',
   video
 });
-
-// imported into fetchRecentCities.js
-export const fetchRecentCitiesError = (error) => ({
-  type: 'FETCH_RECENTCITIES_ERROR',
-  error: error
-});
-
-// imported into postRecentCities.js
-// export const postRecentCitiesSuccess = (city) => ({
-//   type: 'POST_RECENTCITIES_SUCCESS',
-//   products: city
-// });
-
-// export const postRecentCitiesError = (error) => ({
-//   type: 'POST_RECENTCITIES_ERROR',
-//   error: error
-// });

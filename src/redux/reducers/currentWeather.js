@@ -4,10 +4,7 @@ const initCity = {
   isOpen: true,
   visible: false,
   cityDetails: [],
-  recentCities: [],
-  fetchPending: false,
-  fetchRecentCities: [],
-  fetchError: null
+  recentCities: []
 }
 
 const currentWeather = (state = initCity, action) => {
@@ -41,12 +38,6 @@ const currentWeather = (state = initCity, action) => {
       return {
         ...state,
         recentCities: action.recent_city
-      }
-    case 'FETCH_RECENTCITIES':
-      return {
-        ...state,
-        fetchPending: false,
-        fetchRecentCities: action.city
       }
     default:
       return state
