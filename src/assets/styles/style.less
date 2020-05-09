@@ -214,11 +214,41 @@ p, h1, ul {
     margin: 0;
     padding: 0;
     li {
-      cursor: default;
       margin: 0 0 10px 0;
       text-transform: capitalize;
+      p {
+        transition: all .3s linear 0s;
+        &.sidebarItemActive {
+          transform: translateX(-5vh);
+          opacity: .4;
+        }
+        &.sidebarItemUnctive {
+          transform: translateX(0);
+          opacity: 0;
+        }
+      }
+      button {
+        background: none;
+        border: 1px solid #fff;
+        border-radius: 2px;
+        box-shadow: 0px 0px 10px -4px #7A2929;
+        color: #fff;
+        cursor: pointer;
+        text-shadow: 0 1px 1px #7A2929;
+      }
     }
   }
+}
+
+.sidebarItem {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  transition: all 0.3s ease-out;
+}
+
+.sidebarUnactive {
+  transform: translateY(-10vh);
 }
 
 .modal {
@@ -457,13 +487,7 @@ p, h1, ul {
   transform: translate3d(250px,0,0);
 }
 
-.sidebarItem {
-  transition: all 0.3s ease-out;
-}
 
-.sidebarUnactive {
-  transform: translateY(-10vh);
-}
 
 
 
