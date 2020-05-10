@@ -16,4 +16,11 @@ router.post('/currentWeather', (req, res) => {
 	});
 });
 
+router.delete('/currentWeather', (req, res) => {
+	currentWeather.delete(req, (error, response) => {
+		if (error) return res.end();
+		return res.send(response);
+	});
+});
+
 module.exports = router;
