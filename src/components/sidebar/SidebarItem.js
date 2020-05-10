@@ -6,12 +6,12 @@ const SidebarItem = (props) => {
   const city = props.recentCity;
   
   const [recentCity, toggleCity] = useState({
-    completed: false
+    toggleDelete: false
   });
 
   const toggle = () => {
     toggleCity({
-      completed: !recentCity.completed
+      toggleDelete: !recentCity.toggleDelete
     })
   }
   
@@ -21,14 +21,14 @@ const SidebarItem = (props) => {
       onClick={() => toggle()}>
       <p
         style={{
-          transform: !recentCity.completed ? 'translateY(0)' : 'translateX(-5vh)',
-          opacity: !recentCity.completed ? '1' : '.4'
+          transform: !recentCity.toggleDelete ? 'translateY(0)' : 'translateX(-5vh)',
+          opacity: !recentCity.toggleDelete ? '1' : '.4'
         }}>
         {city.city}
       </p>
       <button
         style={{
-          display: recentCity.completed ? 'flex' : 'none'
+          display: recentCity.toggleDelete ? 'flex' : 'none'
         }}>Remove
       </button>  
     </li>
