@@ -11,7 +11,7 @@ A quick little weather app.
   <li>RethinkDB - https://rethinkdb.com/docs/install/</li>
 </ul>
 
-> NOTE: No Docker? No problem. You can still run the app outside of Docker. Just clone the repo as normal, run yarn/npm i and start with npm start. Of course running the app this way will not have database access and relies on only redux.
+> NOTE: No Docker? No RethinkDB? No problem. You can still run the app outside of Docker. Just clone the repo as normal, run yarn/npm i and start with npm start. Of course, running the app this way will not have database access and therefore various components, like the sidebar, may not populate or function they would if attached to a database.
 
 <h2>How to use:</h2>
 <ul>
