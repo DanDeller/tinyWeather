@@ -1,9 +1,8 @@
 import React from 'react';
 import style from '../assets/styles/style.less';
-import WeatherForm from './WeatherForm';
+import WeatherForm from '../components/weather-form/WeatherForm';
 import WeatherList from '../components/weather/WeatherList';
 import Sidebar from '../components/sidebar/Sidebar';
-import Modal from 'react-awesome-modal';
 import { connect } from 'react-redux';
 import uuid from 'react-uuid';
 import WeatherIcons from '../components/weather/WeatherIcons';
@@ -13,6 +12,8 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { setCity, setDetails, setVideo, isOpen, visible } from '../redux/actions';
 import { Rain, Clear, Clouds, ThunderLightning, Haze, Snow } from '../assets/videos/vid-exports';
+import ErrorModal from '../components/modal/Modal';
+import WeatherVideo from '../components/weather-video/WeatherVideo';
 
 class WeatherMain extends React.Component {
   constructor(props) {
@@ -109,25 +110,12 @@ class WeatherMain extends React.Component {
   render() {
     return (
       <section className={style.container}>
-        <Modal
-          visible={this.props.visible}
-          width="400"
-          height="300"
-          effect="fadeInUp"
-        >
-          <div className={style.modal}>
-            <h2>We either cannot find that city or you forgot to enter a city first.</h2>
-            <a href="#" onClick={this.closeModal}>Search Again?</a>
-          </div>
-        </Modal>
+        <ErrorModal visible={this.props.visible} closeModal={this.closeModal} />
         <div className={`${style.weatherMain} ${style.bodyText}`}>
           <h1 className={style.pageHeader}>Search a city to check the weather</h1>
           <div className={style.hold}>
             <div className={style.weatherLeft}>
-              <video key={this.props.setVideo} className={style.video} loop autoPlay muted>
-                <source src={this.props.setVideo} type="video/mp4"></source>
-                Your browser does not support the video tag.
-              </video>
+              <WeatherVideo setVideo={this.props.setVideo}  />
               <div className={style.weatherAbove}>
                 <WeatherForm
                   updateInputValue={this.updateInputValue}
