@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import style from '../../assets/styles/style.less';
 import PropTypes from 'prop-types';
 
+import RemoveCity from '../remove-city/RemoveCity'
+
 const SidebarItem = (props) => {
   const city = props.recentCity;
   
@@ -26,11 +28,7 @@ const SidebarItem = (props) => {
         }}>
         {city.city}
       </p>
-      <button
-        style={{
-          display: recentCity.toggleDelete ? 'flex' : 'none'
-        }}>Remove
-      </button>  
+      <RemoveCity recentCity={recentCity.toggleDelete} />
     </li>
   );
 }

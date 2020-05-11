@@ -1,6 +1,6 @@
 import React from 'react';
-import style from '../assets/styles/style.less';
-import WeatherIcons from './weather/WeatherIcons';
+import style from '../../assets/styles/style.less';
+import WeatherIcons from '../weather/WeatherIcons';
 
 const Home = () => {
   return (
