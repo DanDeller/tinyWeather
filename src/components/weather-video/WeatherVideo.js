@@ -1,5 +1,6 @@
 import React from 'react';
 import style from '../../assets/styles/style.less';
+import PropTypes from 'prop-types';
 
 const WeatherVideo = (props) => {
   return (
@@ -9,5 +10,9 @@ const WeatherVideo = (props) => {
     </video>
   )
 }
+
+WeatherVideo.propTypes = {
+  setVideo: PropTypes.string
+};
 
 export default WeatherVideo;

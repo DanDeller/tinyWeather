@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const RemoveCity = (props) => {
   return (
@@ -9,5 +10,9 @@ const RemoveCity = (props) => {
     </button>
   )
 }
+
+RemoveCity.propTypes = {
+  recentCity: PropTypes.bool
+};
 
 export default RemoveCity;

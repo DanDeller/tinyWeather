@@ -110,26 +110,29 @@ class WeatherMain extends React.Component {
   render() {
     return (
       <section className={style.container}>
-        <ErrorModal visible={this.props.visible} closeModal={this.closeModal} />
+        <ErrorModal 
+          visible={this.props.visible} 
+          closeModal={this.closeModal} 
+        />
         <div className={`${style.weatherMain} ${style.bodyText}`}>
           <h1 className={style.pageHeader}>Search a city to check the weather</h1>
           <div className={style.hold}>
             <div className={style.weatherLeft}>
-              <WeatherVideo setVideo={this.props.setVideo}  />
-              <div className={style.weatherAbove}>
-                <WeatherForm
-                  updateInputValue={this.updateInputValue}
-                  getWeather={this.getWeather}
-                  passRefUpward={this.getRefsFromChild}
-                  resetSearch={this.resetSearch}
-                  isOpen={this.props.isOpen}
-                  city={this.props.city}
-                />
-                <WeatherList
-                  cityDetails={this.props.cityDetails}
-                  isOpen={this.props.isOpen}
-                />
-              </div>
+              <WeatherVideo 
+                setVideo={this.props.setVideo}  
+              />
+              <WeatherForm
+                updateInputValue={this.updateInputValue}
+                getWeather={this.getWeather}
+                passRefUpward={this.getRefsFromChild}
+                resetSearch={this.resetSearch}
+                isOpen={this.props.isOpen}
+                city={this.props.city}
+              />
+              <WeatherList
+                cityDetails={this.props.cityDetails}
+                isOpen={this.props.isOpen}
+              />
             </div>
             <div className={style.weatherRight}>
               <Sidebar

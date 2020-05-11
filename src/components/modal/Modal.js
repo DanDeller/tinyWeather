@@ -1,6 +1,7 @@
 import React from 'react';
 import style from '../../assets/styles/style.less';
 import Modal from 'react-awesome-modal';
+import PropTypes from 'prop-types';
 
 const ErrorModal = (props) => {
   return (
@@ -19,5 +20,10 @@ const ErrorModal = (props) => {
     </div>
   )
 }
+
+ErrorModal.propTypes = {
+  closeModal: PropTypes.func,
+  visible: PropTypes.bool
+};
 
 export default ErrorModal;
