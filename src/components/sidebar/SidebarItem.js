@@ -28,7 +28,9 @@ const SidebarItem = (props) => {
         }}>
         {city.city}
       </p>
-      <RemoveCity recentCity={recentCity.toggleDelete} />
+      <RemoveCity 
+        recentCity={recentCity.toggleDelete} 
+      />
     </li>
   );
 }

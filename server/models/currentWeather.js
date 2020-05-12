@@ -32,7 +32,7 @@ module.exports = {
   post: function(request, cb) {
     const city = request.body;
 		this.connect((err, connection) => {
-      if (err) return cb(err);
+			if (err) return cb(err);
       r.db(config.db.name).table('currentWeather')
 			.insert({
 				id: city.id,
