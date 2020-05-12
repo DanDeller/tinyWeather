@@ -6,7 +6,6 @@ import Sidebar from '../components/sidebar/Sidebar';
 import { connect } from 'react-redux';
 import uuid from 'react-uuid';
 import WeatherIcons from '../components/weather/WeatherIcons';
-// import postRecentCity from '../redux/actions/postRecentCities';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import * as actions from '../redux/actions';
