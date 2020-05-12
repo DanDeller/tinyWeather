@@ -1,10 +1,17 @@
 /* 
  * MAIN ACTIONS INDEX FILE
  * - WeatherMain.js
- *  - setCity, setDetails, recentCity, isOpen, visible, setVideo
+ *    setCity, 
+ *    setDetails, 
+ *    recentCity, 
+ *    isOpen, 
+ *    visible, 
+ *    setVideo
  * 
  * - Async calls
- *  - fetchRecentCities 
+ *    fetchRecentCities, 
+ *    postRecentCities,
+ *    deleteRecentCities
  */
 
 export const setCity = city => ({
@@ -49,6 +56,48 @@ export const fetchRecentCities = () => {
       dispatch(recentCity(res));
     })
     .catch(error => {
+      console.log(error);
+    })
+  }
+}
+
+export const postRecentCities = (city, id) => {
+  return dispatch => {
+    const data = {
+      id: id,
+      city: city
+    };
+    fetch('/currentWeather', {
+      method: 'POST',
+      headers: {
+				'Accept': 'application/json',
+	      'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
+    })
+    .then(() => {
+      dispatch(fetchRecentCities());
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
+}
+
+export const deleteRecentCities = (id) => {
+  console.log('hey');
+  return dispatch => {
+    const data = {
+      id: id
+    };
+    fetch('/currentWeather', {
+      method: 'DELETE',
+			body: JSON.stringify(data)
+    })
+    .then(() => {
+      dispatch(fetchRecentCities());
+    })
+    .catch((error) => {
       console.log(error);
     })
   }

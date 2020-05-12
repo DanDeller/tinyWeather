@@ -5,5 +5,6 @@ export {
   isOpen,
   visible,
   setVideo,
-  fetchRecentCities
+  fetchRecentCities,
+  postRecentCities
 } from './currentWeather';

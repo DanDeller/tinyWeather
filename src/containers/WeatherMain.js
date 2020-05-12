@@ -6,7 +6,7 @@ import Sidebar from '../components/sidebar/Sidebar';
 import { connect } from 'react-redux';
 import uuid from 'react-uuid';
 import WeatherIcons from '../components/weather/WeatherIcons';
-import postRecentCity from '../redux/actions/postRecentCities';
+// import postRecentCity from '../redux/actions/postRecentCities';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import * as actions from '../redux/actions';
@@ -90,7 +90,7 @@ class WeatherMain extends React.Component {
               video = {Snow};
           }
           
-          this.props.dispatch(postRecentCity(city, uuid()));
+          this.props.dispatch(actions.postRecentCities(city, uuid()));
           this.props.dispatch(actions.setDetails(details));
           this.props.dispatch(actions.isOpen(false));
           this.props.dispatch(actions.setVideo(Object.values(video)[0]));
