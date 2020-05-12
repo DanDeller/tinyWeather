@@ -1,4 +1,4 @@
-import fetchRecentCities from './fetchRecentCities';
+import { fetchRecentCities } from './currentWeather';
 
 const postRecentCities = (city, id) => {
   return dispatch => {

@@ -6,11 +6,10 @@ import Sidebar from '../components/sidebar/Sidebar';
 import { connect } from 'react-redux';
 import uuid from 'react-uuid';
 import WeatherIcons from '../components/weather/WeatherIcons';
-import fetchRecentCities from '../redux/actions/fetchRecentCities';
 import postRecentCity from '../redux/actions/postRecentCities';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { setCity, setDetails, setVideo, isOpen, visible } from '../redux/actions';
+import * as actions from '../redux/actions';
 import { Rain, Clear, Clouds, ThunderLightning, Haze, Snow } from '../assets/videos/vid-exports';
 import ErrorModal from '../components/modal/Modal';
 import WeatherVideo from '../components/weather-video/WeatherVideo';
@@ -28,34 +27,34 @@ class WeatherMain extends React.Component {
   } 
 
   componentDidMount() {
-    this.props.dispatch(fetchRecentCities());
+    this.props.dispatch(actions.fetchRecentCities());
   } // end componentDidMount()
 
   updateInputValue = (e) => {
-    this.props.dispatch(setCity(e.target.value));
+    this.props.dispatch(actions.setCity(e.target.value));
   } // end updateInputValue()
 
   resetSearch = () => {
     const refs = {...this.state.myRefs};
     refs.current.value = '';
-    this.props.dispatch(isOpen(true));
-    this.props.dispatch(setVideo(''));
-    this.props.dispatch(setCity(''));
+    this.props.dispatch(actions.isOpen(true));
+    this.props.dispatch(actions.setVideo(''));
+    this.props.dispatch(actions.setCity(''));
   } // end resetSearch()
 
   closeModal = (e) => {
     e.preventDefault();
     const refs = {...this.state.myRefs};
     refs.current.value = '';
-    this.props.dispatch(visible(false));
-    this.props.dispatch(setCity(''));
+    this.props.dispatch(actions.visible(false));
+    this.props.dispatch(actions.setCity(''));
   } // end closeModal()
 
   getWeather = (e) => {
     e.preventDefault();
 
     if (!this.props.city) {
-       this.props.dispatch(visible(true));
+       this.props.dispatch(actions.visible(true));
     } else {
       const city = this.props.city;
 
@@ -92,12 +91,12 @@ class WeatherMain extends React.Component {
           }
           
           this.props.dispatch(postRecentCity(city, uuid()));
-          this.props.dispatch(setDetails(details));
-          this.props.dispatch(isOpen(false));
-          this.props.dispatch(setVideo(Object.values(video)[0]));
+          this.props.dispatch(actions.setDetails(details));
+          this.props.dispatch(actions.isOpen(false));
+          this.props.dispatch(actions.setVideo(Object.values(video)[0]));
         }
       })
-      .catch(() => this.props.dispatch(visible(true)));
+      .catch(() => this.props.dispatch(actions.visible(true)));
     } // end if/else (!this.props.city)
   } // end getWeather()
 

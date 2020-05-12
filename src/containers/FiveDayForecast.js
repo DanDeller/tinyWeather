@@ -8,10 +8,7 @@ import WeatherIcons from '../components/weather/WeatherIcons';
 import axios from 'axios';
 
 class FiveDayForecast extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {days: []};
-  }
+  state = {days: []};
 
   getForecast = () => {
     const city = this.props.city;

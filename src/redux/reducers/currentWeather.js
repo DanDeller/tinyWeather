@@ -1,3 +1,5 @@
+import * as actionTypes from '../actions/actionTypes';
+
 const initCity = {
   setCity: '',
   setVideo: '',
@@ -9,32 +11,32 @@ const initCity = {
 
 const currentWeather = (state = initCity, action) => {
   switch (action.type) {
-    case 'SET_VIDEO':
+    case actionTypes.SET_VIDEO:
       return {
         ...state,
         setVideo: action.video
       }
-    case 'SET_CITY':
+    case actionTypes.SET_CITY:
       return {
         ...state,
         setCity: action.city
       }
-    case 'IS_OPEN':
+    case actionTypes.IS_OPEN:
       return {
         ...state,
         isOpen: action.isOpen
       }
-    case 'VISIBLE':
+    case actionTypes.VISIBLE:
       return {
         ...state,
         visible: action.visible
       }
-    case 'SET_DETAILS':
+    case actionTypes.SET_DETAILS:
       return {
         ...state,
         cityDetails: [action.cityDetails]
       }
-    case 'RECENT_CITY':
+    case actionTypes.RECENT_CITY:
       return {
         ...state,
         recentCities: action.recent_city
