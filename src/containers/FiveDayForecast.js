@@ -14,7 +14,7 @@ class FiveDayForecast extends React.Component {
     const city = this.props.city;
 
     if (this.props.city.length) {
-      axios.get(`/forecast?q=${city}&appid=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
+      axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
       .then(res => {
         if (res) {
           const newData = [],

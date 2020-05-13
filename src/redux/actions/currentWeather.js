@@ -14,6 +14,8 @@
  *    deleteRecentCities
  */
 
+import axios from 'axios';
+
 export const setCity = city => ({
   type: 'SET_CITY',
   city
@@ -47,13 +49,12 @@ export const setVideo = video => ({
 
 export const fetchRecentCities = () => {
   return dispatch => {
-    fetch('/currentWeather')
-    .then(res => res.json())
+    axios.get('/currentWeather')
     .then((res) => {
       if (res.error) {
         throw(res.error);
       }
-      dispatch(recentCity(res));
+      dispatch(recentCity(res.data));
     })
     .catch(error => {
       console.log(error);
@@ -67,14 +68,7 @@ export const postRecentCities = (city, id) => {
       id: id,
       city: city
     };
-    fetch('/currentWeather', {
-      method: 'POST',
-      headers: {
-				'Accept': 'application/json',
-	      'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(data)
-    })
+    axios.post('/currentWeather', data)
     .then(() => {
       dispatch(fetchRecentCities());
     })
@@ -85,20 +79,24 @@ export const postRecentCities = (city, id) => {
 }
 
 export const deleteRecentCities = (id) => {
-  console.log(id);
   return dispatch => {
     const data = {
       id: id
     };
-    fetch('/currentWeather', {
-      method: 'DELETE',
-			body: JSON.stringify(data)
+    axios.delete('/currentWeather', {
+      headers: {
+        'Accept': 'application/json',
+	      'Content-Type': 'application/json'
+      },
+      data: {
+        source: data
+      }
     })
     .then(() => {
       dispatch(fetchRecentCities());
     })
     .catch((error) => {
       console.log(error);
-    })
+    });
   }
 }

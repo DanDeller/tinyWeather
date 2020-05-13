@@ -8,7 +8,6 @@ import axios from 'axios';
 
 window.store = store;
 
-axios.defaults.baseURL = 'http://api.openweathermap.org/data/2.5';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 axios.interceptors.request.use(request => {

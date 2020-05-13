@@ -16,9 +16,7 @@ import WeatherVideo from '../components/weather-video/WeatherVideo';
 class WeatherMain extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {myRefs: ''};
-
     this.updateInputValue = this.updateInputValue.bind(this);
     this.getRefsFromChild = this.getRefsFromChild.bind(this);
     this.resetSearch = this.resetSearch.bind(this);
@@ -57,7 +55,7 @@ class WeatherMain extends React.Component {
     } else {
       const city = this.props.city;
 
-      axios.get(`/weather?q=${city}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
+      axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
       .then(res => {
         if (res) {
           let video = '';

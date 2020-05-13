@@ -2,20 +2,14 @@ import React from 'react';
 import style from '../../assets/styles/style.less';
 import PropTypes from 'prop-types';
 import SidebarItem from './SidebarItem.js';
-import { connect } from 'react-redux';
-import * as actions from '../../redux/actions';
 
 class Sidebar extends React.Component {
-  deleteCity = (e) => {
-    this.props.dispatch(actions.deleteRecentCities('70745-8426-abda-e421-301acfd04f87'));
-  }
-
   render() {
     const getRecentCities = this.props.recentCities.map((city, i) => (
       <SidebarItem 
-        key={i} 
+        key={i}
+        id={city.id}
         recentCity={city} 
-        deleteCity={this.deleteCity}
       />
     ));
   
@@ -30,14 +24,8 @@ class Sidebar extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    dispatch
-  }
-}
-
 Sidebar.propTypes = {
   recentCities: PropTypes.array
 };
 
-export default connect(mapDispatchToProps)(Sidebar);
+export default Sidebar;
