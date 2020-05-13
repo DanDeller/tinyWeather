@@ -9,6 +9,7 @@
  *    setVideo
  * 
  * - Async calls
+ *    getWeather,
  *    fetchRecentCities, 
  *    postRecentCities,
  *    deleteRecentCities
