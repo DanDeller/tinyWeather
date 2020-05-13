@@ -14,6 +14,8 @@
  *    deleteRecentCities
  */
 
+import { Rain, Clear, Clouds, ThunderLightning, Haze, Snow } from '../../assets/videos/vid-exports';
+import uuid from 'react-uuid';
 import axios from 'axios';
 
 export const setCity = city => ({
@@ -46,6 +48,48 @@ export const setVideo = video => ({
   type: 'SET_VIDEO',
   video
 });
+
+export const getWeather = (city) => {
+  return dispatch => {
+    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
+    .then(res => {
+      let video = '';
+      const details = {
+        name: res.data.name,
+        weather: res.data.weather[0].main.toLowerCase(),
+        temp: parseInt(res.data.main.temp)
+      };
+
+      switch(details.weather) {
+        case 'clouds':
+          video = {Clouds};
+          break;
+        case 'clear':
+          video = {Clear};
+          break;
+        case 'drizzle':
+        case 'rain':
+          video = {Rain};
+          break;
+        case 'haze': 
+        case 'mist':
+          video = {Haze};
+          break;
+        case 'thunderstorm':
+          video = {ThunderLightning};
+          break;
+        case 'snow':
+          video = {Snow};
+      }
+      
+      dispatch(postRecentCities(city, uuid()));
+      dispatch(setDetails(details));
+      dispatch(isOpen(false));
+      dispatch(setVideo(Object.values(video)[0]));
+    })
+    .catch(() => dispatch(visible(true)));
+  }
+}
 
 export const fetchRecentCities = () => {
   return dispatch => {

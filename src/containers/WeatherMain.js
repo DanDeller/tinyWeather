@@ -4,12 +4,9 @@ import WeatherForm from '../components/weather-form/WeatherForm';
 import WeatherList from '../components/weather/WeatherList';
 import Sidebar from '../components/sidebar/Sidebar';
 import { connect } from 'react-redux';
-import uuid from 'react-uuid';
 import WeatherIcons from '../components/weather/WeatherIcons';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import * as actions from '../redux/actions';
-import { Rain, Clear, Clouds, ThunderLightning, Haze, Snow } from '../assets/videos/vid-exports';
 import ErrorModal from '../components/modal/Modal';
 import WeatherVideo from '../components/weather-video/WeatherVideo';
 
@@ -49,52 +46,7 @@ class WeatherMain extends React.Component {
 
   getWeather = (e) => {
     e.preventDefault();
-
-    if (!this.props.city) {
-       this.props.dispatch(actions.visible(true));
-    } else {
-      const city = this.props.city;
-
-      axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
-      .then(res => {
-        if (res) {
-          let video = '';
-          const details = {
-            name: res.data.name,
-            weather: res.data.weather[0].main.toLowerCase(),
-            temp: parseInt(res.data.main.temp)
-          };
-
-          switch(details.weather) {
-            case 'clouds':
-              video = {Clouds};
-              break;
-            case 'clear':
-              video = {Clear};
-              break;
-            case 'drizzle':
-            case 'rain':
-              video = {Rain};
-              break;
-            case 'haze': 
-            case 'mist':
-              video = {Haze};
-              break;
-            case 'thunderstorm':
-              video = {ThunderLightning};
-              break;
-            case 'snow':
-              video = {Snow};
-          }
-          
-          this.props.dispatch(actions.postRecentCities(city, uuid()));
-          this.props.dispatch(actions.setDetails(details));
-          this.props.dispatch(actions.isOpen(false));
-          this.props.dispatch(actions.setVideo(Object.values(video)[0]));
-        }
-      })
-      .catch(() => this.props.dispatch(actions.visible(true)));
-    } // end if/else (!this.props.city)
+    this.props.dispatch(actions.getWeather(this.props.city));
   } // end getWeather()
 
   getRefsFromChild = (childRefs) => {

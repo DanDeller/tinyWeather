@@ -7,5 +7,6 @@ export {
   setVideo,
   fetchRecentCities,
   postRecentCities,
-  deleteRecentCities
+  deleteRecentCities,
+  getWeather
 } from './currentWeather';
