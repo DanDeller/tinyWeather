@@ -49,18 +49,19 @@ module.exports = {
   },
   delete: function(request, callback) {
 		this.connect((err, connection) => {
-			const currentId = request.body;
+      const currentId = request.body;
+      console.log(currentId)
 			if (err) return callback(err)
-      r.db(config.db.name).table('currentWeather')
-			.get(currentId.id)
-			.delete()
-			.run(connection)
-			.then((response) => {
-				return callback(null, response);
-			})
-			.error((error) => {
-				return callback(error);
-			});
+      // r.db(config.db.name).table('currentWeather')
+			// .get(currentId.id)
+			// .delete()
+			// .run(connection)
+			// .then((response) => {
+			// 	return callback(null, response);
+			// })
+			// .error((error) => {
+			// 	return callback(error);
+			// });
 		});
 	}
 }

@@ -6,5 +6,6 @@ export {
   visible,
   setVideo,
   fetchRecentCities,
-  postRecentCities
+  postRecentCities,
+  deleteRecentCities
 } from './currentWeather';

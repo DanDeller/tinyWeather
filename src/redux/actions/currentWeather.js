@@ -85,7 +85,7 @@ export const postRecentCities = (city, id) => {
 }
 
 export const deleteRecentCities = (id) => {
-  console.log('hey');
+  console.log(id);
   return dispatch => {
     const data = {
       id: id
