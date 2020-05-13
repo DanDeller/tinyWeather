@@ -51,7 +51,7 @@ module.exports = {
 		this.connect((err, connection) => {
       const currentId = request.body.source.id;
 			if (err) return callback(err)
-      r.db('tinyWeather').table('currentWeather')
+      r.db(config.db.name).table('currentWeather')
 			.get(currentId)
 			.delete()
 			.run(connection)

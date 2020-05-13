@@ -18,8 +18,7 @@ class SidebarItem extends React.Component {
     })
   }
 
-  deleteCity = (id) => {
-    console.log(id);
+  deleteCity = () => {
     this.props.dispatch(actions.deleteRecentCities(this.props.id));
   }
 
@@ -45,9 +44,6 @@ class SidebarItem extends React.Component {
             display: this.state.toggleDelete ? 'flex' : 'none'
           }}>Remove
         </button>
-        {/* <RemoveCity 
-          recentCity={recentCity.toggleDelete} 
-        /> */}
       </li>
     );
   }
@@ -60,8 +56,10 @@ const mapDispatchToProps = dispatch => {
 }
 
 SidebarItem.propTypes = {
+  id: PropTypes.string,
   city: PropTypes.object,
-  recentCity: PropTypes.object
+  recentCity: PropTypes.object,
+  dispatch: PropTypes.func,
 };
 
 export default connect(mapDispatchToProps)(SidebarItem);

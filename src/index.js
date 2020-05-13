@@ -8,8 +8,6 @@ import axios from 'axios';
 
 window.store = store;
 
-axios.defaults.headers.post['Content-Type'] = 'application/json';
-
 axios.interceptors.request.use(request => {
 	console.log(request);
 	return request;
