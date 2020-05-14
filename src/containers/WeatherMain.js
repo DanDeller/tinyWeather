@@ -3,12 +3,12 @@ import style from '../assets/styles/style.less';
 import WeatherForm from '../components/weather-form/WeatherForm';
 import WeatherList from '../components/weather/WeatherList';
 import Sidebar from '../components/sidebar/Sidebar';
-import { connect } from 'react-redux';
-import WeatherIcons from '../components/weather/WeatherIcons';
-import PropTypes from 'prop-types';
-import * as actions from '../redux/actions';
 import ErrorModal from '../components/modal/Modal';
 import WeatherVideo from '../components/weather-video/WeatherVideo';
+import WeatherIcons from '../components/weather/WeatherIcons';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import * as actions from '../redux/actions';
 
 class WeatherMain extends React.Component {
   constructor(props) {
@@ -22,11 +22,11 @@ class WeatherMain extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(actions.fetchRecentCities());
-  } // end componentDidMount()
+  }
 
   updateInputValue = (e) => {
     this.props.dispatch(actions.setCity(e.target.value));
-  } // end updateInputValue()
+  }
 
   resetSearch = () => {
     const refs = {...this.state.myRefs};
@@ -34,7 +34,7 @@ class WeatherMain extends React.Component {
     this.props.dispatch(actions.isOpen(true));
     this.props.dispatch(actions.setVideo(''));
     this.props.dispatch(actions.setCity(''));
-  } // end resetSearch()
+  }
 
   closeModal = (e) => {
     e.preventDefault();
@@ -42,18 +42,18 @@ class WeatherMain extends React.Component {
     refs.current.value = '';
     this.props.dispatch(actions.visible(false));
     this.props.dispatch(actions.setCity(''));
-  } // end closeModal()
+  }
 
   getWeather = (e) => {
     e.preventDefault();
     this.props.dispatch(actions.getWeather(this.props.city));
-  } // end getWeather()
+  }
 
   getRefsFromChild = (childRefs) => {
     this.setState({
       myRefs: childRefs
     });
-  } // end getRefsFromChild()
+  }
 
   render() {
     return (

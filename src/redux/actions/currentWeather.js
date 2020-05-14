@@ -101,7 +101,7 @@ export const fetchRecentCities = () => {
       }
       dispatch(recentCity(res.data));
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     })
   }
