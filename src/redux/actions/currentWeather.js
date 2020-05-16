@@ -92,7 +92,11 @@ export const getWeather = (city) => {
           video = {Snow};
       }
       
-      dispatch(fetchOrdersSuccess());
+      // use a timeout to simulate a slighly longer loading time
+      // to help demo the loader and display it, at minimum, for 500ms
+      // NOTE: this is for demo purposes only. Don't use in realtime
+      setTimeout(() => {dispatch(fetchOrdersSuccess())}, 500);
+      
       dispatch(postRecentCities(city, uuid()));
       dispatch(setDetails(details));
       dispatch(isOpen(false));
