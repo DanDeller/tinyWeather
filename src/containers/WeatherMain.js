@@ -9,6 +9,7 @@ import WeatherIcons from '../components/weather/WeatherIcons';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../redux/actions';
+import Spinner from '../components/spinner/Spinner';
 
 class WeatherMain extends React.Component {
   constructor(props) {
@@ -58,6 +59,9 @@ class WeatherMain extends React.Component {
   render() {
     return (
       <section className={style.container}>
+        <Spinner 
+          loading={this.props.loading}
+        />
         <ErrorModal 
           visible={this.props.visible} 
           closeModal={this.closeModal} 
@@ -90,7 +94,9 @@ class WeatherMain extends React.Component {
             </div>
           </div>
         </div>
-        <WeatherIcons animate={false} />
+        <WeatherIcons 
+          animate={false} 
+        />
       </section>
     );
   }
@@ -103,7 +109,8 @@ const mapStateToProps = state => {
     recentCities: state.currentWeather.recentCities,
     cityDetails: state.currentWeather.cityDetails,
     isOpen: state.currentWeather.isOpen,
-    visible: state.currentWeather.visible
+    visible: state.currentWeather.visible,
+    loading: state.currentWeather.loading
   }
 }
 

@@ -50,8 +50,17 @@ export const setVideo = video => ({
   video
 });
 
+export const fetchOrdersSuccess = () => ({
+  type: 'FETCH_STATUS_SUCCESS',
+});
+
+export const fetchOrdersStart = () => ({
+  type: 'FETCH_STATUS_START'
+});
+
 export const getWeather = (city) => {
   return dispatch => {
+    dispatch(fetchOrdersStart());
     axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
     .then(res => {
       let video = '';
@@ -83,6 +92,7 @@ export const getWeather = (city) => {
           video = {Snow};
       }
       
+      dispatch(fetchOrdersSuccess());
       dispatch(postRecentCities(city, uuid()));
       dispatch(setDetails(details));
       dispatch(isOpen(false));
