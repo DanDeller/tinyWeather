@@ -92,7 +92,7 @@ export const getWeather = (city) => {
           video = {Snow};
       }
       
-      // use a timeout to simulate a slightly longer loading time
+      // Use a timeout to simulate a slightly longer loading time
       // to help demo the loader and display it, at minimum, for 500ms
       // NOTE: this is for demo purposes only. Don't use in realtime
       setTimeout(() => {

@@ -5,37 +5,12 @@ import 'moment-timezone';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import WeatherIcons from '../components/weather/WeatherIcons';
-import axios from 'axios';
+import * as actions from '../redux/actions/fiveDayForecast';
 
 class FiveDayForecast extends React.Component {
-  state = {days: []};
-
   getForecast = () => {
     const city = this.props.city;
-
-    if (this.props.city.length) {
-      axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
-      .then(res => {
-        if (res) {
-          const newData = [],
-                set     = res.data;
-
-          if (set.list) {
-            set.list.map((o) => {
-              const date = o.dt_txt.split(' ')[1];
-              
-              if (date === '15:00:00') {
-                newData.push(o);
-              }
-
-              return newData.splice(5);
-            });
-
-            this.setState({days: newData});
-          }
-        }
-      })
-    }
+    this.props.dispatch(actions.fetchDays(city));
   }
 
   componentDidMount = () => {
@@ -44,7 +19,7 @@ class FiveDayForecast extends React.Component {
 
   render() {
     const forgotCity = !this.props.city.length ? style.show : '';
-    const days = this.state.days.map((day, i) => (
+    const days = this.props.days.map((day, i) => (
       <div className={style.day} key={i}>
         <p>
           <Moment format="dddd">
@@ -55,7 +30,7 @@ class FiveDayForecast extends React.Component {
         <p>{day.main.temp.toFixed(0)}</p>
         <p>{`${day.weather[0].description[0].toUpperCase()}${day.weather[0].description.substring(1)}`}</p>
       </div>
-    ))
+    ));
 
     return (
       <section className={style.container}>
@@ -66,7 +41,9 @@ class FiveDayForecast extends React.Component {
             {days}
           </div>
         </div>
-        <WeatherIcons animate={false} />
+        <WeatherIcons 
+          animate={false}
+        />
       </section>
     );
   }
@@ -74,7 +51,14 @@ class FiveDayForecast extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    days: state.fiveDayForecast.days,
     city: state.currentWeather.setCity
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch
   }
 }
 
@@ -82,4 +66,7 @@ FiveDayForecast.propTypes = {
   city: PropTypes.string
 };
 
-export default connect(mapStateToProps)(FiveDayForecast);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FiveDayForecast);

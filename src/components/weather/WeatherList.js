@@ -20,8 +20,8 @@ const WeatherList = (props) => {
 }
 
 WeatherList.propTypes = {
-  'cityDetails': PropTypes.array,
-  'isOpen': PropTypes.bool 
+  cityDetails: PropTypes.array,
+  isOpen: PropTypes.bool 
 };
 
 export default WeatherList;

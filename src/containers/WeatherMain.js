@@ -8,7 +8,7 @@ import WeatherVideo from '../components/weather-video/WeatherVideo';
 import WeatherIcons from '../components/weather/WeatherIcons';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import * as actions from '../redux/actions';
+import * as actions from '../redux/actions/currentWeather';
 import Spinner from '../components/spinner/Spinner';
 
 class WeatherMain extends React.Component {
@@ -21,7 +21,7 @@ class WeatherMain extends React.Component {
     this.getWeather = this.getWeather.bind(this);
   } 
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.props.dispatch(actions.fetchRecentCities());
   }
 

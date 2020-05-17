@@ -47,11 +47,11 @@ const currentWeather = (state = initCity, action) => {
         ...state,
         loading: true
       }
-      case actionTypes.FETCH_STATUS_SUCCESS:
-        return {
-          ...state,
-          loading: false
-        }
+    case actionTypes.FETCH_STATUS_SUCCESS:
+      return {
+        ...state,
+        loading: false
+      }
     default:
       return state
   }
