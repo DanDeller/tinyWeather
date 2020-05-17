@@ -1,5 +1,5 @@
 const config = require('../../server.config.js'),
-      r      = require('rethinkdb');
+      r = require('rethinkdb');
 
 module.exports = {
   connect: function(cb) {
@@ -7,12 +7,15 @@ module.exports = {
       db: config.db.name,
       host: config.db.host,
       port: config.db.port
-    }).then((conn) => {
+    })
+    .then((conn) => {
       return cb(null, conn);
-    }).error((err) => {
+    })
+    .error((err) => {
       return cb(err);
     })
   },
+
   list: function(cb) {
     this.connect((err, conn) => {
       if (err) return cb(err);
@@ -29,6 +32,7 @@ module.exports = {
       });
     })
   },
+
   post: function(request, cb) {
     const city = request.body;
 		this.connect((err, connection) => {
@@ -47,6 +51,7 @@ module.exports = {
 			});
 		});
   },
+
   delete: function(request, callback) {
 		this.connect((err, connection) => {
       const currentId = request.body.source.id;

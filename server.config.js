@@ -7,7 +7,8 @@ module.exports = {
 		port: process.env.DB_PORT || '28015',
 		name: process.env.DB_NAME || 'tinyWeather',
 		tables: {
-			currentWeather: 'currentWeather'
+			currentWeather: 'currentWeather',
+			users: 'users'
 		}
 	}
 };

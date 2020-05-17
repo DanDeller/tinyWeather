@@ -89,7 +89,7 @@ export const getWeather = (city) => {
     })
     .catch(() => dispatch(visible(true)));
   }
-}
+};
 
 export const fetchRecentCities = () => {
   return dispatch => {
@@ -104,7 +104,7 @@ export const fetchRecentCities = () => {
       console.log(error);
     })
   }
-}
+};
 
 export const postRecentCities = (city, id) => {
   return dispatch => {
@@ -120,7 +120,7 @@ export const postRecentCities = (city, id) => {
       console.log(error);
     })
   }
-}
+};
 
 export const deleteRecentCities = (id) => {
   return dispatch => {
@@ -143,4 +143,4 @@ export const deleteRecentCities = (id) => {
       console.log(error);
     });
   }
-}
+};

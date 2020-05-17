@@ -16,12 +16,12 @@ exports.setDatabaseAndTables = () => {
           {created: 0},
           r.dbCreate(config.db.name)
         );
-      })
-      .run(connection, (err) => {
+      }).run(connection, (err) => {
         callback(err, connection);
       });
     },
-    function createTable(connection, callback) {
+
+    function createCurrentWeatherTable(connection, callback) {
       r.db(config.db.name)
       .tableList()
       .contains(config.db.tables.currentWeather)
@@ -32,12 +32,29 @@ exports.setDatabaseAndTables = () => {
           r.db(config.db.name)
           .tableCreate(config.db.tables.currentWeather)
         );
+      }).run(connection, (err) => {
+        callback(err, connection);
+      });
+    },
+
+    function createUsersTable(connection, callback) {
+      r.db(config.db.name)
+      .tableList()
+      .contains(config.db.tables.users)
+      .do((containsTable) => {
+        return r.branch(
+          containsTable,
+          {created: 0},
+          r.db(config.db.name)
+          .tableCreate(config.db.tables.users)
+        );
       })
       .run(connection, (err) => {
         callback(err, connection);
       });
     },
-    function createIndex(connection, callback) {
+
+    function createCurrentWeatherIndex(connection, callback) {
       r.db(config.db.name)
       .table(config.db.tables.currentWeather)
       .indexList()
@@ -50,21 +67,49 @@ exports.setDatabaseAndTables = () => {
           .table(config.db.tables.currentWeather)
           .indexCreate('createdAt')
         );
+      }).run(connection, (err) => {
+        callback(err, connection);
+      });
+    },
+
+    function createUsersIndex(connection, callback) {
+      r.db(config.db.name)
+      .table(config.db.tables.users)
+      .indexList()
+      .contains('createdAt')
+      .do((hasIndex) => {
+        return r.branch(
+          hasIndex,
+          {created: 0},
+          r.db(config.db.name)
+          .table(config.db.tables.users)
+          .indexCreate('createdAt')
+        );
       })
       .run(connection, (err) => {
         callback(err, connection);
       });
     },
-    function waitForIndex(connection, callback) {
+
+    function waitForCurrentWeatherIndex(connection, callback) {
       r.db(config.db.name)
       .table(config.db.tables.currentWeather)
       .indexWait('createdAt')
       .run(connection, (err) => {
         callback(err, connection);
       });
+    },
+
+    function waitForUsersIndex(connection, callback) {
+      r.db(config.db.name)
+      .table(config.db.tables.users)
+      .indexWait('createdAt')
+      .run(connection, (err) => {
+        callback(err, connection);
+      });
     }
   ], (err) => {
-    if (err) {
+    if(err) {
       console.error(err);
       process.exit(1);
       return;

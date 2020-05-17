@@ -1,6 +1,6 @@
 const currentWeather = require('../models/currentWeather'),
-			express        = require('express'),
-			router         = express.Router();
+			express = require('express'),
+			router = express.Router();
 
 router.get('/currentWeather', (req, res) => {
 	currentWeather.list((error, response) => {

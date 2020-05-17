@@ -46,4 +46,4 @@ export const fetchDays = (city) => {
       .catch((error) => console.log(error));
     }
   }
-}
+};
