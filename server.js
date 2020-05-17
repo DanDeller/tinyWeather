@@ -1,16 +1,17 @@
-const webpack              = require('webpack'),
-      webpackHotMiddleware = require('webpack-hot-middleware'),
-      webpackMiddleware    = require('webpack-dev-middleware'),
-      isDeveloping         = process.env.NODE_ENV !== 'production',
-      bodyParser           = require('body-parser'),
-      requireDir           = require('require-dir'),
-      endpoints            = requireDir('./server/endpoints'),
-      express              = require('express'),
-      dbData               = require('./server/db.js'),
-      config               = require('./webpack.config.js'),
-      path                 = require('path'),
-      app                  = express(),
-      _                    = require('lodash');
+const webpackHotMiddleware = require('webpack-hot-middleware'),
+      webpackMiddleware = require('webpack-dev-middleware'),
+      isDeveloping = process.env.NODE_ENV !== 'production',
+      serverConfig = require('./server.config.js'),
+      bodyParser = require('body-parser'),
+      requireDir = require('require-dir'),
+      endpoints  = requireDir('./server/endpoints'),
+      express = require('express'),
+      webpack = require('webpack'),
+      dbData = require('./server/db.js'),
+      config = require('./webpack.config.js'),
+      path = require('path'),
+      app = express(),
+      _ = require('lodash');
 
 dbData.setDatabaseAndTables();
 
@@ -48,4 +49,4 @@ _.each(endpoints, (name) => {
   app.use(name);
 });
 
-app.listen(3000, () => console.log('App running on port 3000.'));
+app.listen(serverConfig.server.port, () => console.log('App running on port 3000.'));
