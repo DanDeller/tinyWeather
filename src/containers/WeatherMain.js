@@ -43,6 +43,7 @@ class WeatherMain extends React.Component {
     refs.current.value = '';
     this.props.dispatch(actions.visible(false));
     this.props.dispatch(actions.setCity(''));
+    this.props.dispatch(actions.fetchOrdersSuccess());
   }
 
   getWeather = (e) => {
@@ -127,7 +128,8 @@ WeatherMain.propTypes = {
   dispatch: PropTypes.func,
   visible: PropTypes.bool,
   isOpen: PropTypes.bool,
-  city: PropTypes.string
+  city: PropTypes.string,
+  loading: PropTypes.bool
 };
 
 export default connect(

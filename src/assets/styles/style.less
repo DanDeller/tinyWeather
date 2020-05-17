@@ -448,20 +448,25 @@ p, h1, ul {
 .spinnerWrap {
   background-color: rgba(255, 255, 255, .7);
   display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   height: 100%;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 9999;
-  .spinner {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+}
+
+.spinnerBlurb {
+  color: #290E0E;
+  font-family: 'Bangers', cursive;
+  font-size: 30px;
+  margin: 0 0 10px 0;
+  text-align: center;
 }
 
 .spinnerShow {
-  display: block;
+  display: flex;
 }
-

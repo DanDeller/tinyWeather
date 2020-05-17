@@ -1,7 +1,8 @@
 import React from "react";
 import { css } from "@emotion/core";
 import style from '../../assets/styles/style.less';
-import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+import BarLoader from "react-spinners/BarLoader";
+import PropTypes from 'prop-types';
 
 const override = css`
   display: block;
@@ -11,15 +12,21 @@ const override = css`
 const Spinner = (props) => {
   return (
     <div className={`${style.spinnerWrap} ${(props.loading ? style.spinnerShow : style.spinnerHide)}`}>
+      <p className={style.spinnerBlurb}>Gathering data...</p>  
       <div className={style.spinner}>
-        <ClimbingBoxLoader
+        <BarLoader
           css={override}
-          size={15}
+          height={10}
+          width={180}
           color={"#F45050"}
         />
       </div>
     </div>
   );
 }
+
+Spinner.propTypes = {
+  loading: PropTypes.bool
+};
 
 export default Spinner;

@@ -6,6 +6,7 @@ export {
   visible,
   setVideo,
   fetchRecentCities,
+  fetchOrdersSuccess,
   postRecentCities,
   deleteRecentCities,
   getWeather
