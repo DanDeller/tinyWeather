@@ -43,7 +43,7 @@ class WeatherMain extends React.Component {
     refs.current.value = '';
     this.props.dispatch(actions.visible(false));
     this.props.dispatch(actions.setCity(''));
-    this.props.dispatch(actions.fetchOrdersSuccess());
+    this.props.dispatch(actions.fetchWeatherSuccess());
   }
 
   getWeather = (e) => {

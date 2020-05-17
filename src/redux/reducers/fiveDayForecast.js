@@ -1,15 +1,17 @@
+import * as actionTypes from '../actions/actionTypes';
+
 const initDays = {
   days: []
 }
 
 const fiveDayForecast = (state = initDays, action) => {
   switch (action.type) {
-    case 'FETCH_DAYS_START':
+    case actionTypes.FETCH_DAYS_START:
       return {
         ...state,
         loading: true
       }
-    case 'FETCH_DAYS_SUCCESS':
+    case actionTypes.FETCH_DAYS_SUCCESS:
       return {
         ...state,
         days: action.days

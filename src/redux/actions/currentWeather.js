@@ -1,66 +1,50 @@
-/* 
- * MAIN ACTIONS INDEX FILE
- * - WeatherMain.js
- *    setCity, 
- *    setDetails, 
- *    recentCity, 
- *    isOpen, 
- *    visible, 
- *    setVideo
- * 
- * - Async calls
- *    getWeather,
- *    fetchRecentCities, 
- *    postRecentCities,
- *    deleteRecentCities
- */
-
 import { Rain, Clear, Clouds, ThunderLightning, Haze, Snow } from '../../assets/videos/vid-exports';
+import * as actionTypes from '../actions/actionTypes';
 import uuid from 'react-uuid';
 import axios from 'axios';
 
 export const setCity = city => ({
-  type: 'SET_CITY',
+  type: actionTypes.SET_CITY,
   city
 });
 
 export const setDetails = cityDetails => ({
-  type: 'SET_DETAILS',
+  type: actionTypes.SET_DETAILS,
   cityDetails
 });
 
 export const recentCity = (recent_city, id) => ({
-  type: 'RECENT_CITY',
+  type: actionTypes.RECENT_CITY,
   id,
   recent_city
 });
 
 export const isOpen = isOpen => ({
-  type: 'IS_OPEN',
+  type: actionTypes.IS_OPEN,
   isOpen
 });
 
 export const visible = visible => ({
-  type: 'VISIBLE',
+  type: actionTypes.VISIBLE,
   visible
 });
 
 export const setVideo = video => ({
-  type: 'SET_VIDEO',
+  type: actionTypes.SET_VIDEO,
   video
 });
 
-export const fetchOrdersSuccess = () => ({
-  type: 'FETCH_STATUS_SUCCESS',
+export const fetchWeatherSuccess = () => ({
+  type: actionTypes.FETCH_WEATHER_SUCCESS,
 });
 
-export const fetchOrdersStart = () => ({
-  type: 'FETCH_STATUS_START'
+export const fetchWeatherStart = () => ({
+  type: actionTypes.FETCH_WEATHER_START
 });
 
 export const getWeather = (city) => {
   return dispatch => {
-    dispatch(fetchOrdersStart());
+    dispatch(fetchWeatherStart());
     axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
     .then(res => {
       let video = '';
@@ -96,7 +80,7 @@ export const getWeather = (city) => {
       // to help demo the loader and display it, at minimum, for 500ms
       // NOTE: this is for demo purposes only. Don't use in realtime
       setTimeout(() => {
-        dispatch(fetchOrdersSuccess());
+        dispatch(fetchWeatherSuccess());
         dispatch(postRecentCities(city, uuid()));
         dispatch(setDetails(details));
         dispatch(isOpen(false));

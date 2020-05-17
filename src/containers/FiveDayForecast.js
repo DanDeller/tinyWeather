@@ -28,7 +28,7 @@ class FiveDayForecast extends React.Component {
           <span>{day.dt_txt.split(' ')[0]}</span>  
         </p>
         <p>{day.main.temp.toFixed(0)}</p>
-        <p>{`${day.weather[0].description[0].toUpperCase()}${day.weather[0].description.substring(1)}`}</p>
+        <p>{`${day.weather[0].description[0].toUpperCase()}${day.weather[0].description.slice(1)}`}</p>
       </div>
     ));
 
@@ -63,7 +63,9 @@ const mapDispatchToProps = dispatch => {
 }
 
 FiveDayForecast.propTypes = {
-  city: PropTypes.string
+  city: PropTypes.string,
+  days: PropTypes.array,
+  dispatch: PropTypes.func
 };
 
 export default connect(

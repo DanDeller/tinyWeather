@@ -42,12 +42,12 @@ const currentWeather = (state = initCity, action) => {
         ...state,
         recentCities: action.recent_city
       }
-    case actionTypes.FETCH_STATUS_START:
+    case actionTypes.FETCH_WEATHER_START:
       return {
         ...state,
         loading: true
       }
-    case actionTypes.FETCH_STATUS_SUCCESS:
+    case actionTypes.FETCH_WEATHER_SUCCESS:
       return {
         ...state,
         loading: false

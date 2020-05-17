@@ -1,12 +1,13 @@
 import axios from 'axios';
+import * as actionTypes from '../actions/actionTypes';
 
 export const fetchDaysSuccess = (days) => ({
-  type: 'FETCH_DAYS_SUCCESS',
+  type: actionTypes.FETCH_DAYS_SUCCESS,
   days: days
 });
 
 export const fetchDaysStart = () => ({
-  type: 'FETCH_DAYS_START'
+  type: actionTypes.FETCH_DAYS_START
 });
 
 export const fetchDays = (city) => {
@@ -42,7 +43,7 @@ export const fetchDays = (city) => {
           }
         })
       })
-      .catch(() => dispatch(visible(true)));
+      .catch((error) => console.log(error));
     }
   }
 }
