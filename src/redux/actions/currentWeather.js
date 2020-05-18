@@ -93,7 +93,7 @@ export const getWeather = (city) => {
 
 export const fetchRecentCities = () => {
   return dispatch => {
-    axios.get('/currentWeather')
+    axios.get('https://tiny-weather-65aa3.firebaseio.com/recentCities.json')
     .then((res) => {
       if (res.error) {
         throw(res.error);
@@ -112,7 +112,7 @@ export const postRecentCities = (city, id) => {
       id: id,
       city: city
     };
-    axios.post('/currentWeather', data)
+    axios.post('https://tiny-weather-65aa3.firebaseio.com/recentCities.json', data)
     .then(() => {
       dispatch(fetchRecentCities());
     })
@@ -127,7 +127,7 @@ export const deleteRecentCities = (id) => {
     const data = {
       id: id
     };
-    axios.delete('/currentWeather', {
+    axios.delete('https://tiny-weather-65aa3.firebaseio.com/recentCities.json', data, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
