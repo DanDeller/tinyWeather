@@ -10,7 +10,7 @@
     }
   },
   "scripts": {
-    "start": "webpack-dev-server --exec babel-node --mode development --hot --inline --content-base=dist --history-api-fallback --open --port 3000",
+    "start": "node server.js webpack-dev-server --exec babel-node --mode development --hot --inline --content-base=dist --history-api-fallback --open --port 3000",
     "build": "webpack --mode production",
     "lint": "eslint --ignore-path .gitignore .",
     "test": "jest",
@@ -26,6 +26,7 @@
     "babel-eslint": "^10.1.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "firebase": "^7.14.4",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",

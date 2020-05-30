@@ -7,13 +7,10 @@ const webpackHotMiddleware = require('webpack-hot-middleware'),
       endpoints  = requireDir('./server/endpoints'),
       express = require('express'),
       webpack = require('webpack'),
-      dbData = require('./server/db.js'),
       config = require('./webpack.config.js'),
       path = require('path'),
       app = express(),
       _ = require('lodash');
-
-dbData.setDatabaseAndTables();
 
 if (isDeveloping) {
   const compiler = webpack(config);

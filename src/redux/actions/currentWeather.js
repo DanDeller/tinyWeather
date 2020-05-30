@@ -42,6 +42,11 @@ export const fetchWeatherStart = () => ({
   type: actionTypes.FETCH_WEATHER_START
 });
 
+export const removeRecentCity = id => ({
+  type: actionTypes.REMOVE_RECENT_CITY,
+  id
+});
+
 export const getWeather = (city) => {
   return dispatch => {
     dispatch(fetchWeatherStart());
@@ -87,22 +92,23 @@ export const getWeather = (city) => {
         dispatch(setVideo(Object.values(video)[0]));
       }, 500);
     })
-    .catch(() => dispatch(visible(true)));
+    .catch((err) => {
+      console.log(err);
+      dispatch(visible(true))
+    });
   }
 };
 
 export const fetchRecentCities = () => {
   return dispatch => {
-    axios.get('https://tiny-weather-65aa3.firebaseio.com/recentCities.json')
+    axios.get('/currentWeather')
     .then((res) => {
       if (res.error) {
         throw(res.error);
       }
       dispatch(recentCity(res.data));
     })
-    .catch((error) => {
-      console.log(error);
-    })
+    .catch((err) => console.log(err));
   }
 };
 
@@ -112,13 +118,11 @@ export const postRecentCities = (city, id) => {
       id: id,
       city: city
     };
-    axios.post('https://tiny-weather-65aa3.firebaseio.com/recentCities.json', data)
+    axios.post('/currentWeather', data)
     .then(() => {
       dispatch(fetchRecentCities());
     })
-    .catch((error) => {
-      console.log(error);
-    })
+    .catch((err) => console.log(err));
   }
 };
 
@@ -127,7 +131,7 @@ export const deleteRecentCities = (id) => {
     const data = {
       id: id
     };
-    axios.delete('https://tiny-weather-65aa3.firebaseio.com/recentCities.json', data, {
+    axios.delete('/currentWeather', {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -137,10 +141,8 @@ export const deleteRecentCities = (id) => {
       }
     })
     .then(() => {
-      dispatch(fetchRecentCities());
+      dispatch(removeRecentCity(data.id));
     })
-    .catch((error) => {
-      console.log(error);
-    });
+    .catch((err) => console.log(err));
   }
 };

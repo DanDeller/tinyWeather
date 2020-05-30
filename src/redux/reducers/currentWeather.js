@@ -11,7 +11,6 @@ const initCity = {
 }
 
 const currentWeather = (state = initCity, action) => {
-  const setCities = action.recent_city ? Object.values(action.recent_city) : []
   switch (action.type) {
     case actionTypes.SET_VIDEO:
       return {
@@ -41,7 +40,12 @@ const currentWeather = (state = initCity, action) => {
     case actionTypes.RECENT_CITY:
       return {
         ...state,
-        recentCities: setCities
+        recentCities: action.recent_city
+      }
+    case actionTypes.REMOVE_RECENT_CITY:
+      return {
+        ...state,
+        recentCities: state.recentCities.filter((city) => city.id !== action.id)
       }
     case actionTypes.FETCH_WEATHER_START:
       return {

@@ -4,6 +4,7 @@ export const RECENT_CITY = 'RECENT_CITY';
 export const IS_OPEN = 'IS_OPEN';
 export const VISIBLE = 'VISIBLE';
 export const SET_VIDEO = 'SET_VIDEO';
+export const REMOVE_RECENT_CITY = 'REMOVE_RECENT_CITY';
 
 export const FETCH_WEATHER_START = 'FETCH_WEATHER_START';
 export const FETCH_WEATHER_SUCCESS = 'FETCH_WEATHER_SUCCESS';
