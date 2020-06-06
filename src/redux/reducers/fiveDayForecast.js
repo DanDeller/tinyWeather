@@ -7,16 +7,11 @@ const initDays = {
 };
 
 const fetchDaysStart = (state, action) => {
-  return updateObject(state, {
-    loading: true  
-  });
+  return updateObject(state, {loading: true});
 };
 
 const fetchDaysSuccess = (state, action) => {
-  return updateObject(state, {
-    days: action.days,
-    loading: false  
-  });
+  return updateObject(state, {days: action.days, loading: false});
 };
 
 const fiveDayForecast = (state = initDays, action) => {

@@ -9,60 +9,42 @@ const initCity = {
   loading: false,
   cityDetails: [],
   recentCities: []
-}
+};
 
 const setVideo = (state, action) => {
-  return updateObject(state, {
-    setVideo: action.video
-  });
+  return updateObject(state, {setVideo: action.video});
 };
 
 const setCity = (state, action) => {
-  return updateObject(state, {
-    setCity: action.city
-  });
+  return updateObject(state, {setCity: action.city});
 };
 
 const setIsOpen = (state, action) => {
-  return updateObject(state, {
-    isOpen: action.isOpen
-  });
+  return updateObject(state, {isOpen: action.isOpen});
 };
 
 const setVisible = (state, action) => {
-  return updateObject(state, {
-    visible: action.visible
-  });
+  return updateObject(state, {visible: action.visible});
 };
 
 const setDetails = (state, action) => {
-  return updateObject(state, {
-    cityDetails: [action.cityDetails]
-  });
+  return updateObject(state, {cityDetails: [action.cityDetails]});
 };
 
 const setRecentCity = (state, action) => {
-  return updateObject(state, {
-    recentCities: action.recent_city
-  });
+  return updateObject(state, {recentCities: action.recent_city});
 };
 
 const removeRecentCity = (state, action) => {
-  return updateObject(state, {
-    recentCities: state.recentCities.filter((city) => city.id !== action.id)
-  });
+  return updateObject(state, {recentCities: state.recentCities.filter((city) => city.id !== action.id)});
 };
 
 const fetchWeatherStart = (state, action) => {
-  return updateObject(state, {
-    loading: true
-  });
+  return updateObject(state, {loading: true});
 };
 
 const fetchWeatherSuccess = (state, action) => {
-  return updateObject(state, {
-    loading: false
-  });
+  return updateObject(state, {loading: false});
 };
 
 const currentWeather = (state = initCity, action) => {
