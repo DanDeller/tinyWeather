@@ -1,5 +1,5 @@
-import axios from 'axios';
 import * as actionTypes from '../actions/actionTypes';
+import axios from 'axios';
 
 export const fetchDaysSuccess = (days) => ({
   type: actionTypes.FETCH_DAYS_SUCCESS,
@@ -38,7 +38,6 @@ export const fetchDays = (city) => {
                 return newData.splice(5);
               });
               dispatch(fetchDaysSuccess(newData));
-              dispatch(fetchDaysEnd());
             }
           }
         })
