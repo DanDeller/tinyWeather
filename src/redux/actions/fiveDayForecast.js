@@ -12,11 +12,10 @@ export const fetchDaysStart = () => ({
 
 export const fetchDays = (city) => {
   return dispatch => {
-    dispatch(fetchDaysStart());
-    
     if (!city.length) {
       return;
     } else {
+      dispatch(fetchDaysStart());
       axios.get('/currentWeather')
       .then((res) => {
         if (res.error) {
@@ -39,6 +38,7 @@ export const fetchDays = (city) => {
                 return newData.splice(5);
               });
               dispatch(fetchDaysSuccess(newData));
+              dispatch(fetchDaysEnd());
             }
           }
         })

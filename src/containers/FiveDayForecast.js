@@ -18,9 +18,9 @@ class FiveDayForecast extends React.Component {
   }
 
   render() {
-    const forgotCity = !this.props.city.length ? style.show : '';
+    const forgotCity = !this.props.city.length ? style.show : style.hide;
     const days = this.props.days.map((day, i) => (
-      <div className={style.day} key={i}>
+      <div className={`${style.day} ${this.props.city.length === 0 ? style.hide : style.show}`} key={i}>
         <p>
           <Moment format="dddd">
             {day.dt_txt.split(' ')[0]}

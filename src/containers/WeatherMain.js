@@ -35,6 +35,7 @@ class WeatherMain extends React.Component {
     this.props.dispatch(actions.isOpen(true));
     this.props.dispatch(actions.setVideo(''));
     this.props.dispatch(actions.setCity(''));
+
   }
 
   closeModal = (e) => {
@@ -58,6 +59,7 @@ class WeatherMain extends React.Component {
   }
 
   render() {
+    console.log(this.props.days);
     return (
       <section className={style.container}>
         <Spinner 
@@ -111,7 +113,8 @@ const mapStateToProps = state => {
     cityDetails: state.currentWeather.cityDetails,
     isOpen: state.currentWeather.isOpen,
     visible: state.currentWeather.visible,
-    loading: state.currentWeather.loading
+    loading: state.currentWeather.loading,
+    days: state.fiveDayForecast.days
   }
 }
 
