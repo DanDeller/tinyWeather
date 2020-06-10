@@ -9,9 +9,9 @@ const override = css`
   margin: 0 auto;
 `;
 
-const Spinner = (props) => {
+const Spinner = ({loading}) => {
   return (
-    <div className={`${style.spinnerWrap} ${(props.loading ? style.spinnerShow : style.spinnerHide)}`}>
+    <div className={`${style.spinnerWrap} ${(loading ? style.spinnerShow : style.spinnerHide)}`}>
       <p className={style.spinnerBlurb}>Gathering data...</p>  
       <div className={style.spinner}>
         <BarLoader

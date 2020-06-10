@@ -74,28 +74,72 @@ p, h1, ul {
 .header {
   background: #C44444;
   border-bottom: 1px solid #ccc;
+  min-height: 70px;
   padding: 15px 0;
   nav {
     display: flex;
     justify-content: flex-start;
     position: relative;
     z-index: 9;
+    @media only screen and (max-width: @mobile) {
+      background:#f2f2f2;
+      display: none;
+      left: 0;
+      padding: 15px;
+      position: absolute;
+      top: 70px;
+      transition: all .3s linear 0s;
+      width: 100%;
+      z-index: 99;
+    }
+    &.open {
+      display: block;
+    }
+    ul {
+      display: flex;
+      @media only screen and (max-width: @mobile) {
+        display: block;
+      }
+    }
     li {
-      display: inline;
       font-family: @heading;
       font-weight: 700;
       margin: 0 25px 0 0;
+      @media only screen and (max-width: @mobile) {
+        margin: 0 0 25px 0;
+        text-align: center;
+        &:last-child {
+          margin: 0;
+        }
+      }
       a {
-        color: #f2f2f2;
+        color: #dedede;
         text-decoration: none;
         text-shadow: 0 1px 1px #7A2929;
         transition: color .3s linear 0s;
+        @media only screen and (max-width: @mobile) {
+          color: #290E0E;
+          text-shadow: none;
+        }
         &:hover {
-          color: #C79E9E;
+          color: #fff;
+          @media only screen and (max-width: @mobile) {
+            color: #290E0E;
+          }
+        }
+        &.currentLink {
+          color: #fff;
+          @media only screen and (max-width: @mobile) {
+            color: #290E0E;
+          }
         }
       }
     }
   }
+}
+
+.currentView {
+  color: #fff;
 }
 
 .weatherMain {
@@ -476,21 +520,14 @@ p, h1, ul {
   display: flex;
 }
 
-.mobileNav {
+.navIcon {
   display: none;
   height: 45px;
   position: absolute;
-  right: 0;
-  top: -14px;
+  right: 20px;
+  top: 10px;
   width: 60px;
-  @media only screen and (max-width: @mobile) {
-    display: block;
-  }
-}
-
-.navIcon {
-  width: 60px;
-  height: 45px;
+  z-index: 9;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -500,6 +537,9 @@ p, h1, ul {
   -o-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   cursor: pointer;
+  @media only screen and (max-width: @mobile) {
+    display: block;
+  }
 }
 
 .navIcon span {

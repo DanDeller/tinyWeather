@@ -2,10 +2,10 @@ import React from 'react';
 import style from '../../assets/styles/style.less';
 import PropTypes from 'prop-types';
 
-const WeatherVideo = (props) => {
+const WeatherVideo = ({setVideo}) => {
   return (
-    <video key={props.setVideo} className={style.video} loop autoPlay muted>
-      <source src={props.setVideo} type="video/mp4"></source>
+    <video key={setVideo} className={style.video} loop autoPlay muted>
+      <source src={setVideo} type="video/mp4"></source>
       Your browser does not support the video tag.
     </video>
   )

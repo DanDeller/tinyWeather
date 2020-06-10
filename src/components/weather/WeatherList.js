@@ -2,9 +2,9 @@ import React from 'react';
 import style from '../../assets/styles/style.less';
 import PropTypes from 'prop-types';
 
-const WeatherList = (props) => {
-  const classes = !props.isOpen ? style.active : '';
-  const city = props.cityDetails.map((item, i) => (
+const WeatherList = ({isOpen, cityDetails}) => {
+  const classes = !isOpen ? style.active : '';
+  const city = cityDetails.map((item, i) => (
     <div className={style.weatherItem} key={i}>
       <h3>City: {item.name}</h3>
       <p>Current weather: {item.weather}</p>

@@ -1,31 +1,47 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import style from '../../assets/styles/style.less';
+import Burger from '../burger/Burger';
 
 const Header = () => {
   const [isOpen, toggleOpen] = useState(false);
+
   return (
     <header className={style.header}>
       <div className={style.container}>
-        <nav>
+        <nav className={`${isOpen ? style.open : ''}`}>
           <ul>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/weather'>Current Weather Lookup</Link></li>
-            <li><Link to='/fiveDayForecast'>Five Day Lookup</Link></li>
+            <li>
+              <NavLink 
+                to='/' exact 
+                activeClassName={style.currentLink} 
+                onClick={() => toggleOpen(false)}>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to='/weather' 
+                activeClassName={style.currentLink}
+                onClick={() => toggleOpen(false)}>
+                Current Weather Lookup
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to='/fiveDayForecast' 
+                activeClassName={style.currentLink}
+                onClick={() => toggleOpen(false)}>
+                Five Day Lookup
+              </NavLink>
+            </li>
           </ul>
-          <div
-            className={`${style.mobileNav} ${style.navIcon} ${isOpen ? style.open : ''}`} 
-            onClick={() => toggleOpen(!isOpen)}>
-            <div>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </div>
         </nav>
+        
+        <Burger 
+          isOpen={isOpen}
+          toggleOpen={toggleOpen}
+        />
       </div>
     </header>   
   );

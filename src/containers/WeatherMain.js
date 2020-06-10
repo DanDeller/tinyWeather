@@ -59,7 +59,6 @@ class WeatherMain extends React.Component {
   }
 
   render() {
-    console.log(this.props.days);
     return (
       <section className={style.container}>
         <Spinner 
