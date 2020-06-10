@@ -18,6 +18,7 @@ const Burger = ({isOpen, toggleOpen}) => {
     </div>
   );
 }
+
 Burger.propTypes = {
   isOpen: PropTypes.bool,
   toggleOpen: PropTypes.func
