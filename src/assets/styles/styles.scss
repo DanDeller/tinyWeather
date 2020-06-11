@@ -72,6 +72,8 @@ p, h1, ul {
 .header {
   background: #C44444;
   border-bottom: 1px solid #ccc;
+  position: relative;
+  z-index: 9;
   .navHold {
     align-items: center;
     display: flex;
@@ -79,6 +81,7 @@ p, h1, ul {
   }
   .logo {
     font-size: 45px;
+    margin: 0;
   }
   nav {
     display: flex;
@@ -91,7 +94,7 @@ p, h1, ul {
       left: 0;
       padding: 15px;
       position: absolute;
-      top: 99px;
+      top: 69px;
       transition: all .3s linear 0s;
       width: 100%;
       z-index: 99;
@@ -214,14 +217,11 @@ p, h1, ul {
 }
 
 .weatherItems {
-  display: none;
-  width: 100%;
+  height: 0;
   opacity: 0;
-  transition: all .3s linear 0s;
-  &.active {
-    display: block;
-    opacity: 1;
-  }
+  // transform: translateX(-165%);
+  transition: height .2s linear 0s;
+  width: 100%;
   .weatherItem {
     border-top: 1px solid #f2f2f2;
     padding: 20px 0 0 0;
@@ -233,6 +233,17 @@ p, h1, ul {
       margin: 0 25px 15px 0;
     }
   }
+}
+
+.showItems {
+  height: 130px;
+  opacity: 1;
+}
+
+.hideItems {
+  opacity: 0;
+  height: 0;
+  // transform: translateX(-165%);
 }
 
 .resetButton {
@@ -299,7 +310,6 @@ p, h1, ul {
   cursor: pointer;
   display: flex;
   justify-content: flex-end;
-  transition: all 0.3s ease-out;
 }
 
 .sidebarUnactive {
@@ -566,6 +576,9 @@ p, h1, ul {
   }
 }
 
+//----------------------------------------
+// NAV HAMBURGER
+//----------------------------------------
 .navIcon span {
   display: block;
   position: absolute;
@@ -647,4 +660,30 @@ p, h1, ul {
 .navIcon.open span:nth-child(6) {
   left: calc(50% - 5px);
   top: 29px;
+}
+
+//----------------------------------------
+// SIDEBAR ANIMATIONS
+//----------------------------------------
+
+// .list-item-appear {}
+
+.list-item-appear.list-item-appear-active {
+  transition: opacity .5s ease-in;
+}
+
+.list-item-enter {
+  transform: translate(0, 1em);
+}
+
+.list-item-enter.list-item-enter-active {
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+  transform: translate(0,0);
+}
+
+// .list-item-leave {}
+
+.list-item-leave.list-item-leave-active {
+  transition: opacity 300ms ease-in, transform 300ms ease-in;
+  transform:translate(-5em, 0) scale(0,0);
 }

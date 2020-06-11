@@ -9,7 +9,11 @@ const Header = () => {
     <header className="header">
       <div className="container">
         <div className="navHold">
-          <p className="pageHeader logo">TW</p>
+          <NavLink 
+            className="pageHeader logo"
+            to='/' exact>
+            TW
+          </NavLink>
           <nav className={`${isOpen ? 'open' : ''}`}>
             <ul>
               <li>

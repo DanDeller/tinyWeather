@@ -25,7 +25,7 @@ class SidebarItem extends React.Component {
     const city = this.props.recentCity;
 
     return (
-      <li
+      <div
         className="sidebarItem"
         onClick={this.toggle}
         id={this.props.id}  
@@ -43,7 +43,7 @@ class SidebarItem extends React.Component {
             display: this.state.toggleDelete ? 'flex' : 'none'
           }}>Remove
         </button>
-      </li>
+      </div>
     );
   }
 }
