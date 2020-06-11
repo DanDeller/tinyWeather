@@ -1,5 +1,4 @@
 import React from 'react';
-import style from '../../assets/styles/style.less';
 import PropTypes from 'prop-types';
 
 class WeatherForm extends React.Component {
@@ -19,15 +18,15 @@ class WeatherForm extends React.Component {
 
   render() {
     return (
-      <div className={style.weatherForm}> 
-        <div className={`${(this.props.isOpen ? style.show : style.hide)}`}>
+      <div className="weatherForm"> 
+        <div className={`${(this.props.isOpen ? 'show' : 'hide')}`}>
           <form action='/' method='GET'>
             <input
               ref={this.city}
               onChange={this.props.updateInputValue}
               type='text'
               placeholder='Search city'
-              className={style.searchMain}
+              className="searchMain"
             />
             <input
               onClick={e => this.props.getWeather(e)}
@@ -37,7 +36,7 @@ class WeatherForm extends React.Component {
             />
           </form>
         </div>
-        <div className={`${style.resetButton} ${(this.props.isOpen ? style.hide : style.show)}`}>
+        <div className={`resetButton ${(this.props.isOpen ? 'hide' : 'show')}`}>
           <p>Seach another city?</p>
           <button
             onClick={this.props.resetSearch}>Search

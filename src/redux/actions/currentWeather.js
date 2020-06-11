@@ -79,6 +79,8 @@ export const getWeather = (city) => {
           break;
         case 'snow':
           video = {Snow};
+          break;
+        default: return
       }
       
       // Use a timeout to simulate a slightly longer loading time

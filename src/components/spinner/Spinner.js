@@ -1,6 +1,5 @@
 import React from "react";
 import { css } from "@emotion/core";
-import style from '../../assets/styles/style.less';
 import BarLoader from "react-spinners/BarLoader";
 import PropTypes from 'prop-types';
 
@@ -11,9 +10,9 @@ const override = css`
 
 const Spinner = ({loading}) => {
   return (
-    <div className={`${style.spinnerWrap} ${(loading ? style.spinnerShow : style.spinnerHide)}`}>
-      <p className={style.spinnerBlurb}>Gathering data...</p>  
-      <div className={style.spinner}>
+    <div className={`spinnerWrap ${(loading ? 'spinnerShow' : 'spinnerHide')}`}>
+      <p className="spinnerBlurb">Gathering data...</p>  
+      <div className="spinner">
         <BarLoader
           css={override}
           height={10}

@@ -1,5 +1,4 @@
 import React from 'react';
-import style from '../assets/styles/style.less';
 import WeatherForm from '../components/weather-form/WeatherForm';
 import WeatherList from '../components/weather/WeatherList';
 import Sidebar from '../components/sidebar/Sidebar';
@@ -60,7 +59,7 @@ class WeatherMain extends React.Component {
 
   render() {
     return (
-      <section className={style.container}>
+      <section className="container">
         <Spinner 
           loading={this.props.loading}
         />
@@ -68,10 +67,10 @@ class WeatherMain extends React.Component {
           visible={this.props.visible} 
           closeModal={this.closeModal} 
         />
-        <div className={`${style.weatherMain} ${style.bodyText}`}>
-          <h1 className={style.pageHeader}>Search a city to check the weather</h1>
-          <div className={style.hold}>
-            <div className={style.weatherLeft}>
+        <div className="weatherMain bodyText">
+          <h1 className="pageHeader">Search a city to check the weather</h1>
+          <div className="hold">
+            <div className="weatherLeft">
               <WeatherVideo 
                 setVideo={this.props.setVideo}  
               />
@@ -88,7 +87,7 @@ class WeatherMain extends React.Component {
                 isOpen={this.props.isOpen}
               />
             </div>
-            <div className={style.weatherRight}>
+            <div className="weatherRight">
               <Sidebar
                 recentCities={this.props.recentCities}
                 visible={this.props.visible}

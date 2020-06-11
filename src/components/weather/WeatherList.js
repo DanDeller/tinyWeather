@@ -1,11 +1,10 @@
 import React from 'react';
-import style from '../../assets/styles/style.less';
 import PropTypes from 'prop-types';
 
 const WeatherList = ({isOpen, cityDetails}) => {
-  const classes = !isOpen ? style.active : '';
+  // const classes = !isOpen ? style.active : '';
   const city = cityDetails.map((item, i) => (
-    <div className={style.weatherItem} key={i}>
+    <div className="weatherItem" key={i}>
       <h3>City: {item.name}</h3>
       <p>Current weather: {item.weather}</p>
       <p>Current temperature: {item.temp}</p>
@@ -13,7 +12,7 @@ const WeatherList = ({isOpen, cityDetails}) => {
   ));
 
   return (
-    <div className={`${style.weatherItems} ${classes}`}>
+    <div className={`weatherItems ${!isOpen ? 'active' : ''}`}>
       {city}
     </div>
   );

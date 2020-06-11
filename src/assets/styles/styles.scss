@@ -1,13 +1,13 @@
 /* FONTS */
-@import (css) url('https://fonts.googleapis.com/css?family=Roboto:400,700');
-@import (css) url('https://fonts.googleapis.com/css?family=Encode+Sans+Condensed');
-@import (css) url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Condensed');
 
-@heading: 'Roboto', sans-serif;
-@body: 'Encode Sans Condensed', sans-serif;
+$heading: 'Roboto', sans-serif;
+$body: 'Encode Sans Condensed', sans-serif;
 
 /* MOBILE BREAKPOINTS */
-@mobile: 768px;
+$mobile: 768px;
 
 * {
   box-sizing: border-box;
@@ -43,7 +43,7 @@ p, h1, ul {
 }
 
 .bodyText {
-  font-family: @body;
+  font-family: $body;
 }
 
 .hide {
@@ -78,14 +78,14 @@ p, h1, ul {
     justify-content: space-between;
   }
   .logo {
-    font-size: 45px;;
+    font-size: 45px;
   }
   nav {
     display: flex;
     justify-content: flex-start;
     position: relative;
     z-index: 9;
-    @media only screen and (max-width: @mobile) {
+    @media only screen and (max-width: $mobile) {
       background:#f2f2f2;
       display: none;
       left: 0;
@@ -102,15 +102,15 @@ p, h1, ul {
     }
     ul {
       display: flex;
-      @media only screen and (max-width: @mobile) {
+      @media only screen and (max-width: $mobile) {
         display: block;
       }
     }
     li {
-      font-family: @heading;
+      font-family: $heading;
       font-weight: 700;
       margin: 0 25px 0 0;
-      @media only screen and (max-width: @mobile) {
+      @media only screen and (max-width: $mobile) {
         margin: 0 0 25px 0;
         text-align: center;
         &:last-child {
@@ -122,20 +122,20 @@ p, h1, ul {
         text-decoration: none;
         text-shadow: 0 1px 1px #7A2929;
         transition: color .3s linear 0s;
-        @media only screen and (max-width: @mobile) {
+        @media only screen and (max-width: $mobile) {
           color: #290E0E;
           text-shadow: none;
           padding: 0 0 10px 0;
         }
         &:hover {
           color: #fff;
-          @media only screen and (max-width: @mobile) {
+          @media only screen and (max-width: $mobile) {
             color: #290E0E;
           }
         }
         &.currentLink {
           color: #fff;
-          @media only screen and (max-width: @mobile) {
+          @media only screen and (max-width: $mobile) {
             color: #290E0E;
           }
         }
@@ -154,7 +154,7 @@ p, h1, ul {
   position: relative;
   z-index: 9;
   .hold {
-    align-items: end;
+    align-items: flex-start;
     color: #fff;
     display: flex;
     position: relative;
@@ -315,13 +315,13 @@ p, h1, ul {
   padding: 30px;
   text-align: center;
   h1 {
-    font-family: @heading;
+    font-family: $heading;
     font-size: 28px;
     margin: 0 0 15px;
   }
   a {
     color: #4c4c4c;
-    font-family: @body;
+    font-family: $body;
     text-decoration: none;
     transition: color .3s linear 0s;
     &:hover {
@@ -338,7 +338,7 @@ p, h1, ul {
   grid-template-rows: repeat(2, auto);
   grid-template-columns: repeat(5, 20%);
   padding: 10px;
-  @media only screen and (max-width: @mobile) {
+  @media only screen and (max-width: $mobile) {
     grid-template-columns: repeat(1, 100%);
   }
   .day {
@@ -372,7 +372,7 @@ p, h1, ul {
   background: #290E0E;
   bottom: 0;
   color: #fff;
-  font-family: @body;
+  font-family: $body;
   left: 0;
   width: 100%;
   padding: 15px 0;
@@ -397,7 +397,7 @@ p, h1, ul {
 .sun {
   left: 75%;
   top: 40%;
-  @media only screen and (max-width: @mobile) {
+  @media only screen and (max-width: $mobile) {
     left: 15%;
     top: 40%;
   }
@@ -430,7 +430,7 @@ p, h1, ul {
   position: absolute;
   width: 280px;
   pointer-events: none;
-  @media only screen and (max-width: @mobile) {
+  @media only screen and (max-width: $mobile) {
     width: 50%;
   }
 }
@@ -561,7 +561,7 @@ p, h1, ul {
   -o-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   cursor: pointer;
-  @media only screen and (max-width: @mobile) {
+  @media only screen and (max-width: $mobile) {
     display: block;
   }
 }

@@ -1,14 +1,13 @@
 import React from 'react';
-import style from '../../assets/styles/style.less';
 import PropTypes from 'prop-types';
 
 const WeatherIcons = ({animate}) => {
   return (
-    <div className={style.weatherIcons}>
-      <img className={`${style.weatherIcon} ${(animate ? style.animateRain : style.rain)}`} src={require('../../assets/img/rainy.png')} />
-      <img className={`${style.weatherIcon} ${(animate ? style.animateSun : style.sun)}`} src={require('../../assets/img/sunny.png')} />
-      <img className={`${style.weatherIcon} ${(animate ? style.animateSnow : style.snow)}`} src={require('../../assets/img/snow.png')} />
-      <img className={`${style.weatherIcon} ${(animate ? style.animateThunder : style.thunder)}`} src={require('../../assets/img/thunder.png')} />
+    <div className="weatherIcons">
+      <img className={`weatherIcon ${(animate ? 'animateRain' : 'rain')}`} src={require('../../assets/img/rainy.png')} alt='rain' />
+      <img className={`weatherIcon ${(animate ? 'animateSun' : 'sun')}`} src={require('../../assets/img/sunny.png')} alt='sun' />
+      <img className={`weatherIcon ${(animate ? 'animateSnow' : 'snow')}`} src={require('../../assets/img/snow.png')} alt='snow' />
+      <img className={`weatherIcon ${(animate ? 'animateThunder' : 'thunder')}`} src={require('../../assets/img/thunder.png')} alt='thunder' />
     </div> 
   )
 }

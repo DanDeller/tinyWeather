@@ -6,7 +6,7 @@ const initDays = {
   days: []
 };
 
-const fetchDaysStart = (state, action) => {
+const fetchDaysStart = (state, /*action*/) => {
   return updateObject(state, {loading: true});
 };
 

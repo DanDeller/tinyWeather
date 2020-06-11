@@ -1,5 +1,4 @@
 import React from 'react';
-import style from '../../assets/styles/style.less';
 import PropTypes from 'prop-types';
 import SidebarItem from './SidebarItem';
 
@@ -14,7 +13,7 @@ class Sidebar extends React.Component {
     ));
   
     return (
-      <aside className={style.sideBar}>
+      <aside className="sideBar">
         <h3>Recently Searched Cities</h3>
         <ul>
           {getRecentCities}

@@ -39,11 +39,11 @@ const removeRecentCity = (state, action) => {
   return updateObject(state, {recentCities: state.recentCities.filter((city) => city.id !== action.id)});
 };
 
-const fetchWeatherStart = (state, action) => {
+const fetchWeatherStart = (state, /*action*/) => {
   return updateObject(state, {loading: true});
 };
 
-const fetchWeatherSuccess = (state, action) => {
+const fetchWeatherSuccess = (state, /*action*/) => {
   return updateObject(state, {loading: false});
 };
 

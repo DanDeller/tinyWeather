@@ -1,5 +1,4 @@
 import React from 'react';
-import style from '../assets/styles/style.less';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import { connect } from 'react-redux';
@@ -18,9 +17,9 @@ class FiveDayForecast extends React.Component {
   }
 
   render() {
-    const forgotCity = !this.props.city.length ? style.show : style.hide;
+    const forgotCityInline = !this.props.city.length ? 'show' : 'hide';
     const days = this.props.days.map((day, i) => (
-      <div className={`${style.day} ${this.props.city.length === 0 ? style.hide : style.show}`} key={i}>
+      <div className={`day ${this.props.city.length === 0 ? 'hide' : 'show'}`} key={i}>
         <p>
           <Moment format="dddd">
             {day.dt_txt.split(' ')[0]}
@@ -33,11 +32,11 @@ class FiveDayForecast extends React.Component {
     ));
 
     return (
-      <section className={style.container}>
-        <div className={`${style.weatherMain} ${style.bodyText}`}>
-          <h1 className={style.pageHeader}>Forecast for the next five days</h1>
-          <div className={style.dayHold}>
-            <h3 className={`${style.hide} ${style.forgotCity} ${forgotCity}`}>Go lookup a city first!</h3>
+      <section className="container">
+        <div className="weatherMain bodyText">
+          <h1 className="pageHeader">Forecast for the next five days</h1>
+          <div className="dayHold">
+            <h3 className={`hide forgotCity ${forgotCityInline}`}>Go lookup a city first!</h3>
             {days}
           </div>
         </div>
