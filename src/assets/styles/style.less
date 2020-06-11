@@ -185,6 +185,8 @@ p, h1, ul {
   }
 }
 
+
+
 .weatherForm {
   position: relative;
   width: 100%;
@@ -396,7 +398,8 @@ p, h1, ul {
   left: 75%;
   top: 40%;
   @media only screen and (max-width: @mobile) {
-    display: none;
+    left: 15%;
+    top: 40%;
   }
 }
 
@@ -413,11 +416,23 @@ p, h1, ul {
 //----------------------------------------
 // WEATHER ICON - animation styles
 //----------------------------------------
+.weatherIcons {
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 30px;
+  width: 100%;
+}
+
 .weatherIcon {
   opacity: .1;
   position: absolute;
   width: 280px;
   pointer-events: none;
+  @media only screen and (max-width: @mobile) {
+    width: 50%;
+  }
 }
 
 .animateRain {
@@ -444,9 +459,6 @@ p, h1, ul {
   animation: moveLeft 7s linear 2s infinite;
   left: 75%;
   top: 40%;
-  @media only screen and (max-width: @mobile) {
-    display: none;
-  }
 }
 @keyframes moveLeft {
   0% { 
