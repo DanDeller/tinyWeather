@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const WeatherList = ({isOpen, cityDetails}) => {
-  // const classes = !isOpen ? style.active : '';
   const city = cityDetails.map((item, i) => (
     <div className="weatherItem" key={i}>
       <h3>City: {item.name}</h3>
