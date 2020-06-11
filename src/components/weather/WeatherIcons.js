@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const WeatherIcons = ({animate}) => {
   return (
-    <div>
+    <div className={style.weatherIcons}>
       <img className={`${style.weatherIcon} ${(animate ? style.animateRain : style.rain)}`} src={require('../../assets/img/rainy.png')} />
       <img className={`${style.weatherIcon} ${(animate ? style.animateSun : style.sun)}`} src={require('../../assets/img/sunny.png')} />
       <img className={`${style.weatherIcon} ${(animate ? style.animateSnow : style.snow)}`} src={require('../../assets/img/snow.png')} />

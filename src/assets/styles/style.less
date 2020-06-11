@@ -395,6 +395,9 @@ p, h1, ul {
 .sun {
   left: 75%;
   top: 40%;
+  @media only screen and (max-width: @mobile) {
+    display: none;
+  }
 }
 
 .snow {
@@ -441,6 +444,9 @@ p, h1, ul {
   animation: moveLeft 7s linear 2s infinite;
   left: 75%;
   top: 40%;
+  @media only screen and (max-width: @mobile) {
+    display: none;
+  }
 }
 @keyframes moveLeft {
   0% { 
@@ -529,6 +535,7 @@ p, h1, ul {
 .navIcon {
   display: none;
   height: 45px;
+  overflow: hidden;
   position: absolute;
   right: 20px;
   width: 60px;
