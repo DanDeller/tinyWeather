@@ -219,8 +219,8 @@ p, h1, ul {
 .weatherItems {
   height: 0;
   opacity: 0;
-  // transform: translateX(-165%);
-  transition: height .2s linear 0s;
+  transform: translateY(-15%);
+  transition: all .2s linear 0s;
   width: 100%;
   .weatherItem {
     border-top: 1px solid #f2f2f2;
@@ -238,12 +238,13 @@ p, h1, ul {
 .showItems {
   height: 130px;
   opacity: 1;
+  transform: translateY(0);
 }
 
 .hideItems {
   opacity: 0;
   height: 0;
-  // transform: translateX(-165%);
+  transform: translateY(-15%);
 }
 
 .resetButton {
