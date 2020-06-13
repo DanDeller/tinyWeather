@@ -91,7 +91,6 @@ class WeatherMain extends React.Component {
               <Sidebar
                 recentCities={this.props.recentCities}
                 visible={this.props.visible}
-                isOpen={this.props.isOpen}
               />
             </div>
           </div>

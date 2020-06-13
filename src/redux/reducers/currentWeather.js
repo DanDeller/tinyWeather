@@ -32,7 +32,12 @@ const setDetails = (state, action) => {
 };
 
 const setRecentCity = (state, action) => {
-  return updateObject(state, {recentCities: action.recent_city});
+  // return {
+  //   ...state,
+  //   recentCities: [...state.recentCities, ...action.recent_city]
+  // }
+
+  return updateObject(state, {recentCities: [...action.recent_city]});
 };
 
 const removeRecentCity = (state, action) => {

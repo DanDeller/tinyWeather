@@ -13,9 +13,8 @@ export const setDetails = cityDetails => ({
   cityDetails
 });
 
-export const recentCity = (recent_city, id) => ({
+export const recentCity = recent_city => ({
   type: actionTypes.RECENT_CITY,
-  id,
   recent_city
 });
 
@@ -121,8 +120,8 @@ export const postRecentCities = (city, id) => {
       city: city
     };
     axios.post('/currentWeather', data)
-    .then(() => {
-      dispatch(fetchRecentCities());
+    .then((res) => {
+      dispatch(recentCity([res.data]));
     })
     .catch((err) => console.log(err));
   }

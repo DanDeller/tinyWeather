@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 const WeatherList = ({isOpen, cityDetails}) => {
   const city = cityDetails.map((item, i) => (
@@ -13,16 +12,7 @@ const WeatherList = ({isOpen, cityDetails}) => {
 
   return (
     <div className={`weatherItems ${!isOpen ? 'showItems' : 'hideItems'}`}>
-      <CSSTransitionGroup
-        transitionName="list-item"
-        transitionAppear={true}
-        transitionAppearTimeout={500}
-        transitionEnter={true}
-        transitionEnterTimeout={500}
-        transitionLeave={true}
-        transitionLeaveTimeout={300}>
-        {city}
-      </CSSTransitionGroup>
+      {city}
     </div>
   );
 }

@@ -73,7 +73,6 @@ p, h1, ul {
   background: #C44444;
   border-bottom: 1px solid #ccc;
   position: relative;
-  z-index: 9;
   .navHold {
     align-items: center;
     display: flex;
@@ -82,6 +81,8 @@ p, h1, ul {
   .logo {
     font-size: 45px;
     margin: 0;
+    position: relative;
+    z-index: 9;
   }
   nav {
     display: flex;
@@ -408,10 +409,6 @@ p, h1, ul {
 .sun {
   left: 75%;
   top: 40%;
-  @media only screen and (max-width: $mobile) {
-    left: 15%;
-    top: 40%;
-  }
 }
 
 .snow {
@@ -555,6 +552,9 @@ p, h1, ul {
   display: flex;
 }
 
+//----------------------------------------
+// NAV HAMBURGER
+//----------------------------------------
 .navIcon {
   display: none;
   height: 45px;
@@ -577,9 +577,6 @@ p, h1, ul {
   }
 }
 
-//----------------------------------------
-// NAV HAMBURGER
-//----------------------------------------
 .navIcon span {
   display: block;
   position: absolute;
@@ -667,24 +664,32 @@ p, h1, ul {
 // SIDEBAR ANIMATIONS
 //----------------------------------------
 
-// .list-item-appear {}
+.list-item-appear {
+  opacity: 0.01;
+}
 
 .list-item-appear.list-item-appear-active {
+  opacity: 1;
   transition: opacity .5s ease-in;
 }
 
 .list-item-enter {
+  opacity: 0.01;
   transform: translate(0, 1em);
 }
 
 .list-item-enter.list-item-enter-active {
+  opacity: 1;
   transition: opacity 500ms ease-out, transform 500ms ease-out;
-  transform: translate(0,0);
+  transform:translate(0,0);
 }
 
-// .list-item-leave {}
+.list-item-leave {
+  opacity: 1;
+}
 
 .list-item-leave.list-item-leave-active {
+  opacity: 0.01;
   transition: opacity 300ms ease-in, transform 300ms ease-in;
-  transform:translate(-5em, 0) scale(0,0);
+  transform:translate(0) scale(0);
 }

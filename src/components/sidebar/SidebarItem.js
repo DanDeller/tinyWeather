@@ -28,8 +28,7 @@ class SidebarItem extends React.Component {
       <div
         className="sidebarItem"
         onClick={this.toggle}
-        id={this.props.id}  
-      >
+        id={this.props.id}>
         <p
           style={{
             transform: !this.state.toggleDelete ? 'translateY(0)' : 'translateX(-5vh)',
@@ -41,7 +40,8 @@ class SidebarItem extends React.Component {
           onClick={this.deleteCity}
           style={{
             display: this.state.toggleDelete ? 'flex' : 'none'
-          }}>Remove
+          }}>
+          Remove
         </button>
       </div>
     );
