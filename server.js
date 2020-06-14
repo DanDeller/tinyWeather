@@ -3,7 +3,7 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       requireDir = require('require-dir'),
       endpoints  = requireDir('./server/endpoints'),
-      port = process.env.PORT || 5000,
+      port = process.env.PORT || 6000,
       app = express(),
       _ = require('lodash');
 

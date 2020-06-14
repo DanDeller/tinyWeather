@@ -36,6 +36,25 @@ p, h1, ul {
   padding: 0;
 }
 
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select:focus,
+textarea {
+  font-size: 16px;
+}
+
 .container {
   margin: 0 auto;
   max-width: 1024px;
@@ -44,6 +63,11 @@ p, h1, ul {
 
 .bodyText {
   font-family: $body;
+}
+
+.main {
+  padding: 10px;
+  width: 100%;
 }
 
 .hide {
@@ -162,6 +186,9 @@ p, h1, ul {
     color: #fff;
     display: flex;
     position: relative;
+    @media only screen and (max-width: $mobile) {
+      display: block;
+    }
   }
   .weatherLeft {
     background: rgba(0, 0, 0, .4);
@@ -170,11 +197,18 @@ p, h1, ul {
     padding: 15px;
     position: relative;
     width: 75%;
+    @media only screen and (max-width: $mobile) {
+      margin: 0 0 25px 0;
+      width: 100%;
+    }
     .video {
       position: absolute;
       width: 100%;
       top: 0;
       left: 0;
+      @media only screen and (max-width: 955px) {
+        width: 206%;
+      }
     }
     .weatherAbove {
       position: relative;
@@ -186,12 +220,14 @@ p, h1, ul {
   }
   .weatherRight {
     width: 25%;
+    @media only screen and (max-width: $mobile) {
+      width: 100%;
+    }
   }
 }
 
-
-
 .weatherForm {
+  font-size: 16px;
   position: relative;
   width: 100%;
   input {
@@ -202,7 +238,11 @@ p, h1, ul {
   }
   input[type=text] {
     width: 60%;
-    box-shadow: 0 0 1px 0 #7c7c7c;
+    box-shadow: 0 0 1px 0 #6b6a6a;
+    @media only screen and (max-width: $mobile) {
+      margin: 0 0 20px 0;
+      width: 100%;
+    }
   }
   input[type=submit] {
     background: none;
@@ -213,6 +253,10 @@ p, h1, ul {
     text-shadow: 1px 1px 1px #7c7c7c;
     &:hover {
       box-shadow: 0 0 1px 0 #4c4c4c;
+    }
+    @media only screen and (max-width: $mobile) {
+      margin: 0;
+      width: 100%;
     }
   }
 }
@@ -274,6 +318,9 @@ p, h1, ul {
   padding: 0 10px;
   text-align: right;
   text-shadow: 0 1px 1px #7A2929;
+  @media only screen and (max-width: $mobile) {
+    text-align: center;
+  }
   h3 {
     font-size: 22px;
     margin: 0 0 15px 0;
@@ -312,6 +359,9 @@ p, h1, ul {
   cursor: pointer;
   display: flex;
   justify-content: flex-end;
+  @media only screen and (max-width: $mobile) {
+    justify-content: center;
+  }
 }
 
 .sidebarUnactive {
@@ -389,6 +439,9 @@ p, h1, ul {
   width: 100%;
   padding: 15px 0;
   position: fixed;
+  @media only screen and (max-width: $mobile) {
+    display: none;
+  }
   .container {
     align-items: center;
     display: flex;
@@ -398,6 +451,9 @@ p, h1, ul {
     background-size: 100% 100%;
     margin: 0 15px;
     width: 6%;
+    @media only screen and (max-width: 955px) {
+      width: 10%;
+    }
   }
 }
 

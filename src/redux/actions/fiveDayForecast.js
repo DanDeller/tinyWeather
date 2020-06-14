@@ -16,7 +16,7 @@ export const fetchDays = (city) => {
       return;
     } else {
       dispatch(fetchDaysStart());
-      axios.get('/currentWeather')
+      axios.get('/getRecentCities')
       .then((res) => {
         if (res.error) {
           throw(res.error);

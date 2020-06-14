@@ -16,7 +16,7 @@ router.get('/currentWeather', (req, res) => {
 			recentCities.push(doc.data());
 		});
 
-		return res.json(recentCities);
+		return res.send(recentCities);
 	})
 	.catch(err => console.log(err));
 });
@@ -30,7 +30,7 @@ router.post('/currentWeather', (req, res) => {
 	db.collection('recentCities')
 	.add(data)
 	.then(()=> {
-		return res.json(data);
+		return res.send(data);
 	})
 	.catch(err => console.log(err));
 });
@@ -46,7 +46,7 @@ router.delete('/currentWeather', (req, res) => {
 			doc.ref.delete();
 		});
 
-		return res.json(currentId);
+		return res.send(currentId);
 	})
 	.catch(err => console.log(err));
 });

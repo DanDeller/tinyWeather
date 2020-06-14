@@ -8,6 +8,8 @@ import axios from 'axios';
 
 window.store = store;
 
+axios.defaults.baseURL = 'https://us-central1-tiny-weather-65aa3.cloudfunctions.net';
+
 axios.interceptors.request.use(request => {
 	console.log(request);
 	return request;

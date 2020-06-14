@@ -102,7 +102,7 @@ export const getWeather = (city) => {
 
 export const fetchRecentCities = () => {
   return dispatch => {
-    axios.get('/currentWeather')
+    axios.get('/getRecentCities')
     .then((res) => {
       if (res.error) {
         throw(res.error);
@@ -119,7 +119,7 @@ export const postRecentCities = (city, id) => {
       id: id,
       city: city
     };
-    axios.post('/currentWeather', data)
+    axios.post('/postRecentCity', data)
     .then((res) => {
       dispatch(recentCity([res.data]));
     })
@@ -132,7 +132,7 @@ export const deleteRecentCities = (id) => {
     const data = {
       id: id
     };
-    axios.delete('/currentWeather', {
+    axios.delete('/deleteRecentCity', {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'

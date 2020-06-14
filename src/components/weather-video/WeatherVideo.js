@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const WeatherVideo = ({setVideo}) => {
   return (
-    <video key={setVideo} className="video" loop autoPlay muted>
+    <video key={setVideo} className="video" playsInline loop autoPlay muted>
       <source src={setVideo} type="video/mp4"></source>
       Your browser does not support the video tag.
     </video>
