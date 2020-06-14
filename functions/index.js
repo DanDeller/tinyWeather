@@ -16,7 +16,7 @@ const cors = require("cors")({
     "X-Requested-With",
     "Accept"
   ],
-  methods: ["POST", "OPTIONS"],
+  methods: ["POST", "DELETE", "OPTIONS"],
   credentials: true
 });
 
