@@ -53,17 +53,19 @@ exports.postRecentCity = functions.https.onRequest((req, res) => {
 });
 
 exports.deleteRecentCity = functions.https.onRequest((req, res) => {
-  const currentId = req.body.source.id;
+  cors(req, res, async () => {
+    const currentId = req.body.source.id;
 
-  db.collection('recentCities')
-  .where('id', '==', currentId)
-  .get()
-  .then(snapshot => {
-    snapshot.forEach(doc => {
-      doc.ref.delete();
-    });
+    db.collection('recentCities')
+    .where('id', '==', currentId)
+    .get()
+    .then(snapshot => {
+      snapshot.forEach(doc => {
+        doc.ref.delete();
+      });
 
-    return res.status(200).send(currentId);
-  })
-  .catch(err => console.log(err));
+      return res.status(200).send(currentId);
+    })
+    .catch(err => console.log(err));
+  });
 });
