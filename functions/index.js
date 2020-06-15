@@ -6,6 +6,8 @@ require('@firebase/firestore');
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
+// host url: https://tiny-weather-65aa3.firebaseapp.com/#/
+
 const cors = require("cors")({
   origin: true,
   allowedHeaders: [

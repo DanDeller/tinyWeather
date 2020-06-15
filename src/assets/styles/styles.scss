@@ -55,6 +55,14 @@ textarea {
   font-size: 16px;
 }
 
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+  select,
+  textarea,
+  input {
+    font-size: 16px;
+  }
+}
+
 .container {
   margin: 0 auto;
   max-width: 1024px;

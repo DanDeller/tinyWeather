@@ -12,7 +12,7 @@ class WeatherForm extends React.Component {
     this.city.current.focus();
   }
 
-  componentDidUpdate() { 
+  componentDidUpdate() {
     this.city.current.focus();
   }
 
@@ -25,6 +25,7 @@ class WeatherForm extends React.Component {
               ref={this.city}
               onChange={this.props.updateInputValue}
               type='text'
+              name='test'
               placeholder='Search city'
               className="searchMain"
             />
