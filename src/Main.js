@@ -1,8 +1,8 @@
-import React from 'react';
+import FiveDayForecast from './containers/FiveDayForecast';
+import WeatherMain from './containers/WeatherMain';
 import { Switch, Route } from 'react-router-dom';
 import Home from './components/home/Home';
-import WeatherMain from './containers/WeatherMain';
-import FiveDayForecast from './containers/FiveDayForecast';
+import React from 'react';
 
 class Main extends React.Component {
   render() {

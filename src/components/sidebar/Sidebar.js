@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SidebarItem from './SidebarItem';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import SidebarItem from './SidebarItem';
 
 class Sidebar extends React.Component {
   render() {

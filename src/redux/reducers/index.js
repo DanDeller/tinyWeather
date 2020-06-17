@@ -1,6 +1,6 @@
-import { combineReducers } from 'redux';
-import currentWeather from './currentWeather';
 import fiveDayForecast from './fiveDayForecast';
+import currentWeather from './currentWeather';
+import { combineReducers } from 'redux';
 
 export default combineReducers({
   currentWeather,

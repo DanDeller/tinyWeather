@@ -1,14 +1,14 @@
-import React from 'react';
-import WeatherForm from '../components/weather-form/WeatherForm';
-import WeatherList from '../components/weather/WeatherList';
-import Sidebar from '../components/sidebar/Sidebar';
-import ErrorModal from '../components/modal/Modal';
 import WeatherVideo from '../components/weather-video/WeatherVideo';
+import WeatherForm from '../components/weather-form/WeatherForm';
 import WeatherIcons from '../components/weather/WeatherIcons';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import WeatherList from '../components/weather/WeatherList';
 import * as actions from '../redux/actions/currentWeather';
 import Spinner from '../components/spinner/Spinner';
+import Sidebar from '../components/sidebar/Sidebar';
+import ErrorModal from '../components/modal/Modal';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 class WeatherMain extends React.Component {
   constructor(props) {
@@ -21,7 +21,9 @@ class WeatherMain extends React.Component {
   } 
 
   componentDidMount = () => {
-    this.props.dispatch(actions.fetchRecentCities());
+    if (!this.props.recentCities.length) {
+      this.props.dispatch(actions.fetchRecentCities());
+    }
   }
 
   updateInputValue = (e) => {

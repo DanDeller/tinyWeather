@@ -1,5 +1,5 @@
-import React from 'react';
 import WeatherIcons from '../weather/WeatherIcons';
+import React from 'react';
 
 const Home = () => {
   return (

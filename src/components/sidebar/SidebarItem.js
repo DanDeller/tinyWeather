@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/currentWeather';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 class SidebarItem extends React.Component {
   constructor(props) {

@@ -119,9 +119,10 @@ export const postRecentCities = (city, id) => {
       id: id,
       city: city
     };
+    dispatch(recentCity([data]));
     axios.post('/postRecentCity', data)
     .then((res) => {
-      dispatch(recentCity([res.data]));
+      console.log(res.data);
     })
     .catch((err) => console.log(err));
   }
@@ -132,6 +133,7 @@ export const deleteRecentCities = (id) => {
     const data = {
       id: id
     };
+    dispatch(removeRecentCity(data.id));
     axios.delete('/deleteRecentCity', {
       headers: {
         'Accept': 'application/json',
@@ -141,8 +143,8 @@ export const deleteRecentCities = (id) => {
         source: data
       }
     })
-    .then(() => {
-      dispatch(removeRecentCity(data.id));
+    .then((res) => {
+      console.log(res.data);
     })
     .catch((err) => console.log(err));
   }

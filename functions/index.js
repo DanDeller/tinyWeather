@@ -1,7 +1,6 @@
-const functions = require('firebase-functions');
 const firebaseConfig = require('./firebase.config.js');
-const firebase = require('@firebase/app').default;	
-
+const firebase = require('@firebase/app').default;
+const functions = require('firebase-functions');
 require('@firebase/firestore');
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
@@ -11,14 +10,14 @@ const db = firebase.firestore();
 const cors = require("cors")({
   origin: true,
   allowedHeaders: [
-    "Access-Control-Allow-Origin",
-    "Access-Control-Allow-Methods",
-    "Content-Type",
-    "Origin",
-    "X-Requested-With",
-    "Accept"
+    'Access-Control-Allow-Origin',
+    'Access-Control-Allow-Methods',
+    'Content-Type',
+    'Origin',
+    'X-Requested-With',
+    'Accept'
   ],
-  methods: ["POST", "DELETE", "OPTIONS"],
+  methods: ['GET', 'POST', 'DELETE'],
   credentials: true
 });
 

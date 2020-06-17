@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 class WeatherForm extends React.Component {
   constructor(props) {
@@ -9,11 +9,6 @@ class WeatherForm extends React.Component {
 
   componentDidMount() {
     this.props.passRefUpward(this.city);
-    this.city.current.focus();
-  }
-
-  componentDidUpdate() {
-    this.city.current.focus();
   }
 
   render() {

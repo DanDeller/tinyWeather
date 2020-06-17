@@ -1,6 +1,6 @@
-import React from 'react';
 import Modal from 'react-awesome-modal';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const ErrorModal = ({visible, closeModal}) => {
   return (

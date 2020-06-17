@@ -1,10 +1,10 @@
-import React from 'react';
-import Moment from 'react-moment';
-import 'moment-timezone';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import WeatherIcons from '../components/weather/WeatherIcons';
 import * as actions from '../redux/actions/fiveDayForecast';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import Moment from 'react-moment';
+import React from 'react';
+import 'moment-timezone';
 
 class FiveDayForecast extends React.Component {
   getForecast = () => {
