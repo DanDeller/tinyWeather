@@ -2,6 +2,11 @@
   "rules": {
     ".read": true,
     ".write": true,
+    "users": {
+      "$uid": {
+        ".write": "$uid === auth.uid"
+      }
+    },
     "recentCities": {
       ".indexOn": ["city", "id"]
     }

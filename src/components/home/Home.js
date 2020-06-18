@@ -4,9 +4,27 @@ import React from 'react';
 const Home = () => {
   return (
     <section className="container bodyText home">
-      <h1 className="pageHeader">Welcome to tinyWeather. A tiny weather app.</h1>
-      <p className="tagline">tinyWeather is built with reactJS, styled with SASS, is bundled with webpack, leverages babel to utilize es6 and runs on nodeJS.</p>  
-      <WeatherIcons animate={true} />
+      <h1 className="pageHeader">How the app works.</h1>
+      <div className="home-search">
+        <div className="block">
+          <h2>Search for a city.</h2>
+          <p>Head over to Current Weather Lookup to get started. Simply add a city to the input and hit the search button. 
+            From there, city data will be gathered and displayed.</p>
+          <p className="note">Note: When searching, the input only needs the city name. Example - Pittsburgh</p>
+        </div>
+      </div>
+
+      <img className="arrow" src={require('../../assets/img/arrow.png')} alt='arrow' />
+
+      <div className="home-search">
+        <div className="block">
+          <h2>Check out the local forecast for the next five days.</h2>
+          <p>Once your city info is returned, you can head over to the Five Day Lookup page. Temperature ranges are based off of 
+            mid day projections. Weather data is supplied by <a href="https://openweathermap.org/api">Weather API</a>.
+          </p>
+        </div>
+      </div>
+      <WeatherIcons animate={false} />
     </section>
   );
 }

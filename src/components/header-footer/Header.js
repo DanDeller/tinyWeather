@@ -1,9 +1,19 @@
+import * as actions from '../../redux/actions/isAuthenticated';
 import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import { useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import Burger from '../burger/Burger';
+import app from '../../base';
 
-const Header = () => {
+const Header = ({isAuth, history}) => {
   const [isOpen, toggleOpen] = useState(false);
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    app.auth().signOut();
+    history.push('/');
+    dispatch(actions.setIsAuthenticated(false));
+  };
 
   return (
     <header className="header">
@@ -11,35 +21,41 @@ const Header = () => {
         <div className="navHold">
           <NavLink 
             className="pageHeader logo"
-            to='/' exact>
+            to='/' 
+            exact>
             TW
           </NavLink>
           <nav className={`${isOpen ? 'open' : ''}`}>
             <ul>
-              <li>
+              <li key={'home'}>
                 <NavLink 
-                  to='/' exact 
+                  to='/' 
+                  exact 
                   activeClassName="currentLink"
                   onClick={() => toggleOpen(false)}>
                   Home
                 </NavLink>
               </li>
-              <li>
+              {!!isAuth ?
+              [<li key={'weather'}>
                 <NavLink 
                   to='/weather' 
                   activeClassName="currentLink"
                   onClick={() => toggleOpen(false)}>
                   Current Weather Lookup
                 </NavLink>
-              </li>
-              <li>
+              </li>,
+              <li key={'forecase'}> 
                 <NavLink 
                   to='/fiveDayForecast' 
                   activeClassName="currentLink"
                   onClick={() => toggleOpen(false)}>
                   Five Day Lookup
                 </NavLink>
-              </li>
+              </li>,
+              <li key={'logout'}><button className="sign-out" onClick={handleLogout}>Sign out</button></li>] :
+              ''
+              }
             </ul>
           </nav>
           
@@ -53,4 +69,4 @@ const Header = () => {
   );
 }
 
-export default Header;
+export default withRouter(Header);
