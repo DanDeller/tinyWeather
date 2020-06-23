@@ -46,9 +46,11 @@ export const removeRecentCity = id => ({
   id
 });
 
-export const getWeather = (city) => {
+export const getWeather = (city, userId) => {
   return dispatch => {
+
     dispatch(fetchWeatherStart());
+    
     axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
     .then(res => {
       let video = '';
@@ -87,7 +89,7 @@ export const getWeather = (city) => {
       // NOTE: this is for demo purposes only. Don't use in realtime
       setTimeout(() => {
         dispatch(fetchWeatherSuccess());
-        dispatch(postRecentCities(city, uuid()));
+        dispatch(postRecentCities(city, uuid(), userId));
         dispatch(setDetails(details));
         dispatch(isOpen(false));
         dispatch(setVideo(Object.values(video)[0]));
@@ -100,27 +102,38 @@ export const getWeather = (city) => {
   }
 };
 
-export const fetchRecentCities = () => {
+export const fetchRecentCities = (token, userId) => {
+  const useToken = token !== null ? token : localStorage.getItem('token');
+
   return dispatch => {
-    axios.get('/getRecentCities')
+    const params = '?auth='+useToken+'&orderBy="userId"&equalTo="'+userId+'"';
+    axios.get('https://tiny-weather-65aa3.firebaseio.com/recentCities.json' + params)
     .then((res) => {
+      const data = res.data ? Object.values(res.data) : [];
+
       if (res.error) {
         throw(res.error);
-      }
-      dispatch(recentCity(res.data));
+      };
+
+      dispatch(recentCity(data));
     })
     .catch((err) => console.log(err));
   }
 };
 
-export const postRecentCities = (city, id) => {
+export const postRecentCities = (city, id, userId) => {
+  const useToken = localStorage.getItem('token');
+
   return dispatch => {
     const data = {
       id: id,
-      city: city
+      city: city,
+      userId: userId
     };
+
     dispatch(recentCity([data]));
-    axios.post('/postRecentCity', data)
+
+    axios.post(`https://tiny-weather-65aa3.firebaseio.com/recentCities.json?auth=${useToken}`, data)
     .then((res) => {
       console.log(res.data);
     })
@@ -129,20 +142,16 @@ export const postRecentCities = (city, id) => {
 };
 
 export const deleteRecentCities = (id) => {
+  const useToken = localStorage.getItem('token');
+
   return dispatch => {
     const data = {
       id: id
     };
+
     dispatch(removeRecentCity(data.id));
-    axios.delete('/deleteRecentCity', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      data: {
-        source: data
-      }
-    })
+
+    axios.delete(`https://tiny-weather-65aa3.firebaseio.com/recentCities.json?auth=${useToken}`, data)
     .then((res) => {
       console.log(res.data);
     })

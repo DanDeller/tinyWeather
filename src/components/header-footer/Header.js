@@ -13,6 +13,10 @@ const Header = ({isAuth, history}) => {
     app.auth().signOut();
     history.push('/');
     dispatch(actions.setIsAuthenticated(false));
+    dispatch(actions.setTokenId(null));
+    dispatch(actions.setUserId(null));
+    localStorage.removeItem('token');
+    localStorage.removeItem('expirationDate');
   };
 
   return (

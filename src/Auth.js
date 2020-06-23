@@ -12,6 +12,14 @@ export const AuthProvider = ({children}) => {
 
   useEffect(() => {
     app.auth().onAuthStateChanged((user) => {
+      if (user) {
+        user.getIdToken().then(idToken => {
+          const expiresIn = new Date(new Date().getTime() + 60000);
+          dispatch(actions.setTokenId(idToken));
+          localStorage.setItem('token', idToken);
+          localStorage.setItem('expirationDate', expiresIn);
+        });
+      }
       setCurrentUser(user);
       setPending(false);
     });
@@ -20,11 +28,16 @@ export const AuthProvider = ({children}) => {
   useEffect(() => {
     if (currentUser) {
       dispatch(actions.setIsAuthenticated(true));
+      dispatch(actions.setUserId(currentUser.uid));
     }
   }, [currentUser]);
 
-  if (pending){
-    return <section className="container"><p className="tagline">Loading...</p></section>
+  if (pending) {
+    return (
+      <section className="container">
+        <p className="tagline app-load">Loading app...</p>
+      </section>
+    );
   }
 
   return (

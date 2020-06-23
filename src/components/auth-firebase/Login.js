@@ -36,7 +36,6 @@ const Login = ({ history }) => {
           <button type="submit">Log in</button>
         </form>
       </div>
-      <p className="tag">or...</p>
     </div>
   );
 };

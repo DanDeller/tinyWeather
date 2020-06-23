@@ -22,7 +22,7 @@ class WeatherMain extends React.Component {
 
   componentDidMount = () => {
     if (!this.props.recentCities.length) {
-      this.props.dispatch(actions.fetchRecentCities());
+      this.props.dispatch(actions.fetchRecentCities(this.props.token, this.props.userId));
     }
   }
 
@@ -36,7 +36,6 @@ class WeatherMain extends React.Component {
     this.props.dispatch(actions.isOpen(true));
     this.props.dispatch(actions.setVideo(''));
     this.props.dispatch(actions.setCity(''));
-
   }
 
   closeModal = (e) => {
@@ -50,7 +49,7 @@ class WeatherMain extends React.Component {
 
   getWeather = (e) => {
     e.preventDefault();
-    this.props.dispatch(actions.getWeather(this.props.city));
+    this.props.dispatch(actions.getWeather(this.props.city, this.props.userId));
   }
 
   getRefsFromChild = (childRefs) => {
@@ -114,7 +113,9 @@ const mapStateToProps = state => {
     isOpen: state.currentWeather.isOpen,
     visible: state.currentWeather.visible,
     loading: state.currentWeather.loading,
-    days: state.fiveDayForecast.days
+    days: state.fiveDayForecast.days,
+    userId: state.isAuthenticated.userId,
+    token: state.isAuthenticated.tokenId
   }
 }
 
