@@ -121,7 +121,13 @@ textarea {
   margin: 0 auto 5px auto;
   outline: none;
   padding: 10px 10px;
-  text-shadow: 1px 1px 1px #7c7c7c;
+  transition: all .3s linear 0s;
+  &:hover {
+    background: #fff;
+    box-shadow: 0px 0px 10px -4px #000;
+    color: #F45050;
+    margin: -2px auto;
+  }
 }
 
 .header {
@@ -794,9 +800,9 @@ textarea {
     background: rgba(0, 0, 0, 0.4);
     box-shadow: 0px 0px 10px -4px #000;
     margin: 0 auto 50px auto;
-    padding: 10px;
+    padding: 15px 30px 30px 30px;
     position: relative;
-    width: 50%;
+    width: 40%;
     @media only screen and (max-width: $mobile) {
       width: 100%;
     }
@@ -814,7 +820,7 @@ textarea {
       font-size: 16px;
       margin: 0 auto 20px auto;
       padding: 10px;
-      width: 80%;
+      width: 100%;
     }
     label {
       display: block;
@@ -829,11 +835,11 @@ textarea {
       cursor: pointer;
       display: block;
       font-size: 16px;
-      margin: 0 auto 5px auto;
+      margin: 0 auto;
       outline: none;
       padding: 10px 10px;
       text-shadow: 1px 1px 1px #7c7c7c;
-      width: 80%;
+      width: 100%;
     }
     .btn-main {
       margin: 0 0 50px 0;
