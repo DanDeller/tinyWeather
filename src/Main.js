@@ -26,12 +26,12 @@ class Main extends React.Component {
       </main>
     );
   }
-}
+};
 
 const mapStateToProps = state => {
   return {
     isAuth: state.isAuthenticated.isAuthenticated
   }
-}
+};
 
 export default connect(mapStateToProps)(Main);

@@ -15,7 +15,7 @@ const WeatherList = ({isOpen, cityDetails}) => {
       {city}
     </div>
   );
-}
+};
 
 WeatherList.propTypes = {
   cityDetails: PropTypes.array,

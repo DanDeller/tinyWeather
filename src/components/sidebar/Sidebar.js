@@ -1,12 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import SidebarSpinner from '../spinner/SidebarSpinner';
 import SidebarItem from './SidebarItem';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 class Sidebar extends React.Component {
   render() {
     return (
       <aside className="sideBar">
+        <SidebarSpinner
+          sidebarLoading={this.props.sidebarLoading}
+        />
         <h3>Recently Searched Cities</h3>
         <ul>
           <CSSTransitionGroup
@@ -36,10 +41,25 @@ class Sidebar extends React.Component {
       </aside>
     );
   }
-}
+};
+
+const matchStateToProps = state => {
+  return {
+    sidebarLoading: state.currentWeather.sidebarLoading
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch
+  }
+};
 
 Sidebar.propTypes = {
   recentCities: PropTypes.array
 };
 
-export default Sidebar;
+export default connect(
+  matchStateToProps, 
+  mapDispatchToProps)
+(Sidebar);

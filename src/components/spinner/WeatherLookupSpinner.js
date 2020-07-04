@@ -8,9 +8,9 @@ const override = css`
   margin: 0 auto;
 `;
 
-const Spinner = ({loading}) => {
+const WeatherLookupSpinner = ({weatherLoading}) => {
   return (
-    <div className={`spinnerWrap ${(loading ? 'spinnerShow' : 'spinnerHide')}`}>
+    <div className={`spinnerWrap ${(weatherLoading ? 'spinnerShow' : 'spinnerHide')}`}>
       <p className="spinnerBlurb">Gathering data...</p>  
       <div className="spinner">
         <BarLoader
@@ -22,10 +22,10 @@ const Spinner = ({loading}) => {
       </div>
     </div>
   );
-}
+};
 
-Spinner.propTypes = {
+WeatherLookupSpinner.propTypes = {
   loading: PropTypes.bool
 };
 
-export default Spinner;
+export default WeatherLookupSpinner;

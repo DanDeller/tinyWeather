@@ -2,21 +2,22 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../utility';
 
 const initCity = {
-  setCity: '',
-  setVideo: '',
-  isOpen: true,
-  visible: false,
-  loading: false,
+  weatherLoading: false,
+  sidebarLoading: false,
+  recentCities: [],
   cityDetails: [],
-  recentCities: []
-};
-
-const setVideo = (state, action) => {
-  return updateObject(state, {setVideo: action.video});
+  visible: false,
+  isOpen: true,
+  setVideo: '',
+  setCity: '',
 };
 
 const setCity = (state, action) => {
   return updateObject(state, {setCity: action.city});
+};
+
+const setVideo = (state, action) => {
+  return updateObject(state, {setVideo: action.video});
 };
 
 const setIsOpen = (state, action) => {
@@ -39,12 +40,20 @@ const removeRecentCity = (state, action) => {
   return updateObject(state, {recentCities: state.recentCities.filter((city) => city.id !== action.id)});
 };
 
-const fetchWeatherStart = (state, /*action*/) => {
-  return updateObject(state, {loading: true});
+const fetchWeatherStart = (state) => {
+  return updateObject(state, {weatherLoading: true});
 };
 
-const fetchWeatherSuccess = (state, /*action*/) => {
-  return updateObject(state, {loading: false});
+const fetchWeatherSuccess = (state) => {
+  return updateObject(state, {weatherLoading: false});
+};
+
+const fetchRecentCitiesStart = (state) => {
+  return updateObject(state, {sidebarLoading: true});
+};
+
+const fetchRecentCitiesSuccess = (state) => {
+  return updateObject(state, {sidebarLoading: false})
 };
 
 const currentWeather = (state = initCity, action) => {
@@ -55,6 +64,8 @@ const currentWeather = (state = initCity, action) => {
     case actionTypes.VISIBLE: return setVisible(state, action)
     case actionTypes.SET_DETAILS: return setDetails(state, action)
     case actionTypes.RECENT_CITY: return setRecentCity(state, action)
+    case actionTypes.FETCH_RECENT_CITIES_START: return fetchRecentCitiesStart(state, action)
+    case actionTypes.FETCH_RECENT_CITIES_SUCCESS: return fetchRecentCitiesSuccess(state, action)
     case actionTypes.REMOVE_RECENT_CITY: return removeRecentCity(state, action)
     case actionTypes.FETCH_WEATHER_START: return fetchWeatherStart(state, action)
     case actionTypes.FETCH_WEATHER_SUCCESS: return fetchWeatherSuccess(state, action)

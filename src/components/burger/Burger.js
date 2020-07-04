@@ -16,11 +16,11 @@ const Burger = ({isOpen, toggleOpen}) => {
       </div>
     </div>
   );
-}
+};
 
 Burger.propTypes = {
-  isOpen: PropTypes.bool,
-  toggleOpen: PropTypes.func
-}
+  toggleOpen: PropTypes.func,
+  isOpen: PropTypes.bool
+};
 
 export default Burger;

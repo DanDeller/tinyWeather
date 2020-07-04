@@ -27,6 +27,6 @@ const Home = () => {
       <WeatherIcons animate={false} />
     </section>
   );
-}
+};
 
 export default Home;

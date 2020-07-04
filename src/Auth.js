@@ -23,6 +23,7 @@ export const AuthProvider = ({children}) => {
       setCurrentUser(user);
       setPending(false);
     });
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -30,6 +31,7 @@ export const AuthProvider = ({children}) => {
       dispatch(actions.setIsAuthenticated(true));
       dispatch(actions.setUserId(currentUser.uid));
     }
+    // eslint-disable-next-line
   }, [currentUser]);
 
   if (pending) {

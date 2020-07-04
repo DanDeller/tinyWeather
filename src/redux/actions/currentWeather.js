@@ -33,6 +33,14 @@ export const setVideo = video => ({
   video
 });
 
+export const removeRecentCity = id => ({
+  type: actionTypes.REMOVE_RECENT_CITY,
+  id
+});
+
+/*
+ *  FETCH WEATHER
+ */
 export const fetchWeatherSuccess = () => ({
   type: actionTypes.FETCH_WEATHER_SUCCESS,
 });
@@ -41,11 +49,20 @@ export const fetchWeatherStart = () => ({
   type: actionTypes.FETCH_WEATHER_START
 });
 
-export const removeRecentCity = id => ({
-  type: actionTypes.REMOVE_RECENT_CITY,
-  id
+/*
+ *  FETCH RECENT CITES
+ */
+export const fetchRecentCitiesStart = () => ({
+  type: actionTypes.FETCH_RECENT_CITIES_START,
 });
 
+export const fetchRecentCitiesSuccess= () => ({
+  type: actionTypes.FETCH_RECENT_CITIES_SUCCESS,
+});
+
+/*
+ *  GET WEATHER
+ */
 export const getWeather = (city, userId) => {
   return dispatch => {
 
@@ -97,16 +114,22 @@ export const getWeather = (city, userId) => {
     })
     .catch((err) => {
       console.log(err);
-      dispatch(visible(true))
+      dispatch(visible(true));
     });
   }
 };
 
+/*
+ *  GET RECENT CITES
+ */
 export const fetchRecentCities = (token, userId) => {
   const useToken = token !== null ? token : localStorage.getItem('token');
-
+  console.log('ayeeeee')
   return dispatch => {
     const params = '?auth='+useToken+'&orderBy="userId"&equalTo="'+userId+'"';
+
+    dispatch(fetchRecentCitiesStart());
+
     axios.get('https://tiny-weather-65aa3.firebaseio.com/recentCities.json' + params)
     .then((res) => {
       const data = res.data ? Object.values(res.data) : [];
@@ -115,12 +138,18 @@ export const fetchRecentCities = (token, userId) => {
         throw(res.error);
       };
 
-      dispatch(recentCity(data));
+      setTimeout(function() {
+        dispatch(recentCity(data));
+        dispatch(fetchRecentCitiesSuccess());
+      }, 1000);
     })
     .catch((err) => console.log(err));
   }
 };
 
+/*
+ *  POST RECENT CITES
+ */
 export const postRecentCities = (city, id, userId) => {
   const useToken = localStorage.getItem('token');
 
@@ -141,6 +170,9 @@ export const postRecentCities = (city, id, userId) => {
   }
 };
 
+/*
+ *  DELETE RECENT CITES
+ */
 export const deleteRecentCities = (id) => {
   const useToken = localStorage.getItem('token');
 

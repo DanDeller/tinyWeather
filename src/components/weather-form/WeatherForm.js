@@ -5,11 +5,11 @@ class WeatherForm extends React.Component {
   constructor(props) {
     super(props);
     this.city = React.createRef();
-  }
+  };
 
   componentDidMount() {
     this.props.passRefUpward(this.city);
-  }
+  };
 
   render() {
     return (
@@ -41,7 +41,7 @@ class WeatherForm extends React.Component {
       </div>
     );
   }
-}
+};
 
 WeatherForm.propTypes = {
   updateInputValue: PropTypes.func,

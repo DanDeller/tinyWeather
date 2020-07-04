@@ -71,6 +71,6 @@ const Header = ({isAuth, history}) => {
       </div>
     </header>   
   );
-}
+};
 
 export default withRouter(Header);

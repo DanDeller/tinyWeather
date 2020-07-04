@@ -359,6 +359,7 @@ textarea {
   color: #f2f2f2;
   margin: 0;
   padding: 0 10px;
+  position: relative;
   text-align: right;
   text-shadow: 0 1px 1px #7A2929;
   @media only screen and (max-width: $mobile) {
@@ -395,6 +396,31 @@ textarea {
         text-shadow: 0 1px 1px #7A2929;
       }
     }
+  }
+}
+
+.sidebar-spinner-wrap {
+  align-items: center;
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 90%;
+  z-index: 9;
+  &.show {
+    display: flex;
+    margin: 42px 0 0 0;
+  }
+  p {
+    font-family: 'Bangers', cursive;
+    font-size: 14px;
+    margin: 0 0 5px 0;
+  }
+  .sidebar-spinner {
+    background-color: #290E0E;
   }
 }
 

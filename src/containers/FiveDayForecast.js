@@ -10,11 +10,11 @@ class FiveDayForecast extends React.Component {
   getForecast = () => {
     const city = this.props.city;
     this.props.dispatch(actions.fetchDays(city));
-  }
+  };
 
   componentDidMount = () => {
     this.getForecast();
-  }
+  };
 
   render() {
     const forgotCityInline = !this.props.city.length ? 'show' : 'hide';
@@ -46,25 +46,25 @@ class FiveDayForecast extends React.Component {
       </section>
     );
   }
-}
+};
 
 const mapStateToProps = state => {
   return {
-    days: state.fiveDayForecast.days,
-    city: state.currentWeather.setCity
+    city: state.currentWeather.setCity,
+    days: state.fiveDayForecast.days
   }
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return {
     dispatch
   }
-}
+};
 
 FiveDayForecast.propTypes = {
+  dispatch: PropTypes.func,
   city: PropTypes.string,
-  days: PropTypes.array,
-  dispatch: PropTypes.func
+  days: PropTypes.array
 };
 
 export default connect(

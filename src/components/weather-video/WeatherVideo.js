@@ -8,7 +8,7 @@ const WeatherVideo = ({setVideo}) => {
       Your browser does not support the video tag.
     </video>
   )
-}
+};
 
 WeatherVideo.propTypes = {
   setVideo: PropTypes.string

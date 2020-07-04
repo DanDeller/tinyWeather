@@ -15,12 +15,12 @@ class App extends React.Component {
       </div>
     );
   }
-}
+};
 
 const mapStateToProps = state => {
   return {
     isAuth: state.isAuthenticated.isAuthenticated
   }
-}
+};
 
 export default connect(mapStateToProps)(App);

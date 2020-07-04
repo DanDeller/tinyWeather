@@ -10,7 +10,7 @@ const WeatherIcons = ({animate}) => {
       <img className={`weatherIcon ${(animate ? 'animateThunder' : 'thunder')}`} src={require('../../assets/img/thunder.png')} alt='thunder' />
     </div> 
   )
-}
+};
 
 WeatherIcons.propTypes = {
   animate: PropTypes.bool

@@ -9,17 +9,17 @@ class SidebarItem extends React.Component {
     this.state = {toggleDelete: false};
     this.toggle = this.toggle.bind(this);
     this.deleteCity = this.deleteCity.bind(this);
-  }
+  };
 
   toggle = () => {
     this.setState({
       toggleDelete: !this.state.toggleDelete
-    })
-  }
+    });
+  };
 
   deleteCity = () => {
     this.props.dispatch(actions.deleteRecentCities(this.props.id));
-  }
+  };
 
   render() {
     const city = this.props.recentCity;
@@ -46,19 +46,21 @@ class SidebarItem extends React.Component {
       </div>
     );
   }
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return {
     dispatch
   }
-}
-
-SidebarItem.propTypes = {
-  id: PropTypes.string,
-  city: PropTypes.object,
-  recentCity: PropTypes.object,
-  dispatch: PropTypes.func,
 };
 
-export default connect(mapDispatchToProps)(SidebarItem);
+SidebarItem.propTypes = {
+  recentCity: PropTypes.object,
+  dispatch: PropTypes.func,
+  city: PropTypes.object,
+  id: PropTypes.string
+};
+
+export default connect(
+  mapDispatchToProps
+)(SidebarItem);
