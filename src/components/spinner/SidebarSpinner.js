@@ -1,7 +1,8 @@
-import BarLoader from "react-spinners/BarLoader";
-import { css } from "@emotion/core";
+import BarLoader from 'react-spinners/BarLoader';
+import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import React from "react";
+import React from 'react';
+import './Spinner.scss';
 
 const override = css`
   display: block;

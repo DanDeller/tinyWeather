@@ -1,8 +1,9 @@
-import WeatherIcons from '../components/weather/WeatherIcons';
-import * as actions from '../redux/actions/fiveDayForecast';
+import WeatherIcons from '../../components/weather/WeatherIcons';
+import * as actions from '../../redux/actions/fiveDayForecast';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
+import './FiveDayForecast.scss';
 import React from 'react';
 import 'moment-timezone';
 

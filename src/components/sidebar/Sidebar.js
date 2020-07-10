@@ -4,6 +4,7 @@ import SidebarItem from './SidebarItem';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react';
+import './Sidebar.scss';
 
 class Sidebar extends React.Component {
   render() {

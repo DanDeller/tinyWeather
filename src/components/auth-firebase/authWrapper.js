@@ -2,6 +2,7 @@ import WeatherIcons from '../weather/WeatherIcons';
 import React, { useState } from 'react';
 import SignUp from './SignUp';
 import Login from './Login';
+import './Auth.scss';
 
 const AuthWrap = () => {
   const [isLogin, toggleLogin] = useState(false);

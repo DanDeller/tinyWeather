@@ -1,7 +1,7 @@
 import PrivateRoute from './components/private-route/PrivateRoute';
 import authWrapper from './components/auth-firebase/authWrapper';
-import FiveDayForecast from './containers/FiveDayForecast';
-import WeatherMain from './containers/WeatherMain';
+import FiveDayForecast from './containers/FiveDayForecast/FiveDayForecast';
+import WeatherMain from './containers/WeatherMain/WeatherMain';
 import { Switch, Route } from 'react-router-dom';
 import Home from './components/home/Home';
 import { AuthProvider } from './Auth';

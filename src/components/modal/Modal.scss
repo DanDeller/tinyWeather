@@ -1,0 +1,27 @@
+$body: 'Encode Sans Condensed', sans-serif;
+$heading: 'Roboto', sans-serif;
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  margin: 0;
+  padding: 30px;
+  text-align: center;
+  h1 {
+    font-family: $heading;
+    font-size: 28px;
+    margin: 0 0 15px;
+  }
+  a {
+    color: #4c4c4c;
+    font-family: $body;
+    text-decoration: none;
+    transition: color .3s linear 0s;
+    &:hover {
+      color: #727272;
+      text-decoration: underline;
+    }
+  }
+}

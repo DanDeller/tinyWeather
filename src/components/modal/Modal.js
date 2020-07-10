@@ -1,6 +1,7 @@
 import Modal from 'react-awesome-modal';
 import PropTypes from 'prop-types';
 import React from 'react';
+import './Modal.scss';
 
 const ErrorModal = ({visible, closeModal}) => {
   return (

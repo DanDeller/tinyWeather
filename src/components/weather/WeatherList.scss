@@ -1,0 +1,157 @@
+$mobile: 768px;
+
+.weatherItems {
+  height: 0;
+  opacity: 0;
+  transform: translateY(-15%);
+  transition: all .2s linear 0s;
+  width: 100%;
+  .weatherItem {
+    border-top: 1px solid #f2f2f2;
+    padding: 20px 0 0 0;
+    position: relative;
+    h3 {
+      margin: 0 0 15px 0;
+    }
+    p {
+      margin: 0 25px 15px 0;
+      &:last-of-type {
+        margin: 0 25px 0 0;
+      }
+    }
+  }
+}
+
+.showItems {
+  height: 115px;
+  opacity: 1;
+  transform: translate(0);
+  transition: height 500ms ease-in-out, opacity 500ms ease-in-out;
+}
+
+.hideItems {
+  height: 0;
+  opacity: 0;
+  transform: translateY(-15%);
+  transition: height 500ms ease-in-out, opacity 500ms ease-in-out;
+}
+
+.weatherIcons {
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 30px;
+  width: 100%;
+  z-index: -1;
+}
+
+.weatherIcon {
+  opacity: .1;
+  position: absolute;
+  width: 280px;
+  pointer-events: none;
+  @media only screen and (max-width: $mobile) {
+    width: 50%;
+  }
+}
+
+.rain {
+  left: 40%;
+  top: 25%;
+}
+
+.sun {
+  left: 75%;
+  top: 40%;
+}
+
+.snow {
+  left: 10%;
+  top: 5%;
+}
+
+.thunder {
+  left: 20%;
+  top: 65%;
+}
+
+.animateRain {
+  animation: moveRight 7s linear 1.5s infinite;
+  left: 40%;
+  top: 25%;
+}
+@keyframes moveRight {
+  0% { 
+    left: 40%;
+    top: 25%; 
+  }
+  50% {
+    left: 45%;
+    top: 20%;
+  }
+  0% {
+    left: 40%;
+    top: 25%;
+  }
+}
+
+.animateSun {
+  animation: moveLeft 7s linear 2s infinite;
+  left: 75%;
+  top: 40%;
+}
+@keyframes moveLeft {
+  0% { 
+    left: 75%;
+    top: 40%;
+  }
+  50% {
+    left: 70%;
+    top: 45%;
+  }
+  0% {
+    left: 75%;
+    top: 40%;
+  }
+}
+
+.animateSnow {
+  animation: moveDown 7s linear 2.5s infinite;
+  left: 10%;
+  top: 5%;
+}
+@keyframes moveDown {
+  0% { 
+    left: 10%;
+    top: 5%; 
+  }
+  50% {
+    left: 15%;
+    top: 10%;
+  }
+  0% {
+    left: 10%;
+    top: 5%;
+  }
+}
+
+.animateThunder {
+  animation: moveUp 7s linear 3s infinite;
+  left: 20%;
+  top: 65%;
+}
+@keyframes moveUp {
+  0% { 
+    left: 20%;
+    top: 65%; 
+  }
+  50% {
+    left: 25%;
+    top: 70%;
+  }
+  0% {
+    left: 20%;
+    top: 65%;
+  }
+}

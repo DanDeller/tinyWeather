@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './WeatherForm.scss';
 import React from 'react';
 
 class WeatherForm extends React.Component {

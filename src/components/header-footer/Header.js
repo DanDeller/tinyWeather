@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import Burger from '../burger/Burger';
 import app from '../../base';
+import './HeaderFooter.scss';
 
 const Header = ({isAuth, history}) => {
   const [isOpen, toggleOpen] = useState(false);

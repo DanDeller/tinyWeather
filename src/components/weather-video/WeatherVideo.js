@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './WeatherVideo.scss';
 import React from 'react';
 
 const WeatherVideo = ({setVideo}) => {

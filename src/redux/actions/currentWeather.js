@@ -124,7 +124,7 @@ export const getWeather = (city, userId) => {
  */
 export const fetchRecentCities = (token, userId) => {
   const useToken = token !== null ? token : localStorage.getItem('token');
-  console.log('ayeeeee')
+  
   return dispatch => {
     const params = '?auth='+useToken+'&orderBy="userId"&equalTo="'+userId+'"';
 

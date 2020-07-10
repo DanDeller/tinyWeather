@@ -1,6 +1,6 @@
+import style from './assets/styles/styles-default.scss';
 import Header from './components/header-footer/Header';
 import Footer from './components/header-footer/Footer';
-import style from './assets/styles/styles.scss';
 import { connect } from 'react-redux';
 import Main from './Main';
 import React from 'react';
