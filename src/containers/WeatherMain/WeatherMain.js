@@ -1,7 +1,6 @@
 import WeatherLookupSpinner from '../../components/spinner/WeatherLookupSpinner';
 import WeatherVideo from '../../components/weather-video/WeatherVideo';
 import WeatherForm from '../../components/weather-form/WeatherForm';
-import WeatherIcons from '../../components/weather/WeatherIcons';
 import WeatherList from '../../components/weather/WeatherList';
 import * as actions from '../../redux/actions/currentWeather';
 import Sidebar from '../../components/sidebar/Sidebar';
@@ -97,9 +96,6 @@ class WeatherMain extends React.Component {
             </div>
           </div>
         </div>
-        <WeatherIcons 
-          animate={false} 
-        />
       </section>
     );
   }

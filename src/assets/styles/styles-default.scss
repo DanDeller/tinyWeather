@@ -92,6 +92,11 @@ textarea {
   letter-spacing: 2px;
   margin: 15px 0;
   text-shadow: 0 1px 1px #7A2929;
+  span {
+    @media only screen and (max-width: $mobile) {
+      display: block;
+    }
+  }
 }
 
 .tagline {
@@ -126,4 +131,130 @@ textarea {
     color: #F45050;
     margin: -2px auto;
   }
+}
+
+.weatherIcons {
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 30px;
+  width: 100%;
+  z-index: -1;
+}
+
+.weatherIcon {
+  opacity: .03;
+  position: absolute;
+  width: 280px;
+  pointer-events: none;
+  @media only screen and (max-width: $mobile) {
+    width: 50%;
+  }
+}
+
+.rain {
+  left: 40%;
+  top: 25%;
+}
+
+.sun {
+  left: 75%;
+  top: 40%;
+}
+
+.snow {
+  left: 10%;
+  top: 5%;
+}
+
+.thunder {
+  left: 20%;
+  top: 65%;
+}
+
+.animateRain {
+  animation: moveRight 7s linear 1.5s infinite;
+  left: 40%;
+  top: 25%;
+}
+@keyframes moveRight {
+  0% { 
+    left: 40%;
+    top: 25%; 
+  }
+  50% {
+    left: 45%;
+    top: 20%;
+  }
+  0% {
+    left: 40%;
+    top: 25%;
+  }
+}
+
+.animateSun {
+  animation: moveLeft 7s linear 2s infinite;
+  left: 75%;
+  top: 40%;
+}
+@keyframes moveLeft {
+  0% { 
+    left: 75%;
+    top: 40%;
+  }
+  50% {
+    left: 70%;
+    top: 45%;
+  }
+  0% {
+    left: 75%;
+    top: 40%;
+  }
+}
+
+.animateSnow {
+  animation: moveDown 7s linear 2.5s infinite;
+  left: 10%;
+  top: 5%;
+}
+@keyframes moveDown {
+  0% { 
+    left: 10%;
+    top: 5%; 
+  }
+  50% {
+    left: 15%;
+    top: 10%;
+  }
+  0% {
+    left: 10%;
+    top: 5%;
+  }
+}
+
+.animateThunder {
+  animation: moveUp 7s linear 3s infinite;
+  left: 20%;
+  top: 65%;
+}
+@keyframes moveUp {
+  0% { 
+    left: 20%;
+    top: 65%; 
+  }
+  50% {
+    left: 25%;
+    top: 70%;
+  }
+  0% {
+    left: 20%;
+    top: 65%;
+  }
+}
+
+#tsparticles {
+  height: 100%;
+  position: absolute;
+  width: 100%;
 }

@@ -41,7 +41,6 @@ export const AuthProvider = ({children}) => {
       </section>
     );
   }
-
   return (
     <AuthContext.Provider
       value={{

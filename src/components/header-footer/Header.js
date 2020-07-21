@@ -1,4 +1,5 @@
-import * as actions from '../../redux/actions/isAuthenticated';
+import * as authActions from '../../redux/actions/isAuthenticated';
+import * as navActions from '../../redux/actions/currentWeather';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { useDispatch } from 'react-redux';
@@ -13,10 +14,11 @@ const Header = ({isAuth, history}) => {
   const handleLogout = () => {
     app.auth().signOut();
     history.push('/');
-    dispatch(actions.setIsAuthenticated(false));
-    dispatch(actions.setTokenId(null));
-    dispatch(actions.setUserId(null));
-    localStorage.removeItem('token');
+    dispatch(authActions.setIsAuthenticated(false));
+    dispatch(authActions.setTokenId(null));
+    dispatch(authActions.setUserId(null));
+    dispatch(navActions.isOpen(false));
+    toggleOpen(false);
     localStorage.removeItem('expirationDate');
   };
 
@@ -42,28 +44,31 @@ const Header = ({isAuth, history}) => {
                 </NavLink>
               </li>
               {!!isAuth ?
-              [<li key={'weather'}>
-                <NavLink 
-                  to='/weather' 
-                  activeClassName="currentLink"
-                  onClick={() => toggleOpen(false)}>
-                  Current Weather Lookup
-                </NavLink>
-              </li>,
-              <li key={'forecase'}> 
-                <NavLink 
-                  to='/fiveDayForecast' 
-                  activeClassName="currentLink"
-                  onClick={() => toggleOpen(false)}>
-                  Five Day Lookup
-                </NavLink>
-              </li>,
-              <li key={'logout'}><button className="sign-out" onClick={handleLogout}>Sign out</button></li>] :
-              ''
+                [
+                  <li key={'weather'}>
+                    <NavLink 
+                      to='/weather' 
+                      activeClassName="currentLink"
+                      onClick={() => toggleOpen(false)}>
+                      Current Weather Lookup
+                    </NavLink>
+                  </li>,
+                  <li key={'forecase'}> 
+                    <NavLink 
+                      to='/fiveDayForecast' 
+                      activeClassName="currentLink"
+                      onClick={() => toggleOpen(false)}>
+                      Five Day Lookup
+                    </NavLink>
+                  </li>,
+                  <li key={'logout'}>
+                    <button className="sign-out" onClick={handleLogout}>Sign out</button>
+                  </li>
+                ] :
+                ''
               }
             </ul>
           </nav>
-          
           <Burger 
             isOpen={isOpen}
             toggleOpen={toggleOpen}

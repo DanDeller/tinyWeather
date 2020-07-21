@@ -1,4 +1,3 @@
-import WeatherIcons from '../../components/weather/WeatherIcons';
 import * as actions from '../../redux/actions/fiveDayForecast';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -41,9 +40,6 @@ class FiveDayForecast extends React.Component {
             {days}
           </div>
         </div>
-        <WeatherIcons 
-          animate={false}
-        />
       </section>
     );
   }

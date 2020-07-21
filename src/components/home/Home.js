@@ -1,4 +1,3 @@
-import WeatherIcons from '../weather/WeatherIcons';
 import React from 'react';
 import './Home.scss';
 
@@ -25,7 +24,6 @@ const Home = () => {
           </p>
         </div>
       </div>
-      <WeatherIcons animate={false} />
     </section>
   );
 };

@@ -16,10 +16,15 @@ class Main extends React.Component {
           <Switch>
             <PrivateRoute exact path='/' component={Home} />
             <Route exact path='/login' component={authWrapper} />
-            {this.props.isAuth ? [
-              <Route key={'weatherMain'} exact path='/weather' component={WeatherMain} />,
-              <Route key={'fiveDayForecast'} exact path='/fiveDayForecast' component={FiveDayForecast} />
-             ] : <Route key={'404'} path='*' component={() => 'You do not have access to view this page. Go sign in first.'}/>}
+            {
+              this.props.isAuth ? 
+                [
+                  <Route key={'weatherMain'} exact path='/weather' component={WeatherMain} />,
+                  <Route key={'fiveDayForecast'} exact path='/fiveDayForecast' component={FiveDayForecast} />
+                ] : 
+                  // need to make a 404 component
+                  <Route key={'404'} path='*' component={() => 'You do not have access to view this page. Go sign in first.'}/>
+            }
             <Route path='*' component={() => '404 Page Not Found'}/>
           </Switch>
         </AuthProvider>
