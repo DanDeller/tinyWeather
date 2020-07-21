@@ -1,5 +1,4 @@
 import * as authActions from '../../redux/actions/isAuthenticated';
-import * as navActions from '../../redux/actions/currentWeather';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { useDispatch } from 'react-redux';
@@ -17,7 +16,6 @@ const Header = ({isAuth, history}) => {
     dispatch(authActions.setIsAuthenticated(false));
     dispatch(authActions.setTokenId(null));
     dispatch(authActions.setUserId(null));
-    dispatch(navActions.isOpen(false));
     toggleOpen(false);
     localStorage.removeItem('expirationDate');
   };
