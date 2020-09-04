@@ -11,7 +11,7 @@ A little weather app.
   <li><a href='https://rethinkdb.com/'>RethinkDB</a></li>
 </ul>
 
-> NOTE: Docker is being used to start our web service and rethinkdb. 
+> NOTE: Docker is being used to start the app's web service and rethinkdb. 
 
 <h2>How to use:</h2>
 <ul>
@@ -22,3 +22,19 @@ A little weather app.
 </ul>
 
 > NOTE: If you are not using yarn, you can still use npm in its place.
+
+<h2>Useful Docker commands</h2>
+
+Check all containers: `docker ps -a`
+
+Check all images: `docker images`
+
+Delete containers that are not running: `docker rm $(docker ps -a -q)`
+
+Delete containers that are still running: `docker stop $(docker ps -a -q) docker rm $(docker ps -a -q)`
+
+Delete image: `docker rmi 'image-id'`
+
+Delete all images: `docker rmi $(docker images -q)`
+
+Force delete images: `docker rmi -f $(docker images -q)`
