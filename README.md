@@ -18,7 +18,7 @@ A little weather app.
   <li>Make sure Docker and RethinkDB are installed</li>
   <li>Clone the repo</li>
   <li>Start Docker</li>
-  <li>Start the app: ```docker-compose up```</li>
+  <li>Start the app: `docker-compose up`</li>
 </ul>
 
 > NOTE: If you are not using yarn, you can still use npm in its place.
