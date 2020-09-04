@@ -11,7 +11,7 @@ A little weather app.
   <li><a href='https://rethinkdb.com/'>RethinkDB</a></li>
 </ul>
 
-> NOTE: Docker is being used to start the app's web service and rethinkdb. 
+> NOTE: Docker is being used to start the app's web services. 
 
 <h2>How to use:</h2>
 <ul>
