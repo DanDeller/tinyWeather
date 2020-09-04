@@ -38,3 +38,5 @@ Delete image: `docker rmi 'image-id'`
 Delete all images: `docker rmi $(docker images -q)`
 
 Force delete images: `docker rmi -f $(docker images -q)`
+
+```test```
