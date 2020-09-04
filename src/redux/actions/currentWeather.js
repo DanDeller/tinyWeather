@@ -106,7 +106,7 @@ export const getWeather = (city, userId) => {
       // NOTE: this is for demo purposes only. Don't use in realtime
       setTimeout(() => {
         dispatch(fetchWeatherSuccess());
-        dispatch(postRecentCities(city, uuid(), userId));
+        dispatch(postRecentCities(city, uuid()));
         dispatch(setDetails(details));
         dispatch(isOpen(false));
         dispatch(setVideo(Object.values(video)[0]));
@@ -123,14 +123,14 @@ export const getWeather = (city, userId) => {
  *  GET RECENT CITES
  */
 export const fetchRecentCities = (token, userId) => {
-  const useToken = token !== null ? token : localStorage.getItem('token');
+  // const useToken = token !== null ? token : localStorage.getItem('token');
   
   return dispatch => {
-    const params = '?auth='+useToken+'&orderBy="userId"&equalTo="'+userId+'"';
+    // const params = '?auth='+useToken+'&orderBy="userId"&equalTo="'+userId+'"';
 
     dispatch(fetchRecentCitiesStart());
 
-    axios.get('https://tiny-weather-65aa3.firebaseio.com/recentCities.json' + params)
+    axios.get('/currentWeather')
     .then((res) => {
       const data = res.data ? Object.values(res.data) : [];
 
@@ -150,19 +150,16 @@ export const fetchRecentCities = (token, userId) => {
 /*
  *  POST RECENT CITES
  */
-export const postRecentCities = (city, id, userId) => {
-  const useToken = localStorage.getItem('token');
-
+export const postRecentCities = (city, id) => {
   return dispatch => {
     const data = {
       id: id,
-      city: city,
-      userId: userId
+      city: city
     };
 
     dispatch(recentCity([data]));
 
-    axios.post(`https://tiny-weather-65aa3.firebaseio.com/recentCities.json?auth=${useToken}`, data)
+    axios.post('/currentWeather', data)
     .then((res) => {
       console.log(res.data);
     })
@@ -174,18 +171,21 @@ export const postRecentCities = (city, id, userId) => {
  *  DELETE RECENT CITES
  */
 export const deleteRecentCities = (id) => {
-  const useToken = localStorage.getItem('token');
-
   return dispatch => {
     const data = {
       id: id
     };
-
-    dispatch(removeRecentCity(data.id));
-
-    axios.delete(`https://tiny-weather-65aa3.firebaseio.com/recentCities.json?auth=${useToken}`, data)
-    .then((res) => {
-      console.log(res.data);
+    axios.delete('/currentWeather', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      data: {
+        source: data
+      }
+    })
+    .then(() => {
+      dispatch(removeRecentCity(data.id));
     })
     .catch((err) => console.log(err));
   }

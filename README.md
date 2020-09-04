@@ -5,12 +5,20 @@
 # tinyWeather
 A little weather app.
 
+<h2>What you'll need to run the app</h2>
+<ul>
+  <li><a href='https://docs.docker.com/desktop/'>Docker</li>
+  <li><a href='https://rethinkdb.com/'>RethinkDB</a></li>
+</ul>
+
+> NOTE: Docker is being used to start our web service and rethinkdb. 
+
 <h2>How to use:</h2>
 <ul>
+  <li>Make sure Docker and RethinkDB are installed</li>
   <li>Clone the repo</li>
-  <li>Install packages: yarn</li>
-  <li>Start the server: yarn server</li>
-  <li>Start the app: yarn start</li>
+  <li>Start Docker</li>
+  <li>Start the app: docker-compose up</li>
 </ul>
 
 > NOTE: If you are not using yarn, you can still use npm in its place.

@@ -1,4 +1,5 @@
-import ParticleWrap from './components/particles/ParticleWrap';
+import WeatherLookupSpinner from './components/spinner/WeatherLookupSpinner';
+// import ParticleWrap from './components/particles/ParticleWrap';
 import WeatherIcons from './components/weather/WeatherIcons';
 import style from './assets/styles/styles-default.scss';
 import Header from './components/header-footer/Header';
@@ -11,11 +12,16 @@ class App extends React.Component {
   render () {
     return (
       <div className={style.wrap}>
-        <ParticleWrap />
+        {/* ParticleWrap is animation heavy,
+        only use for auth background when ready
+        <ParticleWrap /> */}
         <Header isAuth={this.props.isAuth}/>
         <Main/>
         <Footer/>
         <WeatherIcons animate={true} />
+        <WeatherLookupSpinner 
+          weatherLoading={this.props.weatherLoading}
+        />
       </div>
     );
   }
@@ -23,6 +29,7 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    weatherLoading: state.currentWeather.weatherLoading,
     isAuth: state.isAuthenticated.isAuthenticated
   }
 };

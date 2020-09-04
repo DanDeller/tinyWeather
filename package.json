@@ -18,6 +18,7 @@
     "babel-preset-react-app": "^9.1.2",
     "camelcase": "^5.3.1",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
+    "cors": "^2.8.5",
     "css-loader": "3.4.2",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
@@ -64,6 +65,7 @@
     "react-particles-js": "^3.3.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
+    "react-router-transition": "^2.0.0",
     "react-spinners": "^0.8.3",
     "react-test-renderer": "^16.13.1",
     "react-transition-group": "1.x",
@@ -73,15 +75,19 @@
     "require-dir": "^1.2.0",
     "resolve": "^1.17.0",
     "resolve-url-loader": "3.1.1",
+    "rethinkdb": "^2.4.2",
+    "rethinkdbdash": "^2.3.31",
     "sass-loader": "8.0.2",
     "semver": "6.3.0",
     "style-loader": "0.23.1",
+    "styled-components": "^5.1.1",
     "terser-webpack-plugin": "2.3.5",
     "ts-pnp": "1.1.6",
     "url-loader": "2.3.0",
     "webpack": "4.42.0",
     "webpack-dev-server": "3.10.3",
     "webpack-manifest-plugin": "2.2.0",
+    "winston": "^3.3.3",
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
@@ -90,7 +96,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },
-  "proxy": "http://localhost:5000/",
+  "proxy": "http://localhost:3001/",
   "eslintConfig": {
     "extends": "react-app"
   },

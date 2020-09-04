@@ -8,7 +8,7 @@ import App from './App';
 
 window.store = store;
 
-axios.defaults.baseURL = 'https://tiny-weather-65aa3.firebaseio.com/';
+// axios.defaults.baseURL = 'https://tiny-weather-65aa3.firebaseio.com/';
 
 axios.interceptors.request.use(request => {
 	console.log(request);

@@ -1,4 +1,3 @@
-import WeatherLookupSpinner from '../../components/spinner/WeatherLookupSpinner';
 import WeatherVideo from '../../components/weather-video/WeatherVideo';
 import WeatherForm from '../../components/weather-form/WeatherForm';
 import WeatherList from '../../components/weather/WeatherList';
@@ -61,9 +60,6 @@ class WeatherMain extends React.Component {
   render() {
     return (
       <section className="container">
-        <WeatherLookupSpinner 
-          weatherLoading={this.props.weatherLoading}
-        />
         <ErrorModal 
           visible={this.props.visible} 
           closeModal={this.closeModal} 
@@ -103,7 +99,6 @@ class WeatherMain extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    weatherLoading: state.currentWeather.weatherLoading,
     recentCities: state.currentWeather.recentCities,
     cityDetails: state.currentWeather.cityDetails,
     setVideo: state.currentWeather.setVideo,
@@ -123,7 +118,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 WeatherMain.propTypes = {
-  weatherLoading: PropTypes.bool,
   recentCities: PropTypes.array,
   cityDetails: PropTypes.array,
   setVideo: PropTypes.string,

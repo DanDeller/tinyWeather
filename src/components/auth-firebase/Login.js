@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import { withRouter, Redirect } from 'react-router';
 import { AuthContext } from '../../Auth.js';
-import app from '../../base.js';
+// import app from '../../base.js';
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
@@ -9,10 +9,10 @@ const Login = ({ history }) => {
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {
-        await app
-          .auth()
-          .signInWithEmailAndPassword(email.value, password.value);
-        history.push("/");
+        // await app
+        //   .auth()
+        //   .signInWithEmailAndPassword(email.value, password.value);
+        // history.push("/");
       } catch (error) {
         alert(error);
       }
