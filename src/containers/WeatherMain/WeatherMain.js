@@ -1,11 +1,9 @@
-import WeatherLookupSpinner from '../../components/spinner/WeatherLookupSpinner';
 import * as fetchFlagAction from '../../redux/actions/fiveDayForecast';
 import WeatherVideo from '../../components/weather-video/WeatherVideo';
 import WeatherForm from '../../components/weather-form/WeatherForm';
 import WeatherList from '../../components/weather/WeatherList';
 import * as actions from '../../redux/actions/currentWeather';
 import Sidebar from '../../components/sidebar/Sidebar';
-import ErrorModal from '../../components/modal/Modal';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './WeatherMain.scss';
@@ -40,15 +38,6 @@ class WeatherMain extends React.Component {
     this.props.dispatch(fetchFlagAction.setFetchFlag(!!this.props.fetchFlag));
   };
 
-  closeModal = (e) => {
-    e.preventDefault();
-    const refs = {...this.state.myRefs};
-    refs.current.value = '';
-    this.props.dispatch(actions.visible(false));
-    this.props.dispatch(actions.setCity(''));
-    this.props.dispatch(actions.fetchWeatherSuccess());
-  };
-
   getWeather = (e) => {
     e.preventDefault();
     this.props.dispatch(actions.getWeather(this.props.city, this.props.userId));
@@ -64,13 +53,6 @@ class WeatherMain extends React.Component {
     return (
       <section className="container">
         <div className="weatherMain bodyText">
-          <WeatherLookupSpinner 
-            weatherLoading={this.props.weatherLoading}
-          />
-          <ErrorModal 
-            visible={this.props.visible} 
-            closeModal={this.closeModal} 
-          />
           <h1 className="pageHeader">Search a city to check the weather</h1>
           <div className="hold">
             <div className="weatherLeft">

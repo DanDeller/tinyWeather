@@ -182,7 +182,7 @@ textarea {
 */
 
 .animateSun {
-  animation: moveLeft 35s linear 2s infinite;
+  animation: moveLeft 35s linear infinite;
   left: 75%;
   top: 40%;
 }
@@ -203,7 +203,7 @@ textarea {
 * animations for snow icon
 */
 .animateSnow {
-  animation: moveDown 25s linear 2.5s infinite;
+  animation: moveDown 25s linear infinite;
   left: 10%;
   top: 5%;
 }
@@ -224,7 +224,7 @@ textarea {
 * animations for thunder icon
 */
 .animateThunder {
-  animation: moveUp 30s linear 3s infinite;
+  animation: moveUp 30s linear infinite;
   left: 20%;
   top: 65%;
 }

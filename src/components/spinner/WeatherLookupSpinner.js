@@ -1,7 +1,8 @@
-import BarLoader from "react-spinners/BarLoader";
-import { css } from "@emotion/core";
+import BarLoader from 'react-spinners/BarLoader';
+import { connect } from 'react-redux';
+import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import React from "react";
+import React from 'react';
 
 const override = css`
   display: block;
@@ -24,8 +25,14 @@ const WeatherLookupSpinner = ({weatherLoading}) => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    weatherLoading: state.currentWeather.weatherLoading
+  }
+};
+
 WeatherLookupSpinner.propTypes = {
   loading: PropTypes.bool
 };
 
-export default WeatherLookupSpinner;
+export default connect(mapStateToProps)(WeatherLookupSpinner);

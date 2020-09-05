@@ -1,9 +1,20 @@
+import * as actions from '../../redux/actions/currentWeather';
 import Modal from 'react-awesome-modal';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react';
 import './Modal.scss';
 
-const ErrorModal = ({visible, closeModal}) => {
+const ErrorModal = ({visible, closeModal, dispatch}) => {
+  closeModal = (e) => {
+    e.preventDefault();
+    // const refs = {...this.state.myRefs};
+    // refs.current.value = '';
+    dispatch(actions.visible(false));
+    dispatch(actions.setCity(''));
+    dispatch(actions.fetchWeatherSuccess());
+  };
+
   return (
     <div>
       <Modal
@@ -21,9 +32,24 @@ const ErrorModal = ({visible, closeModal}) => {
   );
 }
 
+const mapStateToProps = state => {
+  return {
+    visible: state.currentWeather.visible
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch
+  }
+};
+
 ErrorModal.propTypes = {
   closeModal: PropTypes.func,
   visible: PropTypes.bool
 };
 
-export default ErrorModal;
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(ErrorModal);
