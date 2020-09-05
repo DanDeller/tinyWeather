@@ -8,8 +8,8 @@ import 'moment-timezone';
 
 class FiveDayForecast extends React.Component {
   getForecast = () => {
-    const fetchFlag = this.props.fetchFlag;
-    const city = this.props.city;
+    const fetchFlag = this.props.fetchFlag,
+          city      = this.props.city;
 
     if (city.length && !fetchFlag) {
       this.props.dispatch(actions.fetchDays(city));
