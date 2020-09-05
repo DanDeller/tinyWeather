@@ -65,6 +65,12 @@ class WeatherForm extends React.Component {
   }
 };
 
+const mapStateToProps = state => {
+  return {
+    fetchFlag: state.fiveDayForecast.fetchFlag
+  }
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     dispatch
@@ -79,6 +85,7 @@ WeatherForm.propTypes = {
   isOpen: PropTypes.bool
 };
 
-export default connect( 
+export default connect(
+  mapStateToProps,
   mapDispatchToProps
 )(WeatherForm);

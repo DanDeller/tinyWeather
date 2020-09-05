@@ -51,10 +51,8 @@ class WeatherMain extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    weatherLoading: state.currentWeather.weatherLoading,
     recentCities: state.currentWeather.recentCities,
     cityDetails: state.currentWeather.cityDetails,
-    fetchFlag: state.fiveDayForecast.fetchFlag,
     setVideo: state.currentWeather.setVideo,
     visible: state.currentWeather.visible,
     userId: state.isAuthenticated.userId,
