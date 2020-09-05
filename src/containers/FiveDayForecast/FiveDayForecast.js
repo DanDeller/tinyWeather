@@ -8,8 +8,13 @@ import 'moment-timezone';
 
 class FiveDayForecast extends React.Component {
   getForecast = () => {
+    const fetchFlag = this.props.fetchFlag;
     const city = this.props.city;
-    this.props.dispatch(actions.fetchDays(city));
+
+    if (city.length && !fetchFlag) {
+      this.props.dispatch(actions.fetchDays(city));
+      this.props.dispatch(actions.setFetchFlag(!!this.props.fetchFlag));
+    }
   };
 
   componentDidMount = () => {
@@ -47,6 +52,7 @@ class FiveDayForecast extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    fetchFlag: state.fiveDayForecast.fetchFlag,
     city: state.currentWeather.setCity,
     days: state.fiveDayForecast.days
   }
@@ -59,6 +65,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 FiveDayForecast.propTypes = {
+  fetchFlag: PropTypes.bool,
   dispatch: PropTypes.func,
   city: PropTypes.string,
   days: PropTypes.array

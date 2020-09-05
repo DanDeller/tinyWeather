@@ -2,6 +2,7 @@ export const IS_OPEN = 'IS_OPEN';
 export const VISIBLE = 'VISIBLE';
 export const SET_CITY = 'SET_CITY';
 export const SET_VIDEO = 'SET_VIDEO';
+export const FETCH_FLAG = 'FETCH_FLAG';
 export const SET_DETAILS = 'SET_DETAILS';
 export const RECENT_CITY = 'RECENT_CITY';
 export const REMOVE_RECENT_CITY = 'REMOVE_RECENT_CITY';
@@ -15,6 +16,6 @@ export const FETCH_WEATHER_SUCCESS = 'FETCH_WEATHER_SUCCESS';
 export const FETCH_DAYS_START = 'FETCH_DAYS_START';
 export const FETCH_DAYS_SUCCESS = 'FETCH_DAYS_SUCCESS';
 
-export const SET_USER_ID = 'SET_USER_ID';
-export const SET_TOKEN_ID = 'SET_TOKEN_ID';
 export const IS_AUTHENTICATED = 'IS_AUTHENTICATED';
+export const SET_TOKEN_ID = 'SET_TOKEN_ID';
+export const SET_USER_ID = 'SET_USER_ID';

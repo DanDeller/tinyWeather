@@ -1,4 +1,5 @@
 const config = require('../../../server.config.js'),
+      logger = require('../../../middleware/logger.js'),
       r = require('rethinkdb');
 
 module.exports = {
@@ -28,6 +29,7 @@ module.exports = {
         return cb(null, data);
       })
       .error((err) => {
+        logger.error(`Could not find and ${config.db.name} items.`);
         return cb(err);
       });
     })
@@ -47,6 +49,7 @@ module.exports = {
 				return cb(null, response);
 			})
 			.error((error) => {
+        logger.error(`Error trying to send data to ${config.db.name}.`);
 				return cb(error);
 			});
 		});
@@ -64,6 +67,7 @@ module.exports = {
 				return callback(null, response);
 			})
 			.error((error) => {
+        logger.error(`Error trying to delete item in ${config.db.name}.`);
 				return callback(error);
 			});
 		});

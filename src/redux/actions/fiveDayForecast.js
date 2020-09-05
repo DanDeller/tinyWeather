@@ -10,6 +10,11 @@ export const fetchDaysStart = () => ({
   type: actionTypes.FETCH_DAYS_START
 });
 
+export const setFetchFlag = fetchFlag => ({
+  type: actionTypes.FETCH_FLAG,
+  fetchFlag: fetchFlag
+});
+
 export const fetchDays = city => {
   return dispatch => {
     if (!city.length) {

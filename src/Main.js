@@ -4,7 +4,6 @@ import WeatherMain from './containers/WeatherMain/WeatherMain';
 import { Route } from 'react-router-dom';
 import Home from './components/home/Home';
 import { AuthProvider } from './Auth';
-import { connect } from 'react-redux';
 import React from 'react';
 
 function mapStyles(styles) {
@@ -62,10 +61,4 @@ class Main extends React.Component {
   }
 };
 
-const mapStateToProps = state => {
-  return {
-    isAuth: state.isAuthenticated.isAuthenticated
-  }
-};
-
-export default connect(mapStateToProps)(Main);
+export default Main;

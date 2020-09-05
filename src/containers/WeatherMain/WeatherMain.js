@@ -1,3 +1,5 @@
+import WeatherLookupSpinner from '../../components/spinner/WeatherLookupSpinner';
+import * as fetchFlagAction from '../../redux/actions/fiveDayForecast';
 import WeatherVideo from '../../components/weather-video/WeatherVideo';
 import WeatherForm from '../../components/weather-form/WeatherForm';
 import WeatherList from '../../components/weather/WeatherList';
@@ -35,6 +37,7 @@ class WeatherMain extends React.Component {
     this.props.dispatch(actions.isOpen(true));
     this.props.dispatch(actions.setVideo(''));
     this.props.dispatch(actions.setCity(''));
+    this.props.dispatch(fetchFlagAction.setFetchFlag(!!this.props.fetchFlag));
   };
 
   closeModal = (e) => {
@@ -60,11 +63,14 @@ class WeatherMain extends React.Component {
   render() {
     return (
       <section className="container">
-        <ErrorModal 
-          visible={this.props.visible} 
-          closeModal={this.closeModal} 
-        />
         <div className="weatherMain bodyText">
+          <WeatherLookupSpinner 
+            weatherLoading={this.props.weatherLoading}
+          />
+          <ErrorModal 
+            visible={this.props.visible} 
+            closeModal={this.closeModal} 
+          />
           <h1 className="pageHeader">Search a city to check the weather</h1>
           <div className="hold">
             <div className="weatherLeft">
@@ -99,8 +105,10 @@ class WeatherMain extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    weatherLoading: state.currentWeather.weatherLoading,
     recentCities: state.currentWeather.recentCities,
     cityDetails: state.currentWeather.cityDetails,
+    fetchFlag: state.fiveDayForecast.fetchFlag,
     setVideo: state.currentWeather.setVideo,
     visible: state.currentWeather.visible,
     userId: state.isAuthenticated.userId,
@@ -118,9 +126,11 @@ const mapDispatchToProps = dispatch => {
 };
 
 WeatherMain.propTypes = {
+  weatherLoading: PropTypes.bool,
   recentCities: PropTypes.array,
   cityDetails: PropTypes.array,
   setVideo: PropTypes.string,
+  fetchFlag: PropTypes.bool,
   dispatch: PropTypes.func,
   visible: PropTypes.bool,
   isOpen: PropTypes.bool,
