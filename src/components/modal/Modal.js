@@ -8,8 +8,6 @@ import './Modal.scss';
 const ErrorModal = ({visible, closeModal, dispatch}) => {
   closeModal = (e) => {
     e.preventDefault();
-    // const refs = {...this.state.myRefs};
-    // refs.current.value = '';
     dispatch(actions.visible(false));
     dispatch(actions.setCity(''));
     dispatch(actions.fetchWeatherSuccess());
@@ -24,8 +22,8 @@ const ErrorModal = ({visible, closeModal, dispatch}) => {
         effect="fadeInUp"
       >
         <div className="modal">
-          <h2>We either cannot find that city or you forgot to enter a city first.</h2>
-          <a href="/" onClick={closeModal}>Search Again?</a>
+          <h2>We either cannot find that city, the city was spelled incorrectly, or you forgot to enter a city first.</h2>
+          <a href="/" onClick={closeModal}>Try Again?</a>
         </div>
       </Modal>
     </div>

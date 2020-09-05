@@ -1,3 +1,6 @@
+import * as fetchFlagAction from '../../redux/actions/fiveDayForecast';
+import * as actions from '../../redux/actions/currentWeather';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './WeatherForm.scss';
 import React from 'react';
@@ -5,11 +8,29 @@ import React from 'react';
 class WeatherForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {myRefs: ''};
     this.city = React.createRef();
+    this.getWeather = this.getWeather.bind(this);
+    this.resetSearch = this.resetSearch.bind(this);
+    this.updateInputValue = this.updateInputValue.bind(this);
   };
 
-  componentDidMount() {
-    this.props.passRefUpward(this.city);
+  updateInputValue = (e) => {
+    this.props.dispatch(actions.setCity(e.target.value));
+  };
+
+  getWeather = (e) => {
+    e.preventDefault();
+    this.props.dispatch(actions.getWeather(this.props.city, this.props.userId));
+  };
+
+  resetSearch = () => {
+    const ref = this.city;
+    ref.value = '';
+    this.props.dispatch(actions.isOpen(true));
+    this.props.dispatch(actions.setVideo(''));
+    this.props.dispatch(actions.setCity(''));
+    this.props.dispatch(fetchFlagAction.setFetchFlag(!!this.props.fetchFlag));
   };
 
   render() {
@@ -18,15 +39,15 @@ class WeatherForm extends React.Component {
         <div className={`${(this.props.isOpen ? 'show' : 'hide')}`}>
           <form action='/' method='GET'>
             <input
-              ref={this.city}
-              onChange={this.props.updateInputValue}
+              ref={el => this.city = el}
+              onChange={this.updateInputValue}
               type='text'
               name='test'
               placeholder='Search city'
               className="searchMain"
             />
             <input
-              onClick={e => this.props.getWeather(e)}
+              onClick={e => this.getWeather(e)}
               type='submit'
               value='Search'
               className='search-city'
@@ -36,11 +57,17 @@ class WeatherForm extends React.Component {
         <div className={`resetButton ${(this.props.isOpen ? 'hide' : 'show')}`}>
           <p>Seach another city?</p>
           <button
-            onClick={this.props.resetSearch}>Search
+            onClick={this.resetSearch}>Search
           </button>
         </div>
       </div>
     );
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch
   }
 };
 
@@ -52,4 +79,6 @@ WeatherForm.propTypes = {
   isOpen: PropTypes.bool
 };
 
-export default WeatherForm;
+export default connect( 
+  mapDispatchToProps
+)(WeatherForm);
