@@ -171,9 +171,9 @@ textarea {
     rotate(0deg);
   }
   to { 
-    transform: rotate(360deg)
+    transform: rotate(-360deg)
     translateY(50%) 
-    rotate(-360deg);
+    rotate(360deg);
   }
 }
 
@@ -235,9 +235,9 @@ textarea {
     rotate(0deg);
   }
   to { 
-    transform: rotate(360deg)
+    transform: rotate(-360deg)
     translateY(35%) 
-    rotate(-360deg);
+    rotate(360deg);
   }
 }
 
