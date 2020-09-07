@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 _.each(endpoints, (name) => {
-  app.use(name);
+  app.use('/', name);
 });
 
 app.listen(serverConfig.server.port, () => console.log(`Server running on port ${serverConfig.server.port}`));

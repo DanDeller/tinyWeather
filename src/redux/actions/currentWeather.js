@@ -41,12 +41,12 @@ export const removeRecentCity = id => ({
 /*
  *  FETCH WEATHER
  */
-export const fetchWeatherSuccess = () => ({
-  type: actionTypes.FETCH_WEATHER_SUCCESS,
-});
-
 export const fetchWeatherStart = () => ({
   type: actionTypes.FETCH_WEATHER_START
+});
+
+export const fetchWeatherSuccess = () => ({
+  type: actionTypes.FETCH_WEATHER_SUCCESS,
 });
 
 /*

@@ -56,8 +56,8 @@ const mapStateToProps = state => {
     setVideo: state.currentWeather.setVideo,
     visible: state.currentWeather.visible,
     userId: state.isAuthenticated.userId,
-    isOpen: state.currentWeather.isOpen,
     token: state.isAuthenticated.tokenId,
+    isOpen: state.currentWeather.isOpen,
     city: state.currentWeather.setCity,
     days: state.fiveDayForecast.days
   }
