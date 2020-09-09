@@ -1,3 +1,5 @@
+import PrivateRoute from './components/private-route/PrivateRoute';
+import authWrapper from './components/auth-firebase/authWrapper';
 import FiveDayForecast from './containers/FiveDayForecast/FiveDayForecast';
 import { spring, AnimatedSwitch } from 'react-router-transition';
 import WeatherMain from './containers/WeatherMain/WeatherMain';
@@ -50,9 +52,12 @@ class Main extends React.Component {
             mapStyles={mapStyles}
             className="route-wrapper"
           >
-            <Route exact path='/' component={Home} />
+            <PrivateRoute exact path='/' component={Home} />
+            <Route exact path='/login' component={authWrapper} />
+
+            {/* <Route exact path='/' component={Home} />
             <Route key={'weatherMain'} exact path='/weather' component={WeatherMain} />
-            <Route key={'fiveDayForecast'} exact path='/fiveDayForecast' component={FiveDayForecast} />
+            <Route key={'fiveDayForecast'} exact path='/fiveDayForecast' component={FiveDayForecast} /> */}
             <Route path='*' component={() => '404 Page Not Found'}/>
           </AnimatedSwitch>
         </AuthProvider>

@@ -1,16 +1,34 @@
 import React, { useCallback } from 'react';
 import { withRouter } from 'react-router';
-// import app from '../../base';
+import axios from 'axios';
 
 const SignUp = ({history}) => {
   const handleSignUp = useCallback(async event => {
     event.preventDefault();
     const { email, password } = event.target.elements;
     try {
-      // await app
-      //   .auth()
-      //   .createUserWithEmailAndPassword(email.value, password.value);
-      // history.push("/");
+      // const data = {
+      //   username: email,
+      //   password: password
+      // };
+
+      axios({
+        method: 'POST',
+        data: {
+          username: email,
+          password: password
+        },
+        withCredentials: true,
+        url: '/auth/login'
+      }).then(res => console.log(res));
+
+      // axios.post('/auth/login', data)
+      // .then((res) => {
+      //   console.log(res);
+      // })
+      // .catch((err) => console.log(err, ' ERROR??'));
+
+      history.push("/");
     } catch (error) {
       alert(error);
     }

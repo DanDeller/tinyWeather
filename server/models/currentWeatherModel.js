@@ -1,8 +1,8 @@
-const config = require('../../../server.config.js'),
-			logger = require('../../../middleware/logger.js'),
+const config = require('../../server.config.js'),
+			logger = require('../../middleware/logger.js'),
 			r = require('rethinkdb');
 
-module.exports = {
+const currentWeatherModel = {
 	connect: function(cb) {
 		r.connect({
 			db: config.db.name,
@@ -74,3 +74,5 @@ module.exports = {
 		});
 	}
 }
+
+module.exports = currentWeatherModel;

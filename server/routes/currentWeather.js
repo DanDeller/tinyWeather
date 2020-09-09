@@ -1,26 +1,27 @@
-const currentWeather = require('../../models/currentWeatherModel/currentWeather'),
+const currentWeather = require('../models/currentWeatherModel'),
+      logger = require('../../middleware/logger'),
       express = require('express'),
-      router = express.Router();
+      currentWeatherRoutes = express.Router();
 
-router.get('/currentWeather', (req, res) => {
+currentWeatherRoutes.get('/currentWeather', (req, res) => {
   currentWeather.list((error, response) => {
     if (error) return res.end();
     return res.send(response);
   });
 });
 
-router.post('/currentWeather', (req, res) => {
+currentWeatherRoutes.post('/currentWeather', (req, res) => {
   currentWeather.post(req, (error, response) => {
     if (error) return res.end();
     return res.send(response);
   });
 });
 
-router.delete('/currentWeather', (req, res) => {
+currentWeatherRoutes.delete('/currentWeather', (req, res) => {
   currentWeather.delete(req, (error, response) => {
     if (error) return res.end();
     return res.send(response);
   });
 });
 
-module.exports = router;
+module.exports = currentWeatherRoutes;
