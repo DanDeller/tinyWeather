@@ -19,6 +19,8 @@ mongoose.connect('mongodb+srv://ddeller:admin@cluster0.hf66e.mongodb.net/<dbname
   console.log('Connected to mongoose.')
 });
 
+
+// Add rethinkDB for data storage
 dbData.setDatabaseAndTables();
 
 app.server = http.createServer(app);
