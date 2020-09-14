@@ -3,7 +3,7 @@ import authWrapper from './components/auth-firebase/authWrapper';
 import FiveDayForecast from './containers/FiveDayForecast/FiveDayForecast';
 import { spring, AnimatedSwitch } from 'react-router-transition';
 import WeatherMain from './containers/WeatherMain/WeatherMain';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Home from './components/home/Home';
 import { AuthProvider } from './Auth';
 import React from 'react';

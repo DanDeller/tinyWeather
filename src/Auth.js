@@ -24,19 +24,6 @@ export const AuthProvider = ({children}) => {
     //   setPending(false);
     // });
 
-    // axios.post('http://localhost:3001/auth/login', { email, password })
-    //   .then((response) => {
-    //     if (response.data.success) {
-    //       this.setSession(response.data.token);
-    //       resolve(response.data.data);
-    //     } else {
-    //       reject(response.data.error);
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     reject(error);
-    //   });
-
     setCurrentUser(null);
     setPending(false);
 

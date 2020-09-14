@@ -2,13 +2,12 @@ module.exports = {
 	server: {
 		port: 3001
 	},
-	db: {
-		host: process.env.DB_HOST || 'rethinkdb',
-		port: process.env.DB_PORT || '28015',
-		name: process.env.DB_NAME || 'tinyWeather',
-		tables: {
-			currentWeather: 'currentWeather',
-			users: 'users'
+	mongo: {
+		connection: 'mongodb+srv://ddeller:admin@cluster0.hf66e.mongodb.net/tinyWeather?retryWrites=true&w=majority',
+		db: 'tinyWeather',
+		collections: {
+			users: 'users', 
+			currentWeather: 'currentWeather'
 		}
 	}
 };

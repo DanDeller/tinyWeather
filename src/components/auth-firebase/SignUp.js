@@ -6,36 +6,26 @@ const SignUp = ({history}) => {
   const handleSignUp = useCallback(async event => {
     event.preventDefault();
     const { email, password } = event.target.elements;
+    const data = {
+      username: email.value,
+      password: password.value
+    };
+
     try {
-      // const data = {
-      //   username: email,
-      //   password: password
-      // };
+      axios.post('/register', data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
 
-      axios({
-        method: 'POST',
-        data: {
-          username: email,
-          password: password
-        },
-        withCredentials: true,
-        url: '/auth/login'
-      }).then(res => console.log(res));
-
-      // axios.post('/auth/login', data)
-      // .then((res) => {
-      //   console.log(res);
-      // })
-      // .catch((err) => console.log(err, ' ERROR??'));
-
-      history.push("/");
+      history.push('/');
     } catch (error) {
       alert(error);
     }
   }, [history]);
 
   return (
-    <div className='signup'>
+    <div className="signup">
       <h2>Sign up</h2>
       <form onSubmit={handleSignUp}>
         <input name="email" type="email" placeholder="Email" />

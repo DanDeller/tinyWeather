@@ -12,7 +12,7 @@ const Login = ({ history }) => {
         // await app
         //   .auth()
         //   .signInWithEmailAndPassword(email.value, password.value);
-        history.push("/");
+        history.push('/');
       } catch (error) {
         alert(error);
       }
@@ -20,9 +20,10 @@ const Login = ({ history }) => {
     [history]
   );
 
-  // const { currentUser } = useContext(AuthContext);
-  const currentUser = null;
+  const { currentUser } = useContext(AuthContext);
 
+  // Right now this will fail and will NOT navigate to
+  // the login view
   if (currentUser === null) {
     return <Redirect to="/" />;
   };
