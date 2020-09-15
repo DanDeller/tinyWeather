@@ -4,6 +4,30 @@ const User = require('../../middleware/userSchema'),
 			express = require('express'),
 			userRoutes = express.Router();
 
+/**
+ * GET /logout - log user out
+ * @param req
+ * @param res
+ */
+userRoutes.get('/logout', (req, res) => {
+	console.log(res.user);
+	req.logout();
+});
+
+/**
+ * GET /user - get current user
+ * @param req
+ * @param res
+ */
+userRoutes.get('/user', (req, res) => {
+	res.send(req.user);
+});
+
+/**
+ * POST /login - login users
+ * @param req
+ * @param res
+ */
 userRoutes.post('/login', (req, res, next) => {
 	passport.authenticate('local', (err, user, info) => {
 		if (err) throw err;
@@ -25,6 +49,11 @@ userRoutes.post('/login', (req, res, next) => {
 	})(req, res, next);
 });
 
+/**
+ * POST /register - add a new users
+ * @param req
+ * @param res
+ */
 userRoutes.post('/register', (req, res) => {
 	const { username } = req.body;
 

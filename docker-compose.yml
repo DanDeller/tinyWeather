@@ -7,7 +7,7 @@ services:
       - "3001:3001"
     volumes: 
       - .:/www
-    command: node server.js
+    command: nodemon server.js
   rethinkdb:
     image: "rethinkdb"
     container_name: "rethinkdb"

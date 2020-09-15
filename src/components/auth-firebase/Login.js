@@ -1,20 +1,32 @@
+import * as authActions from '../../redux/actions/isAuthenticated';
 import React, { useCallback, useContext } from 'react';
 import { withRouter, Redirect } from 'react-router';
 import { AuthContext } from '../../Auth.js';
-// import app from '../../base.js';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
 const Login = ({ history }) => {
+  const dispatch = useDispatch();
   const handleLogin = useCallback(
     async event => {
       event.preventDefault();
       const { email, password } = event.target.elements;
+      const data = {
+        username: email.value,
+        password: password.value
+      };
+  
       try {
-        // await app
-        //   .auth()
-        //   .signInWithEmailAndPassword(email.value, password.value);
+        axios.post('/login', data)
+        .then((res) => {
+          console.log(res);
+          dispatch(authActions.setUserData(res));
+        })
+        .catch((err) => console.log(err));
+  
         history.push('/');
       } catch (error) {
-        alert(error);
+        console.log(error);
       }
     },
     [history]

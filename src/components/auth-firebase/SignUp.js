@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 const SignUp = ({history}) => {
@@ -20,7 +21,7 @@ const SignUp = ({history}) => {
 
       history.push('/');
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   }, [history]);
 
@@ -36,4 +37,22 @@ const SignUp = ({history}) => {
   );
 };
 
-export default withRouter(SignUp);
+const matchStateToProps = state => {
+  return {
+    sidebarLoading: state.currentWeather.sidebarLoading
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch
+  }
+};
+
+export default (
+  connect(
+    matchStateToProps, 
+    mapDispatchToProps
+  ),
+  withRouter(SignUp)
+);
