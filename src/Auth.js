@@ -14,20 +14,24 @@ export const AuthProvider = ({children}) => {
     try {
       axios.get('/user')
       .then((res) => {
-        const idToken = res.data._id; 
-        const user = res.data;
         const expiresIn = new Date(new Date().getTime() + 60000);
+        const idToken = res.data._id; 
+        const user = res.data !== '' ? res.data : null;
+        
+        // console.log(res.data)
 
-        dispatch(actions.setTokenId(idToken));
-        localStorage.setItem('token', idToken);
-        localStorage.setItem('expirationDate', expiresIn);
+        if (user) {
+          dispatch(actions.setTokenId(idToken));
+          localStorage.setItem('token', idToken);
+          localStorage.setItem('expirationDate', expiresIn);
+        }
 
         setCurrentUser(user);
         setPending(false);
       })
       .catch((err) => console.log(err));
-    } catch (error) {
-      alert(error);
+    } catch(error) {
+      console.log(error);
     }
 
     setCurrentUser(null);
@@ -43,8 +47,6 @@ export const AuthProvider = ({children}) => {
     }
     // eslint-disable-next-line
   }, [currentUser]);
-
-  console.log(currentUser)
   
   if (pending) {
     return (

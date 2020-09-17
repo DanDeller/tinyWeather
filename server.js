@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(session({
   secret: 'izzy',
-  resave: false,
+  resave: true,
   saveUninitialized: true
 }));
 

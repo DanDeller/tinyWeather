@@ -17,5 +17,6 @@ export const FETCH_DAYS_START = 'FETCH_DAYS_START';
 export const FETCH_DAYS_SUCCESS = 'FETCH_DAYS_SUCCESS';
 
 export const IS_AUTHENTICATED = 'IS_AUTHENTICATED';
+export const SET_USER_DATA = 'SET_USER_DATA';
 export const SET_TOKEN_ID = 'SET_TOKEN_ID';
 export const SET_USER_ID = 'SET_USER_ID';

@@ -10,8 +10,8 @@ const User = require('../../middleware/userSchema'),
  * @param res
  */
 userRoutes.get('/logout', (req, res) => {
-	console.log(res.user);
 	req.logout();
+	res.send('User logged out');
 });
 
 /**
@@ -30,23 +30,16 @@ userRoutes.get('/user', (req, res) => {
  */
 userRoutes.post('/login', (req, res, next) => {
 	passport.authenticate('local', (err, user, info) => {
-		if (err) throw err;
-
-		// Check if user exists.
-		// If user exists, log them in
-		if (!user) {
-			res.json({
-				message: `User ${user} does not exist.`
-			});
-		} else {
-			req.logIn(user, (err) => {
-				if (err) throw err;
-				res.json({
-					message: `Successfully authenticated ${user}.`
-				});
-			});
-		};
-	})(req, res, next);
+    if (err) throw err;
+    if (!user) res.send("No User Exists");
+    else {
+      req.logIn(user, (err) => {
+        if (err) throw err;
+        res.send("Successfully Authenticated");
+        console.log(req.user);
+      });
+    }
+  })(req, res, next);
 });
 
 /**
@@ -67,26 +60,15 @@ userRoutes.post('/register', (req, res) => {
 
 		// If no user exists, create one
 		if (!doc) {
-			bcrypt.genSalt(10, function(err, salt) {
-				if (err) throw err;
-				bcrypt.hash('izzy', salt, async function(err, hash) {
-					if (err) throw err;
-					req.body.password = hash;
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-					const newUser = new User({
-						username: req.body.username,
-						password: req.body.password
-					});
-
-					await newUser.save();
-
-					res.send({
-						success: true, 
-						message: `successfully created ${username}.`
-					});
-				});
-			});
-		};
+      const newUser = new User({
+        username: req.body.username,
+        password: hashedPassword,
+      });
+      await newUser.save();
+      res.send("User Created");
+    }
 	});
 });
 

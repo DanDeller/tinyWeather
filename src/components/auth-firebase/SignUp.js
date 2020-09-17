@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import { withRouter } from 'react-router';
-import { connect } from 'react-redux';
 import axios from 'axios';
 
 const SignUp = ({history}) => {
@@ -13,14 +12,14 @@ const SignUp = ({history}) => {
     };
 
     try {
-      axios.post('/register', data)
+      await axios.post('/register', data)
       .then((res) => {
         console.log(res);
       })
       .catch((err) => console.log(err));
 
       history.push('/');
-    } catch (error) {
+    } catch(error) {
       console.log(error);
     }
   }, [history]);
@@ -37,22 +36,4 @@ const SignUp = ({history}) => {
   );
 };
 
-const matchStateToProps = state => {
-  return {
-    sidebarLoading: state.currentWeather.sidebarLoading
-  }
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    dispatch
-  }
-};
-
-export default (
-  connect(
-    matchStateToProps, 
-    mapDispatchToProps
-  ),
-  withRouter(SignUp)
-);
+export default withRouter(SignUp);
