@@ -8,7 +8,7 @@ A little weather app.
 <h2>What you'll need to run the app</h2>
 <ul>
   <li><a href='https://docs.docker.com/desktop/'>Docker</li>
-  <li><a href='https://www.mongodb.com/'>MongokDB</a></li>
+  <li><a href='https://www.mongodb.com/'>MongoDB</a></li>
 </ul>
 
 > NOTE: Docker is being used to start the app's web services. 
