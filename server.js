@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
   secret: 'izzy',
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: false
 }));
 
 app.use(cookieParser('izzy'));
