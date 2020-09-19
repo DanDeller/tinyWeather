@@ -8,14 +8,14 @@ A little weather app.
 <h2>What you'll need to run the app</h2>
 <ul>
   <li><a href='https://docs.docker.com/desktop/'>Docker</li>
-  <li><a href='https://rethinkdb.com/'>RethinkDB</a></li>
+  <li><a href='https://www.mongodb.com/'>MongoDB</a></li>
 </ul>
 
 > NOTE: Docker is being used to start the app's web services. 
 
 <h2>How to use:</h2>
 <ul>
-  <li>Make sure Docker and RethinkDB are installed</li>
+  <li>Make sure Docker and MongokDB are installed</li>
   <li>Clone the repo</li>
   <li>Start Docker</li>
   <li>Start the app: docker-compose up</li>
