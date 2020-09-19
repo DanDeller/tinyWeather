@@ -8,12 +8,14 @@ const currentWeatherRoutes = express.Router();
 MongoClient.connect(serverConfig.mongo.connection, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}).then(client => {
+})
+.then(client => {
   const db = client.db(serverConfig.mongo.db);
   const collection = db.collection(serverConfig.mongo.collections.currentWeather);
 
   /**
-   * GET /currentWeather - get all items from collection
+   * GET /currentWeather - get all items from the collection
+   * 
    * @param req
    * @param res
    */
@@ -29,6 +31,7 @@ MongoClient.connect(serverConfig.mongo.connection, {
   
   /**
    * POST /currentWeather - send data to the collection
+   * 
    * @param req
    * @param res
    */
@@ -47,6 +50,7 @@ MongoClient.connect(serverConfig.mongo.connection, {
   
   /**
    * DELETE /currentWeather - delete an item from the collection
+   * 
    * @param req
    * @param res
    */
