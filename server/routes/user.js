@@ -40,6 +40,7 @@ userRoutes.get('/logout', passport.authenticate('jwt', {session : false}), (req,
  * @param res
  */
 userRoutes.get('/user', passport.authenticate('jwt', {session: false}), (req,res) => {
+	console.log(req.body)
 	const { username } = req.user;
 	res.status(200).json({
 		isAuthenticated: true, 
@@ -59,7 +60,7 @@ userRoutes.post('/login', (req, res, next) => {
 		if (err) throw err;
 
 		// Check if user has been authenticated.
-		// If authenticated, create a token and set the cookie with token passed in.
+		// If authenticated, create a token and set the cookie with the token passed in.
 		if (user) {
 			const { _id, username } = user;
 			const token = signToken(_id);

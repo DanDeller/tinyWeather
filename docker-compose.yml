@@ -8,10 +8,3 @@ services:
     volumes: 
       - .:/www
     command: node server.js
-  rethinkdb:
-    image: "rethinkdb"
-    container_name: "rethinkdb"
-    ports:
-      - "8080:8080"
-      - "28015:28015"
-      - "29015:29015"

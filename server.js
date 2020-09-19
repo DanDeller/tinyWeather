@@ -27,13 +27,7 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(session({
-  secret: 'izzy',
-  resave: true,
-  saveUninitialized: false
-}));
-
-app.use(cookieParser('izzy'));
+app.use(cookieParser());
 
 app.use(passport.initialize());
 app.use(passport.session());

@@ -1,12 +1,12 @@
 import FiveDayForecast from './containers/FiveDayForecast/FiveDayForecast';
-import PrivateRoute from './components/private-route/PrivateRoute';
-import authWrapper from './components/auth-firebase/authWrapper';
+// import PrivateRoute from './components/private-route/PrivateRoute';
+// import authWrapper from './components/auth-firebase/authWrapper';
 import { spring, AnimatedSwitch } from 'react-router-transition';
 import WeatherMain from './containers/WeatherMain/WeatherMain';
+import {AuthContext} from './Context/AuthContext';
 import Home from './components/home/Home';
 import { Route } from 'react-router-dom';
-import { AuthProvider } from './Auth';
-import React from 'react';
+import React, {useContext} from 'react';
 
 function mapStyles(styles) {
   return {
@@ -40,31 +40,31 @@ const bounceTransition = {
   }
 };
 
-class Main extends React.Component {
-  render() {
-    return (
-      <main className="main">
-        <AuthProvider>
-          <AnimatedSwitch
-            atEnter={bounceTransition.atEnter}
-            atLeave={bounceTransition.atLeave}
-            atActive={bounceTransition.atActive}
-            mapStyles={mapStyles}
-            className="route-wrapper"
-          >
-            {/* <PrivateRoute exact path='/' component={Home} /> */}
-            <Route exact path='/' component={Home} />
-            <Route exact path='/login' component={authWrapper} />
+function Main() {
+  // Use this to find a user in the global context
+  const { user, setUser, isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
+  console.log(`${user}, ${setUser}, ${isAuthenticated}, ${setIsAuthenticated}`);
 
-            <Route exact path='/' component={Home} />
-            <Route key={'weatherMain'} exact path='/weather' component={WeatherMain} />
-            <Route key={'fiveDayForecast'} exact path='/fiveDayForecast' component={FiveDayForecast} />
-            <Route path='*' component={() => '404 Page Not Found'}/>
-          </AnimatedSwitch>
-        </AuthProvider>
-      </main>
-    );
-  }
+  return (
+    <main className="main">
+      
+        <AnimatedSwitch
+          atEnter={bounceTransition.atEnter}
+          atLeave={bounceTransition.atLeave}
+          atActive={bounceTransition.atActive}
+          mapStyles={mapStyles}
+          className="route-wrapper"
+        >
+          {/* <PrivateRoute exact path='/' component={Home} /> */}
+          {/* <Route exact path='/login' component={authWrapper} /> */}
+
+          <Route exact path='/' component={Home} />
+          <Route key={'weatherMain'} exact path='/weather' component={WeatherMain} />
+          <Route key={'fiveDayForecast'} exact path='/fiveDayForecast' component={FiveDayForecast} />
+          <Route path='*' component={() => '404 Page Not Found'}/>
+        </AnimatedSwitch>
+    </main>
+  );
 };
 
 export default Main;
