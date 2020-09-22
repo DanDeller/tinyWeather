@@ -1,20 +1,38 @@
 import axios from 'axios';
 
 export default {
+  /**
+   * Log user in
+   * 
+   * @param user
+   */
   login: async user => {
-    const userData = user;
-    try {
-      await axios.post('/login', userData)
-      .then(res => res.json())
-      .then(data => {
-        const currentUser = data;
-        console.log(currentUser);
-      });
-    } catch(error) {
-      console.log(error);
-    }
+    return await fetch('/login', {
+      method: 'post',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => {
+      if (res.status !== 401) {
+        return res.json().then(data => data);
+      } else {
+        return { 
+          isAuthenticated: false, 
+          user: {
+            username: ''
+          }
+        };
+      }
+    });
   },
 
+  /**
+   * Register new user
+   * 
+   * @param user
+   */
   register: async user => {
     const userData = user;
     try {
@@ -30,6 +48,9 @@ export default {
     }
   },
 
+  /**
+   * Log user out
+   */
   logout: async () => {
     try {
       await axios.post('/logout')
@@ -43,6 +64,9 @@ export default {
     }
   },
 
+  /**
+   * Get authenticated user
+   */
   isAuthenticated: () => {
     return fetch('/user')
 		.then(res => {

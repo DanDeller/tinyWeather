@@ -1,6 +1,5 @@
 const serverConfig = require('../../server.config'),
       MongoClient = require('mongodb').MongoClient,
-      logger = require('../../middleware/logger'),
       express = require('express');
 
 const currentWeatherRoutes = express.Router();

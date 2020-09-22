@@ -1,21 +1,96 @@
 import * as authActions from '../../redux/actions/isAuthenticated';
+import { AuthContext } from '../../Context/AuthContext';
+import AuthService from '../../Services/AuthService';
+import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { useDispatch } from 'react-redux';
-import React, { useState } from 'react';
 import Burger from '../burger/Burger';
 import './HeaderFooter.scss';
-import axios from 'axios';
 
-const Header = ({isAuth, history}) => {
+const Header = ({history}) => {
+  const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(AuthContext);
+
+  const unauthenticatedNavBar = () => {
+    return (
+      <>
+        <li key={'home'}>
+          <NavLink 
+            to='/about' 
+            exact 
+            activeClassName="currentLink"
+            onClick={() => toggleOpen(false)}>
+            About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to='/login' 
+            exact 
+            activeClassName="currentLink"
+            onClick={() => toggleOpen(false)}>
+            Login
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to='/register' 
+            exact 
+            activeClassName="currentLink"
+            onClick={() => toggleOpen(false)}>
+            Register
+          </NavLink>
+        </li>
+      </>
+    );
+  };
+
+  const authenticatedNavBar = () => {
+    return (
+      <>
+        <li key={'home'}>
+          <NavLink 
+            to='/' 
+            exact 
+            activeClassName="currentLink"
+            onClick={() => toggleOpen(false)}>
+            Home
+          </NavLink>
+        </li>
+        <li key={'weather'}>
+          <NavLink 
+            to='/weather' 
+            activeClassName="currentLink"
+            onClick={() => toggleOpen(false)}>
+            Current Weather Lookup
+          </NavLink>
+        </li>
+        <li key={'forecase'}> 
+          <NavLink 
+            to='/fiveDayForecast' 
+            activeClassName="currentLink"
+            onClick={() => toggleOpen(false)}>
+            Five Day Lookup
+          </NavLink>
+        </li>
+        <li key={'logout'}>
+          <button className="sign-out" onClick={handleLogout}>Sign out</button>
+        </li>
+      </>
+    );
+  };
+
   const [isOpen, toggleOpen] = useState(false);
   const dispatch = useDispatch();
   const handleLogout = () => {
-    axios.get('/logout')
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => console.log(err));
+    AuthService.logout().then((data) => {
+      console.log(data);
+
+      if (data.success) {
+        setUser(data.user);
+        setIsAuthenticated(false);
+      };
+    });
     
     history.push('/');
     dispatch(authActions.setIsAuthenticated(false));
@@ -37,39 +112,7 @@ const Header = ({isAuth, history}) => {
           </NavLink>
           <nav className={`${isOpen ? 'open' : ''}`}>
             <ul>
-              {!!isAuth ?
-                [
-                  <li key={'home'}>
-                    <NavLink 
-                      to='/' 
-                      exact 
-                      activeClassName="currentLink"
-                      onClick={() => toggleOpen(false)}>
-                      Home
-                    </NavLink>
-                  </li>,
-                  <li key={'weather'}>
-                    <NavLink 
-                      to='/weather' 
-                      activeClassName="currentLink"
-                      onClick={() => toggleOpen(false)}>
-                      Current Weather Lookup
-                    </NavLink>
-                  </li>,
-                  <li key={'forecase'}> 
-                    <NavLink 
-                      to='/fiveDayForecast' 
-                      activeClassName="currentLink"
-                      onClick={() => toggleOpen(false)}>
-                      Five Day Lookup
-                    </NavLink>
-                  </li>,
-                  <li key={'logout'}>
-                    <button className="sign-out" onClick={handleLogout}>Sign out</button>
-                  </li>
-                ] :
-                ''
-              }
+              { !isAuthenticated ? unauthenticatedNavBar() : authenticatedNavBar() }
             </ul>
           </nav>
           <Burger 

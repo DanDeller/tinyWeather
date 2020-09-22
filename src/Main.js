@@ -3,10 +3,13 @@ import FiveDayForecast from './containers/FiveDayForecast/FiveDayForecast';
 // import authWrapper from './components/auth-firebase/authWrapper';
 import { spring, AnimatedSwitch } from 'react-router-transition';
 import WeatherMain from './containers/WeatherMain/WeatherMain';
-import {AuthContext} from './Context/AuthContext';
+import About from './components/about/About';
 import Home from './components/home/Home';
 import { Route } from 'react-router-dom';
-import React, {useContext} from 'react';
+import React from 'react';
+
+import Login from './components/auth-firebase/Login';
+import Register from './components/auth-firebase/SignUp';
 
 function mapStyles(styles) {
   return {
@@ -42,27 +45,30 @@ const bounceTransition = {
 
 function Main() {
   // Use this to find a user in the global context
-  const { user, setUser, isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
-  console.log(`${user}, ${setUser}, ${isAuthenticated}, ${setIsAuthenticated}`);
+  // const { user, setUser, isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
+  // console.log(user);
 
   return (
     <main className="main">
-      
-        <AnimatedSwitch
-          atEnter={bounceTransition.atEnter}
-          atLeave={bounceTransition.atLeave}
-          atActive={bounceTransition.atActive}
-          mapStyles={mapStyles}
-          className="route-wrapper"
-        >
-          {/* <PrivateRoute exact path='/' component={Home} /> */}
-          {/* <Route exact path='/login' component={authWrapper} /> */}
+      <AnimatedSwitch
+        atEnter={bounceTransition.atEnter}
+        atLeave={bounceTransition.atLeave}
+        atActive={bounceTransition.atActive}
+        mapStyles={mapStyles}
+        className="route-wrapper"
+      >
+        {/* <PrivateRoute exact path='/' component={Home} /> */}
+        {/* <Route exact path='/login' component={authWrapper} /> */}
 
-          <Route exact path='/' component={Home} />
-          <Route key={'weatherMain'} exact path='/weather' component={WeatherMain} />
-          <Route key={'fiveDayForecast'} exact path='/fiveDayForecast' component={FiveDayForecast} />
-          <Route path='*' component={() => '404 Page Not Found'}/>
-        </AnimatedSwitch>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/about' component={About} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/register' component={Register} />
+        
+        <Route key={'weatherMain'} exact path='/weather' component={WeatherMain} />
+        <Route key={'fiveDayForecast'} exact path='/fiveDayForecast' component={FiveDayForecast} />
+        <Route path='*' component={() => '404 Page Not Found'}/>
+      </AnimatedSwitch>
     </main>
   );
 };

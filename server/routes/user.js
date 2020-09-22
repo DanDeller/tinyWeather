@@ -40,7 +40,6 @@ userRoutes.get('/logout', passport.authenticate('jwt', {session : false}), (req,
  * @param res
  */
 userRoutes.get('/user', passport.authenticate('jwt', {session: false}), (req,res) => {
-	console.log(req.body)
 	const { username } = req.user;
 	res.status(200).json({
 		isAuthenticated: true, 
