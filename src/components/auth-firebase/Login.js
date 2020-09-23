@@ -30,9 +30,10 @@ const Login = ({ history }) => {
   };
   
   return (
-    <div>
+    <div className="login-signup-wrap">
+      <h2>Log in</h2>
+      <p>Already a user? Go ahead and log in here.</p>
       <div className="login">
-        <h2>Log in</h2>
         <form onSubmit={handleLogin}>
           <input onChange={onChange} name="username" type="email" placeholder="Email" />
           <input onChange={onChange} name="password" type="password" placeholder="Password" />

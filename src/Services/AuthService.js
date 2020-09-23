@@ -13,7 +13,6 @@ export default {
       }
     })
     .then(res => {
-      console.log(res);
       if (res.status !== 401) {
         return res.json().then(data => data);
       } else {
@@ -42,7 +41,6 @@ export default {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       return data;
     })
     .catch((err) => {
@@ -67,7 +65,6 @@ export default {
 		.then(res => {
 			if (res.status !== 401) {
 				const data = res.json().then(data => data)
-				console.log(data);
 				return data;
 			} else {
 				return { 

@@ -9,7 +9,8 @@ import Burger from '../burger/Burger';
 import './HeaderFooter.scss';
 
 const Header = ({history}) => {
-  const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(AuthContext);
+  // Not user from AuthContext - { user }
+  const { isAuthenticated, setIsAuthenticated, setUser } = useContext(AuthContext);
 
   const unauthenticatedNavBar = () => {
     return (
