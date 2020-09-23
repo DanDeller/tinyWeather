@@ -43,7 +43,9 @@ userRoutes.get('/user', passport.authenticate('jwt', {session: false}), (req,res
 	const { username } = req.user;
 	res.status(200).json({
 		isAuthenticated: true, 
-		user: { username }
+		user: { 
+			username 
+		}
 	});
 });
 
@@ -89,12 +91,24 @@ userRoutes.post('/register', (req, res) => {
 	const { username } = req.body;
 
 	User.findOne({username: username}, async (err, doc) => {
-		if (err) throw err;
+		if (err) {
+			res.status(500).json({
+				message: {
+					msgBody: 'Error has occured', 
+					msgError: true
+				}
+			});
+		};
 
 		// Check if user exists
-		if (doc) res.json({
-			message: `User ${username} already exists.`
-		});
+		if (doc) {
+			res.status(400).json({
+				message: {
+					msgBody: 'Username is already taken',
+					msgError: true
+				}
+			});
+		};
 
 		// If no user exists, create one
 		if (!doc) {
@@ -106,10 +120,22 @@ userRoutes.post('/register', (req, res) => {
 			});
 
 			await newUser.save(err => {
-				console.log(err);
+				if (err) {
+					res.status(500).json({
+						message: {
+							msgBody: 'Error has occured', 
+							msgError: true
+						}
+					});
+				} else {
+					res.status(201).json({
+						message: {
+							msgBody: 'Account successfully created', 
+							msgError: false
+						}
+					});
+				};
 			});
-
-			res.send('User Created');
 		}
 	});
 });

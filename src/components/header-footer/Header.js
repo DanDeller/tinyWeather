@@ -86,10 +86,13 @@ const Header = ({history}) => {
     AuthService.logout().then((data) => {
       console.log(data);
 
-      if (data.success) {
-        setUser(data.user);
-        setIsAuthenticated(false);
-      };
+      // setUser(data.user);
+      setIsAuthenticated(false);
+
+      // if (data.success) {
+      //   setUser(data.user);
+      //   setIsAuthenticated(false);
+      // };
     });
     
     history.push('/');

@@ -44,10 +44,6 @@ const bounceTransition = {
 };
 
 function Main() {
-  // Use this to find a user in the global context
-  // const { user, setUser, isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
-  // console.log(user);
-
   return (
     <main className="main">
       <AnimatedSwitch

@@ -1,37 +1,55 @@
-import React, { useCallback } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import AuthService from '../../Services/AuthService';
 import { withRouter } from 'react-router';
-import axios from 'axios';
+import Message from '../message/Message';
+import './Auth.scss';
 
-const SignUp = ({history}) => {
-  const handleSignUp = useCallback(async event => {
-    event.preventDefault();
-    const { email, password } = event.target.elements;
-    const data = {
-      username: email.value,
-      password: password.value
-    };
+const SignUp = ({ history }) => {
+  const [user, setUser] = useState({username: '', password: ''});
+  const [message, setMessage] = useState(null);
+  let timerID = useRef(null);
 
-    try {
-      await axios.post('/register', data)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-
-      history.push('/');
-    } catch(error) {
-      console.log(error);
+  useEffect(() => {
+    return () => {
+      clearTimeout(timerID)
     }
-  }, [history]);
+  }, []);
 
+  const onChange = (e) => {
+    setUser({...user, [e.target.name]: e.target.value});
+  };
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    AuthService.register(user).then((data) => {
+      const { message } = data;
+      setMessage(message);
+      resetForm();
+
+      if (!message.msgError) {
+        timerID = setTimeout(() => {
+          history.push('/login');
+        }, 2000);
+      };
+    });
+  };
+
+  const resetForm = ()=>{
+    setUser({username: '', password: ''});
+  };
+  
   return (
-    <div className="signup">
-      <h2>Sign up</h2>
-      <form onSubmit={handleSignUp}>
-        <input name="email" type="email" placeholder="Email" />
-        <input name="password" type="password" placeholder="Password" />
-        <button type="submit">Sign Up</button>
-      </form>
+    <div>
+      <div className="login">
+        <h2>Sign Up</h2>
+        <form onSubmit={handleSignup}>
+          <input onChange={onChange} name="username" type="email" placeholder="Email" />
+          <input onChange={onChange} name="password" type="password" placeholder="Password" />
+          <button type="submit">Sign up</button>
+        </form>
+        
+        { message ? <Message message={message}/> : null }
+      </div>
     </div>
   );
 };

@@ -11,7 +11,6 @@ const Login = ({ history }) => {
   const authContext = useContext(AuthContext);
 
   const onChange = (e) => {
-    e.preventDefault();
     setUser({...user, [e.target.name]: e.target.value});
   };
 
