@@ -62,10 +62,10 @@ export default {
   /**
    * Get authenticated user
    */
-  isAuthenticated: () => {
-    return fetch('/user')
+  isAuthenticated: async () => {
+    return await fetch('/user')
 		.then(res => {
-			if(res.status !== 401) {
+			if (res.status !== 401) {
 				const data = res.json().then(data => data)
 				console.log(data);
 				return data;

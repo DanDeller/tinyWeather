@@ -84,15 +84,11 @@ const Header = ({history}) => {
   const dispatch = useDispatch();
   const handleLogout = () => {
     AuthService.logout().then((data) => {
-      console.log(data);
-
-      // setUser(data.user);
-      setIsAuthenticated(false);
-
-      // if (data.success) {
-      //   setUser(data.user);
-      //   setIsAuthenticated(false);
-      // };
+      if (data.success) {
+        setUser(data.user);
+        setIsAuthenticated(false);
+        history.push('/about');
+      };
     });
     
     history.push('/');
