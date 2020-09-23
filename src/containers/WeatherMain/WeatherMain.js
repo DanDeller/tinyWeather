@@ -2,71 +2,51 @@ import WeatherVideo from '../../components/weather-video/WeatherVideo';
 import WeatherForm from '../../components/weather-form/WeatherForm';
 import WeatherList from '../../components/weather/WeatherList';
 import * as actions from '../../redux/actions/currentWeather';
+import { useSelector, useDispatch } from 'react-redux';
 import Sidebar from '../../components/sidebar/Sidebar';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './WeatherMain.scss';
-import React from 'react';
 
-class WeatherMain extends React.Component {
-  componentDidMount = () => {
-    if (!this.props.recentCities.length) {
-      this.props.dispatch(actions.fetchRecentCities(this.props.token, this.props.userId));
-    }
-  };
+const WeatherMain = () => {
+  const currentWeather = useSelector(state => state.currentWeather);
+  const isAuthenticated = useSelector(state => state.isAuthenticated);
+  const dispatch = useDispatch();
 
-  render() {
-    return (
-      <section className="container">
-        <div className="weatherMain bodyText">
-          <h1 className="pageHeader">Search a city to check the weather</h1>
-          <div className="hold">
-            <div className="weatherLeft">
-              <WeatherVideo 
-                setVideo={this.props.setVideo}  
-              />
-              <WeatherForm
-                updateInputValue={this.updateInputValue}
-                resetSearch={this.resetSearch}
-                isOpen={this.props.isOpen}
-                city={this.props.city}
-              />
-              <WeatherList
-                cityDetails={this.props.cityDetails}
-                isOpen={this.props.isOpen}
-              />
-            </div>
-            <div className="weatherRight">
-              <Sidebar
-                recentCities={this.props.recentCities}
-                visible={this.props.visible}
-              />
-            </div>
+  useEffect(() => {
+    if (!currentWeather.recentCities.length) {
+      dispatch(actions.fetchRecentCities(isAuthenticated.token, isAuthenticated.userId));
+    };
+  }, [currentWeather.recentCities.length, dispatch, isAuthenticated.token, isAuthenticated.userId]);
+
+  return (
+    <section className="container">
+      <div className="weatherMain bodyText">
+        <h1 className="pageHeader">Search a city to check the weather</h1>
+        <div className="hold">
+          <div className="weatherLeft">
+            <WeatherVideo 
+              setVideo={currentWeather.setVideo}  
+            />
+            <WeatherForm
+              isOpen={currentWeather.isOpen}
+              city={currentWeather.city}
+            />
+            <WeatherList
+              cityDetails={currentWeather.cityDetails}
+              isOpen={currentWeather.isOpen}
+            />
+          </div>
+          <div className="weatherRight">
+            <Sidebar
+              recentCities={currentWeather.recentCities}
+              visible={currentWeather.visible}
+            />
           </div>
         </div>
-      </section>
-    );
-  }
-};
-
-const mapStateToProps = state => {
-  return {
-    recentCities: state.currentWeather.recentCities,
-    cityDetails: state.currentWeather.cityDetails,
-    setVideo: state.currentWeather.setVideo,
-    visible: state.currentWeather.visible,
-    userId: state.isAuthenticated.userId,
-    token: state.isAuthenticated.tokenId,
-    isOpen: state.currentWeather.isOpen,
-    city: state.currentWeather.setCity,
-    days: state.fiveDayForecast.days
-  }
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    dispatch
-  }
+      </div>
+    </section>
+  );
 };
 
 WeatherMain.propTypes = {
@@ -81,7 +61,4 @@ WeatherMain.propTypes = {
   city: PropTypes.string
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(WeatherMain);
+export default WeatherMain;

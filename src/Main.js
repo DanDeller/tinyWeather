@@ -1,8 +1,8 @@
 import FiveDayForecast from './containers/FiveDayForecast/FiveDayForecast';
 import { spring, AnimatedSwitch } from 'react-router-transition';
 import WeatherMain from './containers/WeatherMain/WeatherMain';
-import Register from './components/auth-firebase/SignUp';
-import Login from './components/auth-firebase/Login';
+import Register from './components/auth/SignUp';
+import Login from './components/auth/Login';
 import PrivateRoute from './hocs/PrivateRoute';
 import About from './components/about/About';
 import Home from './components/home/Home';

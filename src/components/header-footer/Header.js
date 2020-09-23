@@ -9,8 +9,24 @@ import Burger from '../burger/Burger';
 import './HeaderFooter.scss';
 
 const Header = ({history}) => {
-  // Not user from AuthContext - { user }
   const { isAuthenticated, setIsAuthenticated, setUser } = useContext(AuthContext);
+  const [isOpen, toggleOpen] = useState(false);
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    AuthService.logout().then((data) => {
+      if (data.success) {
+        setUser(data.user);
+        setIsAuthenticated(false);
+        history.push('/about');
+      };
+    });
+    
+    dispatch(authActions.setIsAuthenticated(false));
+    dispatch(authActions.setTokenId(null));
+    dispatch(authActions.setUserId(null));
+    toggleOpen(false);
+    localStorage.removeItem('expirationDate');
+  };
 
   const unauthenticatedNavBar = () => {
     return (
@@ -79,25 +95,6 @@ const Header = ({history}) => {
         </li>
       </>
     );
-  };
-
-  const [isOpen, toggleOpen] = useState(false);
-  const dispatch = useDispatch();
-  const handleLogout = () => {
-    AuthService.logout().then((data) => {
-      if (data.success) {
-        setUser(data.user);
-        setIsAuthenticated(false);
-        history.push('/about');
-      };
-    });
-    
-    history.push('/');
-    dispatch(authActions.setIsAuthenticated(false));
-    dispatch(authActions.setTokenId(null));
-    dispatch(authActions.setUserId(null));
-    toggleOpen(false);
-    localStorage.removeItem('expirationDate');
   };
   
   return (

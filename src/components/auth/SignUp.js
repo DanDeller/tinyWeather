@@ -29,7 +29,7 @@ const SignUp = ({ history }) => {
       if (!message.msgError) {
         timerID = setTimeout(() => {
           history.push('/login');
-        }, 2000);
+        }, 1000);
       };
     });
   };

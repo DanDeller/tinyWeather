@@ -1,80 +1,63 @@
 import * as fetchFlagAction from '../../redux/actions/fiveDayForecast';
 import * as actions from '../../redux/actions/currentWeather';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './WeatherForm.scss';
-import React from 'react';
 
-class WeatherForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {myRefs: ''};
-    this.city = React.createRef();
-    this.getWeather = this.getWeather.bind(this);
-    this.resetSearch = this.resetSearch.bind(this);
-    this.updateInputValue = this.updateInputValue.bind(this);
+const WeatherForm = () => {
+  const currentWeather = useSelector(state => state.currentWeather);
+  const fiveDayForecast = useSelector(state => state.fiveDayForecast);
+  const isAuthenticated = useSelector(state => state.isAuthenticated);
+  const [city, setCity] = useState({city: ''});
+  const dispatch = useDispatch();
+
+  const onChange = (e) => {
+    dispatch(actions.setCity(e.target.value));
+    setCity(e.target.value);
   };
 
-  updateInputValue = (e) => {
-    this.props.dispatch(actions.setCity(e.target.value));
-  };
-
-  getWeather = (e) => {
+  const getWeather = (e) => {
     e.preventDefault();
-    this.props.dispatch(actions.getWeather(this.props.city, this.props.userId));
+    dispatch(actions.getWeather(city, isAuthenticated.userId));
   };
 
-  resetSearch = () => {
+  const resetSearch = () => {
     const ref = this.city;
     ref.value = '';
-    this.props.dispatch(actions.isOpen(true));
-    this.props.dispatch(actions.setVideo(''));
-    this.props.dispatch(actions.setCity(''));
-    this.props.dispatch(fetchFlagAction.setFetchFlag(!!this.props.fetchFlag));
+    dispatch(actions.isOpen(true));
+    dispatch(actions.setVideo(''));
+    dispatch(actions.setCity(''));
+    dispatch(fetchFlagAction.setFetchFlag(!!fiveDayForecast.fetchFlag));
   };
 
-  render() {
-    return (
-      <div className="weatherForm"> 
-        <div className={`${(this.props.isOpen ? 'show' : 'hide')}`}>
-          <form action='/' method='GET'>
-            <input
-              ref={el => this.city = el}
-              onChange={this.updateInputValue}
-              type='text'
-              name='test'
-              placeholder='Search city'
-              className="searchMain"
-            />
-            <input
-              onClick={e => this.getWeather(e)}
-              type='submit'
-              value='Search'
-              className='search-city'
-            />
-          </form>
-        </div>
-        <div className={`resetButton ${(this.props.isOpen ? 'hide' : 'show')}`}>
-          <p>Seach another city?</p>
-          <button
-            onClick={this.resetSearch}>Search
-          </button>
-        </div>
+  return (
+    <div className="weatherForm"> 
+      <div className={`${(currentWeather.isOpen ? 'show' : 'hide')}`}>
+        <form action='/' method='GET'>
+          <input
+            onChange={onChange}
+            type='text'
+            name='test'
+            placeholder='Search city'
+            className="searchMain"
+          />
+          <input
+            onClick={e => getWeather(e)}
+            type='submit'
+            value='Search'
+            className='search-city'
+          />
+        </form>
       </div>
-    );
-  }
-};
-
-const mapStateToProps = state => {
-  return {
-    fetchFlag: state.fiveDayForecast.fetchFlag
-  }
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    dispatch
-  }
+      <div className={`resetButton ${(currentWeather.isOpen ? 'hide' : 'show')}`}>
+        <p>Seach another city?</p>
+        <button
+          onClick={resetSearch}>Search
+        </button>
+      </div>
+    </div>
+  );
 };
 
 WeatherForm.propTypes = {
@@ -85,7 +68,4 @@ WeatherForm.propTypes = {
   isOpen: PropTypes.bool
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(WeatherForm);
+export default WeatherForm;
