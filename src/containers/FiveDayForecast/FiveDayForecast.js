@@ -1,9 +1,9 @@
 import * as actions from '../../redux/actions/fiveDayForecast';
-import { connect, useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import './FiveDayForecast.scss';
-import React, { useEffect } from 'react';
 import 'moment-timezone';
 
 const FiveDayForecast = () => {
@@ -11,19 +11,16 @@ const FiveDayForecast = () => {
   const currentWeather = useSelector(state => state.currentWeather);
   const fiveDayForecast = useSelector(state => state.fiveDayForecast);
   const forgotCityInline = !currentWeather.setCity.length ? 'show' : 'hide';
-  
-  const getForecast = () => {
+
+  useEffect(() => {
     const fetchFlag = fiveDayForecast.fetchFlag,
           city      = currentWeather.setCity;
 
     if (currentWeather.setCity.length && !fetchFlag) {
       dispatch(actions.fetchDays(city));
       dispatch(actions.setFetchFlag(!!fiveDayForecast.fetchFlag));
-    }
-  };
-
-  useEffect(() => {
-    getForecast();
+    };
+    // eslint-disable-next-line
   }, []);
 
   const days = fiveDayForecast.days.map((day, i) => (

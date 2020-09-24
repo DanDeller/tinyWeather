@@ -34,7 +34,7 @@ const SignUp = ({ history }) => {
     });
   };
 
-  const resetForm = ()=>{
+  const resetForm = () => {
     setUser({username: '', password: ''});
   };
   

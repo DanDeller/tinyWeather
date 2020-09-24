@@ -1,66 +1,49 @@
 import * as actions from '../../redux/actions/currentWeather';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
 
-class SidebarItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {toggleDelete: false};
-    this.toggle = this.toggle.bind(this);
-    this.deleteCity = this.deleteCity.bind(this);
+const SidebarItem = ({id, recentCity}) => {
+  const [toggleState, setToggle] = useState(false);
+  const dispatch = useDispatch();
+  const city = recentCity;
+
+  const toggle = () => {
+    setToggle(!toggleState);
   };
 
-  toggle = () => {
-    this.setState({
-      toggleDelete: !this.state.toggleDelete
-    });
+  const deleteCity = () => {
+    dispatch(actions.deleteRecentCities(id));
   };
 
-  deleteCity = () => {
-    this.props.dispatch(actions.deleteRecentCities(this.props.id));
-  };
-
-  render() {
-    const city = this.props.recentCity;
-
-    return (
-      <div
-        className="sidebarItem"
-        onClick={this.toggle}
-        id={this.props.id}>
-        <p
-          style={{
-            transform: !this.state.toggleDelete ? 'translateY(0)' : 'translateX(-5vh)',
-            opacity: !this.state.toggleDelete ? '1' : '.4'
-          }}>
-          {city.city}
-        </p>
-        <button
-          onClick={this.deleteCity}
-          style={{
-            display: this.state.toggleDelete ? 'flex' : 'none'
-          }}>
-          Remove
-        </button>
-      </div>
-    );
-  }
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    dispatch
-  }
+  return (
+    <div
+      className="sidebarItem"
+      onClick={toggle}
+      id={id}>
+      <p
+        style={{
+          transform: !toggleState ? 'translateY(0)' : 'translateX(-5vh)',
+          opacity: !toggleState ? '1' : '.4'
+        }}>
+        {city}
+      </p>
+      <button
+        onClick={deleteCity}
+        style={{
+          display: toggleState ? 'flex' : 'none'
+        }}>
+        Remove
+      </button>
+    </div>
+  );  
 };
 
 SidebarItem.propTypes = {
-  recentCity: PropTypes.object,
+  recentCity: PropTypes.string,
   dispatch: PropTypes.func,
-  city: PropTypes.object,
+  city: PropTypes.string,
   id: PropTypes.string
 };
 
-export default connect(
-  mapDispatchToProps
-)(SidebarItem);
+export default SidebarItem;

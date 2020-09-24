@@ -23,8 +23,6 @@ const WeatherForm = () => {
   };
 
   const resetSearch = () => {
-    const ref = this.city;
-    ref.value = '';
     dispatch(actions.isOpen(true));
     dispatch(actions.setVideo(''));
     dispatch(actions.setCity(''));
@@ -61,10 +59,9 @@ const WeatherForm = () => {
 };
 
 WeatherForm.propTypes = {
-  updateInputValue: PropTypes.func,
-  passRefUpward: PropTypes.func,
   resetSearch: PropTypes.func,
   getWeather: PropTypes.func,
+  onChange: PropTypes.func,
   isOpen: PropTypes.bool
 };
 

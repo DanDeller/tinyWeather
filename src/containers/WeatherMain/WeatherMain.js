@@ -17,7 +17,8 @@ const WeatherMain = () => {
     if (!currentWeather.recentCities.length) {
       dispatch(actions.fetchRecentCities(isAuthenticated.token, isAuthenticated.userId));
     };
-  }, [currentWeather.recentCities.length, dispatch, isAuthenticated.token, isAuthenticated.userId]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <section className="container">
@@ -50,11 +51,9 @@ const WeatherMain = () => {
 };
 
 WeatherMain.propTypes = {
-  weatherLoading: PropTypes.bool,
   recentCities: PropTypes.array,
   cityDetails: PropTypes.array,
   setVideo: PropTypes.string,
-  fetchFlag: PropTypes.bool,
   dispatch: PropTypes.func,
   visible: PropTypes.bool,
   isOpen: PropTypes.bool,

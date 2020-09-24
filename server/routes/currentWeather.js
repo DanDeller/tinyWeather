@@ -54,7 +54,7 @@ MongoClient.connect(serverConfig.mongo.connection, {
    * @param res
    */
   currentWeatherRoutes.delete('/currentWeather', (req, res) => {
-    const { id } = req.body;
+    const { id } = req.body.source;
 
     collection.deleteOne({
       id: id
@@ -64,6 +64,7 @@ MongoClient.connect(serverConfig.mongo.connection, {
     })
     .catch(err => console.log(err));
   });
-}).catch(err => console.log(err));
+})
+.catch(err => console.log(err));
 
 module.exports = currentWeatherRoutes;
