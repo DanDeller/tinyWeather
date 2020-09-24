@@ -21,6 +21,16 @@ const SignUp = ({ history }) => {
 
   const handleSignup = (e) => {
     e.preventDefault();
+
+    if (!user.username.length || !user.password.length) {
+      const message = {
+        msgBody: 'Add stuff first...'
+      };
+
+      setMessage(message);
+      return;
+    }
+
     AuthService.register(user).then((data) => {
       const { message } = data;
       setMessage(message);
