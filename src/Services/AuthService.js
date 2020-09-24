@@ -23,6 +23,9 @@ export default {
           }
         };
       }
+    })
+    .catch((err) => {
+      console.log(err);
     });
   },
 
@@ -45,7 +48,7 @@ export default {
     })
     .catch((err) => {
       console.log(err);
-    })
+    });
   },
 
   /**
@@ -54,7 +57,10 @@ export default {
   logout: async () => {
     return await fetch('/logout')
     .then(res => res.json())
-    .then(data => data);
+    .then(data => data)
+    .catch((err) => {
+      console.log(err);
+    });
   },
 
   /**
@@ -74,6 +80,9 @@ export default {
 					}
 				};
 			};
-		});
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 };

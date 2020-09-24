@@ -14,12 +14,12 @@ export default ({ children }) => {
       setIsAuthenticated(data.isAuthenticated);
       setIsLoaded(true);
     });
-  },[]);
+  }, []);
 
   return (
     <div>
       {!isLoaded ? <p className="tagline app-load">Loading app...</p> : 
-      <AuthContext.Provider value={{user,setUser,isAuthenticated,setIsAuthenticated}}>
+      <AuthContext.Provider value={{ user, setUser, isAuthenticated, setIsAuthenticated }}>
         { children }
       </AuthContext.Provider>}
     </div>
