@@ -9,10 +9,6 @@ import './Sidebar.scss';
 const Sidebar = () => {
   const currentWeather = useSelector(state => state.currentWeather);
 
-  // currentWeather.recentCities.map((city, i) => {
-  //   console.log(city)
-  // });
-
   return (
     <aside className="sideBar">
       <SidebarSpinner
