@@ -38,6 +38,10 @@ export const removeRecentCity = id => ({
   id
 });
 
+export const reset_action = () => ({
+  type: actionTypes.RESET_ACTION
+});
+
 /*
  *  FETCH WEATHER
  */
@@ -56,7 +60,7 @@ export const fetchRecentCitiesStart = () => ({
   type: actionTypes.FETCH_RECENT_CITIES_START,
 });
 
-export const fetchRecentCitiesSuccess= () => ({
+export const fetchRecentCitiesSuccess = () => ({
   type: actionTypes.FETCH_RECENT_CITIES_SUCCESS,
 });
 
@@ -65,7 +69,6 @@ export const fetchRecentCitiesSuccess= () => ({
  */
 export const getWeather = (city, userId) => {
   return dispatch => {
-
     dispatch(fetchWeatherStart());
     
     axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
@@ -99,14 +102,14 @@ export const getWeather = (city, userId) => {
           video = {Snow};
           break;
         default: return
-      }
+      };
       
       // Use a timeout to simulate a slightly longer loading time
       // to help demo the loader and display it, at minimum, for 500ms
       // NOTE: this is for demo purposes only. Don't use in realtime
       setTimeout(() => {
         dispatch(fetchWeatherSuccess());
-        dispatch(postRecentCities(city, uuid()));
+        dispatch(postRecentCities(city, uuid(), userId));
         dispatch(setDetails(details));
         dispatch(isOpen(false));
         dispatch(setVideo(Object.values(video)[0]));
@@ -116,21 +119,17 @@ export const getWeather = (city, userId) => {
       console.log(err);
       dispatch(visible(true));
     });
-  }
+  };
 };
 
 /*
  *  GET RECENT CITES
  */
-export const fetchRecentCities = (token, userId) => {
-  // const useToken = token !== null ? token : localStorage.getItem('token');
-  
+export const fetchRecentCities = (userId) => {
   return dispatch => {
-    // const params = '?auth='+useToken+'&orderBy="userId"&equalTo="'+userId+'"';
-
     dispatch(fetchRecentCitiesStart());
 
-    axios.get('/currentWeather')
+    axios.get('/currentWeather?userId=' + userId)
     .then((res) => {
       const data = res.data ? Object.values(res.data) : [];
 
@@ -144,17 +143,18 @@ export const fetchRecentCities = (token, userId) => {
       }, 1000);
     })
     .catch((err) => console.log(err));
-  }
+  };
 };
 
 /*
  *  POST RECENT CITES
  */
-export const postRecentCities = (city, id) => {
+export const postRecentCities = (city, id, userId) => {
   return dispatch => {
     const data = {
       id: id,
-      city: city
+      city: city,
+      userId: userId
     };
 
     dispatch(recentCity([data]));
@@ -164,7 +164,7 @@ export const postRecentCities = (city, id) => {
       console.log(res.data);
     })
     .catch((err) => console.log(err));
-  }
+  };
 };
 
 /*
@@ -175,6 +175,7 @@ export const deleteRecentCities = (id) => {
     const data = {
       id: id
     };
+
     axios.delete('/currentWeather', {
       headers: {
         'Accept': 'application/json',
@@ -188,5 +189,5 @@ export const deleteRecentCities = (id) => {
       dispatch(removeRecentCity(data.id));
     })
     .catch((err) => console.log(err));
-  }
+  };
 };

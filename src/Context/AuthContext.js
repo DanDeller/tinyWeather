@@ -15,19 +15,21 @@ export default ({ children }) => {
     AuthService.isAuthenticated().then((data) => {
       const expiresIn = new Date(new Date().getTime() + 60000);
       const { user, isAuthenticated } = data;
-
+      
       if (user.username.length) {
         const { access_token } = user.cookies;
 
         localStorage.setItem('tinyWeatherToken', access_token);
         localStorage.setItem('expirationDate', expiresIn);
 
-        dispatch(actions.setTokenId(user.token));
+        dispatch(actions.setTokenId(access_token));
+        dispatch(actions.setIsAuthenticated(true));
+        dispatch(actions.setUserId(user.id));
         
         setUser(user);
         setIsAuthenticated(isAuthenticated);
         setIsLoaded(true);
-      }
+      };
 
       setIsLoaded(true);
     });

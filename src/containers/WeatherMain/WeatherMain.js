@@ -13,9 +13,11 @@ const WeatherMain = () => {
   const isAuthenticated = useSelector(state => state.isAuthenticated);
   const dispatch = useDispatch();
 
+  console.log(currentWeather.recentCities)
+
   useEffect(() => {
     if (!currentWeather.recentCities.length) {
-      dispatch(actions.fetchRecentCities(isAuthenticated.token, isAuthenticated.userId));
+      dispatch(actions.fetchRecentCities(isAuthenticated.userId));
     };
     // eslint-disable-next-line
   }, []);

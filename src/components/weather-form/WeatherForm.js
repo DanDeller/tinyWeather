@@ -1,23 +1,17 @@
 import * as fetchFlagAction from '../../redux/actions/fiveDayForecast';
 import * as actions from '../../redux/actions/currentWeather';
 import { useSelector, useDispatch } from 'react-redux';
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './WeatherForm.scss';
 
-import { AuthContext } from '../../Context/AuthContext';
-
 const WeatherForm = () => {
-  const currentWeather = useSelector(state => state.currentWeather);
-  const fiveDayForecast = useSelector(state => state.fiveDayForecast);
   const isAuthenticated = useSelector(state => state.isAuthenticated);
+  const fiveDayForecast = useSelector(state => state.fiveDayForecast);
+  const currentWeather = useSelector(state => state.currentWeather);
   const [city, setCity] = useState({city: ''});
-  const authContext = useContext(AuthContext);
+  const userId = isAuthenticated.userId;
   const dispatch = useDispatch();
-
-  // grab user info and token 
-  // console.log(authContext);
-  // console.log(localStorage.getItem('tinyWeatherToken'));
 
   const onChange = (e) => {
     dispatch(actions.setCity(e.target.value));
@@ -26,7 +20,7 @@ const WeatherForm = () => {
 
   const getWeather = (e) => {
     e.preventDefault();
-    dispatch(actions.getWeather(city, isAuthenticated.userId));
+    dispatch(actions.getWeather(city, userId));
   };
 
   const resetSearch = () => {

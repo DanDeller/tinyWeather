@@ -1,5 +1,6 @@
 const serverConfig = require('../../server.config'),
       MongoClient = require('mongodb').MongoClient,
+      passport = require('passport'),
       express = require('express');
 
 const currentWeatherRoutes = express.Router();
@@ -19,8 +20,10 @@ MongoClient.connect(serverConfig.mongo.connection, {
    * @param res
    */
   currentWeatherRoutes.get('/currentWeather', (req, res) => {
+    const id = req.query.userId;
+
     collection
-    .find()
+    .find({ userId: id })
     .toArray()
     .then(result => {
       return res.send(result);
@@ -35,9 +38,10 @@ MongoClient.connect(serverConfig.mongo.connection, {
    * @param res
    */
   currentWeatherRoutes.post('/currentWeather', (req, res) => {
-    const { city, id } = req.body;
+    const { city, id, userId } = req.body;
 
     collection.insertOne({
+      userId: userId,
       city: city, 
       id: id
     })

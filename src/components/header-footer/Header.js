@@ -1,15 +1,19 @@
 import * as authActions from '../../redux/actions/isAuthenticated';
 import { AuthContext } from '../../Context/AuthContext';
+import { useDispatch, useSelector } from 'react-redux';
 import AuthService from '../../Services/AuthService';
 import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import { useDispatch } from 'react-redux';
 import Burger from '../burger/Burger';
 import './HeaderFooter.scss';
 
+import * as fetchFlagActions from '../../redux/actions/fiveDayForecast';
+import * as weatherActions from '../../redux/actions/currentWeather';
+
 const Header = ({history}) => {
   const { isAuthenticated, setIsAuthenticated, setUser } = useContext(AuthContext);
+  const fiveDayForecast = useSelector(state => state.fiveDayForecast);
   const [isOpen, toggleOpen] = useState(false);
   const dispatch = useDispatch();
   
@@ -21,6 +25,13 @@ const Header = ({history}) => {
         history.push('/about');
       };
     });
+
+    dispatch(weatherActions.reset_action())
+
+    dispatch(weatherActions.isOpen(true));
+    dispatch(weatherActions.setVideo(''));
+    dispatch(weatherActions.setCity(''));
+    dispatch(fetchFlagActions.setFetchFlag(!!fiveDayForecast.fetchFlag));
     
     dispatch(authActions.setIsAuthenticated(false));
     dispatch(authActions.setTokenId(null));

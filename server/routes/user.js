@@ -76,7 +76,8 @@ userRoutes.post('/login', (req, res, next) => {
 			res.status(200).json({
 				isAuthenticated: true,
 				user: username,
-				token: token
+				token: token,
+				id: _id
 			});
 		} else {
 			res.send('No User Exists');

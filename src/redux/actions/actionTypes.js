@@ -5,6 +5,7 @@ export const SET_VIDEO = 'SET_VIDEO';
 export const FETCH_FLAG = 'FETCH_FLAG';
 export const SET_DETAILS = 'SET_DETAILS';
 export const RECENT_CITY = 'RECENT_CITY';
+export const RESET_ACTION = 'RESET_ACTION';
 export const REMOVE_RECENT_CITY = 'REMOVE_RECENT_CITY';
 
 export const FETCH_RECENT_CITIES_START = 'FETCH_RECENT_CITIES_START';

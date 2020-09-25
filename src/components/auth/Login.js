@@ -1,3 +1,4 @@
+import * as actions from '../../redux/actions/isAuthenticated';
 import { AuthContext } from '../../Context/AuthContext';
 import AuthService from '../../Services/AuthService';
 import React, { useContext, useState } from 'react';
@@ -5,10 +6,13 @@ import { withRouter } from 'react-router';
 import Message from '../message/Message';
 import './Auth.scss';
 
+import { useDispatch } from 'react-redux';
+
 const Login = ({ history }) => {
   const [user, setUser] = useState({username: '', password: ''});
   const [message, setMessage] = useState(null);
   const authContext = useContext(AuthContext);
+  const dispatch = useDispatch();
 
   const onChange = (e) => {
     setUser({...user, [e.target.name]: e.target.value});
@@ -18,7 +22,7 @@ const Login = ({ history }) => {
     e.preventDefault();
     AuthService.login(user).then((data) => {
       const expiresIn = new Date(new Date().getTime() + 60000);
-      const { isAuthenticated, user, message, token } = data;
+      const { isAuthenticated, user, message, id, token } = data;
 
       if (isAuthenticated) {
         localStorage.setItem('expirationDate', expiresIn);
@@ -26,6 +30,10 @@ const Login = ({ history }) => {
 
         authContext.setUser(user);
         authContext.setIsAuthenticated(isAuthenticated);
+
+        dispatch(actions.setTokenId(token));
+        dispatch(actions.setIsAuthenticated(isAuthenticated));
+        dispatch(actions.setUserId(id));
         history.push('/');
       } else {
         setMessage(message);
