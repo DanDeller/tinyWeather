@@ -57,7 +57,6 @@ const fetchRecentCitiesSuccess = (state) => {
 };
 
 const resetAction = (state) => {
-  console.log(state)
   return updateObject(state, {recentCities: []})
 };
 

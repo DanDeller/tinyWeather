@@ -19,7 +19,7 @@ MongoClient.connect(serverConfig.mongo.connection, {
    * @param req
    * @param res
    */
-  currentWeatherRoutes.get('/currentWeather', (req, res) => {
+  currentWeatherRoutes.get('/currentWeather', passport.authenticate('jwt', {session : false}), (req, res) => {
     const id = req.query.userId;
 
     collection
@@ -37,7 +37,7 @@ MongoClient.connect(serverConfig.mongo.connection, {
    * @param req
    * @param res
    */
-  currentWeatherRoutes.post('/currentWeather', (req, res) => {
+  currentWeatherRoutes.post('/currentWeather', passport.authenticate('jwt', {session : false}), (req, res) => {
     const { city, id, userId } = req.body;
 
     collection.insertOne({
@@ -57,7 +57,7 @@ MongoClient.connect(serverConfig.mongo.connection, {
    * @param req
    * @param res
    */
-  currentWeatherRoutes.delete('/currentWeather', (req, res) => {
+  currentWeatherRoutes.delete('/currentWeather', passport.authenticate('jwt', {session : false}), (req, res) => {
     const { id } = req.body.source;
 
     collection.deleteOne({

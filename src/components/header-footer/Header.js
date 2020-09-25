@@ -1,3 +1,5 @@
+import * as fetchFlagActions from '../../redux/actions/fiveDayForecast';
+import * as weatherActions from '../../redux/actions/currentWeather';
 import * as authActions from '../../redux/actions/isAuthenticated';
 import { AuthContext } from '../../Context/AuthContext';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,9 +9,6 @@ import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import Burger from '../burger/Burger';
 import './HeaderFooter.scss';
-
-import * as fetchFlagActions from '../../redux/actions/fiveDayForecast';
-import * as weatherActions from '../../redux/actions/currentWeather';
 
 const Header = ({history}) => {
   const { isAuthenticated, setIsAuthenticated, setUser } = useContext(AuthContext);
@@ -27,7 +26,6 @@ const Header = ({history}) => {
     });
 
     dispatch(weatherActions.reset_action())
-
     dispatch(weatherActions.isOpen(true));
     dispatch(weatherActions.setVideo(''));
     dispatch(weatherActions.setCity(''));
