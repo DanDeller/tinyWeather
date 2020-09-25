@@ -12,6 +12,7 @@ const Header = ({history}) => {
   const { isAuthenticated, setIsAuthenticated, setUser } = useContext(AuthContext);
   const [isOpen, toggleOpen] = useState(false);
   const dispatch = useDispatch();
+  
   const handleLogout = () => {
     AuthService.logout().then((data) => {
       if (data.success) {
@@ -25,6 +26,7 @@ const Header = ({history}) => {
     dispatch(authActions.setTokenId(null));
     dispatch(authActions.setUserId(null));
     toggleOpen(false);
+    localStorage.removeItem('tinyWeatherToken');
     localStorage.removeItem('expirationDate');
   };
 

@@ -1,16 +1,23 @@
 import * as fetchFlagAction from '../../redux/actions/fiveDayForecast';
 import * as actions from '../../redux/actions/currentWeather';
 import { useSelector, useDispatch } from 'react-redux';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import './WeatherForm.scss';
+
+import { AuthContext } from '../../Context/AuthContext';
 
 const WeatherForm = () => {
   const currentWeather = useSelector(state => state.currentWeather);
   const fiveDayForecast = useSelector(state => state.fiveDayForecast);
   const isAuthenticated = useSelector(state => state.isAuthenticated);
   const [city, setCity] = useState({city: ''});
+  const authContext = useContext(AuthContext);
   const dispatch = useDispatch();
+
+  // grab user info and token 
+  // console.log(authContext);
+  // console.log(localStorage.getItem('tinyWeatherToken'));
 
   const onChange = (e) => {
     dispatch(actions.setCity(e.target.value));

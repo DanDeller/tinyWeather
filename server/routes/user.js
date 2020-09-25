@@ -14,7 +14,7 @@ const signToken = userID => {
 	return JWT.sign({
 		iss: 'izzy',
 		sub: userID
-	}, 'izzy', {expiresIn: '1h'});
+	}, 'izzy', { expiresIn: '1h' });
 };
 
 /**
@@ -40,11 +40,13 @@ userRoutes.get('/logout', passport.authenticate('jwt', {session : false}), (req,
  * @param res
  */
 userRoutes.get('/user', passport.authenticate('jwt', {session: false}), (req,res) => {
-	const { username } = req.user;
+	const { username, _id } = req.user;
 	res.status(200).json({
-		isAuthenticated: true, 
+		isAuthenticated: true,
 		user: { 
-			username 
+			cookies: req.cookies,
+			username,
+			id: _id
 		}
 	});
 });
@@ -73,7 +75,8 @@ userRoutes.post('/login', (req, res, next) => {
 
 			res.status(200).json({
 				isAuthenticated: true,
-				user: username
+				user: username,
+				token: token
 			});
 		} else {
 			res.send('No User Exists');

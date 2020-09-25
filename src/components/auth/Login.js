@@ -17,9 +17,13 @@ const Login = ({ history }) => {
   const handleLogin = (e) => {
     e.preventDefault();
     AuthService.login(user).then((data) => {
-      const { isAuthenticated, user, message } = data;
+      const expiresIn = new Date(new Date().getTime() + 60000);
+      const { isAuthenticated, user, message, token } = data;
 
       if (isAuthenticated) {
+        localStorage.setItem('expirationDate', expiresIn);
+        localStorage.setItem('tinyWeatherToken', token);
+
         authContext.setUser(user);
         authContext.setIsAuthenticated(isAuthenticated);
         history.push('/');
