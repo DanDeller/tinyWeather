@@ -56,10 +56,6 @@ const fetchRecentCitiesSuccess = (state) => {
   return updateObject(state, {sidebarLoading: false})
 };
 
-const resetAction = (state) => {
-  return updateObject(state, {recentCities: []})
-};
-
 const currentWeather = (state = initCity, action) => {
   switch (action.type) {
     case actionTypes.SET_CITY: return setCity(state, action)
@@ -67,7 +63,6 @@ const currentWeather = (state = initCity, action) => {
     case actionTypes.VISIBLE: return setVisible(state, action)
     case actionTypes.SET_VIDEO: return setVideo(state, action)
     case actionTypes.SET_DETAILS: return setDetails(state, action)
-    case actionTypes.RESET_ACTION: return resetAction(state, action)
     case actionTypes.RECENT_CITY: return setRecentCity(state, action)
     case actionTypes.REMOVE_RECENT_CITY: return removeRecentCity(state, action)
     case actionTypes.FETCH_WEATHER_START: return fetchWeatherStart(state, action)

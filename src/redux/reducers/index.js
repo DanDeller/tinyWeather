@@ -1,10 +1,20 @@
 import fiveDayForecast from './fiveDayForecast';
-import currentWeather from './currentWeather';
 import isAuthenticated from './isAuthenticated';
+import currentWeather from './currentWeather';
 import { combineReducers } from 'redux';
 
-export default combineReducers({
-  currentWeather,
+const appReducer = combineReducers({
   fiveDayForecast,
-  isAuthenticated
+  isAuthenticated,
+  currentWeather
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === 'RESET_ACTION') {
+    state = undefined;
+  };
+
+  return appReducer(state, action);
+};
+
+export default rootReducer;
