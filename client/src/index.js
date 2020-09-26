@@ -9,9 +9,6 @@ import App from './App';
 
 window.store = store;
 
-// set base URL for axios to avoid repetitive long strings
-// axios.defaults.baseURL = 'https://somewhere.com/';
-
 axios.interceptors.request.use(request => {
 	console.log(request);
 	return request;
