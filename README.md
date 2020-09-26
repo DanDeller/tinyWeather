@@ -18,7 +18,7 @@ A little weather app.
 
 <h2>How to use:</h2>
 <ul>
-  <li>Make sure Docker and MongokDB are installed</li>
+  <li>Make sure Docker (if using Docker) and MongokDB are installed</li>
   <li>Clone the repo</li>
   <li>Start Docker</li>
   <li>Start the app: docker-compose up</li>
