@@ -4,7 +4,7 @@
   "description": "api",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js --ignore client",
+    "start": "node index.js --ignore client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dan Deller",
@@ -19,6 +19,7 @@
     "http": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.7",
+    "nodemon": "^2.0.4",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0"

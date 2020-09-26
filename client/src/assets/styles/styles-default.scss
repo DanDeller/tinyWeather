@@ -61,6 +61,13 @@ textarea {
   }
 }
 
+.github-corner svg {
+  @media screen and (max-width: $mobile) {
+    top: 100% !important;
+    transform: rotate(90deg) !important;
+  }
+}
+
 .container {
   margin: 0 auto;
   max-width: 1024px;

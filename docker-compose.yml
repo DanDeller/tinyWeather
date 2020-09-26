@@ -1,28 +1,34 @@
 version: '3.8'
 services:
   api:
-    build: .
+    build: 
+      context: ./api/
+    container_name: api
     working_dir: /www
     ports:
       - "3001:3001"
     volumes: 
-      - .:/www
-    command: node server.js
-  web:
+      - ./api/:/www
+    environment:
+      NODE_ENV: docker
+      SESSION_SECRET: development
+    command: yarn start
+  client:
     build:
-      context: .
+      context: ./client/
       dockerfile: Dockerfile
+    container_name: client
     working_dir: /www
     ports:
       - '3000:3000'
     volumes:
-      - .:/www
+      - ./client/:/www
     environment:
       API_HOST: api
       API_PORT: 3001
       NODE_ENV: development
       SESSION_SECRET: development
       CHOKIDAR_USEPOLLING: 'true'
-    command: yarn start --silent
+    command: yarn start
     stdin_open: true
     tty: true
