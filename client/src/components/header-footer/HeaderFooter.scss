@@ -1,0 +1,115 @@
+$body: 'Encode Sans Condensed', sans-serif;
+$heading: 'Roboto', sans-serif;
+$mobile: 768px;
+
+.header {
+  background: rgba(196, 68, 68, .7);
+  border-bottom: 1px solid #ccc;
+  position: relative;
+  .navHold {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  .logo {
+    font-size: 45px;
+    margin: 0;
+    position: relative;
+    z-index: 9;
+  }
+  nav {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 9;
+    @media only screen and (max-width: $mobile) {
+      background:#f2f2f2;
+      display: none;
+      left: 0;
+      padding: 15px;
+      position: absolute;
+      top: 69px;
+      transition: all .3s linear 0s;
+      width: 100%;
+      z-index: 99;
+    }
+    &.open {
+      box-shadow: 0px 1px 4px 0px #c2c2c2;
+      display: block;
+    }
+    ul {
+      align-items: center;
+      display: flex;
+      @media only screen and (max-width: $mobile) {
+        display: block;
+      }
+    }
+    li {
+      font-family: $heading;
+      font-weight: 700;
+      margin: 0 25px 0 0;
+      @media only screen and (max-width: $mobile) {
+        margin: 0 0 25px 0;
+        text-align: center;
+        &:last-child {
+          margin: 0;
+        }
+      }
+      a {
+        color: #dedede;
+        text-decoration: none;
+        text-shadow: 0 1px 1px #7A2929;
+        transition: color .3s linear 0s;
+        @media only screen and (max-width: $mobile) {
+          color: #290E0E;
+          text-shadow: none;
+          padding: 0 0 10px 0;
+        }
+        &:hover {
+          color: #fff;
+          @media only screen and (max-width: $mobile) {
+            color: #290E0E;
+          }
+        }
+        &.currentLink {
+          color: #fff;
+          @media only screen and (max-width: $mobile) {
+            color: #290E0E;
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  background: #290E0E;
+  bottom: 0;
+  color: #fff;
+  font-family: $body;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  @media only screen and (max-width: $mobile) {
+    display: none;
+  }
+  .container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .footerImage {
+    background-size: 100% 100%;
+    margin: 0 10px 0 30px;
+    width: 4%;
+    @media only screen and (max-width: 955px) {
+      width: 10%;
+    }
+  }
+  .mongodb {
+    width: 8%;
+  }
+  .node {
+    width: 7%;
+  }
+}

@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  web:
+  api:
     build: .
     working_dir: /www
     ports:
@@ -8,3 +8,21 @@ services:
     volumes: 
       - .:/www
     command: node server.js
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /www
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/www
+    environment:
+      API_HOST: api
+      API_PORT: 3001
+      NODE_ENV: development
+      SESSION_SECRET: development
+      CHOKIDAR_USEPOLLING: 'true'
+    command: yarn start --silent
+    stdin_open: true
+    tty: true
