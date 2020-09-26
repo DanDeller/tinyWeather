@@ -18,10 +18,11 @@ A little weather app.
 
 <h2>How to use:</h2>
 <ul>
-  <li>Make sure Docker (if using Docker) and MongokDB are installed</li>
+  <li>Make sure Docker (if using Docker) and MongoDB are installed</li>
   <li>Clone the repo</li>
-  <li>Start Docker</li>
+  <li>Launch Docker</li>
   <li>Start the app: docker-compose up</li>
+  <li>Start client: yarn start (new tab)</li>
 </ul>
 
 > NOTE: If you are not using yarn, you can still use npm in its place.
