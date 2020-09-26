@@ -2,11 +2,10 @@ import * as actions from '../../redux/actions/isAuthenticated';
 import { AuthContext } from '../../context/AuthContext';
 import AuthService from '../../services/AuthService';
 import React, { useContext, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router';
 import Message from '../message/Message';
 import './Auth.scss';
-
-import { useDispatch } from 'react-redux';
 
 const Login = ({ history }) => {
   const [user, setUser] = useState({username: '', password: ''});
