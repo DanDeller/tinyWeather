@@ -11,6 +11,8 @@ const currentWeather = require('./server/routes/currentWeather'),
       cors = require('cors'),
       app = express();
 
+const port = process.env.PORT || serverConfig.server.port;
+
 mongoose.connect(serverConfig.mongo.connection, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -19,7 +21,7 @@ mongoose.connect(serverConfig.mongo.connection, {
 });
 
 app.server = http.createServer(app);
-app.set('port', serverConfig.server.port);
+app.set('port', port);
 app.use(cors({
   origin: 'http://localhost:3000',
   credentials: true
@@ -36,4 +38,4 @@ require('./middleware/passportConfig')(passport);
 app.use('/', currentWeather);
 app.use('/', user);
 
-app.listen(serverConfig.server.port, () => console.log(`Server running on port ${serverConfig.server.port}`));
+app.listen(port, () => console.log(`Server running on port ${port}`));

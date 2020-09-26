@@ -69,6 +69,7 @@ export default {
 		.then(res => {
 			if (res.status !== 401) {
         const data = res.json().then(data => data)
+        console.log(data)
 				return data;
 			} else {
 				return { 

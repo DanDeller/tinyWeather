@@ -13,6 +13,7 @@ export default ({ children }) => {
 
   useEffect(() => {
     AuthService.isAuthenticated().then((data) => {
+      console.log(data)
       const expiresIn = new Date(new Date().getTime() + 60000);
       const { user, isAuthenticated } = data;
       
