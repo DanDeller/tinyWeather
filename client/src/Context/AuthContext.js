@@ -1,6 +1,6 @@
 import React, {createContext,useState,useEffect} from 'react';
 import * as actions from '../redux/actions/isAuthenticated';
-import AuthService from '../Services/AuthService';
+import AuthService from '../services/AuthService';
 import { useDispatch } from 'react-redux';
 
 export const AuthContext = createContext();

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import AuthService from '../../Services/AuthService';
+import AuthService from '../../services/AuthService';
 import { withRouter } from 'react-router';
 import Message from '../message/Message';
 import './Auth.scss';

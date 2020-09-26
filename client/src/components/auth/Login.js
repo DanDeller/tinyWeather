@@ -1,6 +1,6 @@
 import * as actions from '../../redux/actions/isAuthenticated';
-import { AuthContext } from '../../Context/AuthContext';
-import AuthService from '../../Services/AuthService';
+import { AuthContext } from '../../context/AuthContext';
+import AuthService from '../../services/AuthService';
 import React, { useContext, useState } from 'react';
 import { withRouter } from 'react-router';
 import Message from '../message/Message';

@@ -1,9 +1,9 @@
 import * as fetchFlagActions from '../../redux/actions/fiveDayForecast';
 import * as weatherActions from '../../redux/actions/currentWeather';
 import * as authActions from '../../redux/actions/isAuthenticated';
-import { AuthContext } from '../../Context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 import { useDispatch, useSelector } from 'react-redux';
-import AuthService from '../../Services/AuthService';
+import AuthService from '../../services/AuthService';
 import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
