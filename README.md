@@ -7,11 +7,14 @@ A little weather app.
 
 <h2>What you'll need to run the app</h2>
 <ul>
-  <li><a href='https://docs.docker.com/desktop/'>Docker</li>
   <li><a href='https://www.mongodb.com/'>MongoDB</a></li>
 </ul>
+<h3>You can also use Docker to start the api</h3>
+<ul>
+  <li><li><a href='https://docs.docker.com/desktop/'>Docker</li>
+</ul>
 
-> NOTE: Docker is being used to start the app's web services. 
+> NOTE:If you do not want to use Docker, you will need to manually start the server. Cd into `/api` and run `yarn start`. 
 
 <h2>How to use:</h2>
 <ul>
