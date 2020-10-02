@@ -17,7 +17,7 @@ A little weather app.
 <h2>How to use</h2>
 <h4>With Docker:</h4>
 <ul>
-  <li>Make sure Docker and MongoDB is set up</li>
+  <li>Make sure Docker and MongoDB are both set up</li>
   <li>Clone the repo</li>
   <li>Launch Docker</li>
   <li>Start the api: docker-compose up --build</li>
