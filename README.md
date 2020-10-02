@@ -28,6 +28,7 @@ A little weather app.
   - Start client: cd into tinyWeather/api and run `yarn start` (new tab)<br />
   - Start the api: cd into tinyWeather/api and run: `yarn start`<br />
   
+  
 > NOTE: If you are not using yarn, you can still use npm in its place.
 
 <h2>Useful Docker commands</h2>
