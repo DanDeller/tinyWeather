@@ -27,7 +27,7 @@ A little weather app.
   - Clone the repo<br />
   - Start client: cd into tinyWeather/api and run `yarn start` (new tab)<br />
   - Start the api: cd into tinyWeather/api and run: `yarn start`<br />
-  
+  <br/>
   
 > NOTE: If you are not using yarn, you can still use npm in its place.
 
