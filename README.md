@@ -9,20 +9,27 @@ A little weather app.
 <ul>
   <li><a href='https://www.mongodb.com/'>MongoDB</a></li>
 </ul>
-<h3>You can also use Docker to start the api</h3>
+<h3>Optional: Docker</h3>
 <ul>
   <li><a href='https://docs.docker.com/desktop/'>Docker</a></li>
-</ul>
+</ul> 
 
-> NOTE:If you do not want to use Docker, you will need to manually start the server. Cd into `/api` and run `yarn start`. 
-
-<h2>How to use:</h2>
+<h2>How to use</h2>
+<h4>With Docker:</h4>
 <ul>
-  <li>Make sure Docker (if using Docker) and MongoDB are installed</li>
+  <li>Make sure Docker and MongoDB is set up</li>
   <li>Clone the repo</li>
   <li>Launch Docker</li>
-  <li>Start the app: docker-compose up</li>
+  <li>Start the api: docker-compose up --build</li>
   <li>Start client: yarn start (new tab)</li>
+</ul>
+
+<h4>Without Docker:</h4>
+<ul>
+  <li>Make MongoDB is set up</li>
+  <li>Clone the repo</li>
+  <li>Start the api: cd into tinyWeather/api and run `yarn start`</li>
+  <li>Start client: cd into tinyWeather/api and run `yarn start` (new tab)</li>
 </ul>
 
 > NOTE: If you are not using yarn, you can still use npm in its place.
