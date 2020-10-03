@@ -24,9 +24,7 @@ const WeatherForm = () => {
   };
 
   const resetSearch = () => {
-    dispatch(actions.isOpen(true));
-    dispatch(actions.setVideo(''));
-    dispatch(actions.setCity(''));
+    dispatch(actions.resetSearch());
     dispatch(fetchFlagAction.setFetchFlag(!!fiveDayForecast.fetchFlag));
   };
 

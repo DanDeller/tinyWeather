@@ -3,6 +3,31 @@ import * as actionTypes from '../actions/actionTypes';
 import uuid from 'react-uuid';
 import axios from 'axios';
 
+export const resetWeather = () => {
+  return dispatch => {
+    dispatch(reset_action());
+    dispatch(isOpen(true));
+    dispatch(setVideo(''));
+    dispatch(setCity(''));
+  };
+};
+
+export const resetSearch = () => {
+  return dispatch => {
+    dispatch(isOpen(true));
+    dispatch(setVideo(''));
+    dispatch(setCity(''));
+  };
+}
+
+export const closeModal = () => {
+  return dispatch => {
+    dispatch(fetchWeatherSuccess());
+    dispatch(visible(false));
+    dispatch(setCity(''));
+  };
+};
+
 export const setCity = city => ({
   type: actionTypes.SET_CITY,
   city

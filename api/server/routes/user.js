@@ -80,7 +80,12 @@ userRoutes.post('/login', (req, res, next) => {
 				id: _id
 			});
 		} else {
-			res.send('No User Exists');
+			res.json({
+				message: {
+					msgBody: 'Username or password is incorrect.',
+					msgError: true
+				}
+			});
 		};
 	})(req, res, next);
 });

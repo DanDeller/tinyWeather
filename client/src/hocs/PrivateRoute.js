@@ -6,7 +6,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
   const { isAuthenticated } = useContext(AuthContext);
 
   return (
-    <Route {...rest} render={props =>{
+    <Route {...rest} render={props => {
       if (!isAuthenticated) {
         return <Redirect to={{ pathname: '/about', state: { from: props.location }} }/>
       } else {

@@ -25,15 +25,10 @@ const Header = ({history}) => {
       };
     });
 
-    dispatch(weatherActions.reset_action())
-    dispatch(weatherActions.isOpen(true));
-    dispatch(weatherActions.setVideo(''));
-    dispatch(weatherActions.setCity(''));
     dispatch(fetchFlagActions.setFetchFlag(!!fiveDayForecast.fetchFlag));
+    dispatch(weatherActions.resetWeather());
+    dispatch(authActions.resetAuth());
     
-    dispatch(authActions.setIsAuthenticated(false));
-    dispatch(authActions.setTokenId(null));
-    dispatch(authActions.setUserId(null));
     toggleOpen(false);
     localStorage.removeItem('tinyWeatherToken');
     localStorage.removeItem('expirationDate');

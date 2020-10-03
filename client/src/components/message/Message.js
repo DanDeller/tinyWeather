@@ -2,8 +2,10 @@ import React from 'react';
 
 const getStyle = (props) => {
   let baseClass = 'alert ';
+
+  console.log(props.message.msgError)
+
   if (props.message.msgError) {
-    console.log('hey')
     baseClass = baseClass + 'alert-danger';
   } else {
     baseClass = baseClass + 'alert-primary';

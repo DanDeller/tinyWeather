@@ -8,9 +8,7 @@ import './Modal.scss';
 const ErrorModal = ({visible, closeModal, dispatch}) => {
   closeModal = (e) => {
     e.preventDefault();
-    dispatch(actions.visible(false));
-    dispatch(actions.setCity(''));
-    dispatch(actions.fetchWeatherSuccess());
+    dispatch(actions.closeModal());
   };
 
   return (

@@ -24,15 +24,19 @@ const Login = ({ history }) => {
       const { isAuthenticated, user, message, id, token } = data;
 
       if (isAuthenticated) {
+        const payload = {
+          token: token,
+          isAuthenticated: isAuthenticated,
+          id: id
+        };
+        
         localStorage.setItem('expirationDate', expiresIn);
         localStorage.setItem('tinyWeatherToken', token);
 
         authContext.setUser(user);
         authContext.setIsAuthenticated(isAuthenticated);
 
-        dispatch(actions.setTokenId(token));
-        dispatch(actions.setIsAuthenticated(isAuthenticated));
-        dispatch(actions.setUserId(id));
+        dispatch(actions.setAuth(payload));
         history.push('/');
       } else {
         setMessage(message);
