@@ -1,7 +1,7 @@
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import * as actions from '../../redux/actions/isAuthenticated';
 import { AuthContext } from '../../context/AuthContext';
 import AuthService from '../../services/AuthService';
-import React, { useContext, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router';
 import Message from '../message/Message';
@@ -12,6 +12,13 @@ const Login = ({ history }) => {
   const [message, setMessage] = useState(null);
   const authContext = useContext(AuthContext);
   const dispatch = useDispatch();
+  let errorID = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(errorID);
+    };
+  }, []);
 
   const onChange = (e) => {
     setUser({...user, [e.target.name]: e.target.value});
@@ -20,8 +27,8 @@ const Login = ({ history }) => {
   const handleLogin = (e) => {
     e.preventDefault();
     AuthService.login(user).then((data) => {
-      const expiresIn = new Date(new Date().getTime() + 60000);
       const { isAuthenticated, user, message, id, token } = data;
+      const expiresIn = new Date(new Date().getTime() + 60000);
 
       if (isAuthenticated) {
         const payload = {
@@ -29,10 +36,10 @@ const Login = ({ history }) => {
           isAuthenticated: isAuthenticated,
           id: id
         };
-        
-        localStorage.setItem('expirationDate', expiresIn);
-        localStorage.setItem('tinyWeatherToken', token);
 
+        localStorage.setItem('tinyWeatherToken', token);
+        localStorage.setItem('expirationDate', expiresIn);
+        
         authContext.setUser(user);
         authContext.setIsAuthenticated(isAuthenticated);
 
@@ -42,6 +49,12 @@ const Login = ({ history }) => {
         setMessage(message);
       }
     });
+  };
+
+  if (!message) {
+    errorID = setTimeout(() => {
+      setMessage(null);
+    }, 5000);
   };
   
   return (
@@ -54,9 +67,8 @@ const Login = ({ history }) => {
           <input onChange={onChange} name="password" type="password" placeholder="Password" />
           <button type="submit">Log in</button>
         </form>
-        
-        { message ? <Message message={message}/> : null }
       </div>
+      { message ? <Message message={message}/> : null }
     </div>
   );
 };

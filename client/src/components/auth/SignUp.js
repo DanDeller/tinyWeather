@@ -8,11 +8,13 @@ const SignUp = ({ history }) => {
   const [user, setUser] = useState({username: '', password: ''});
   const [message, setMessage] = useState(null);
   let timerID = useRef(null);
+  let errorID = useRef(null);
 
   useEffect(() => {
     return () => {
-      clearTimeout(timerID)
-    }
+      clearTimeout(timerID);
+      clearTimeout(errorID);
+    };
   }, []);
 
   const onChange = (e) => {
@@ -24,12 +26,11 @@ const SignUp = ({ history }) => {
 
     if (!user.username.length || !user.password.length) {
       const message = {
-        msgBody: 'Add stuff first...'
+        msgBody: 'Add info first.'
       };
-
       setMessage(message);
       return;
-    }
+    };
 
     AuthService.register(user).then((data) => {
       const { message } = data;
@@ -47,6 +48,12 @@ const SignUp = ({ history }) => {
   const resetForm = () => {
     setUser({username: '', password: ''});
   };
+
+  if (!message) {
+    errorID = setTimeout(() => {
+      setMessage(null);
+    }, 5000);
+  };
   
   return (
     <div className="login-signup-wrap">
@@ -58,9 +65,8 @@ const SignUp = ({ history }) => {
           <input onChange={onChange} name="password" type="password" placeholder="Password" />
           <button type="submit">Sign up</button>
         </form>
-        
-        { message ? <Message message={message}/> : null }
       </div>
+      { message ? <Message message={message}/> : null }
     </div>
   );
 };

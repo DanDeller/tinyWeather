@@ -108,10 +108,9 @@ userRoutes.post('/register', (req, res) => {
 				}
 			});
 		};
-
 		// Check if user exists
 		if (doc) {
-			res.status(400).json({
+			res.json({
 				message: {
 					msgBody: 'Username is already taken',
 					msgError: true

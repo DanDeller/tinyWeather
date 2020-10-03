@@ -1,25 +1,34 @@
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import React from 'react';
+import './Message.scss';
 
-const getStyle = (props) => {
-  let baseClass = 'alert ';
+const getStyle = ({ message }) => {
+  let baseClass = 'alert pulsate ';
 
-  console.log(props.message.msgError)
-
-  if (props.message.msgError) {
-    baseClass = baseClass + 'alert-danger';
+  if (message.msgError) {
+    baseClass = `${baseClass} alert-danger`;
   } else {
-    baseClass = baseClass + 'alert-primary';
-  }
+    baseClass = `${baseClass} alert-primary`;
+  };
 
-  return baseClass + ' text-center';
+  return `${baseClass} text-center`;
 };
 
-const Message = props => {
+const Message = (props) => {
   return (
-    <div className={getStyle(props)} role="alert">
-      { props.message.msgBody }
-    </div>
-  )
+    <CSSTransitionGroup
+      transitionName="list-item"
+      transitionAppear={true}
+      transitionAppearTimeout={500}
+      transitionEnter={true}
+      transitionEnterTimeout={500}
+      transitionLeave={true}
+      transitionLeaveTimeout={300}>
+      <div className={getStyle(props)} role="alert">
+        { props.message.msgBody }
+      </div>
+    </CSSTransitionGroup>
+  );
 };
 
 export default Message;

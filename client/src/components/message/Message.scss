@@ -1,0 +1,39 @@
+.alert {
+  color: #290E0E;
+  font-size: 20px;
+  left: 0;
+  margin: 20px 0 0px 0;
+  position: relative;
+  right: 0;
+  text-align: center;
+  top: -40px;
+}
+
+.pulsate {
+  -webkit-animation: color_change 1s infinite alternate;
+  -moz-animation: color_change 1s infinite alternate;
+  -ms-animation: color_change 1s infinite alternate;
+  -o-animation: color_change 1s infinite alternate;
+  animation: color_change 1s infinite alternate;
+ }
+ 
+ @-webkit-keyframes color_change {
+  from { color: #290E0E; }
+  to { color: #fff }
+ }
+ @-moz-keyframes color_change {
+  from { color: #290E0E; }
+  to { color: #fff }
+ }
+ @-ms-keyframes color_change {
+  from { color: #290E0E; }
+  to { color: #fff }
+ }
+ @-o-keyframes color_change {
+  from { color: #290E0E; }
+  to { color: #fff }
+ }
+ @keyframes color_change {
+  from { color: #290E0E; }
+  to { color: #fff }
+ }

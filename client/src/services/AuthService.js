@@ -43,6 +43,7 @@ export default {
   register: (user) => {
     return axios.post('/register', user)
     .then((res) => {
+      console.log(res)
       const data = res.data;
       return data;
     })
