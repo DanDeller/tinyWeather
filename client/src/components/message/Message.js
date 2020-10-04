@@ -11,7 +11,7 @@ const getStyle = ({ message }) => {
     baseClass = `${baseClass} alert-primary`;
   };
 
-  return `${baseClass} text-center`;
+  return baseClass;
 };
 
 const Message = (props) => {
