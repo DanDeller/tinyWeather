@@ -1,5 +1,5 @@
-import React, { useContext, useState, useRef, useEffect } from 'react';
 import * as actions from '../../redux/actions/isAuthenticated';
+import React, { useContext, useState, useRef } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import AuthService from '../../services/AuthService';
 import { useDispatch } from 'react-redux';
@@ -12,13 +12,7 @@ const Login = ({ history }) => {
   const [message, setMessage] = useState(null);
   const authContext = useContext(AuthContext);
   const dispatch = useDispatch();
-  let errorID = useRef(null);
-
-  useEffect(() => {
-    return () => {
-      clearTimeout(errorID);
-    };
-  }, []);
+  const ref = useRef(null);
 
   const onChange = (e) => {
     setUser({...user, [e.target.name]: e.target.value});
@@ -26,6 +20,16 @@ const Login = ({ history }) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+
+    if (!user.username.length || !user.password.length) {
+      const message = {
+        msgBody: 'Add info first.'
+      };
+      setMessage(message);
+      ref.current(message);
+      return;
+    };
+
     AuthService.login(user).then((data) => {
       const { isAuthenticated, user, message, id, token } = data;
       const expiresIn = new Date(new Date().getTime() + 60000);
@@ -47,14 +51,9 @@ const Login = ({ history }) => {
         history.push('/');
       } else {
         setMessage(message);
+        ref.current(message);
       }
     });
-  };
-
-  if (!message) {
-    errorID = setTimeout(() => {
-      setMessage(null);
-    }, 5000);
   };
   
   return (
@@ -68,7 +67,7 @@ const Login = ({ history }) => {
           <button type="submit">Log in</button>
         </form>
       </div>
-      { message ? <Message message={message}/> : null }
+      <Message children={add => (ref.current = add)} message={message}/>
     </div>
   );
 };

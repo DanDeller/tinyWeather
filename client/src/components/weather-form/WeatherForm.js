@@ -13,6 +13,8 @@ const WeatherForm = () => {
   const userId = isAuthenticated.userId;
   const dispatch = useDispatch();
 
+  console.log(isAuthenticated)
+
   const onChange = (e) => {
     dispatch(actions.setCity(e.target.value));
     setCity(e.target.value);

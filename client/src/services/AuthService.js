@@ -43,7 +43,6 @@ export default {
   register: (user) => {
     return axios.post('/register', user)
     .then((res) => {
-      console.log(res)
       const data = res.data;
       return data;
     })
@@ -70,7 +69,6 @@ export default {
 		.then(res => {
 			if (res.status !== 401) {
         const data = res.json().then(data => data)
-        console.log(data)
 				return data;
 			} else {
 				return { 
@@ -81,9 +79,7 @@ export default {
 				};
 			};
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => console.log(err));
 
     // NOTE: axios for /user breaks app
     //

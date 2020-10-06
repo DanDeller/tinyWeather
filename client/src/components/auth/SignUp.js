@@ -8,12 +8,11 @@ const SignUp = ({ history }) => {
   const [user, setUser] = useState({username: '', password: ''});
   const [message, setMessage] = useState(null);
   let timerID = useRef(null);
-  let errorID = useRef(null);
+  const ref = useRef(null);
 
   useEffect(() => {
     return () => {
       clearTimeout(timerID);
-      clearTimeout(errorID);
     };
   }, []);
 
@@ -29,12 +28,14 @@ const SignUp = ({ history }) => {
         msgBody: 'Add info first.'
       };
       setMessage(message);
+      ref.current(message);
       return;
     };
 
     AuthService.register(user).then((data) => {
       const { message } = data;
       setMessage(message);
+      ref.current(message);
       resetForm();
 
       if (!message.msgError) {
@@ -48,12 +49,6 @@ const SignUp = ({ history }) => {
   const resetForm = () => {
     setUser({username: '', password: ''});
   };
-
-  if (!message) {
-    errorID = setTimeout(() => {
-      setMessage(null);
-    }, 5000);
-  };
   
   return (
     <div className="login-signup-wrap">
@@ -66,7 +61,7 @@ const SignUp = ({ history }) => {
           <button type="submit">Sign up</button>
         </form>
       </div>
-      { message ? <Message message={message}/> : null }
+      <Message children={add => (ref.current = add)} message={message} />
     </div>
   );
 };
