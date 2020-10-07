@@ -74,6 +74,7 @@
     "react-awesome-modal": "^2.0.5",
     "react-dev-utils": "^10.2.1",
     "react-dom": "^16.13.1",
+    "react-feather": "^2.0.8",
     "react-moment": "^0.9.7",
     "react-particles-js": "^3.3.0",
     "react-redux": "^7.2.0",
