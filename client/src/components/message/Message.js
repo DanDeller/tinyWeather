@@ -96,7 +96,7 @@ const Content = styled('div')`
 const Button = styled('button')`
   position: absolute;
   right: 4px;
-  top: 14px;
+  top: 5px;
   cursor: pointer;
   pointer-events: all;
   outline: 0;

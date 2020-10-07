@@ -11,9 +11,8 @@ const WeatherForm = () => {
   const currentWeather = useSelector(state => state.currentWeather);
   const [city, setCity] = useState({city: ''});
   const userId = isAuthenticated.userId;
+  const weatherInput = React.useRef();
   const dispatch = useDispatch();
-
-  console.log(isAuthenticated)
 
   const onChange = (e) => {
     dispatch(actions.setCity(e.target.value));
@@ -28,13 +27,17 @@ const WeatherForm = () => {
   const resetSearch = () => {
     dispatch(actions.resetSearch());
     dispatch(fetchFlagAction.setFetchFlag(!!fiveDayForecast.fetchFlag));
+    clearInput();
   };
+
+  const clearInput = () => weatherInput.current.value = '';
 
   return (
     <div className="weatherForm"> 
       <div className={`${(currentWeather.isOpen ? 'show' : 'hide')}`}>
         <form action='/' method='GET'>
           <input
+            ref={weatherInput}
             onChange={onChange}
             type='text'
             name='test'

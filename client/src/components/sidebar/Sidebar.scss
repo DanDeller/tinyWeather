@@ -109,5 +109,5 @@ $mobile: 768px;
 .list-item-leave.list-item-leave-active {
   opacity: 0.01;
   transition: opacity 300ms ease-in, transform 300ms ease-in;
-  transform:translate(-5em, 0) scale(0,0);
+  transform: translate(5em, 0) scale(0,0);
 }

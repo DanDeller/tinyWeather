@@ -8,13 +8,9 @@ const SidebarItem = ({id, recentCity}) => {
   const dispatch = useDispatch();
   const city = recentCity;
 
-  const toggle = () => {
-    setToggle(!toggleState);
-  };
+  const toggle = () => setToggle(!toggleState);
 
-  const deleteCity = () => {
-    dispatch(actions.deleteRecentCities(id));
-  };
+  const deleteCity = () => dispatch(actions.deleteRecentCities(id));
 
   return (
     <div

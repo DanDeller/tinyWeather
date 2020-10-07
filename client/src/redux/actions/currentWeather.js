@@ -93,7 +93,6 @@ export const fetchRecentCitiesSuccess = () => ({
  *  GET WEATHER
  */
 export const getWeather = (city, userId) => {
-  console.log(userId)
   return dispatch => {
     dispatch(fetchWeatherStart());
     
