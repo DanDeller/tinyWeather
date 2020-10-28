@@ -1,4 +1,3 @@
-
 import React, {createContext,useState,useEffect} from 'react';
 import * as actions from '../redux/actions/isAuthenticated';
 import AuthService from '../services/AuthService';

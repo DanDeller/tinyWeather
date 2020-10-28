@@ -27,8 +27,7 @@ services:
       API_HOST: api
       API_PORT: 3001
       NODE_ENV: development
-      SESSION_SECRET: development
-      CHOKIDAR_USEPOLLING: 'true'
+      SESSION_SECRET: izzy
     command: yarn start
     stdin_open: true
     tty: true
