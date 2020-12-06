@@ -10,7 +10,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
       if (!isAuthenticated) {
         return <Redirect to={{ pathname: '/about', state: { from: props.location }} }/>
       } else {
-        return <Suspense><Component {...props}/></Suspense>
+        return <Suspense fallback={<></>}><Component {...props}/></Suspense>
       };
     }}/>
   );
