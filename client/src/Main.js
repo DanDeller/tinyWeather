@@ -7,8 +7,8 @@ import Home from './components/home/Home';
 import { Route } from 'react-router-dom';
 import React, { Suspense } from 'react';
 
-const Login = React.lazy(() => import('./components/auth/Login'));
 const Register = React.lazy(() => import('./components/auth/SignUp'));
+const Login = React.lazy(() => import('./components/auth/Login'));
 
 function mapStyles(styles) {
   return {
