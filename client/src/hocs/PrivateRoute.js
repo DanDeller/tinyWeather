@@ -1,6 +1,6 @@
 import { AuthContext } from '../context/AuthContext';
+import React, { useContext, Suspense } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import React, { useContext } from 'react';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -10,7 +10,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
       if (!isAuthenticated) {
         return <Redirect to={{ pathname: '/about', state: { from: props.location }} }/>
       } else {
-        return <Component {...props}/>
+        return <Suspense><Component {...props}/></Suspense>
       };
     }}/>
   );

@@ -1,13 +1,14 @@
 import FiveDayForecast from './containers/FiveDayForecast/FiveDayForecast';
 import { spring, AnimatedSwitch } from 'react-router-transition';
 import WeatherMain from './containers/WeatherMain/WeatherMain';
-import Register from './components/auth/SignUp';
 import PrivateRoute from './hocs/PrivateRoute';
 import About from './components/about/About';
-import Login from './components/auth/Login';
 import Home from './components/home/Home';
 import { Route } from 'react-router-dom';
-import React from 'react';
+import React, { Suspense } from 'react';
+
+const Login = React.lazy(() => import('./components/auth/Login'));
+const Register = React.lazy(() => import('./components/auth/SignUp'));
 
 function mapStyles(styles) {
   return {
@@ -53,8 +54,8 @@ function Main() {
       >
         <PrivateRoute exact path='/' component={Home} />
         <Route exact path='/about' component={About} />
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/register' component={Register} />
+        <Route exact path='/login' render={() => (<Suspense fallback={<></>}><Login/></Suspense>)} />
+        <Route exact path='/register' render={() => (<Suspense fallback={<></>}><Register/></Suspense>)} />
         <PrivateRoute key={'weatherMain'} exact path='/weather' component={WeatherMain} />
         <PrivateRoute key={'fiveDayForecast'} exact path='/fiveDayForecast' component={FiveDayForecast} />
         <Route path='*' component={() => '404 Page Not Found'}/>
