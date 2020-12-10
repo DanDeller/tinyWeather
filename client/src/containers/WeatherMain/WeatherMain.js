@@ -1,12 +1,14 @@
-import WeatherVideo from '../../components/weather-video/WeatherVideo';
-import WeatherForm from '../../components/weather-form/WeatherForm';
-import WeatherList from '../../components/weather/WeatherList';
 import * as actions from '../../redux/actions/currentWeather';
-import { useSelector, useDispatch } from 'react-redux';
 import Sidebar from '../../components/sidebar/Sidebar';
-import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import './WeatherMain.scss';
+
+const WeatherLookupSpinner = React.lazy(() => import('../../components/spinner/WeatherLookupSpinner'));
+const WeatherVideo = React.lazy(() => import('../../components/weather-video/WeatherVideo'));
+const WeatherForm = React.lazy(() => import('../../components/weather-form/WeatherForm'));
+const WeatherList = React.lazy(() => import('../../components/weather/WeatherList'));
 
 const WeatherMain = () => {
   const currentWeather = useSelector(state => state.currentWeather);
@@ -22,6 +24,9 @@ const WeatherMain = () => {
 
   return (
     <section className="container">
+      <Suspense fallback={<div className="tagline app-load"></div>}>
+        <WeatherLookupSpinner />
+      </Suspense>
       <div className="weatherMain bodyText">
         <h1 className="pageHeader">Search a city to check the weather</h1>
         <div className="hold">

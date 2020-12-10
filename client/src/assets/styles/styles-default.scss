@@ -268,3 +268,21 @@ textarea {
   position: absolute;
   width: 100%;
 }
+
+.sign-out {
+  background: none;
+  border: 1px solid #fff;
+  box-shadow: 0 0 1px 0 #7c7c7c;
+  color: #fff;
+  text-shadow: 0 1px 1px #7A2929;
+  cursor: pointer;
+  display: block;
+  outline: none;
+  padding: 10px 10px;
+  @media only screen and (max-width: $mobile) {
+    border: 1px solid #F45050;
+    color: #F45050;
+    margin: 0 auto 5px auto;
+    text-shadow: none;
+  }
+}
