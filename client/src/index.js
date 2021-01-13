@@ -31,6 +31,6 @@ render((
 			<HashRouter>
 				<App/>
 			</HashRouter>
-			</AuthProvider>
+		</AuthProvider>
 	</Provider>
 ), document.getElementById('root'));
