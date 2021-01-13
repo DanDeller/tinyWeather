@@ -4,8 +4,9 @@ import { AuthContext } from '../../context/AuthContext';
 import AuthService from '../../services/AuthService';
 import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router';
-import Message from '../message/Message';
 import './Auth.scss';
+
+const Message = React.lazy(() => import('../message/Message'));
 
 const Login = ({ history }) => {
   const [user, setUser] = useState({username: '', password: ''});

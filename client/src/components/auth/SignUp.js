@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import AuthService from '../../services/AuthService';
 import { withRouter } from 'react-router';
-import Message from '../message/Message';
 import './Auth.scss';
+
+const Message = React.lazy(() => import('../message/Message'));
 
 const SignUp = ({ history }) => {
   const [user, setUser] = useState({username: '', password: ''});

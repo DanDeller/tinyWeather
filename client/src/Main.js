@@ -1,11 +1,10 @@
-import FiveDayForecast from './containers/FiveDayForecast/FiveDayForecast';
 import { spring, AnimatedSwitch } from 'react-router-transition';
-// import WeatherMain from './containers/WeatherMain/WeatherMain';
 import PrivateRoute from './hocs/PrivateRoute';
 import About from './components/about/About';
 import { Route } from 'react-router-dom';
 import React, { Suspense } from 'react';
 
+const FiveDayForecast = React.lazy(() => import('./containers/FiveDayForecast/FiveDayForecast'));
 const WeatherMain = React.lazy(() => import('./containers/WeatherMain/WeatherMain'));
 const Register = React.lazy(() => import('./components/auth/SignUp'));
 const Login = React.lazy(() => import('./components/auth/Login'));

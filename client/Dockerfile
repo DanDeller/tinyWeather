@@ -1,4 +1,4 @@
-FROM node:13-alpine
+FROM node:14-alpine
 
 # Set a working directory
 WORKDIR /www
@@ -9,7 +9,8 @@ ENV PATH /app/node_modules/.bin:$PATH
 # install app dependencies
 COPY yarn.lock ./
 RUN yarn install --silent
-RUN npm rebuild node-sass --silent
+RUN yarn cache clean --force
+RUN npm rebuild node-sass --force
 RUN yarn global add react-scripts@3.4.1 --silent
 
 # add app
