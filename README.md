@@ -9,7 +9,7 @@ A little weather app.
 <ul>
   <li><a href='https://www.mongodb.com/'>MongoDB</a></li>
 </ul>
-<h3>Optional: Docker</h3>
+<h3>Optional</h3>
 <ul>
   <li><a href='https://docs.docker.com/desktop/'>Docker</a></li>
 </ul> 
