@@ -4,7 +4,7 @@ import './Home.scss';
 const Home = () => {
   return (
     <section className="container bodyText home">
-      <h1 className="pageHeader">How the app works.</h1>
+      <h1 className="pageHeader">How the app works</h1>
       <div className="home-search">
         <div className="block">
           <h2>Search for a city.</h2>

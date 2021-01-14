@@ -56,7 +56,11 @@ $mobile: 768px;
     outline: none;
     padding: 10px 10px;
     text-shadow: 1px 1px 1px #7c7c7c;
+    transition: box-shadow .3s linear 0s;
     width: 100%;
+    &:hover {
+      box-shadow: 0 0 1px 1px #fff;
+    }
   }
   .btn-main {
     margin: 0 0 50px 0;

@@ -279,6 +279,10 @@ textarea {
   display: block;
   outline: none;
   padding: 10px 10px;
+  transition: box-shadow .3s linear 0s;
+  &:hover {
+    box-shadow: 0 0 1px 1px #fff;
+  }
   @media only screen and (max-width: $mobile) {
     border: 1px solid #F45050;
     color: #F45050;
