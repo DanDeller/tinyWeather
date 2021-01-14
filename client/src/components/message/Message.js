@@ -53,7 +53,7 @@ const Container = styled('div')`
   width: 357px;
   top: ${props => (props.top ? '0' : 'unset')};
   bottom: ${props => (props.top ? '0' : '30px')};
-  margin: -60px auto;
+  margin: 20px auto;
   left: 0;
   right: 0;
   display: flex;
