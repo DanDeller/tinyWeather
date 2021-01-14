@@ -16,7 +16,7 @@ mongoose.connect(serverConfig.mongo.connection, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }, () => {
-  console.log('Connected to mongoose.')
+  console.log('Connected to mongoose.');
 });
 
 app.server = http.createServer(app);
