@@ -82,7 +82,7 @@
     "react-router-transition": "^2.0.0",
     "react-spinners": "^0.8.3",
     "react-spring": "^8.0.27",
-    "react-test-renderer": "^16.13.1",
+    "react-test-renderer": "^17.0.1",
     "react-transition-group": "1.x",
     "react-uuid": "^1.0.2",
     "redux": "^4.0.5",

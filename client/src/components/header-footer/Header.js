@@ -21,7 +21,7 @@ const Header = ({history}) => {
       if (data.success) {
         setUser(data.user);
         setIsAuthenticated(false);
-        history.push('/about');
+        history.push('/home');
       };
     });
 
@@ -39,29 +39,11 @@ const Header = ({history}) => {
       <>
         <li key={'home'}>
           <NavLink 
-            to='/about' 
+            to='/home' 
             exact 
             activeClassName="currentLink"
             onClick={() => toggleOpen(false)}>
-            About
-          </NavLink>
-        </li>
-        <li>
-          <NavLink 
-            to='/login' 
-            exact 
-            activeClassName="currentLink"
-            onClick={() => toggleOpen(false)}>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink 
-            to='/register' 
-            exact 
-            activeClassName="currentLink"
-            onClick={() => toggleOpen(false)}>
-            Register
+            Home
           </NavLink>
         </li>
       </>
