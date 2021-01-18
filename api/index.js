@@ -12,7 +12,7 @@ const currentWeather = require('./server/routes/currentWeather'),
 
 const port = process.env.PORT || serverConfig.server.port;
 
-mongoose.connect(process.env.MONGODB_URI || serverConfig.mongo.connection, {
+mongoose.connect(serverConfig.mongo.connection, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }, () => {
