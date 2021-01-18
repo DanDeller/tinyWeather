@@ -1,0 +1,9 @@
+{
+  "name": "tinyWeather",
+  "version": "1.0.0",
+  "description": "A tiny weather app",
+  "main": "index.js",
+  "repository": "https://github.com/DanDeller/tinyWeather.git",
+  "author": "Dan Deller",
+  "license": "MIT"
+}
