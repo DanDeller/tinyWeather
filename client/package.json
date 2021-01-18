@@ -57,7 +57,7 @@
     "moment-timezone": "^0.5.31",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.3",
-    "node-sass": "^4.14.1",
+    "node-sass": "^4.14.0",
     "nodemon": "^2.0.4",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "passport": "^0.4.1",
@@ -106,13 +106,12 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "start-both": "concurrently \"yarn start-server\" \"yarn start-client\"",
+    "start": "concurrently --kill-others-on-fail \"npm run start-server\" \"npm run start-client\"",
     "start-client": "node scripts/start.js",
-    "start-server": "node server.js",
-    "server": "nodemon server.js --ignore client",
+    "start-server": "nodemon ../api/index.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "proxy": "http://localhost:3001/",
   "eslintConfig": {
