@@ -1,11 +1,9 @@
-FROM node:13-alpine
+FROM node:14-alpine
 
-# Set a working directory
 WORKDIR /www
 
-# install app dependencies
-RUN yarn install
-RUN yarn cache clean
+COPY . /www/
 
-# start app
-CMD ["yarn", "start"]
+RUN yarn install
+
+CMD [ "npm", "start" ]
