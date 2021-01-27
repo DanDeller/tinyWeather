@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import './WeatherList.scss';
+import './WeatherList.css';
 
 const WeatherIcons = ({animate}) => {
   return (

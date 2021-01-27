@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import AuthService from '../../services/AuthService';
 import { withRouter } from 'react-router';
-import './Auth.scss';
+import './Auth.css';
 
 const Message = React.lazy(() => import('../message/Message'));
 

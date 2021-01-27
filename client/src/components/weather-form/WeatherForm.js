@@ -3,7 +3,7 @@ import * as actions from '../../redux/actions/currentWeather';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './WeatherForm.scss';
+import './WeatherForm.css';
 
 const WeatherForm = () => {
   const isAuthenticated = useSelector(state => state.isAuthenticated);

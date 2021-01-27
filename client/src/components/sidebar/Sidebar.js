@@ -4,7 +4,7 @@ import SidebarItem from './SidebarItem';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react';
-import './Sidebar.scss';
+import './Sidebar.css';
 
 const Sidebar = () => {
   const currentWeather = useSelector(state => state.currentWeather);

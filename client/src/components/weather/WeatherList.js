@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import './WeatherList.scss';
+import './WeatherList.css';
 import React from 'react';
 
 const WeatherList = ({isOpen, cityDetails}) => {

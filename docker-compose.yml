@@ -9,25 +9,14 @@ services:
       - "3001:3001"
     volumes: 
       - ./api/:/www
-    environment:
-      NODE_ENV: docker
-      SESSION_SECRET: development
     command: yarn start
   client:
     build:
       context: ./client/
-      dockerfile: Dockerfile
     container_name: client
     working_dir: /www
     ports:
       - '3000:3000'
     volumes:
       - ./client/:/www
-    environment:
-      API_HOST: api
-      API_PORT: 3001
-      NODE_ENV: development
-      SESSION_SECRET: izzy
     command: yarn start
-    stdin_open: true
-    tty: true

@@ -3,7 +3,7 @@ import Sidebar from '../../components/sidebar/Sidebar';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import './WeatherMain.scss';
+import './WeatherMain.css';
 
 const WeatherVideo = React.lazy(() => import('../../components/weather-video/WeatherVideo'));
 const WeatherForm = React.lazy(() => import('../../components/weather-form/WeatherForm'));

@@ -8,7 +8,7 @@ import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import Burger from '../burger/Burger';
-import './HeaderFooter.scss';
+import './HeaderFooter.css';
 
 const Header = ({history}) => {
   const { isAuthenticated, setIsAuthenticated, setUser } = useContext(AuthContext);

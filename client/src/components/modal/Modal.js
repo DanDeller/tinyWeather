@@ -3,7 +3,7 @@ import Modal from 'react-awesome-modal';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react';
-import './Modal.scss';
+import './Modal.css';
 
 const ErrorModal = ({visible, closeModal, dispatch}) => {
   closeModal = (e) => {

@@ -2,7 +2,7 @@ import { useTransition, animated } from 'react-spring';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { X } from 'react-feather';
-import './Message.scss';
+import './Message.css';
 
 let id = 0;
 

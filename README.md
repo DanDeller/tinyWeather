@@ -3,7 +3,7 @@
 [![devDependency Status](https://david-dm.org/dandeller/scaffold/dev-status.svg)](https://david-dm.org/dwyl/esta#info=devDependencies)
 
 # tinyWeather
-A little weather app.
+A tiny weather app.
 
 <h2>What you'll need to run the app</h2>
 <ul>

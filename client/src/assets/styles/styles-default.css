@@ -1,0 +1,306 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #F45050;
+  font-family: arial;
+  margin: 0;
+  padding: 0;
+}
+
+body:not(nav) {
+  cursor: default;
+}
+
+ul {
+  list-style-type: none;
+}
+
+p, h1, h2, ul {
+  margin: 0;
+  padding: 0;
+}
+
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select:focus,
+textarea {
+  font-size: 16px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+  select,
+  textarea,
+  input {
+    font-size: 16px;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1024px;
+  padding: 10px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.bodyText {
+  font-family: 'Encode Sans Condensed', sans-serif;
+}
+
+.main {
+  padding: 10px;
+  width: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.pageHeader {
+  color: #f2f2f2;
+  font-family: 'Bangers', cursive;
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin: 15px 0;
+  text-shadow: 0 1px 1px #7A2929;
+}
+
+.tagline {
+  color: #f2f2f2;
+  font-size: 18px;
+  text-shadow: 0 1px 1px #7A2929;
+  margin: 0 0 40px 0;
+}
+
+.app-load {
+  font-family: 'Bangers', cursive;
+  font-size: 30px;
+  margin: 100px auto 0 auto;
+  text-align: center;
+}
+
+.btn-main {
+  background: none;
+  border: 1px solid #fff;
+  box-shadow: 0 0 1px 0 #7c7c7c;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  margin: 0 auto 5px auto;
+  outline: none;
+  padding: 10px 10px;
+  transition: all .3s linear 0s;
+}
+
+.btn-main:hover {
+  background: #fff;
+  box-shadow: 0px 0px 10px -4px #000;
+  color: #F45050;
+  margin: -2px auto;
+}
+
+.tech-removed {
+  text-decoration: line-through;
+}
+
+.weatherIcons {
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 30px;
+  width: 100%;
+  z-index: -1;
+}
+
+.weatherIcon {
+  opacity: .1;
+  position: absolute;
+  width: 280px;
+  pointer-events: none;
+}
+
+/*
+* animations for rain icon
+*/
+
+.animateRain {
+  animation: moveRight 35s linear infinite;
+  left: 40%;
+  top: 25%;
+}
+@keyframes moveRight {
+  from { 
+    transform: rotate(0deg) 
+    translateY(50%) 
+    rotate(0deg);
+  }
+  to { 
+    transform: rotate(-360deg)
+    translateY(50%) 
+    rotate(360deg);
+  }
+}
+
+/*
+* animations for sun icon
+*/
+
+.animateSun {
+  animation: moveLeft 35s linear infinite;
+  left: 75%;
+  top: 40%;
+}
+@keyframes moveLeft {
+  from { 
+    transform: rotate(0deg) 
+    translateY(20%) 
+    rotate(0deg);
+  }
+  to { 
+    transform: rotate(360deg)
+    translateY(20%) 
+    rotate(-360deg);
+  }
+}
+
+/*
+* animations for snow icon
+*/
+.animateSnow {
+  animation: moveDown 25s linear infinite;
+  left: 10%;
+  top: 5%;
+}
+@keyframes moveDown {
+  from { 
+    transform: rotate(0deg) 
+    translateY(15%) 
+    rotate(0deg);
+  }
+  to { 
+    transform: rotate(360deg)
+    translateY(15%) 
+    rotate(-360deg);
+  }
+}
+
+/*
+* animations for thunder icon
+*/
+.animateThunder {
+  animation: moveUp 30s linear infinite;
+  left: 20%;
+  top: 65%;
+}
+@keyframes moveUp {
+  from { 
+    transform: rotate(0deg) 
+    translateY(35%) 
+    rotate(0deg);
+  }
+  to { 
+    transform: rotate(-360deg)
+    translateY(35%) 
+    rotate(360deg);
+  }
+}
+
+.route-wrapper {
+  position: relative;
+}
+
+.route-wrapper > div {
+  position: absolute;
+  width: 100%;
+}
+
+.sign-out {
+  background: none;
+  border: 1px solid #fff;
+  box-shadow: 0 0 1px 0 #7c7c7c;
+  color: #fff;
+  text-shadow: 0 1px 1px #7A2929;
+  cursor: pointer;
+  display: block;
+  outline: none;
+  padding: 10px 10px;
+  transition: box-shadow .3s linear 0s  
+}
+
+.sign-out:hover {
+  box-shadow: 0 0 1px 1px #fff;
+}
+
+.spinnerWrap {
+  background-color: rgba(255, 255, 255, .7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.spinnerBlurb {
+  color: #290E0E;
+  font-family: 'Bangers', cursive;
+  font-size: 30px;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.spinnerShow {
+  display: flex;
+}
+
+
+@media screen and (max-width: 768px) {
+  .pageHeader span {
+    display: block;
+  }
+
+  .weatherIcon {
+    width: 50%;
+  }
+  
+  .sign-out {
+    border: 1px solid #F45050;
+    color: #F45050;
+    margin: 0 auto 5px auto;
+    text-shadow: none;
+  }
+
+  .github-corner svg {
+    top: 100% !important;
+    transform: rotate(90deg) !important;
+  }
+}

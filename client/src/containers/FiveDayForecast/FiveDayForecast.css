@@ -1,0 +1,37 @@
+.dayHold {
+  background: rgba(0, 0, 0, .4);
+  box-shadow: 0px 0px 10px -4px #000;
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(5, 20%);
+  padding: 10px;
+}
+@media only screen and (max-width: 768px) {
+  .dayHold {
+    grid-template-columns: repeat(1, 100%);
+ }
+}
+.dayHold .day {
+  background: #fff;
+  box-shadow: 0 0 3px 0 #ccc;
+  padding: 5px;
+  width: 100%;
+}
+.dayHold .day p {
+  margin: 0 0 15px 0;
+  text-align: center;
+}
+.dayHold .day p:nth-child(2) {
+  font-size: 28px;
+}
+.dayHold .day p:last-of-type {
+  margin: 0;
+}
+.dayHold .day p span {
+  display: block;
+  font-size: 12px;
+}
+.forgotCity {
+  color: #f2f2f2;
+  text-shadow: 1px 1px 1px #4c4c4c;
+}

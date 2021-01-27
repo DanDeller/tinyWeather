@@ -4,7 +4,7 @@ WORKDIR /www
 
 COPY . /www/
 
-RUN yarn install --silent
+RUN yarn install --silent --production=false
 
 EXPOSE 3001
 

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import './Burger.scss';
+import './Burger.css';
 
 const Burger = ({isOpen, toggleOpen}) => {
   return (

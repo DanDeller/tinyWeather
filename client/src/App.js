@@ -1,5 +1,5 @@
 import WeatherIcons from './components/weather/WeatherIcons';
-import style from './assets/styles/styles-default.scss';
+import style from './assets/styles/styles-default.css';
 import Header from './components/header-footer/Header';
 import Footer from './components/header-footer/Footer';
 import React, { Suspense } from 'react';

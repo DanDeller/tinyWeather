@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/AuthContext';
 import AuthService from '../../services/AuthService';
 import { useDispatch } from 'react-redux';
 import { withRouter } from 'react-router';
-import './Auth.scss';
+import './Auth.css';
 
 const Message = React.lazy(() => import('../message/Message'));
 

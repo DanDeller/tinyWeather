@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
-import './FiveDayForecast.scss';
+import './FiveDayForecast.css';
 import 'moment-timezone';
 
 const FiveDayForecast = () => {
