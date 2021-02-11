@@ -88,43 +88,13 @@ textarea {
   text-shadow: 0 1px 1px #7A2929;
 }
 
-.tagline {
-  color: #f2f2f2;
-  font-size: 18px;
-  text-shadow: 0 1px 1px #7A2929;
-  margin: 0 0 40px 0;
-}
-
 .app-load {
+  color: #f2f2f2;
   font-family: 'Bangers', cursive;
   font-size: 30px;
   margin: 100px auto 0 auto;
   text-align: center;
-}
-
-.btn-main {
-  background: none;
-  border: 1px solid #fff;
-  box-shadow: 0 0 1px 0 #7c7c7c;
-  color: #fff;
-  cursor: pointer;
-  display: block;
-  font-size: 16px;
-  margin: 0 auto 5px auto;
-  outline: none;
-  padding: 10px 10px;
-  transition: all .3s linear 0s;
-}
-
-.btn-main:hover {
-  background: #fff;
-  box-shadow: 0px 0px 10px -4px #000;
-  color: #F45050;
-  margin: -2px auto;
-}
-
-.tech-removed {
-  text-decoration: line-through;
+  text-shadow: 0 1px 1px #7A2929;
 }
 
 .weatherIcons {
@@ -240,11 +210,11 @@ textarea {
 }
 
 .sign-out {
-  background: none;
-  border: 1px solid #fff;
+  background: #fff;
+  border: none;
   box-shadow: 0 0 1px 0 #7c7c7c;
-  color: #fff;
-  text-shadow: 0 1px 1px #7A2929;
+  color: #F45050;
+  text-shadow: 0 0 0 #7A2929;
   cursor: pointer;
   display: block;
   outline: none;
@@ -253,7 +223,7 @@ textarea {
 }
 
 .sign-out:hover {
-  box-shadow: 0 0 1px 1px #fff;
+  box-shadow: 0 0 1px 1px #290e0e;
 }
 
 .spinnerWrap {

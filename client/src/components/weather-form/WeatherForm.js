@@ -50,6 +50,7 @@ const WeatherForm = () => {
             value='Search'
             className='search-city'
           />
+          <p>Example: Pittsburgh</p>
         </form>
       </div>
       <div className={`resetButton ${(currentWeather.isOpen ? 'hide' : 'show')}`}>

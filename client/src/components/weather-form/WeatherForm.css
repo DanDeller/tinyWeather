@@ -3,38 +3,66 @@
   position: relative;
   width: 100%;
 }
+.weatherForm form {
+  align-items: center;
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  text-shadow: 0 1px 1px #7a2929;
+}
+@media only screen and (max-width: 768px) {
+  .weatherForm form {
+    display: block;
+  }
+}
 .weatherForm input {
-  border: 1px solid #fff;
-  font-size: 14px;
+  border: none;
   outline: none;
   padding: 10px 10px;
 }
 .weatherForm input[type=text] {
-  width: 60%;
-  box-shadow: 0 0 1px 0 #6b6a6a;
+  background: rgba(210, 74, 74, 0.5);
+  color: #fff;
+  transition: box-shadow .3s linear 0s;
+  width: 65%;
+}
+.weatherForm input[type=text]::placeholder {
+  color: #f2f2f2;
+  font-family: 'Roboto', sans-serif;
 }
 @media only screen and (max-width: 768px) {
   .weatherForm input[type=text] {
     margin: 0 0 20px 0;
     width: 100%;
- }
+  }
 }
 .weatherForm input[type=submit] {
-  background: none;
-  box-shadow: 0 0 1px 0 #7c7c7c;
+  background: #F45050;
   color: #fff;
   cursor: pointer;
-  margin: 0 0 0 15px;
+  margin: 0 15px;
+  padding: 10px 19px;
   text-shadow: 0 1px 1px #7a2929;
+  transition: box-shadow .3s linear 0s;
 }
+.weatherForm input[type=text]:hover,
 .weatherForm input[type=submit]:hover {
-  box-shadow: 0 0 1px 0 #4c4c4c;
+  box-shadow: 0 0 1px 1px #fff;
 }
 @media only screen and (max-width: 768px) {
   .weatherForm input[type=submit] {
     margin: 0;
     width: 100%;
- }
+  }
+}
+.weatherForm p {
+  font-family: 'Bangers', cursive;
+  letter-spacing: 1px;
+}
+@media only screen and (max-width: 768px) {
+  .weatherForm p {
+    display: none;
+  }
 }
 .resetButton {
   margin: 0;

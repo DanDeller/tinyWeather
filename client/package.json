@@ -92,9 +92,9 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "start": "yarn start-client",
-    "start-server": "nodemon ../api/index.js",
+    "start": "concurrently --kill-others-on-fail \"npm run start-server\" \"npm run start-client\"",
     "start-client": "node scripts/start.js",
+    "start-server": "nodemon ../api/index.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },
