@@ -19,7 +19,6 @@
     "bcryptjs": "^2.4.3",
     "camelcase": "^5.3.1",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
-    "concurrently": "^5.3.0",
     "cookie-parser": "^1.4.5",
     "cookie-session": "^1.4.0",
     "cors": "^2.8.5",
@@ -92,9 +91,9 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "start": "concurrently --kill-others-on-fail \"npm run start-server\" \"npm run start-client\"",
-    "start-client": "node scripts/start.js",
+    "start": "yarn start-client",
     "start-server": "nodemon ../api/index.js",
+    "start-client": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },
