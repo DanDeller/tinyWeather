@@ -202,10 +202,6 @@ export const deleteRecentCities = (id) => {
     };
 
     axios.delete('/currentWeather', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
       data: {
         source: data
       }

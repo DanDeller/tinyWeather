@@ -147,7 +147,7 @@ textarea {
 .animateRain {
   animation: moveRight 35s linear infinite;
   left: 40%;
-  top: 25%;
+  top: 15%;
 }
 @keyframes moveRight {
   from { 
@@ -216,12 +216,12 @@ textarea {
 @keyframes moveUp {
   from { 
     transform: rotate(0deg) 
-    translateY(35%) 
+    translateY(-35%) 
     rotate(0deg);
   }
   to { 
     transform: rotate(-360deg)
-    translateY(35%) 
+    translateY(-35%) 
     rotate(360deg);
   }
 }
@@ -236,20 +236,23 @@ textarea {
 }
 
 .sign-out {
-  background: #fff;
-  border: none;
-  box-shadow: 0 0 1px 0 #7c7c7c;
-  color: #F45050;
-  text-shadow: 0 0 0 #7A2929;
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
   cursor: pointer;
   display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
   outline: none;
   padding: 10px 10px;
-  transition: box-shadow .3s linear 0s  
+  transition: all .3s linear 0s  
 }
 
 .sign-out:hover {
-  box-shadow: 0 0 1px 1px #290e0e;
+  background: #fff;
+  border: 1px solid rgba(196, 68, 68, .7);;
+  color: #F45050;
 }
 
 .spinnerWrap {

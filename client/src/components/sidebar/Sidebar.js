@@ -11,10 +11,10 @@ const Sidebar = () => {
 
   return (
     <aside className="sideBar">
+      <h3>Recently Searched Cities</h3>
       <SidebarSpinner
         sidebarLoading={currentWeather.sidebarLoading}
       />
-      <h3>Recently Searched Cities</h3>
       <ul>
         <CSSTransitionGroup
           transitionName="list-item"

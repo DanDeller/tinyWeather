@@ -13,8 +13,8 @@ const FiveDayForecast = () => {
   const forgotCityInline = !currentWeather.setCity.length ? 'show' : 'hide';
 
   useEffect(() => {
-    const fetchFlag = fiveDayForecast.fetchFlag,
-          city      = currentWeather.setCity;
+    const fetchFlag = fiveDayForecast.fetchFlag;
+    const city = currentWeather.setCity;
 
     if (currentWeather.setCity.length && !fetchFlag) {
       dispatch(actions.fetchDays(city));

@@ -1,10 +1,13 @@
 .sideBar {
-  color: #f2f2f2;
+  background: #f2f2f2;
   margin: 0;
-  padding: 0 0 0 10px;
+  min-height: 69px;
+  padding: 10px;
   position: relative;
   text-align: right;
-  text-shadow: 0 1px 1px #7a2929;
+  box-shadow: 0px 0px 10px -4px #000;
+  transition: all .3s linear 0s;
+  /* text-shadow: 0 1px 1px #7a2929; */
 }
 @media only screen and (max-width: 768px) {
   .sideBar {
@@ -12,10 +15,14 @@
  }
 }
 .sideBar h3 {
+  color: #290e0e;
   font-size: 22px;
+  font-family: 'Bangers', cursive;
   margin: 0 0 15px 0;
+  text-align: center;
 }
 .sideBar ul {
+  transition: height 500ms ease-in-out;
   margin: 0;
   padding: 0;
 }
@@ -23,7 +30,11 @@
   margin: 0 0 10px 0;
   text-transform: capitalize;
 }
+.sideBar ul li:last-of-type {
+  margin: 0;
+}
 .sideBar ul li p {
+  color: #290e0e;
   font-size: 16px;
   transition: all 0.3s linear 0s;
 }
@@ -36,8 +47,8 @@
   opacity: 0;
 }
 .sideBar ul li button {
-  background: none;
-  border: 1px solid #fff;
+  background: #F45050;
+  border: 1px solid #7a2929;
   border-radius: 2px;
   box-shadow: 0px 0px 10px -4px #7a2929;
   color: #fff;
@@ -50,7 +61,7 @@
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  position: absolute;
+  position: relative;
   right: 0;
   top: 0;
   width: 90%;
@@ -61,6 +72,7 @@
   margin: 42px 0 0 0;
 }
 .sidebar-spinner-wrap p {
+  color: #290e0e;
   font-family: 'Bangers', cursive;
   font-size: 14px;
   margin: 0 0 5px 0;
@@ -71,7 +83,7 @@
 .sidebarItem {
   cursor: pointer;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 @media only screen and (max-width: 768px) {
   .sidebarItem {
