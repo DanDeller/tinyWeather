@@ -38,7 +38,7 @@ module.exports = function(passport) {
 
         if (!user) {
           return done(null, false);
-        }
+        };
 
         bcrypt.compare(password, user.password, (err, result) => {
           if (err) throw err;
@@ -47,7 +47,7 @@ module.exports = function(passport) {
             done(null, user);
           } else {
             done(null, false);
-          }
+          };
         });
       });
     })

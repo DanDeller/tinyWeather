@@ -1,13 +1,10 @@
 .sideBar {
-  background: #f2f2f2;
   margin: 0;
   min-height: 69px;
-  padding: 10px;
+  padding: 0 10px 10px 10px;
   position: relative;
-  text-align: right;
-  box-shadow: 0px 0px 10px -4px #000;
+  text-shadow: 0 1px 1px #000;
   transition: all .3s linear 0s;
-  /* text-shadow: 0 1px 1px #7a2929; */
 }
 @media only screen and (max-width: 768px) {
   .sideBar {
@@ -15,28 +12,37 @@
  }
 }
 .sideBar h3 {
-  color: #290e0e;
+  color: #fff;
   font-size: 22px;
   font-family: 'Bangers', cursive;
+  letter-spacing: 1px;
   margin: 0 0 15px 0;
-  text-align: center;
 }
 .sideBar ul {
-  transition: height 500ms ease-in-out;
   margin: 0;
   padding: 0;
 }
 .sideBar ul li {
+  background: rgba(0, 0, 0, .4);
+  box-shadow: 0px 0px 10px -4px #000;
+  display: block;
   margin: 0 0 10px 0;
+  padding: 10px;
+}
+.sideBar ul li p:first-of-type {
   text-transform: capitalize;
+}
+.sideBar ul li p:last-of-type {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
 }
 .sideBar ul li:last-of-type {
   margin: 0;
 }
 .sideBar ul li p {
-  color: #290e0e;
+  color: #fff;
   font-size: 16px;
-  transition: all 0.3s linear 0s;
 }
 .sideBar ul li p.sidebarItemActive {
   transform: translateX(-5vh);
@@ -72,7 +78,7 @@
   margin: 42px 0 0 0;
 }
 .sidebar-spinner-wrap p {
-  color: #290e0e;
+  color: #fff;
   font-family: 'Bangers', cursive;
   font-size: 14px;
   margin: 0 0 5px 0;
@@ -81,9 +87,8 @@
   background-color: #290e0e;
 }
 .sidebarItem {
-  cursor: pointer;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 @media only screen and (max-width: 768px) {
   .sidebarItem {

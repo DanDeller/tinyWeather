@@ -18,7 +18,7 @@ const SidebarSpinner = ({sidebarLoading}) => {
           css={override}
           height={5}
           width={100}
-          color={"#F45050"}
+          color={"#fff"}
         />
       </div>
     </div>

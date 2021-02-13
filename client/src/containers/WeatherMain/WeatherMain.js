@@ -30,14 +30,15 @@ const WeatherMain = () => {
             <WeatherVideo 
               setVideo={currentWeather.setVideo}  
             />
-            <WeatherForm
-              isOpen={currentWeather.isOpen}
-              city={currentWeather.city}
-            />
             <WeatherList
               cityDetails={currentWeather.cityDetails}
               isOpen={currentWeather.isOpen}
             />
+            <WeatherForm
+              isOpen={currentWeather.isOpen}
+              city={currentWeather.city}
+            />
+            
           </div>
           <div className="weatherRight">
             <Sidebar
