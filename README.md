@@ -14,7 +14,7 @@ A tiny weather app.
   <li><a href='https://docs.docker.com/desktop/'>Docker</a></li>
 </ul> 
 
-> NOTE: Docker with tinyWeather is still in its development stage. You do not need Docker to run the app right now. Pull requests are very welcome for any Docker assitance =)
+> NOTE: Docker with tinyWeather is still in its development stage. You do not need Docker to run the app right now.
 
 <h2>How to use</h2>
 <h4>Without Docker:</h4>
