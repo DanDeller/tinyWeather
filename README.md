@@ -14,20 +14,16 @@ A tiny weather app.
   <li><a href='https://docs.docker.com/desktop/'>Docker</a></li>
 </ul> 
 
-<h2>How to use</h2>
-<h4>With Docker:</h4>
-  - Make sure Docker and MongoDB are both set up<br />
-  - Clone the repo<br />
-  - Launch Docker<br />
-  - Start the api: docker-compose up --build<br />
-  - Start client: yarn start (new tab)<br />
+> NOTE: Docker with tinyWeather is still in its development stage. You do not need Docker to run the app right now. Pull requests are very welcome for any Docker assitance =)
 
+<h2>How to use</h2>
 <h4>Without Docker:</h4>
-  - Make MongoDB is set up<br />
-  - Clone the repo<br />
-  - Start client: cd into tinyWeather/api and run yarn start (new tab)<br />
-  - Start the api: cd into tinyWeather/api and run yarn start<br />
-  <br/>
+  <ul>
+    <li>Make sure MongoDB is installed</li>
+    <li>Clone the repo</li>
+    <li>Start client (new tab): cd into tinyWeather/api and run yarn start</li>
+    <li>Start the api (new tab): cd into tinyWeather/api and run yarn start</li>
+  </ul>
   
 > NOTE: If you are not using yarn, you can still use npm in its place.
 
