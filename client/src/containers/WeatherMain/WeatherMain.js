@@ -23,10 +23,10 @@ const WeatherMain = () => {
 
   return (
     <section className="container">
-      <div className="weatherMain bodyText">
-        <h1 className="pageHeader">Search a city to check the weather</h1>
+      <div className="weather-main body-text">
+        <h1 className="page-header">Search a city to check the weather</h1>
         <div className="hold">
-          <div className="weatherLeft">
+          <div className="weather-left">
             <WeatherVideo 
               setVideo={currentWeather.setVideo}  
             />
@@ -40,7 +40,7 @@ const WeatherMain = () => {
             />
             
           </div>
-          <div className="weatherRight">
+          <div className="weather-right">
             <Sidebar
               recentCities={currentWeather.recentCities}
               visible={currentWeather.visible}

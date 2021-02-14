@@ -38,10 +38,10 @@ const FiveDayForecast = () => {
 
   return (
     <section className="container">
-      <div className="weatherMain bodyText">
-        <h1 className="pageHeader">Forecast for the next five days</h1>
-        <div className="dayHold">
-          <h3 className={`hide forgotCity ${forgotCityInline}`}>Go lookup a city first!</h3>
+      <div className="weather-main body-text">
+        <h1 className="page-header">Forecast for the next five days</h1>
+        <div className="day-hold">
+          <h3 className={`hide forgot-city ${forgotCityInline}`}>Go lookup a city first!</h3>
           {days}
         </div>
       </div>

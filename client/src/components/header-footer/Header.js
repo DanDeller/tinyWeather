@@ -88,9 +88,9 @@ const Header = ({history}) => {
   return (
     <header className="header">
       <div className="container">
-        <div className="navHold">
+        <div className="nav-hold">
           <NavLink 
-            className="pageHeader logo"
+            className="page-header logo"
             to='/' 
             exact>
             TW

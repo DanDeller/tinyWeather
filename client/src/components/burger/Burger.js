@@ -5,7 +5,7 @@ import './Burger.css';
 const Burger = ({isOpen, toggleOpen}) => {
   return (
     <div
-      className={`navIcon ${isOpen ? 'open' : ''}`} 
+      className={`nav-icon ${isOpen ? 'open' : ''}`} 
       onClick={() => toggleOpen(!isOpen)}>
       <div>
         <span></span>

@@ -1,10 +1,10 @@
-.weatherMain {
+.weather-main {
   margin: 0 auto;
   max-width: 100%;
   position: relative;
   z-index: 9;
 }
-.weatherMain .hold {
+.weather-main .hold {
   align-items: flex-start;
   color: #fff;
   display: flex;
@@ -12,11 +12,11 @@
   position: relative;
 }
 @media only screen and (max-width: 768px) {
-  .weatherMain .hold {
+  .weather-main .hold {
     display: block;
  }
 }
-.weatherMain .weatherLeft {
+.weather-main .weather-left {
   background: rgba(0, 0, 0, .4);
   box-shadow: 0px 0px 10px -4px #000;
   overflow: hidden;
@@ -26,22 +26,22 @@
   width: 75%;
 }
 @media only screen and (max-width: 768px) {
-  .weatherMain .weatherLeft {
+  .weather-main .weather-left {
     margin: 0 0 25px 0;
     width: 100%;
  }
 }
-.weatherMain .weatherLeft .weatherAbove {
+.weather-main .weather-left .weatherAbove {
   position: relative;
 }
-.weatherMain .weatherLeft .weatherAbove .active {
+.weather-main .weather-left .weatherAbove .active {
   opacity: 1;
 }
-.weatherMain .weatherRight {
+.weather-main .weather-right {
   width: 24%;
 }
 @media only screen and (max-width: 768px) {
-  .weatherMain .weatherRight {
+  .weather-main .weather-right {
     width: 100%;
  }
 }
