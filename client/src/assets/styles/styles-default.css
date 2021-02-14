@@ -63,7 +63,7 @@ textarea {
 }
 
 .body-text {
-  font-family: 'Encode Sans Condensed', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .main {
@@ -239,7 +239,6 @@ textarea {
   color: #fff;
   cursor: pointer;
   display: block;
-  font-family: 'Roboto', sans-serif;
   font-size: 15px;
   font-weight: 700;
   outline: none;

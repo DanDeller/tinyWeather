@@ -9,7 +9,7 @@ const SidebarItem = ({id, recentCity}) => {
   const deleteCity = () => dispatch(actions.deleteRecentCities(id));
 
   return (
-    <div className="sidebarItem" id={id}>
+    <div className="sidebar-item" id={id}>
       <p>{city}</p>
       <p onClick={deleteCity}>x</p>
     </div>

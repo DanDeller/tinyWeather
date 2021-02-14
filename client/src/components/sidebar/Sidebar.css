@@ -1,4 +1,4 @@
-.sideBar {
+.side-bar {
   margin: 0;
   min-height: 69px;
   padding: 0 10px 10px 10px;
@@ -7,52 +7,44 @@
   transition: all .3s linear 0s;
 }
 @media only screen and (max-width: 768px) {
-  .sideBar {
+  .side-bar {
     text-align: center;
  }
 }
-.sideBar h3 {
+.side-bar h3 {
   color: #fff;
   font-size: 22px;
   font-family: 'Bangers', cursive;
   letter-spacing: 1px;
   margin: 0 0 15px 0;
 }
-.sideBar ul {
+.side-bar ul {
   margin: 0;
   padding: 0;
 }
-.sideBar ul li {
+.side-bar ul li {
   background: rgba(0, 0, 0, .4);
   box-shadow: 0px 0px 10px -4px #000;
   display: block;
   margin: 0 0 10px 0;
   padding: 10px;
 }
-.sideBar ul li p:first-of-type {
+.side-bar ul li p:first-of-type {
   text-transform: capitalize;
 }
-.sideBar ul li p:last-of-type {
+.side-bar ul li p:last-of-type {
   cursor: pointer;
   font-size: 14px;
   font-weight: bold;
 }
-.sideBar ul li:last-of-type {
+.side-bar ul li:last-of-type {
   margin: 0;
 }
-.sideBar ul li p {
+.side-bar ul li p {
   color: #fff;
   font-size: 16px;
 }
-.sideBar ul li p.sidebarItemActive {
-  transform: translateX(-5vh);
-  opacity: 0.4;
-}
-.sideBar ul li p.sidebarItemUnctive {
-  transform: translateX(0);
-  opacity: 0;
-}
-.sideBar ul li button {
+.side-bar ul li button {
   background: #F45050;
   border: 1px solid #7a2929;
   border-radius: 2px;
@@ -86,12 +78,12 @@
 .sidebar-spinner-wrap .sidebar-spinner {
   background-color: #290e0e;
 }
-.sidebarItem {
+.sidebar-item {
   display: flex;
   justify-content: space-between;
 }
 @media only screen and (max-width: 768px) {
-  .sidebarItem {
+  .sidebar-item {
     justify-content: center;
  }
 }

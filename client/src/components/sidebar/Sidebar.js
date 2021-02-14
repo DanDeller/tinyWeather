@@ -10,7 +10,7 @@ const Sidebar = () => {
   const currentWeather = useSelector(state => state.currentWeather);
 
   return (
-    <aside className="sideBar">
+    <aside className="side-bar">
       <h3>Recently Searched Cities</h3>
       <SidebarSpinner
         sidebarLoading={currentWeather.sidebarLoading}
@@ -27,7 +27,7 @@ const Sidebar = () => {
           {currentWeather.recentCities.map((city, i) => (
             <li 
               key={i}
-              className="sidebarItem">
+              className="sidebar-Item">
                 <SidebarItem 
                   key={i}
                   id={city.id}
