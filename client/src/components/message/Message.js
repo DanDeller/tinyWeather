@@ -1,7 +1,6 @@
 import { useTransition, animated } from 'react-spring';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { X } from 'react-feather';
 import './Message.css';
 
 let id = 0;
@@ -38,7 +37,7 @@ function Message({ config = { tension: 125, friction: 20, precision: 0.1 }, time
                 e.stopPropagation()
                 cancelMap.has(item) && cancelMap.get(item)()
               }}>
-              <X size={18} />
+              <Close>x</Close>
             </Button>
           </Content>
         </Messages>
@@ -47,12 +46,15 @@ function Message({ config = { tension: 125, friction: 20, precision: 0.1 }, time
   );
 };
 
+const Close = styled('p')`
+  margin: 4px 5px 0 0px !important;
+`;
+
 const Container = styled('div')`
   position: fixed;
   z-index: 1000;
   width: 357px;
-  top: ${props => (props.top ? '0' : 'unset')};
-  bottom: ${props => (props.top ? '0' : '30px')};
+  bottom: 0;
   margin: 20px auto;
   left: 0;
   right: 0;

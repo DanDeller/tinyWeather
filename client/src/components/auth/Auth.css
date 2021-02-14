@@ -62,11 +62,11 @@
 .login button:hover {
   box-shadow: 0 0 1px 1px #fff;
 }
-.btn-main {
-  margin: 0 auto 50px auto;
-}
 .login ::placeholder, .signup ::placeholder {
   color: #f2f2f2;
+}
+.switch-auth {
+  margin: 50px auto 0 auto;
 }
 @media only screen and (max-width: 768px) {
   .signup,
