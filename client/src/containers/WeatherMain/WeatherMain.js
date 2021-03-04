@@ -62,4 +62,4 @@ WeatherMain.propTypes = {
   city: PropTypes.string
 };
 
-export default WeatherMain;
+export default React.memo(WeatherMain);

@@ -80,24 +80,5 @@ export default {
 			};
     })
     .catch((err) => console.log(err));
-
-    // NOTE: axios for /user breaks app
-    //
-    // return axios.get('/user')
-    // .then((res) => {
-    //   console.log(res)
-    //   if (res.status !== 401) {
-    //     const data = res.data;
-    //     return data;
-    //   } else {
-    //     return { 
-    //       isAuthenticated: false, 
-    //       user: {
-    //         username: ''
-    //       }
-    //     };
-    //   };
-    // })
-    // .catch((err) => console.log(err));
   }
 };

@@ -14,30 +14,28 @@ export default ({ children }) => {
   useEffect(() => {
     AuthService.isAuthenticated().then((data) => {
       const expiresIn = new Date(new Date().getTime() + 60000);
-      const { user, isAuthenticated } = data;
-      
-      if (user.username.length) {
-        const { access_token } = user.cookies;
-
-        localStorage.setItem('tinyWeatherToken', access_token);
-        localStorage.setItem('expirationDate', expiresIn);
-
-        dispatch(actions.setTokenId(access_token));
-        dispatch(actions.setIsAuthenticated(true));
-        dispatch(actions.setUserId(user.id));
-        
-        setUser(user);
-        setIsAuthenticated(isAuthenticated);
-        setIsLoaded(true);
+      const { user, isAuthenticated, access_token } = data;
+      const payload = {
+        token: access_token,
+        isAuthenticated: isAuthenticated,
+        id: user.id
       };
 
+      localStorage.setItem('tinyWeatherToken', access_token);
+      localStorage.setItem('expirationDate', expiresIn);
+
+      dispatch(actions.setAuth(payload));
+      
+      setUser(user);
+      setIsAuthenticated(isAuthenticated);
       setIsLoaded(true);
     });
   }, [dispatch]);
 
   return (
     <div>
-      {!isLoaded ? <p className="tagline app-load">Loading app...</p> : 
+      {!isLoaded ? 
+      <p className="tagline app-load">Loading app...</p> : 
       <AuthContext.Provider value={{ user, setUser, isAuthenticated, setIsAuthenticated }}>
         { children }
       </AuthContext.Provider>}

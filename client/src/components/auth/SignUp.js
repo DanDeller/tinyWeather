@@ -41,7 +41,7 @@ const SignUp = ({ history }) => {
 
       if (!message.msgError) {
         timerID = setTimeout(() => {
-          history.push('/login');
+          history.push('/');
         }, 1000);
       };
     });
