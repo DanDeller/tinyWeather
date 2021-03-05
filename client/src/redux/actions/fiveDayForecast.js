@@ -25,18 +25,20 @@ export const fetchDays = city => {
       .then(res => {
         if (res) {
           const newData = [],
-                set     = res.data;
+                set     = res.data.list;
 
-          if (set.list) {
-            set.list.map((o) => {
+          if (set) {
+            set.map((o) => {
               const date = o.dt_txt.split(' ')[1];
-              
-              if (date === '15:00:00') {
+
+              if (date === '13:00:00') {
                 newData.push(o);
-              }
+                console.log(newData)
+              };
 
               return newData.splice(5);
             });
+
             dispatch(fetchDaysSuccess(newData));
           }
         }
