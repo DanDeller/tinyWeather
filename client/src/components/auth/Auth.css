@@ -68,6 +68,9 @@
 .switch-auth {
   margin: 50px auto 0 auto;
 }
+.tech-removed {
+  text-decoration: line-through;
+}
 @media only screen and (max-width: 768px) {
   .signup,
   .login {

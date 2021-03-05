@@ -33,7 +33,6 @@ export const fetchDays = city => {
 
               if (date === '13:00:00') {
                 newData.push(o);
-                console.log(newData)
               };
 
               return newData.splice(5);
