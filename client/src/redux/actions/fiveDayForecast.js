@@ -31,7 +31,7 @@ export const fetchDays = city => {
             set.map((o) => {
               const date = o.dt_txt.split(' ')[1];
 
-              if (date === '13:00:00') {
+              if (date === '15:00:00' || date === '13:00:00') {
                 newData.push(o);
               };
 

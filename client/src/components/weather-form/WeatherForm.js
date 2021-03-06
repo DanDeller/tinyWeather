@@ -21,12 +21,15 @@ const WeatherForm = () => {
 
   const getWeather = (e) => {
     e.preventDefault();
-    dispatch(actions.getWeather(city, userId));
+    const cityName = city.toLowerCase();
+    dispatch(actions.getWeather(cityName, userId));
+    setCity('');
   };
 
   const resetSearch = () => {
     dispatch(actions.resetSearch());
     dispatch(fetchFlagAction.setFetchFlag(!!fiveDayForecast.fetchFlag));
+    dispatch(actions.runEasterEgg(false));
     clearInput();
   };
 
@@ -54,7 +57,7 @@ const WeatherForm = () => {
         </form>
       </div>
       <div className={`resetButton ${(currentWeather.isOpen ? 'hide' : 'show')}`}>
-        <p>Seach another city?</p>
+        <p>Search another city?</p>
         <button
           onClick={resetSearch}>Search
         </button>

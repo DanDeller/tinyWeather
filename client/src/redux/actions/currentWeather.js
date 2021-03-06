@@ -67,6 +67,11 @@ export const reset_action = () => ({
   type: actionTypes.RESET_ACTION
 });
 
+export const runEasterEgg = (bool) => ({
+  type: actionTypes.RUN_EASTER_EGG,
+  bool
+});
+
 /*
  *  FETCH WEATHER
  */
@@ -105,6 +110,12 @@ export const getWeather = (city, userId) => {
         temp: parseInt(res.data.main.temp)
       };
 
+      if (city === 'jackson') {
+        const audio = document.querySelector(`audio[data-id="egg"]`)
+        audio.play();
+        dispatch(runEasterEgg(true));
+      };
+
       switch(details.weather) {
         case 'clouds':
           video = {Clouds};
@@ -131,7 +142,7 @@ export const getWeather = (city, userId) => {
       
       // Use a timeout to simulate a slightly longer loading time
       // to help demo the loader and display it, at minimum, for 500ms
-      // NOTE: this is for demo purposes only. Don't use in realtime
+      // NOTE: This is for demo purposes only. Don't use in realtime
       setTimeout(() => {
         dispatch(fetchWeatherSuccess());
         dispatch(postRecentCities(city, uuid(), userId));

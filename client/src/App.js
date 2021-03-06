@@ -1,4 +1,5 @@
 import WeatherIcons from './components/weather/WeatherIcons';
+import EasterEgg from './components/easter-egg/EasterEgg';
 import style from './assets/styles/styles-default.css';
 import Header from './components/header-footer/Header';
 import Footer from './components/header-footer/Footer';
@@ -13,6 +14,7 @@ function App() {
     <div className={style.wrap}>
       <Header />
       <Main />
+      <EasterEgg />
       <Footer />
       <Suspense fallback={<div className="tagline app-load"></div>}>
         <WeatherLookupSpinner />
