@@ -21,7 +21,7 @@ const WeatherForm = () => {
 
   const getWeather = (e) => {
     e.preventDefault();
-    const cityName = city.toLowerCase();
+    const cityName = city.length ? city.toLowerCase() : '';
     dispatch(actions.getWeather(cityName, userId));
     setCity('');
   };

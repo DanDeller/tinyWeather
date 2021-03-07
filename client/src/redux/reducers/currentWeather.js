@@ -58,7 +58,6 @@ const fetchRecentCitiesSuccess = (state) => {
 };
 
 const runEasterEgg = (state, action) => {
-  console.log(action)
   return updateObject(state, {easterEgg: action.bool})
 };
 

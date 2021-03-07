@@ -21,21 +21,18 @@ export const fetchDays = city => {
       return;
     } else {
       dispatch(fetchDaysStart());
-      axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
+      const cityState = city.split(',');
+
+      // Use the below comment to avoid eslint warnings. Reason: an extra space being added when using a comma after a template literal.
+      // eslint-disable-next-line
+      axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=${cityState[0]}\,,${cityState[1]}&appid=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
       .then(res => {
         if (res) {
-          const newData = [],
-                set     = res.data.list;
+          const set = res.data.list;
 
           if (set) {
-            set.map((o) => {
-              const date = o.dt_txt.split(' ')[1];
-
-              if (date === '15:00:00' || date === '13:00:00') {
-                newData.push(o);
-              };
-
-              return newData.splice(5);
+            const newData = set.filter((o) => {
+              return o.dt_txt.split(' ')[1] === '13:00:00' || o.dt_txt.split(' ')[1] === '15:00:00' 
             });
 
             dispatch(fetchDaysSuccess(newData));
@@ -43,6 +40,6 @@ export const fetchDays = city => {
         }
       })
       .catch((error) => console.log(error));
-    }
-  }
+    };
+  };
 };

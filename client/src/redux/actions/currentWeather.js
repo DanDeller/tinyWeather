@@ -100,8 +100,11 @@ export const fetchRecentCitiesSuccess = () => ({
 export const getWeather = (city, userId) => {
   return dispatch => {
     dispatch(fetchWeatherStart());
+    const cityState = city.split(',');
     
-    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
+    // Use the below comment to avoid eslint warnings. Reason: an extra space being added when using a comma after a template literal.
+    // eslint-disable-next-line
+    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${cityState[0]}\,,${cityState[1]}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
     .then(res => {
       let video = '';
       const details = {

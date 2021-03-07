@@ -82,6 +82,9 @@
   display: flex;
   justify-content: space-between;
 }
+.sidebar-item p {
+  cursor: pointer;
+}
 @media only screen and (max-width: 768px) {
   .sidebar-item {
     justify-content: center;

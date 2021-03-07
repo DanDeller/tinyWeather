@@ -1,5 +1,4 @@
 import WeatherIcons from './components/weather/WeatherIcons';
-import EasterEgg from './components/easter-egg/EasterEgg';
 import style from './assets/styles/styles-default.css';
 import Header from './components/header-footer/Header';
 import Footer from './components/header-footer/Footer';
@@ -7,6 +6,7 @@ import React, { Suspense } from 'react';
 import Main from './Main';
 
 const WeatherLookupSpinner = React.lazy(() => import('./components/spinner/WeatherLookupSpinner'));
+const EasterEgg = React.lazy(() => import('./components/easter-egg/EasterEgg'));
 const ErrorModal = React.lazy(() => import('./components/modal/Modal'));
 
 function App() {
@@ -14,10 +14,10 @@ function App() {
     <div className={style.wrap}>
       <Header />
       <Main />
-      <EasterEgg />
       <Footer />
       <Suspense fallback={<div className="tagline app-load"></div>}>
         <WeatherLookupSpinner />
+        <EasterEgg />
         <ErrorModal />
       </Suspense>
       <WeatherIcons animate={true} />
