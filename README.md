@@ -44,6 +44,7 @@ Force delete images: `docker rmi -f $(docker images -q)`
 
 <h2>Todo list</h2>
 <ul>
-  <li>Update styles to use Less instead of plain CSS (Docker does not play nice with node-sass).</li>
-  <li>Get Docker running properly</li>
+  <li>Update styles to use Less instead of plain CSS (Docker is not playing nice with node-sass).</li>
+  <li>Get Docker configuration running properly</li>
+  <li>Persist sessions</li>
 </ul>
