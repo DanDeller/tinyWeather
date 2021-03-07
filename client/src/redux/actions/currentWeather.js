@@ -113,7 +113,7 @@ export const getWeather = (city, userId) => {
         temp: parseInt(res.data.main.temp)
       };
 
-      if (city === 'jackson') {
+      if (cityState[0] === 'jackson') {
         const audio = document.querySelector(`audio[data-id="egg"]`)
         audio.play();
         dispatch(runEasterEgg(true));
