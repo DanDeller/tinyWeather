@@ -7,6 +7,7 @@ A tiny weather app.
 
 <h2>What you'll need to run the app</h2>
 <ul>
+  <li><a href='https://nodejs.org/en/download/'>NodeJS</a></li>
   <li><a href='https://www.mongodb.com/'>MongoDB</a></li>
 </ul>
 <h3>Optional</h3>
