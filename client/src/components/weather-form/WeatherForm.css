@@ -24,7 +24,7 @@
   background: rgba(210, 74, 74, 0.5);
   color: #fff;
   transition: box-shadow .3s linear 0s;
-  width: 65%;
+  width: 68%;
 }
 .weatherForm input[type=text]::placeholder {
   color: #f2f2f2;
@@ -58,6 +58,7 @@
 .weatherForm p {
   font-family: 'Bangers', cursive;
   letter-spacing: 1px;
+  text-align: center;
   text-shadow: 0 1px 1px #000;
 }
 @media only screen and (max-width: 768px) {
@@ -79,8 +80,8 @@
   box-shadow: 0 0 1px 1px #4c4c4c;
   color: #fff;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   outline: none;
-  padding: 10px;
+  padding: 10px 19px;
   text-shadow: 1px 1px 1px #000;
 }

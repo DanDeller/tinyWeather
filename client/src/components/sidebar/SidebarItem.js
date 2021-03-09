@@ -12,6 +12,7 @@ const SidebarItem = ({id, recentCity}) => {
   const searchSidebarCity = () => {
     dispatch(actions.getWeather(city, isAuthenticated.userId));
     dispatch(actions.setCity(city));
+    dispatch(actions.runEasterEgg(false));
   };
 
   return (

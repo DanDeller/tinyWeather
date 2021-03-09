@@ -106,6 +106,7 @@ export const getWeather = (city, userId) => {
     // eslint-disable-next-line
     axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${cityState[0]}\,,${cityState[1]}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
     .then(res => {
+      console.log(res)
       let video = '';
       const details = {
         name: res.data.name,
@@ -113,6 +114,7 @@ export const getWeather = (city, userId) => {
         temp: parseInt(res.data.main.temp)
       };
 
+      console.log(cityState[0])
       if (cityState[0] === 'jackson') {
         const audio = document.querySelector(`audio[data-id="egg"]`)
         audio.play();
@@ -142,7 +144,7 @@ export const getWeather = (city, userId) => {
           break;
         default: return
       };
-      
+
       // Use a timeout to simulate a slightly longer loading time
       // to help demo the loader and display it, at minimum, for 500ms
       // NOTE: This is for demo purposes only. Don't use in realtime
