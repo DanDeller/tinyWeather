@@ -1,7 +1,7 @@
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import SidebarSpinner from '../spinner/SidebarSpinner';
-import SidebarItem from './SidebarItem';
 import { useSelector } from 'react-redux';
+import SidebarItem from './SidebarItem';
 import PropTypes from 'prop-types';
 import React from 'react';
 import './Sidebar.css';

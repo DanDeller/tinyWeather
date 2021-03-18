@@ -18,7 +18,7 @@ export const resetSearch = () => {
     dispatch(setVideo(''));
     dispatch(setCity(''));
   };
-}
+};
 
 export const closeModal = () => {
   return dispatch => {
@@ -106,7 +106,6 @@ export const getWeather = (city, userId) => {
     // eslint-disable-next-line
     axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${cityState[0]}\,,${cityState[1]}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
     .then(res => {
-      console.log(res)
       let video = '';
       const details = {
         name: res.data.name,
@@ -114,7 +113,6 @@ export const getWeather = (city, userId) => {
         temp: parseInt(res.data.main.temp)
       };
 
-      console.log(cityState[0])
       if (cityState[0] === 'jackson') {
         const audio = document.querySelector(`audio[data-id="egg"]`)
         audio.play();
@@ -174,10 +172,6 @@ export const fetchRecentCities = (userId) => {
     .then((res) => {
       const data = res.data ? Object.values(res.data) : [];
 
-      if (res.error) {
-        throw(res.error);
-      };
-
       setTimeout(function() {
         dispatch(recentCity(data));
         dispatch(fetchRecentCitiesSuccess());
@@ -198,11 +192,9 @@ export const postRecentCities = (city, id, userId) => {
       userId: userId
     };
 
-    dispatch(recentCity([data]));
-
     axios.post('/currentWeather', data)
-    .then((res) => {
-      console.log(res.data);
+    .then(() => {
+      dispatch(recentCity([data]));
     })
     .catch((err) => console.log(err));
   };

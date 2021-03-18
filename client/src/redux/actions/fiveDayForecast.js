@@ -27,17 +27,11 @@ export const fetchDays = city => {
       // eslint-disable-next-line
       axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=${cityState[0]}\,,${cityState[1]}&appid=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
       .then(res => {
-        if (res) {
-          const set = res.data.list;
+        const newData = res.data.list.filter(({dt_txt}) => {
+          return dt_txt.split(' ')[1] === '15:00:00';
+        });
 
-          if (set) {
-            const newData = set.filter((o) => {
-              return o.dt_txt.split(' ')[1] === '13:00:00' || o.dt_txt.split(' ')[1] === '15:00:00' 
-            });
-
-            dispatch(fetchDaysSuccess(newData));
-          }
-        }
+        dispatch(fetchDaysSuccess(newData));
       })
       .catch((error) => console.log(error));
     };
