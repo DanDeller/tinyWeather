@@ -38,7 +38,6 @@ const WeatherMain = () => {
               isOpen={currentWeather.isOpen}
               city={currentWeather.city}
             />
-            
           </div>
           <div className="weather-right">
             <Sidebar

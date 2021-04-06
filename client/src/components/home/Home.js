@@ -10,7 +10,7 @@ const Home = () => {
           <h2>Search for a city</h2>
           <p>Head over to Current Weather Lookup to get started. Simply add a city to the input and hit the search button. 
             From there, city data will be gathered and displayed.</p>
-          <p className="note">Note: When searching, the input only needs the city name. Example - Pittsburgh</p>
+          <p className="note">Note: When searching, the input only needs the city name. Example - Pittsburgh, PA</p>
         </div>
       </div>
 
