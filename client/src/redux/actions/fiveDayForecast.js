@@ -15,8 +15,8 @@ export const setFetchFlag = fetchFlag => ({
   fetchFlag: fetchFlag
 });
 
-export const fetchDays = (city) => {
-  return async (dispatch) => {
+export const fetchDays = city => {
+  return async dispatch => {
     if (!city.length) {
       return;
     } else {
@@ -35,7 +35,7 @@ export const fetchDays = (city) => {
         dispatch(fetchDaysSuccess(newData));
       } catch(err) {
         console.log(err);
-      }
+      };
     };
   };
 };

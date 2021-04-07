@@ -98,19 +98,20 @@ export const fetchRecentCitiesSuccess = () => ({
  *  GET WEATHER
  */
 export const getWeather = (city, userId) => {
-  return dispatch => {
-    dispatch(fetchWeatherStart());
-    const cityState = city.split(',');
-    
-    // Use the below comment to avoid eslint warnings. Reason: an extra space being added when using a comma after a template literal.
-    // eslint-disable-next-line
-    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${cityState[0]}\,,${cityState[1]}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`)
-    .then(res => {
+  return async dispatch => {
+    try {
+      dispatch(fetchWeatherStart());
+      const cityState = city.split(',');
+      
+      // Use the below comment to avoid eslint warnings. Reason: an extra space being added when using a comma after a template literal.
+      // eslint-disable-next-line
+      const weatherData = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${cityState[0]}\,,${cityState[1]}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`);
+
       let video = '';
       const details = {
-        name: res.data.name,
-        weather: res.data.weather[0].main.toLowerCase(),
-        temp: parseInt(res.data.main.temp)
+        name: weatherData.data.name,
+        weather: weatherData.data.weather[0].main.toLowerCase(),
+        temp: parseInt(weatherData.data.main.temp)
       };
 
       if (cityState[0] === 'jackson') {
@@ -153,31 +154,31 @@ export const getWeather = (city, userId) => {
         dispatch(isOpen(false));
         dispatch(setVideo(Object.values(video)[0]));
       }, 500);
-    })
-    .catch((err) => {
+    } catch (err) {
       console.log(err);
       dispatch(visible(true));
-    });
+    };
   };
 };
 
 /*
  *  GET RECENT CITES
  */
-export const fetchRecentCities = (userId) => {
-  return dispatch => {
-    dispatch(fetchRecentCitiesStart());
+export const fetchRecentCities = userId => {
+  return async dispatch => {
+    try {
+      dispatch(fetchRecentCitiesStart());
 
-    axios.get('/currentWeather?userId=' + userId)
-    .then((res) => {
-      const data = res.data ? Object.values(res.data) : [];
+      const recentCities = await axios.get('/currentWeather?userId=' + userId);
+      const data = recentCities.data ? Object.values(recentCities.data) : [];
 
       setTimeout(function() {
         dispatch(recentCity(data));
         dispatch(fetchRecentCitiesSuccess());
       }, 1000);
-    })
-    .catch((err) => console.log(err));
+    } catch(err) {
+      console.log(err);
+    };
   };
 };
 
@@ -185,38 +186,42 @@ export const fetchRecentCities = (userId) => {
  *  POST RECENT CITES
  */
 export const postRecentCities = (city, id, userId) => {
-  return dispatch => {
-    const data = {
-      id: id,
-      city: city,
-      userId: userId
-    };
+  return async dispatch => {
+    try {
+      const data = {
+        id: id,
+        city: city,
+        userId: userId
+      };
 
-    axios.post('/currentWeather', data)
-    .then(() => {
+      await axios.post('/currentWeather', data);
+
       dispatch(recentCity([data]));
-    })
-    .catch((err) => console.log(err));
+    } catch(err) {
+      console.log(err);
+    };
   };
 };
 
 /*
  *  DELETE RECENT CITES
  */
-export const deleteRecentCities = (id) => {
-  return dispatch => {
-    const data = {
-      id: id
-    };
+export const deleteRecentCities = id => {
+  return async dispatch => {
+    try {
+      const data = {
+        id: id
+      };
 
-    axios.delete('/currentWeather', {
-      data: {
-        source: data
-      }
-    })
-    .then(() => {
+      await axios.delete('/currentWeather', {
+        data: {
+          source: data
+        }
+      });
+      
       dispatch(removeRecentCity(data.id));
-    })
-    .catch((err) => console.log(err));
+    } catch(err) {
+      console.log(err);
+    };
   };
 };
