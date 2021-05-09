@@ -1,5 +1,4 @@
 const User = require('../../middleware/userSchema'),
-			serverConfig = require('../../server.config'),
 			MongoClient = require('mongodb').MongoClient,
 			passport = require('passport'),
 			JWT = require('jsonwebtoken'),
@@ -7,13 +6,13 @@ const User = require('../../middleware/userSchema'),
 			express = require('express'),
 			userRoutes = express.Router();
 
-MongoClient.connect(serverConfig.mongo.connection, {
+MongoClient.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
 .then(client => {
-	const db = client.db(serverConfig.mongo.db);
-	const users = db.collection(serverConfig.mongo.collections.users);
+	const db = client.db(process.env.DB);
+	const users = db.collection(process.env.COLLECTIONS_USERS);
 
 	/**
 	 * signToken

@@ -1,11 +1,14 @@
-FROM node:15-alpine
+FROM node:14-alpine
 
-WORKDIR /www
+WORKDIR /usr/src/app
 
-COPY . /www/
+COPY ./package.json ./
+COPY ./yarn.lock ./
 
-RUN yarn install --silent
-# RUN npm rebuild node-sass
-# RUN yarn cache clean
+RUN yarn install
+
+COPY . .
+
+EXPOSE 3000
 
 CMD ["yarn", "start"]

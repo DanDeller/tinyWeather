@@ -1,15 +1,6 @@
 import axios from 'axios';
 
-// axios.interceptors.request.use(
-//   config => {
-//     const token = localStorage.getItem('tinyWeatherToken');
-//     config.headers.authorization = `Bearer ${token}`;
-//     return config;
-//   },
-//   error => {
-//     return Promise.reject(error);
-//   }
-// );
+axios.defaults.baseURL = 'http://localhost:3001';
 
 export default {
   /**
@@ -65,8 +56,17 @@ export default {
    * Get authenticated user
    */
   isAuthenticated: async () => {
+    // return axios.get('/user')
+    // .then((res) => {
+    //   const data = res.data;
+    //   console.log(data);
+    //   return data;
+    // })
+    // .catch((err) => console.log(err));
+
     return await fetch('/user')
 		.then(res => {
+      console.log(res)
 			if (res.status !== 401) {
         const data = res.json().then(data => data)
 				return data;
