@@ -1,17 +1,16 @@
-const serverConfig = require('../../server.config'),
-      MongoClient = require('mongodb').MongoClient,
+const MongoClient = require('mongodb').MongoClient,
       passport = require('passport'),
       express = require('express');
 
 const currentWeatherRoutes = express.Router();
 
-MongoClient.connect(serverConfig.mongo.connection, {
+MongoClient.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
 .then(client => {
-  const db = client.db(serverConfig.mongo.db);
-  const collection = db.collection(serverConfig.mongo.collections.currentWeather);
+  const db = client.db(process.env.DB);
+  const collection = db.collection(process.env.COLLECTIONS_CURRENTWEATHER);
 
   /**
    * GET /currentWeather - get all items from the collection
