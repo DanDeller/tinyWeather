@@ -169,7 +169,7 @@ export const fetchRecentCities = userId => {
     try {
       dispatch(fetchRecentCitiesStart());
 
-      const recentCities = await axios.get('/currentWeather?userId=' + userId);
+      const recentCities = await axios.get('http://localhost:3001/currentWeather?userId=' + userId);
       const data = recentCities.data ? Object.values(recentCities.data) : [];
 
       setTimeout(function() {
@@ -194,7 +194,7 @@ export const postRecentCities = (city, id, userId) => {
         userId: userId
       };
 
-      await axios.post('/currentWeather', data);
+      await axios.post('http://localhost:3001/currentWeather', data);
 
       dispatch(recentCity([data]));
     } catch(err) {
@@ -213,7 +213,7 @@ export const deleteRecentCities = id => {
         id: id
       };
 
-      await axios.delete('/currentWeather', {
+      await axios.delete('http://localhost:3001/currentWeather', {
         data: {
           source: data
         }

@@ -23,7 +23,9 @@ MongoClient.connect(process.env.MONGO_URI, {
 		return JWT.sign({
 			iss: 'izzy',
 			sub: userID
-		}, 'izzy', { expiresIn: '1h' });
+		}, 'izzy', { 
+			expiresIn: '1h' 
+		});
 	};
 
 	/**
@@ -117,6 +119,7 @@ MongoClient.connect(process.env.MONGO_URI, {
 					}
 				});
 			};
+			
 			// Check if user exists
 			if (doc) {
 				res.json({

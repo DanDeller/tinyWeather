@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3001';
-
 export default {
   /**
    * Log user in
@@ -9,8 +7,9 @@ export default {
    * @param user
    */
   login: (user) => {
-    return axios.post('/login', user)
+    return axios.post('http://localhost:3001/login', user)
     .then((res) => {
+      console.log(res.data)
       if (res.status !== 401) {
         const data = res.data;
         return data;
@@ -32,7 +31,7 @@ export default {
    * @param user
    */
   register: (user) => {
-    return axios.post('/register', user)
+    return axios.post('http://localhost:3001/register', user)
     .then((res) => {
       const data = res.data;
       return data;
@@ -44,7 +43,7 @@ export default {
    * Log user out
    */
   logout: () => {
-    return axios.get('/logout')
+    return axios.get('http://localhost:3001/logout')
     .then((res) => {
       const data = res.data;
       return data;
@@ -56,17 +55,8 @@ export default {
    * Get authenticated user
    */
   isAuthenticated: async () => {
-    // return axios.get('/user')
-    // .then((res) => {
-    //   const data = res.data;
-    //   console.log(data);
-    //   return data;
-    // })
-    // .catch((err) => console.log(err));
-
-    return await fetch('/user')
+    return await fetch('http://localhost:3001/user')
 		.then(res => {
-      console.log(res)
 			if (res.status !== 401) {
         const data = res.json().then(data => data)
 				return data;

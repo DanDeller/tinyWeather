@@ -13,29 +13,23 @@ export default ({ children }) => {
 
   useEffect(() => {
     AuthService.isAuthenticated().then((data) => {
+      console.log(data)
+      const expiresIn = new Date(new Date().getTime() + 60000);
+      const { user, isAuthenticated, access_token } = data;
+      const payload = {
+        token: access_token,
+        isAuthenticated: isAuthenticated,
+        id: user.id
+      };
 
-      console.log(data);
+      localStorage.setItem('tinyWeatherToken', access_token);
+      localStorage.setItem('expirationDate', expiresIn);
 
-      if (data !== undefined) {
-        const expiresIn = new Date(new Date().getTime() + 60000);
-        const { user, isAuthenticated, access_token } = data;
-        const payload = {
-          token: access_token,
-          isAuthenticated: isAuthenticated,
-          id: user.id
-        };
-
-        localStorage.setItem('tinyWeatherToken', access_token);
-        localStorage.setItem('expirationDate', expiresIn);
-
-        dispatch(actions.setAuth(payload));
-        
-        setUser(user);
-        setIsAuthenticated(isAuthenticated);
-        setIsLoaded(true);
-      }
-
+      dispatch(actions.setAuth(payload));
       
+      setUser(user);
+      setIsAuthenticated(isAuthenticated);
+      setIsLoaded(true);
     });
   }, [dispatch]);
 

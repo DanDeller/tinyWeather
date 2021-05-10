@@ -30,8 +30,3 @@ export const setTokenId = token => ({
   type: actionTypes.SET_TOKEN_ID,
   token
 });
-
-export const setUserData = data => ({
-  type: actionTypes.SET_USER_DATA,
-  data
-});
