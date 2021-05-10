@@ -5,10 +5,10 @@ WORKDIR /usr/src/app
 COPY ./package.json ./
 COPY ./yarn.lock ./
 
-RUN yarn install
+RUN yarn
 
 COPY . .
 
-EXPOSE 3001
+EXPOSE 5000
 
-CMD ["yarn", "start"]
+CMD [ "yarn", "start" ]

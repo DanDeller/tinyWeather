@@ -57,6 +57,7 @@ export default {
   isAuthenticated: async () => {
     return await fetch('http://localhost:3001/user')
 		.then(res => {
+      console.log(res.data)
 			if (res.status !== 401) {
         const data = res.json().then(data => data)
 				return data;

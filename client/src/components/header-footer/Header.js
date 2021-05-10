@@ -18,11 +18,13 @@ const Header = ({history}) => {
   
   const handleLogout = () => {
     AuthService.logout().then((data) => {
-      if (data.success) {
-        setUser(data.user);
-        setIsAuthenticated(false);
-        history.push('/home');
-      };
+      setIsAuthenticated(false);
+      history.push('/home');
+      // if (data.success) {
+      //   setUser(data.user);
+      //   setIsAuthenticated(false);
+      //   history.push('/home');
+      // };
     });
 
     dispatch(fetchFlagActions.setFetchFlag(!!fiveDayForecast.fetchFlag));

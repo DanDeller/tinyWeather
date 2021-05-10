@@ -18,12 +18,6 @@ app.use(bodyParser.json());
 
 app.use(cookieParser());
 
-app.use(session({
-  secret: 'izzy', // session secret
-  resave: true,
-  saveUninitialized: true
-}));
-
 app.use(passport.initialize());
 app.use(passport.session());
 require('./middleware/passportConfig')(passport);
