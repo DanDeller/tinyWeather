@@ -21,6 +21,7 @@ A tiny weather app.
   <ul>
     <li>Make sure MongoDB is installed</li>
     <li>Clone the repo</li>
+    <li>Rename `sample.dot.env` to `dov.env` and add in your `MONGO_URI`</li>
     <li>Start the api: cd into tinyWeather/api and yarn start</li>
     <li>Start client (new tab): cd into tinyWeather/client and yarn start</li>
   </ul>
