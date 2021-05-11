@@ -6,7 +6,6 @@ const currentWeather = require('./server/routes/currentWeather'),
       bodyParser = require('body-parser'),
       passport = require('passport'),
       express = require('express'),
-      http = require('http'),
       cors = require('cors'),
       db = require('./db'),
       app = express();
