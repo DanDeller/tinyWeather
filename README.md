@@ -21,8 +21,8 @@ A tiny weather app.
   <ul>
     <li>Make sure MongoDB is installed</li>
     <li>Clone the repo</li>
-    <li>Start the api: cd into tinyWeather/api and run yarn start</li>
-    <li>Start client (new tab): cd into tinyWeather/client and run yarn start</li>
+    <li>Start the api: cd into tinyWeather/api and yarn start</li>
+    <li>Start client (new tab): cd into tinyWeather/client and yarn start</li>
   </ul>
   
 > NOTE: If you are not using yarn, you can still use npm in its place.
