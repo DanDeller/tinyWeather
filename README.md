@@ -23,6 +23,7 @@ A tiny weather app.
     <li>Clone the repo</li>
     <li>Rename sample.dot.env to dov.env and add in your MONGO_URI</li>
     <li>Start the api: cd into tinyWeather/api and yarn start</li>
+    > NOTE: Wait until the server has fully started until running yarn start
     <li>Start client (new tab): cd into tinyWeather/client and yarn start</li>
   </ul>
   
