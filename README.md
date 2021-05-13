@@ -11,7 +11,7 @@ A tiny weather app.
   <li><a href='https://www.mongodb.com/'>MongoDB</a></li>
 </ul>
 
-> NOTE: If you do not want to go the Mongo Atlas way, you can install MongoDB with the steps listed here: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
+> NOTE: If you do not want to go the Mongo Atlas way, you can install MongoDB with the steps listed here: https://docs.mongodb.com/manual/administration/install-community/
 
 <h3>Optional</h3>
 <ul>
