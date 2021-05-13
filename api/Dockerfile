@@ -1,11 +1,14 @@
-FROM node:13-alpine
+FROM node:14-alpine
 
-WORKDIR /www
+WORKDIR /usr/src/app
 
-COPY . /www/
+COPY ./package.json ./
+COPY ./yarn.lock ./
 
-RUN yarn install --silent --production=false
+RUN yarn
 
-EXPOSE 3001
+COPY . .
 
-VOLUME ["/www"]
+EXPOSE 5000
+
+CMD [ "yarn", "start" ]

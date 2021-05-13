@@ -1,22 +1,38 @@
-version: '3'
+version: "3"
 services:
-  api:
-    build: 
-      context: ./api/
-    container_name: api
-    working_dir: /www
+  react-app:
+    image: react-app
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    networks:
+      - mern-app
+    volumes:
+      - ./client/:/usr/src/app
+      - /usr/src/app/node_modules
+  api-server:
+    image: api-server
+    env_file: ./api/config/dot.env
     ports:
       - "3001:3001"
-    volumes: 
-      - ./api/:/www
-    command: yarn start
-  client:
-    build:
-      context: ./client/
-    container_name: client
-    working_dir: /www
-    ports:
-      - '3000:3000'
+    networks:
+      - mern-app
     volumes:
-      - ./client/:/www
-    command: yarn start
+      - ./api/:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:4.4-bionic
+    ports:
+      - "27017:27017"
+    networks:
+      - mern-app
+    volumes:
+      - mongo-data:/data/db
+networks:
+  mern-app:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local
