@@ -35,6 +35,27 @@ A tiny weather app.
   
 > NOTE: If you are not using yarn, you can still use npm in its place.
 
+
+<h3>If you do want to test with Docker in its current state</h3>
+<p>As stated previously, Docker is in its experimental stage and isn't quite fully functioning yet. Should you want to test it or see how it currently runs, you'll need to make a few minor changes and run a few additional commands. We'll cover those in the following steps.
+
+<ul>
+  <li>First and foremost you will need to ensure that you have Docker installed. If not, head over to <a href='https://docs.docker.com/desktop/'>Docker</a> and run the installation steps. </li>
+  <li>Next, since we are using Docker now, you'll need to remove "proxy": "http://localhost:3001/" from the /client package.json file.</li>
+  <li>After this, since we are running mongoDB from a Docker container, we'll need to update the dot.env file. Odds are you installed without atlas, you were using mongodb://localhost:27017. For Docker we'll update that to point to the mongo container like mongodb://mongo:27017.</li>
+  <li>Finally since we are no longer using the proxy in /client package.json, you'll need to prefix the /client/src/services/AuthService.js with http://localhost:3001/. Example: http://localhost:3001/register.</li>
+</ul>
+
+<p>Now we are ready to build our containers and start via docker-compose</p>
+
+> NOTE: Make sure your MongoDB service are running
+
+<ul>
+  <li>With our MongoDB service running, cd to /api and run 'make build.'</li>
+  <li>Confirm that the server has started and connected to Mongoose and cd to /client and run 'make build'.</li>
+  <li>Both the containers are build for both front and backend services. Once they are built, cd to the root of the project and run 'make run-dev'. This will start the server and application containers. When ready, open up http://localhost:3000/#/home.</li>
+</ul>
+
 <h2>Useful Docker commands</h2>
 
 Check all containers: `docker ps -a`

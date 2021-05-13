@@ -115,7 +115,7 @@ export const getWeather = (city, userId) => {
       };
 
       if (cityState[0] === 'jackson') {
-        const audio = document.querySelector(`audio[data-id="egg"]`)
+        const audio = document.querySelector(`audio[data-id="egg"]`);
         audio.play();
         dispatch(runEasterEgg(true));
       };
