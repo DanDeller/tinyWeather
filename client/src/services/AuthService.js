@@ -11,6 +11,11 @@ import axios from 'axios';
 //   }
 // );
 
+const headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'JWT fefege...'
+};
+
 export default {
   /**
    * Log user in
@@ -65,7 +70,9 @@ export default {
    * Get authenticated user
    */
   isAuthenticated: async () => {
-    return await fetch('/user')
+    return await fetch('/user', {
+      headers: headers
+    })
 		.then(res => {
 			if (res.status !== 401) {
         const data = res.json().then(data => data)
