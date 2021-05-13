@@ -10,20 +10,24 @@ A tiny weather app.
   <li><a href='https://nodejs.org/en/download/'>NodeJS</a></li>
   <li><a href='https://www.mongodb.com/'>MongoDB</a></li>
 </ul>
+
+> NOTE: If you do not want to go the Mongo Atlas way, you can install MongoDB with the steps listed here: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
+
 <h3>Optional</h3>
 <ul>
   <li><a href='https://docs.docker.com/desktop/'>Docker</a></li>
 </ul> 
 
-> NOTE: Docker with tinyWeather is still in its experimental stage. You do not need Docker to run the app.
+> NOTE: Docker with tinyWeather is still in its experimental stage and is NOT fully functioning right now. You do not need Docker to run the app.
 
 <h2>How to use</h2>
   <ul>
     <li>Make sure MongoDB is installed</li>
     <li>Clone the repo</li>
     <li>Rename sample.dot.env to dov.env and add in your MONGO_URI</li>
-    <li>Start the api: cd into tinyWeather/api and yarn start</li>
-    <li>Start client (new tab): cd into tinyWeather/client and yarn start</li>
+    <li>Head to terminal and in the first tab start your MongoDB service. If you are on a Mac, you'll use: `brew services start mongodb-community@4.4`</li>
+    <li>Open a second terminal tab and start the api: cd tinyWeather/api and yarn start</li>
+    <li>Open a third terminal tab and start client: cd tinyWeather/client and yarn start</li>
   </ul>
 
 > NOTE: Wait until the server has fully started until running yarn start. When ready the console will read "Connected to Mongoose."
