@@ -24,7 +24,7 @@ A tiny weather app.
   <ul>
     <li>Make sure MongoDB is installed</li>
     <li>Clone the repo</li>
-    <li>Rename sample.dot.env to dov.env and add in your MONGO_URI</li>
+    <li>Rename sample.dot.env to dov.env and add in your MONGO_URI. Example: `mongodb://localhost:27017`</li>
     <li>Head to terminal and in the first tab start your MongoDB service. If you are on a Mac, you'll use: `brew services start mongodb-community@4.4`</li>
     <li>Open a second terminal tab and start the api: cd tinyWeather/api and yarn start</li>
     <li>Open a third terminal tab and start client: cd tinyWeather/client and yarn start</li>
