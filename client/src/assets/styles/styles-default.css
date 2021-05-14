@@ -57,6 +57,12 @@ textarea {
   }
 }
 
+@media only screen and (max-width: 1170px) {
+  .github-corner {
+    display: none;
+  }
+}
+
 .container {
   margin: 0 auto;
   max-width: 1024px;
@@ -64,6 +70,16 @@ textarea {
   position: relative;
   top: 0;
   left: 0;
+}
+@media screen and (max-width: 1090px) {
+  .container {
+    padding: 10px 50px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 10px 20px;
+  }
 }
 
 .body-text {

@@ -16,7 +16,7 @@ const WeatherMain = () => {
 
   useEffect(() => {
     if (!currentWeather.recentCities.length) {
-      dispatch(actions.fetchRecentCities(isAuthenticated.userId));
+      dispatch(actions.fetchRecentCities(isAuthenticated.tokenId, isAuthenticated.userId));
     };
     // eslint-disable-next-line
   }, []);

@@ -1,7 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
-import AuthService from '../../services/AuthService';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
+// import AuthService from '../../services/AuthService';
 import { withRouter } from 'react-router';
 import './Auth.css';
+
+import app from '../../base.js';
 
 const Message = React.lazy(() => import('../message/Message'));
 
@@ -21,46 +23,33 @@ const SignUp = ({ history }) => {
     setUser({...user, [e.target.name]: e.target.value});
   };
 
-  const handleSignup = (e) => {
-    e.preventDefault();
+  const handleSignUp = useCallback(async event => {
+    event.preventDefault();
+    const { email, password } = event.target.elements;
+    try {
+      await app
+        .auth()
+        .createUserWithEmailAndPassword(email.value, password.value);
+      history.push("/");
+    } catch (error) {
+      alert(error);
+    }
+  }, [history]);
 
-    if (!user.username.length || !user.password.length) {
-      const message = {
-        msgBody: 'Add info first.'
-      };
-      setMessage(message);
-      ref.current(message);
-      return;
-    };
-
-    AuthService.register(user).then((data) => {
-      const { message } = data;
-      setMessage(message);
-      ref.current(message);
-      resetForm();
-
-      if (!message.msgError) {
-        timerID = setTimeout(() => {
-          history.push('/');
-        }, 1000);
-      };
-    });
-  };
-
-  const resetForm = () => {
-    setUser({username: '', password: ''});
-  };
+  // const resetForm = () => {
+  //   setUser({username: '', password: ''});
+  // };
   
   return (
     <div className="login-signup-wrap">
       <h2>Sign Up</h2>
       <p>New to the app? Sign up below to get started.</p>
       <div className="login">
-        <form onSubmit={handleSignup}>
-          <input onChange={onChange} name="username" type="email" placeholder="Email" />
-          <input onChange={onChange} name="password" type="password" placeholder="Password" />
-          <button type="submit">Sign up</button>
-        </form>
+      <form onSubmit={handleSignUp}>
+        <input name="email" type="email" placeholder="Email" />
+        <input name="password" type="password" placeholder="Password" />
+        <button type="submit">Sign Up</button>
+      </form>
       </div>
       <Message children={add => (ref.current = add)} message={message} />
     </div>

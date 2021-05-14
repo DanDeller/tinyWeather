@@ -6,8 +6,8 @@ import React from 'react';
 const SidebarItem = ({id, recentCity}) => {
   const city = recentCity;
   const dispatch = useDispatch();
-  const deleteCity = () => dispatch(actions.deleteRecentCities(id));
   const isAuthenticated = useSelector(state => state.isAuthenticated);
+  const deleteCity = () => dispatch(actions.deleteRecentCities(id));
 
   const searchSidebarCity = () => {
     dispatch(actions.getWeather(city, isAuthenticated.userId));

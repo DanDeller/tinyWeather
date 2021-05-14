@@ -49,7 +49,7 @@ function Main() {
           className="route-wrapper"
         >
           <PrivateRoute exact path='/' component={Home} />
-          <Route exact path='/home' component={AuthWrapper} /> 
+          <Route exact path='/login' component={AuthWrapper} /> 
           <PrivateRoute key={'weatherMain'} exact path='/weather' component={WeatherMain} />
           <PrivateRoute key={'fiveDayForecast'} exact path='/fiveDayForecast' component={FiveDayForecast} />
           <Route path='*' component={() => '404 Page Not Found'}/>

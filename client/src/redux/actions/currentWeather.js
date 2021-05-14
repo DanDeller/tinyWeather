@@ -164,12 +164,16 @@ export const getWeather = (city, userId) => {
 /*
  *  GET RECENT CITES
  */
-export const fetchRecentCities = userId => {
+export const fetchRecentCities = (token, userId) => {
+  const useToken = token !== null ? token : localStorage.getItem('token');
+
   return async dispatch => {
     try {
+      const params = '?auth='+useToken+'&orderBy="userId"&equalTo="'+userId+'"';
+
       dispatch(fetchRecentCitiesStart());
 
-      const recentCities = await axios.get('/currentWeather?userId=' + userId);
+      const recentCities = await axios.get('https://tiny-weather-65aa3.firebaseio.com/recentCities.json' + params);
       const data = recentCities.data ? Object.values(recentCities.data) : [];
 
       setTimeout(function() {
@@ -186,6 +190,8 @@ export const fetchRecentCities = userId => {
  *  POST RECENT CITES
  */
 export const postRecentCities = (city, id, userId) => {
+  const useToken = localStorage.getItem('token');
+
   return async dispatch => {
     try {
       const data = {
@@ -194,7 +200,7 @@ export const postRecentCities = (city, id, userId) => {
         userId: userId
       };
 
-      await axios.post('/currentWeather', data);
+      await axios.post(`https://tiny-weather-65aa3.firebaseio.com/recentCities.json?auth=${useToken}`, data);
 
       dispatch(recentCity([data]));
     } catch(err) {
@@ -207,17 +213,22 @@ export const postRecentCities = (city, id, userId) => {
  *  DELETE RECENT CITES
  */
 export const deleteRecentCities = id => {
+  const useToken = localStorage.getItem('token');
+
   return async dispatch => {
     try {
       const data = {
         id: id
       };
 
-      await axios.delete('/currentWeather', {
-        data: {
-          source: data
-        }
-      });
+      console.log(id)
+
+      axios.delete(`https://tiny-weather-65aa3.firebaseio.com/recentCities.json?auth=${useToken}`, data)
+      .then((res) => {
+        console.log(res)
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
       
       dispatch(removeRecentCity(data.id));
     } catch(err) {
