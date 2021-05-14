@@ -8,9 +8,8 @@ const currentWeather = require('./server/routes/currentWeather'),
       express = require('express'),
       cors = require('cors'),
       db = require('./db'),
-      app = express();
-
-const port = 3001;
+      app = express(),
+      port = 3001;
 
 app.use(bodyParser.json());
 app.use(cors());
