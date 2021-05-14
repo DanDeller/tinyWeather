@@ -31,7 +31,7 @@ const Header = ({history}) => {
       <>
         <li key={'home'}>
           <NavLink 
-            to='/home' 
+            to='/' 
             exact 
             activeClassName="currentLink"
             onClick={() => toggleOpen(false)}>
