@@ -26,10 +26,8 @@
 .signup input,
 .login input {
   background: rgba(210, 74, 74, 0.5);
-  border-radius: 0;
   border: none;
   color: #f2f2f2;
-  display: block;
   font-size: 16px;
   margin: 0 auto 20px auto;
   padding: 10px;
@@ -53,7 +51,6 @@
   box-shadow: 0 0 1px 0 #7c7c7c;
   color: #fff;
   cursor: pointer;
-  display: block;
   font-size: 16px;
   margin: 0 auto;
   outline: none;

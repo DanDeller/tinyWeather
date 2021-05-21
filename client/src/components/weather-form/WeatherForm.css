@@ -15,14 +15,16 @@
     display: block;
   }
 }
-.weatherForm input {
+.weatherForm input,
+.weatherForm button {
   border: none;
-  outline: none;
-  padding: 10px 10px;
+  border-radius: 0;
+  font-size: 16px;
 }
 .weatherForm input[type=text] {
   background: rgba(210, 74, 74, 0.5);
   color: #fff;
+  padding: 10px 10px;
   transition: box-shadow .3s linear 0s;
   width: 68%;
 }
@@ -36,7 +38,7 @@
     width: 100%;
   }
 }
-.weatherForm input[type=submit] {
+.weatherForm button {
   background: #F45050;
   color: #fff;
   cursor: pointer;
@@ -46,11 +48,11 @@
   transition: box-shadow .3s linear 0s;
 }
 .weatherForm input[type=text]:hover,
-.weatherForm input[type=submit]:hover {
+.weatherForm button:hover {
   box-shadow: 0 0 1px 1px #fff;
 }
 @media only screen and (max-width: 768px) {
-  .weatherForm input[type=submit] {
+  .weatherForm button {
     margin: 0;
     width: 100%;
   }
@@ -63,11 +65,11 @@
 }
 @media only screen and (max-width: 768px) {
   .weatherForm p {
-    display: none;
+    margin: 15px 0 0 0;
   }
-}
-.resetButton {
-  margin: 0;
+  .resetButton {
+    margin: 10px 0 0 0;
+  }
 }
 .resetButton p {
   display: inline;
@@ -81,6 +83,7 @@
   color: #fff;
   cursor: pointer;
   font-size: 16px;
+  margin: 15px 0 0 0;
   outline: none;
   padding: 10px 19px;
   text-shadow: 1px 1px 1px #000;

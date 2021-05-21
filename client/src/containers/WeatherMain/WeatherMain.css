@@ -28,6 +28,7 @@
 @media only screen and (max-width: 768px) {
   .weather-main .weather-left {
     margin: 0 0 25px 0;
+    text-align: center;
     width: 100%;
  }
 }

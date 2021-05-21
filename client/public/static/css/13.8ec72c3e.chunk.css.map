@@ -1,0 +1,1 @@
+{"version":3,"sources":["WeatherVideo.css"],"names":[],"mappings":"AAAA,OACE,iBAAkB,CAClB,UAAW,CACX,KAAM,CACN,MACF,CACA,yCACE,OACE,UACH,CACD","file":"13.8ec72c3e.chunk.css","sourcesContent":[".video {\n  position: absolute;\n  width: 100%;\n  top: 0;\n  left: 0;\n}\n@media only screen and (max-width: 955px) {\n  .video {\n    width: 215%;\n }\n}"]}

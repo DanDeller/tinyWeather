@@ -46,12 +46,10 @@ const WeatherForm = () => {
             placeholder='Search city'
             className="searchMain"
           />
-          <input
+          <button
             onClick={e => getWeather(e)}
             type='submit'
-            value='Search'
-            className='search-city'
-          />
+            className='search-city'>Search</button>
           <p>Example: <br/> Pittsburgh, PA</p>
         </form>
       </div>

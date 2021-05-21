@@ -31,7 +31,7 @@ function Message({ config = { tension: 125, friction: 20, precision: 0.1 }, time
         <Messages key={key} style={style}>
           <Content ref={ref => ref && refMap.set(item, ref)}>
             <Life style={{ right: life }} />
-            <p>{ message.msgBody }</p>
+            <p>{ message }</p>
             <Button
               onClick={e => {
                 e.stopPropagation()

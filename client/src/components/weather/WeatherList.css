@@ -7,20 +7,17 @@
 }
 .weatherItems .weatherItem {
   border-bottom: 1px solid #f2f2f2;
-  padding: 0px 0 8px 0;
+  padding: 0 0 2px 0;
   position: relative;
 }
 .weatherItems .weatherItem h3 {
-  margin: 0 0 15px 0;
+  margin: 0 0 13px 0;
 }
 .weatherItems .weatherItem p {
-  margin: 0 25px 15px 0;
-}
-.weatherItems .weatherItem p:last-of-type {
-  margin: 0 25px 0 0;
+  margin: 0 25px 13px 0;
 }
 .showItems {
-  height: 115px;
+  height: 103px;
   opacity: 1;
   transform: translate(0);
   transition: height 500ms ease-in-out, opacity 500ms ease-in-out;

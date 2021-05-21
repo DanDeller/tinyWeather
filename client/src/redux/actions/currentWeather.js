@@ -101,62 +101,66 @@ export const getWeather = (city, userId) => {
   return async dispatch => {
     try {
       dispatch(fetchWeatherStart());
-      const cityState = city.split(',');
+
+      if (city !== '') {
+        const cityState = city.split(',');
       
-      // Use the below comment to avoid eslint warnings. Reason: an extra space being added when using a comma after a template literal.
-      // eslint-disable-next-line
-      const weatherData = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${cityState[0]}\,,${cityState[1]}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`);
+        // Use the below comment to avoid eslint warnings. Reason: an extra space being added when using a comma after a template literal.
+        // eslint-disable-next-line
+        const weatherData = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${cityState[0]}\,,${cityState[1]}&APPID=6d5233c17d482d1c20dabfc48d8b3112&units=imperial`);
 
-      let video = '';
-      const details = {
-        name: weatherData.data.name,
-        weather: weatherData.data.weather[0].main.toLowerCase(),
-        temp: parseInt(weatherData.data.main.temp)
-      };
+        let video = '';
+        const details = {
+          name: weatherData.data.name,
+          weather: weatherData.data.weather[0].main.toLowerCase(),
+          temp: parseInt(weatherData.data.main.temp)
+        };
 
-      if (cityState[0] === 'jackson') {
-        const audio = document.querySelector(`audio[data-id="egg"]`);
-        audio.play();
-        dispatch(runEasterEgg(true));
-      };
+        if (cityState[0] === 'jackson') {
+          const audio = document.querySelector(`audio[data-id="egg"]`);
+          audio.play();
+          dispatch(runEasterEgg(true));
+        };
 
-      switch(details.weather) {
-        case 'clouds':
-          video = {Clouds};
-          break;
-        case 'clear':
-          video = {Clear};
-          break;
-        case 'drizzle':
-        case 'rain':
-          video = {Rain};
-          break;
-        case 'haze': 
-        case 'mist':
-          video = {Haze};
-          break;
-        case 'thunderstorm':
-          video = {ThunderLightning};
-          break;
-        case 'snow':
-          video = {Snow};
-          break;
-        default: return
-      };
+        switch(details.weather) {
+          case 'clouds':
+            video = {Clouds};
+            break;
+          case 'clear':
+            video = {Clear};
+            break;
+          case 'drizzle':
+          case 'rain':
+            video = {Rain};
+            break;
+          case 'haze': 
+          case 'mist':
+            video = {Haze};
+            break;
+          case 'thunderstorm':
+            video = {ThunderLightning};
+            break;
+          case 'snow':
+            video = {Snow};
+            break;
+          default: return
+        };
 
-      // Use a timeout to simulate a slightly longer loading time
-      // to help demo the loader and display it, at minimum, for 500ms
-      // NOTE: This is for demo purposes only. Don't use in realtime
-      setTimeout(() => {
-        dispatch(fetchWeatherSuccess());
-        dispatch(postRecentCities(city, uuid(), userId));
-        dispatch(setDetails(details));
-        dispatch(isOpen(false));
-        dispatch(setVideo(Object.values(video)[0]));
-      }, 500);
+        // Use a timeout to simulate a slightly longer loading time
+        // to help demo the loader and display it, at minimum, for 500ms
+        // NOTE: This is for demo purposes only. Don't use in realtime
+        setTimeout(() => {
+          dispatch(fetchWeatherSuccess());
+          dispatch(postRecentCities(city, uuid(), userId));
+          dispatch(setDetails(details));
+          dispatch(isOpen(false));
+          dispatch(setVideo(Object.values(video)[0]));
+        }, 500);
+      } else {
+        dispatch(visible(true));
+      }
     } catch (err) {
       console.log(err);
-      dispatch(visible(true));
     };
   };
 };
@@ -169,11 +173,11 @@ export const fetchRecentCities = (token, userId) => {
 
   return async dispatch => {
     try {
-      const params = '?auth='+useToken+'&orderBy="userId"&equalTo="'+userId+'"';
+      const params = `?auth=${useToken}&orderBy="userId"&equalTo="${userId}"`;
 
       dispatch(fetchRecentCitiesStart());
 
-      const recentCities = await axios.get('https://tiny-weather-65aa3.firebaseio.com/recentCities.json' + params);
+      const recentCities = await axios.get(`https://tiny-weather-65aa3.firebaseio.com/recentCities.json${params}`);
       const data = recentCities.data ? Object.values(recentCities.data) : [];
 
       setTimeout(function() {
@@ -226,7 +230,6 @@ export const deleteRecentCities = id => {
       axios.delete(`https://tiny-weather-65aa3.firebaseio.com/recentCities.json?auth=${useToken}`, data)
       .then((res) => {
         console.log(res)
-        console.log(res.data);
       })
       .catch((err) => console.log(err));
       

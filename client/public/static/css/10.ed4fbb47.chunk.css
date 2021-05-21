@@ -1,0 +1,2 @@
+.easter-egg{display:none;bottom:7.8%;position:fixed;right:-15%}.move-egg{display:block;-webkit-animation:moonwalk 5s linear;animation:moonwalk 5s linear}@-webkit-keyframes moonwalk{0%{right:-15%}to{right:100%}}@keyframes moonwalk{0%{right:-15%}to{right:100%}}.remove-egg{display:none}
+/*# sourceMappingURL=10.ed4fbb47.chunk.css.map */

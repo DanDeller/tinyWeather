@@ -7,13 +7,8 @@ import './Auth.css';
 const Message = React.lazy(() => import('../message/Message'));
 
 const Login = ({ history }) => {
-  const [user, setUser] = useState({username: '', password: ''});
   const [message, setMessage] = useState(null);
   const ref = useRef(null);
-
-  const onChange = (e) => {
-    setUser({...user, [e.target.name]: e.target.value});
-  };
 
   const handleLogin = useCallback(
     async event => {
@@ -25,7 +20,9 @@ const Login = ({ history }) => {
           .signInWithEmailAndPassword(email.value, password.value);
         history.push("/");
       } catch (error) {
-        alert(error);
+        const { message } = error;
+        setMessage(message);
+        ref.current(message);
       }
     },
     [history]

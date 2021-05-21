@@ -1,14 +1,11 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-// import AuthService from '../../services/AuthService';
 import { withRouter } from 'react-router';
-import './Auth.css';
-
 import app from '../../base.js';
+import './Auth.css';
 
 const Message = React.lazy(() => import('../message/Message'));
 
 const SignUp = ({ history }) => {
-  const [user, setUser] = useState({username: '', password: ''});
   const [message, setMessage] = useState(null);
   let timerID = useRef(null);
   const ref = useRef(null);
@@ -19,10 +16,6 @@ const SignUp = ({ history }) => {
     };
   }, []);
 
-  const onChange = (e) => {
-    setUser({...user, [e.target.name]: e.target.value});
-  };
-
   const handleSignUp = useCallback(async event => {
     event.preventDefault();
     const { email, password } = event.target.elements;
@@ -32,13 +25,11 @@ const SignUp = ({ history }) => {
         .createUserWithEmailAndPassword(email.value, password.value);
       history.push("/");
     } catch (error) {
-      alert(error);
+      const { message } = error;
+      setMessage(message);
+      ref.current(message);
     }
   }, [history]);
-
-  // const resetForm = () => {
-  //   setUser({username: '', password: ''});
-  // };
   
   return (
     <div className="login-signup-wrap">

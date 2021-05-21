@@ -1,16 +1,9 @@
-/**
- * Comment out for now. I'm not paying google squat for cloud functions.
- * Use the Realtime Database for now until I find another solution.
- */
-
 const firebaseConfig = require('./firebase.config.js');
 const firebase = require('@firebase/app').default;
 const functions = require('firebase-functions');
 require('@firebase/firestore');
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-
-// host url: https://tiny-weather-65aa3.firebaseapp.com/#/
 
 const cors = require("cors")({
   origin: true,
@@ -35,7 +28,6 @@ exports.getRecentCities = functions.https.onRequest((req, res) => {
       snapshot.forEach(doc => {
         recentCities.push(doc.data());
       });
-
       return res.status(200).send(recentCities);
     })
     .catch(err => console.log(err));
@@ -48,7 +40,6 @@ exports.postRecentCity = functions.https.onRequest((req, res) => {
       city: req.body.city,
       id: req.body.id
     };
-  
     db.collection('recentCities')
     .add(data)
     .then(()=> {
@@ -61,7 +52,7 @@ exports.postRecentCity = functions.https.onRequest((req, res) => {
 exports.deleteRecentCity = functions.https.onRequest((req, res) => {
   cors(req, res, async () => {
     const currentId = req.body.source.id;
-
+    console.log(currentId);
     db.collection('recentCities')
     .where('id', '==', currentId)
     .get()
@@ -69,7 +60,6 @@ exports.deleteRecentCity = functions.https.onRequest((req, res) => {
       snapshot.forEach(doc => {
         doc.ref.delete();
       });
-
       return res.status(200).send(currentId);
     })
     .catch(err => console.log(err));
